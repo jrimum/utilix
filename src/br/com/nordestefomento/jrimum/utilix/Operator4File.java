@@ -1,0 +1,490 @@
+/*
+ * Copyright 2007, JMatryx Group
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ * 
+ * <a href="http://www.apache.org/licenses/LICENSE-2.0">
+ * http://www.apache.org/licenses/LICENSE-2.0 </a>
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ * 
+ * Copyright 2007, Grupo JMatryx
+ * 
+ * Licenciado sob a licença da Apache, versão 2.0 (a “licença”); você não pode
+ * usar este arquivo exceto na conformidade com a licença. Você pode obter uma
+ * cópia da licença em
+ * 
+ * <a href="http://www.apache.org/licenses/LICENSE-2.0">
+ * http://www.apache.org/licenses/LICENSE-2.0 </a>
+ * 
+ * A menos que seja requerido pela aplicação da lei ou esteja de acordo com a
+ * escrita, o software distribuído sob esta licença é distribuído “COMO É”
+ * BASE,SEM AS GARANTIAS OU às CONDIÇÕES DO TIPO, expresso ou implicado. Veja a
+ * licença para as permissões sobre a línguagem específica e limitações quando
+ * sob licença.
+ * 
+ * 
+ * Created at / Criado em : 10/11/2007 - 19:24:22
+ * 
+ */
+
+package br.com.nordestefomento.jrimum.utilix;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.log4j.Logger;
+
+import br.com.nordestefomento.jrimum.ACurbitaObject;
+
+/**
+ * 
+ * Descrição:
+ * 
+ * 
+ * @author <a href="http://gilmatryx.googlepages.com/">Gilmar P.S.L</a>
+ * @author Misael Barreto
+ * @author Rômulo Augusto
+ * @author <a href="http://www.nordeste-fomento.com.br">Nordeste Fomento
+ *         Mercantil</a>
+ * 
+ * @since JMatryx 1.0
+ * 
+ * @version 1.0
+ */
+public class Operator4File  extends ACurbitaObject{
+	
+	//TODO Criar Metodo que recebe um arquivo e coisas para verificar nele, como: (isVazio,Numero de linhas, etc)
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1227314921804015225L;
+
+	private static final int EOF = -1;
+
+	protected static final Logger LOG = Logger.getLogger(Operator4File.class);
+
+	private static final int CARRIAGE_RETURN = 1;
+
+	private static final int NEXT_LINE = 2;
+	
+	private static final String NEW_LINE = "\r\n";
+
+	public static void main(String[] args) throws IOException {
+
+		
+		
+		//System.out.println(readLine(new File("C:\\Documents and Settings\\Gilmar\\Desktop\\Op\\T003760909.txt"),326, 3));
+
+		
+		 //for(String s : readLines(new File("C:\\Documents and Settings\\Gilmar\\Desktop\\Op\\T003760909.txt"), 326))
+			 //System.out.println(s);
+		 
+		 //for(String s : readLines(new File("C:\\Documents and Settings\\Gilmar\\Desktop\\teste.txt"), 326))
+			 //System.out.println(s);
+		 
+		
+		//writeLines(new File("C:\\Documents and Settings\\Gilmar\\Desktop\\teste.txt"), readLines(new File("C:\\Documents and Settings\\Gilmar\\Desktop\\Op\\T003760909.txt"), 326));
+	
+	}
+
+	public static String readLine(File file, int lengthOfBlock,
+			int lineOrdinalNumber) {
+
+		long position = 0;
+
+		FileChannel fc = null;
+		ByteBuffer bybff = null;
+
+		String line = null;
+
+		if (lengthOfBlock > 0) {
+			if (lineOrdinalNumber > 0) {
+
+				fc = getReadFileChannel(file);
+
+				try {
+
+					if (fc.size() > 0) {
+
+						lengthOfBlock += NEXT_LINE;
+
+						bybff = ByteBuffer.allocate(lengthOfBlock
+								- CARRIAGE_RETURN);
+
+						position = ((lineOrdinalNumber - 1) * lengthOfBlock);
+
+						fc.position(position);
+
+						fc.read(bybff);
+
+						line = new String(bybff.array());
+
+						fc.close();
+						
+					} else
+						throw new IllegalArgumentException("file : [" + file
+								+ "] is empty!");
+
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			} else
+				throw new IllegalArgumentException("lineOrdinalNumber : ["
+						+ lineOrdinalNumber + "] must be > 0!");
+		} else
+			throw new IllegalArgumentException("lengthOfBlock : ["
+					+ lengthOfBlock + "] must be > 0!");
+
+		return line;
+	}
+
+	public static List<String> readLines(File file, int lengthOfBlock) {
+
+		FileChannel fc = null;
+		ByteBuffer bybff = null;
+
+		List<String> blocks = null;
+
+		if (lengthOfBlock > 0) {
+
+			fc = getReadFileChannel(file);
+
+			try {
+
+				if (fc.size() > 0) {
+
+					lengthOfBlock += CARRIAGE_RETURN;
+
+					bybff = ByteBuffer
+							.allocate(lengthOfBlock - CARRIAGE_RETURN);
+
+					blocks = new ArrayList<String>(getNumberOfLines(fc,
+							lengthOfBlock));
+
+					while (fc.read(bybff) != EOF) {
+
+						blocks.add(new String(bybff.array()));
+
+						fc.position(fc.position() + NEXT_LINE);
+
+						bybff.clear();
+					}
+					
+					fc.close();
+
+				} else
+					throw new IllegalArgumentException("file : [" + file
+							+ "] is empty!");
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} else
+			throw new IllegalArgumentException("lengthOfBlock : ["
+					+ lengthOfBlock + "] must be > 0!");
+
+		return blocks;
+	}
+	
+	public static void writeLines(File file, List<String> lines){
+		
+		FileChannel fc = null;
+		ByteBuffer bybff = null;
+		ByteBuffer[] bybffArray = null;
+		String line = null;
+		
+		if(lines != null && !lines.isEmpty()){
+			
+			bybffArray = new ByteBuffer[lines.size()];
+			
+			for(int i = 0 ; i < lines.size(); i++){
+				
+				line = lines.get(i);
+				
+				bybff = ByteBuffer.allocate(line.length() + NEXT_LINE);
+				
+				line += NEW_LINE;
+				
+				bybff.put(line.getBytes());
+				bybff.rewind();
+				
+				bybffArray[i] = bybff;
+			}
+			
+			fc = getWriteFileChannel(file);
+			
+			try {
+				
+				fc.write(bybffArray);
+				fc.close();
+			
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public static boolean isEmpty(File file){
+		
+		boolean is = true;
+		
+		if(file != null){
+			is = (file.length() > 0);
+		}else
+			throw new IllegalArgumentException("file : [" + file + "]!");
+		
+		return is;
+	}
+	
+	public static int getNumberOfLines(File file, int lengthOfBlock) {
+
+		int size = 0;
+
+		if (lengthOfBlock > 0) {
+
+			size = getNumberOfLines(getReadFileChannel(file), lengthOfBlock);
+
+		} else
+			throw new IllegalArgumentException("lengthOfBlock : ["
+					+ lengthOfBlock + "] must be > 0!");
+
+		return size;
+	}
+
+	public static int getNumberOfLines(FileChannel fileChannel, int lengthOfBlock) {
+
+		int size = 0;
+
+		if (fileChannel != null) {
+			if (lengthOfBlock > 0) {
+
+				try {
+
+					if (fileChannel.size() > 0) {
+
+						lengthOfBlock += CARRIAGE_RETURN;
+
+						size = (int) (fileChannel.size() / lengthOfBlock);
+					}
+
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			} else
+				throw new IllegalArgumentException("lengthOfBlock : ["
+						+ lengthOfBlock + "] must be > 0!");
+		} else
+			throw new IllegalArgumentException("fileChannel : [" + fileChannel
+					+ "]!");
+
+		return size;
+	}
+	
+	public static void copyTo(File fileIn, File fileOut){
+		
+		FileChannel fcin = getReadFileChannel(fileIn);
+		
+		FileChannel fcout = getWriteFileChannel(fileOut);
+		
+		try {
+			
+			fcin.transferTo(0, fcin.size(), fcout);
+			
+			fcin.close();
+			fcout.close();
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static FileChannel getReadFileChannel(File file) {
+
+		FileInputStream fis = null;
+		FileChannel fc = null;
+
+		if (!isEmpty(file)) {
+
+			try {
+
+				fis = new FileInputStream(file);
+
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+
+			fc = fis.getChannel();
+		} 
+
+		return fc;
+	}
+	
+	public static FileChannel getWriteFileChannel(File file){
+		
+		FileOutputStream fos = null;
+		FileChannel fc = null;
+
+		if (!isEmpty(file)) {
+
+			try {
+
+				fos = new FileOutputStream(file);
+
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			}
+
+			fc = fos.getChannel();	
+		}
+
+		return fc;
+	}
+	
+
+	public static List<String> readFile(String pathName) {
+		
+		if (pathName != null) {
+			
+			List<String> lines = new ArrayList<String>();
+
+			try {
+				File arq = new File(pathName);
+
+				BufferedReader reader = new BufferedReader(new FileReader(arq));
+
+				String s;
+
+				do {
+					s = reader.readLine();
+					if (s != null) {
+						lines.add(s);
+					}
+				} while (s != null);
+
+				reader.close();
+				
+				return lines;
+
+			} catch (FileNotFoundException e) {
+				LOG.error(" RECEBER PROCESSAMENTO "
+						+ "String pathNomeArquivo: " + pathName, e);
+			} catch (IOException e) {
+				LOG.error(" RECEBER PROCESSAMENTO "
+						+ "String pathNomeArquivo: " + pathName, e);
+			}
+		}
+		
+		return null;
+	}
+	
+	public static List<String> readFile(File file){
+		
+		List<String> lines = null;
+
+		if(!isEmpty(file)){
+			
+			try {
+				
+				BufferedReader reader = new BufferedReader(new FileReader(file));
+
+				String s;
+
+				do {
+					s = reader.readLine();
+					if (s != null) {
+						lines.add(s);
+					}
+				} while (s != null);
+
+				reader.close();
+				
+				return lines;
+
+			} catch (FileNotFoundException e) {
+				LOG.error(" RECEBER PROCESSAMENTO ", e);
+			} catch (IOException e) {
+				LOG.error(" RECEBER PROCESSAMENTO ", e);
+			}
+		}
+		
+		return lines;
+	}
+	
+	public static void markAs(String pathName, String tag) {
+		
+		if (pathName != null & tag != null) {
+
+			File file = new File(pathName);
+			File newFile = new File(pathName+tag);
+			
+			file.renameTo(newFile);	
+			
+		}
+	}
+	
+
+	public static boolean renameTo(String path, String name,String newName) {
+		
+		if (path != null & name != null & newName != null) {
+
+			File file = new File(path+"/"+name);
+			File newFile = new File(path+"/"+newName);
+			
+			file.renameTo(newFile);	
+			return true;
+		}
+		
+		return false;
+	}
+	
+
+	public static void createTextFile(String pathName, String content) {
+
+		if (LOG.isTraceEnabled())
+			LOG.trace("Creating file...");
+
+		if (LOG.isDebugEnabled()) {
+			LOG.debug("pathName: " + pathName);
+			LOG.debug("content: " + content);
+		}
+
+		List<String> line = new ArrayList<String>(1);
+		line.add(content);
+
+		writeLines(new File(pathName), line);
+	}
+	
+
+
+	public static void createTextFile(String pathName, List<String> content ) {
+
+		if (LOG.isTraceEnabled())
+			LOG.trace("Creating file...");
+
+		if (LOG.isDebugEnabled()) {
+			LOG.debug("pathName: " + pathName);
+			LOG.debug("content: " + content);
+		}
+
+		writeLines(new File(pathName), content);
+	}
+
+
+}
