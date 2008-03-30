@@ -7,7 +7,7 @@ import java.util.Locale;
 
 import br.com.nordestefomento.jrimum.ACurbitaObject;
 
-public class Operator4Monetary extends ACurbitaObject{
+public class Util4Monetary extends ACurbitaObject{
 	
 	/**
 	 * 

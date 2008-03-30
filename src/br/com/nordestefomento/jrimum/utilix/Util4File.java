@@ -67,7 +67,7 @@ import br.com.nordestefomento.jrimum.ACurbitaObject;
  * 
  * @version 1.0
  */
-public class Operator4File  extends ACurbitaObject{
+public class Util4File  extends ACurbitaObject{
 	
 	//TODO Criar Metodo que recebe um arquivo e coisas para verificar nele, como: (isVazio,Numero de linhas, etc)
 	
@@ -78,7 +78,7 @@ public class Operator4File  extends ACurbitaObject{
 
 	private static final int EOF = -1;
 
-	protected static final Logger LOG = Logger.getLogger(Operator4File.class);
+	protected static final Logger LOG = Logger.getLogger(Util4File.class);
 
 	private static final int CARRIAGE_RETURN = 1;
 

@@ -9,9 +9,9 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import br.com.nordestefomento.jrimum.utilix.Operator4Date;
+import br.com.nordestefomento.jrimum.utilix.Util4Date;
 
-public class TestOperator4Date {
+public class TestUtil4Date {
 	
 	private static Date data1;
 	
@@ -39,13 +39,13 @@ public class TestOperator4Date {
 	@Test
 	public void testCalcularDiferencaEmDias() {
 		
-		assertEquals(0, Operator4Date.calcularDiferencaEmDias(null, null));
-		assertEquals(0, Operator4Date.calcularDiferencaEmDias(null, data2));
-		assertEquals(0, Operator4Date.calcularDiferencaEmDias(data1, null));
-		assertEquals(0, Operator4Date.calcularDiferencaEmDias(data2, data1));
-		assertEquals(0, Operator4Date.calcularDiferencaEmDias(data1, data1));
-		assertEquals(0, Operator4Date.calcularDiferencaEmDias(data2, data2));
-		assertEquals(30, Operator4Date.calcularDiferencaEmDias(data1, data2));
+		assertEquals(0, Util4Date.calcularDiferencaEmDias(null, null));
+		assertEquals(0, Util4Date.calcularDiferencaEmDias(null, data2));
+		assertEquals(0, Util4Date.calcularDiferencaEmDias(data1, null));
+		assertEquals(0, Util4Date.calcularDiferencaEmDias(data2, data1));
+		assertEquals(0, Util4Date.calcularDiferencaEmDias(data1, data1));
+		assertEquals(0, Util4Date.calcularDiferencaEmDias(data2, data2));
+		assertEquals(30, Util4Date.calcularDiferencaEmDias(data1, data2));
 	}
 
 }

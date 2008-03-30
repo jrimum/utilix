@@ -8,9 +8,9 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import br.com.nordestefomento.jrimum.utilix.Operator4String;
+import br.com.nordestefomento.jrimum.utilix.Util4String;
 
-public class TestOperator4String {
+public class TestUtil4String {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -31,7 +31,7 @@ public class TestOperator4String {
 	@Test
 	public void testEliminateSymbols() {
 		
-		assertEquals("", Operator4String.eliminateSymbols("><,;.:!*&%+-_<>[]\\/"));
+		assertEquals("", Util4String.eliminateSymbols("><,;.:!*&%+-_<>[]\\/"));
 	}
 
 }

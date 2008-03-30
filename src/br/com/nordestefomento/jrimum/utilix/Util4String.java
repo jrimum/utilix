@@ -56,7 +56,7 @@ import br.com.nordestefomento.jrimum.ACurbitaObject;
  * 
  * @version 1.0
  */
-public class Operator4String extends ACurbitaObject{
+public class Util4String extends ACurbitaObject{
 
 	public static final String WHITE_SPACE = " ";
 	
