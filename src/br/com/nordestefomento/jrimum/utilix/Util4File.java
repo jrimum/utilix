@@ -37,6 +37,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.util.ArrayList;
@@ -65,6 +67,8 @@ public class Util4File  extends ACurbitaObject{
 	
 	//TODO Criar Metodo que recebe um arquivo e coisas para verificar nele, como: (isVazio,Numero de linhas, etc)
 	
+	protected static final Logger LOG = Logger.getLogger(Util4File.class);
+	
 	/**
 	 * 
 	 */
@@ -72,30 +76,91 @@ public class Util4File  extends ACurbitaObject{
 
 	private static final int EOF = -1;
 
-	protected static final Logger LOG = Logger.getLogger(Util4File.class);
-
 	private static final int CARRIAGE_RETURN = 1;
 
 	private static final int NEXT_LINE = 2;
 	
 	private static final String NEW_LINE = "\r\n";
 
-	public static void main(String[] args) throws IOException {
+	/**
+	 * Retorna o conteúdo de um arquivo em um array de bytes.
+	 * 
+	 * @param file
+	 * @return
+	 * @throws IOException
+	 */
+	public static byte[] bytesFromFile(File file) throws IOException {
+		
+		
+		byte[] bytes = null;
+		
+		if(file != null){
+			
+			// medida do arquivo
+			long length = file.length();
+			
+			// Nao se pode criar um array usando o tipo long.
+			// Tem que ser int.
+			// Antes de converter para o tipo int cheque
+			// para assegurar que file.lenth não é maior que Integer.MAX_VALUE.
+			if (length <= Integer.MAX_VALUE) {
+				
+				InputStream is = new FileInputStream(file);
 
-		
-		
-		//System.out.println(readLine(new File("C:\\Documents and Settings\\Gilmar\\Desktop\\Op\\T003760909.txt"),326, 3));
+				// para os dados
+				bytes = new byte[(int) length];
 
+				// leitura dos bytes
+				int offset = 0;
+				int numRead = 0;
+				
+				while ((offset < bytes.length)
+						&& ((numRead = is.read(bytes, offset, bytes.length - offset)) >= 0)) {
+					offset += numRead;
+				}
+
+				// Assegurando que todos os dados foram lidos
+				if (offset < bytes.length) {
+					throw new IOException("Could not completely read file "
+							+ file.getName());
+				}
+
+				// Feche o input stream
+				is.close();
+				
+			}else
+				throw new IOException("File is too large for this tranformation.");
+			
+		}
 		
-		 //for(String s : readLines(new File("C:\\Documents and Settings\\Gilmar\\Desktop\\Op\\T003760909.txt"), 326))
-			 //System.out.println(s);
-		 
-		 //for(String s : readLines(new File("C:\\Documents and Settings\\Gilmar\\Desktop\\teste.txt"), 326))
-			 //System.out.println(s);
-		 
+		return bytes;
+	}
+
+	/**
+	 * Transforma um array de bytes em um arquivo.
+	 * 
+	 * @param pathName
+	 * @param bytes
+	 * @return
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
+	public static File bytes2File(String pathName, byte[] bytes) throws FileNotFoundException, IOException {
 		
-		//writeLines(new File("C:\\Documents and Settings\\Gilmar\\Desktop\\teste.txt"), readLines(new File("C:\\Documents and Settings\\Gilmar\\Desktop\\Op\\T003760909.txt"), 326));
-	
+		File f = null;
+		
+		if(pathName != null && bytes != null){
+			
+			f = new File(pathName);
+			
+			OutputStream out = new FileOutputStream(f);
+			
+			out.write(bytes);
+			out.flush();
+			out.close();
+			
+		}
+		return f;
 	}
 
 	public static String readLine(File file, int lengthOfBlock,
@@ -479,6 +544,5 @@ public class Util4File  extends ACurbitaObject{
 
 		writeLines(new File(pathName), content);
 	}
-
 
 }
