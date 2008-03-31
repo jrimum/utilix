@@ -31,6 +31,7 @@
 package br.com.nordestefomento.jrimum.utilix;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -63,7 +64,7 @@ import br.com.nordestefomento.jrimum.ACurbitaObject;
  * 
  * @version 1.0
  */
-public class Util4File  extends ACurbitaObject{
+public class Util4File extends ACurbitaObject{
 	
 	//TODO Criar Metodo que recebe um arquivo e coisas para verificar nele, como: (isVazio,Numero de linhas, etc)
 	
@@ -149,7 +150,7 @@ public class Util4File  extends ACurbitaObject{
 		
 		File f = null;
 		
-		if(pathName != null && bytes != null){
+		if(!isNull(pathName,"pathName") && !isNull(bytes,"bytes")){
 			
 			f = new File(pathName);
 			
@@ -157,10 +158,38 @@ public class Util4File  extends ACurbitaObject{
 			
 			out.write(bytes);
 			out.flush();
-			out.close();
-			
+			out.close();	
 		}
+		
+		
 		return f;
+	}
+	
+
+	
+	/**
+	 * <p>
+	 * Transforma um array de bytes em um <code>ByteArrayOutputStream</code>.
+	 * </p>
+	 * 
+	 * @param bytes
+	 * @return ByteArrayOutputStream ou null
+	 * @throws IOException
+	 * 
+	 * @since 
+	 */
+	public static ByteArrayOutputStream bytes2Stream(byte[] bytes) throws IOException{
+		
+		ByteArrayOutputStream byteOut = null;
+		
+		if(!isNull(bytes,"bytes")){
+			
+			byteOut = new ByteArrayOutputStream();
+			
+			byteOut.write(bytes);
+		}
+
+		return byteOut;
 	}
 
 	public static String readLine(File file, int lengthOfBlock,

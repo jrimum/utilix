@@ -40,10 +40,15 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import br.com.nordestefomento.jrimum.ACurbitaObject;
+
 import com.lowagie.text.Document;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.Image;
 import com.lowagie.text.pdf.PdfCopy;
 import com.lowagie.text.pdf.PdfImportedPage;
 import com.lowagie.text.pdf.PdfReader;
+import com.lowagie.text.pdf.PdfStamper;
 import com.lowagie.text.pdf.SimpleBookmark;
 
 
@@ -68,8 +73,13 @@ import com.lowagie.text.pdf.SimpleBookmark;
  * @version 
  */
 
-public class Util4PDF {
+public class Util4PDF extends ACurbitaObject{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	protected static final Logger LOG = Logger.getLogger(Util4PDF.class);
 
 	public static void main(String[] args) throws FileNotFoundException, IOException {
@@ -80,6 +90,29 @@ public class Util4PDF {
 		arqs.add(Util4File.bytesFromFile(new File("D:/Gilmatryx/TradBSD-rev.1.01.pdf")));
 		
 		Util4File.bytes2File("D:/Gilmatryx/teste.pdf", mergeFiles(arqs));
+	}
+	
+	
+	public void changeField2Image(PdfStamper stamper, float[] positions , Image image) throws DocumentException{
+						
+				RectanglePDF rect =  new RectanglePDF(positions);
+			
+				// Ajustando o tamanho da imagem de acordo com o tamanho do campo.
+				//image.scaleToFit(rect.getWidth(), rect.getHeight());
+				image.scaleAbsolute(rect.getWidth(), rect.getHeight());
+				
+				// A rotina abaixo tem por objetivo deixar a imagem posicionada no centro
+				// do field, tanto na perspectiva horizontal como na vertical. 
+				// Caso não se queira mais posicionar a imagem no centro do field, basta
+				// efetuar a chamada a seguir:
+				// "image.setAbsolutePosition	(rect.getLowerLeftX(),rect.getLowerLeftY());"
+				image.setAbsolutePosition(
+													rect.getLowerLeftX() + (rect.getWidth() - image.getScaledWidth()) / 2,
+													rect.getLowerLeftY() + (rect.getHeight() - image.getScaledHeight()) / 2
+												);
+				
+				//cb = stamper.getUnderContent(rect.getPage());
+				stamper.getOverContent(rect.getPage()).addImage(image);
 	}
 	
 	/**
