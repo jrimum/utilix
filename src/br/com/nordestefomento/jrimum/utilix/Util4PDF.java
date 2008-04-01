@@ -93,32 +93,43 @@ public class Util4PDF extends ACurbitaObject{
 	}
 	
 	
-	public void changeField2Image(PdfStamper stamper, float[] positions , Image image) throws DocumentException{
+	public static RectanglePDF changeField2Image(PdfStamper stamper, float[] positions , Image image) throws DocumentException{
 						
 				RectanglePDF rect =  new RectanglePDF(positions);
-			
-				// Ajustando o tamanho da imagem de acordo com o tamanho do campo.
-				//image.scaleToFit(rect.getWidth(), rect.getHeight());
-				image.scaleAbsolute(rect.getWidth(), rect.getHeight());
 				
-				// A rotina abaixo tem por objetivo deixar a imagem posicionada no centro
-				// do field, tanto na perspectiva horizontal como na vertical. 
-				// Caso não se queira mais posicionar a imagem no centro do field, basta
-				// efetuar a chamada a seguir:
-				// "image.setAbsolutePosition	(rect.getLowerLeftX(),rect.getLowerLeftY());"
-				image.setAbsolutePosition(
-													rect.getLowerLeftX() + (rect.getWidth() - image.getScaledWidth()) / 2,
-													rect.getLowerLeftY() + (rect.getHeight() - image.getScaledHeight()) / 2
-												);
-				
-				//cb = stamper.getUnderContent(rect.getPage());
-				stamper.getOverContent(rect.getPage()).addImage(image);
+				return changeField2Image(stamper,rect,image);
+	}
+	
+	public static RectanglePDF changeField2Image(PdfStamper stamper,
+			RectanglePDF rect, Image image) throws DocumentException {
+
+		// Ajustando o tamanho da imagem de acordo com o tamanho do campo.
+		// image.scaleToFit(rect.getWidth(), rect.getHeight());
+		image.scaleAbsolute(rect.getWidth(), rect.getHeight());
+
+		// A rotina abaixo tem por objetivo deixar a imagem posicionada no
+		// centro
+		// do field, tanto na perspectiva horizontal como na vertical.
+		// Caso não se queira mais posicionar a imagem no centro do field, basta
+		// efetuar a chamada a seguir:
+		// "image.setAbsolutePosition
+		// (rect.getLowerLeftX(),rect.getLowerLeftY());"
+		image.setAbsolutePosition(rect.getLowerLeftX()
+				+ (rect.getWidth() - image.getScaledWidth()) / 2, rect
+				.getLowerLeftY()
+				+ (rect.getHeight() - image.getScaledHeight()) / 2);
+
+		// cb = stamper.getUnderContent(rect.getPage());
+		stamper.getOverContent(rect.getPage()).addImage(image);
+
+		return rect;
 	}
 	
 	/**
 	 * Junta varios arquivos pdf em um soh.
 	 * 
-	 * @param Lista de arquivos pdf
+	 * @param Lista
+	 *            de arquivos pdf
 	 * 
 	 * @return Arquivo PDF em forma de byte
 	 */
