@@ -66,7 +66,7 @@ public class TestField {
 	public void setUp(){
 		
 		campoString = new Field<String>(StringUtils.EMPTY, 8);
-		campoString.setFiller(Filler.STR_WHITE_SPACE_RIGHT);
+		campoString.setFiller(Filler.WHITE_SPACE_RIGHT);
 		
 		campoDate = new Field<Date>(new GregorianCalendar(2007, Calendar.JULY, 22).getTime(), 6, Util4Date.fmt_ddMMyy);
 		

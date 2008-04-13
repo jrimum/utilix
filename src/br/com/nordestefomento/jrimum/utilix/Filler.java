@@ -35,28 +35,31 @@ import org.apache.commons.lang.StringUtils;
 import br.com.nordestefomento.jrimum.ACurbitaObject;
 
 /**
+ * <p>
  * Preenchedor de caracteres genérico. É utilizado para preencher objetos <code>String</code>,
  * tanto da esquerda para a direita como da direita para esquerda, com o objeto genérico até
  * o tamanho especificado. Caso o tamanho especificado seja <strong>menor</strong> 
  * ou <strong>igual</strong> a 0 (ZERO), este valor será desconsiderado e nada será preenchido.
- * <br/>
+ * </p>
+ * <p>
  * É utilizado o método <code>toString()</code> do objeto preenchedor.
- * <br/>
+ * </p>
+ * <p>
  * Exemplo:<br/>
- * <code>
- * Filler<Integer> filler = new Filler(new Integer(10), SideToFill.LEFT);<br/>
+ * <pre>
+ * Filler<Integer> filler = new Filler(new Integer(10), SideToFill.LEFT);
  * String outPut = filler.fill("TESTE", 8);
- * <br/><br/>
- * outPut -> "101TESTE"
- * </code>
  * 
+ * outPut -> "101TESTE"
+ * </pre>
+ * </p> 
  * @author <a href="http://gilmatryx.googlepages.com/">Gilmar P.S.L</a>
  * @author Misael Barreto
  * @author Rômulo Augusto
  * @author <a href="http://www.nordeste-fomento.com.br">Nordeste Fomento
  *         Mercantil</a>
  * 
- * @since JMatryx 1.0
+ * @since JRimum 1.0
  * 
  * @version 1.0
  *
@@ -79,54 +82,14 @@ public class Filler<G> extends ACurbitaObject{
 	public static final Filler<Integer> ZERO_RIGHT = new Filler<Integer>(0, SideToFill.RIGHT);
 	
 	/**
-	 * Filler padrão para preenchimento com zeros a esquerda.
-	 */
-	public static final Filler<Long> LONG_ZERO_LEFT = new Filler<Long>(0L, SideToFill.LEFT);
-	
-	/**
-	 * Filler padrão para preenchimento com zeros a direita.
-	 */
-	public static final Filler<Long> LONG_ZERO_RIGHT = new Filler<Long>(0L, SideToFill.RIGHT);
-	
-	/**
-	 * Filler padrão para preenchimento com zeros a esquerda.
-	 */
-	public static final Filler<Character> CHAR_ZERO_LEFT = new Filler<Character>('0', SideToFill.LEFT);
-	
-	/**
-	 * Filler padrão para preenchimento com zeros a direita.
-	 */
-	public static final Filler<Character> CHAR_ZERO_RIGHT = new Filler<Character>('0', SideToFill.RIGHT);
-	
-	/**
-	 * Filler padrão para preenchimento com zeros a esquerda.
-	 */
-	public static final Filler<String> STR_ZERO_LEFT = new Filler<String>("0", SideToFill.LEFT);
-	
-	/**
-	 * Filler padrão para preenchimento com zeros a direita.
-	 */
-	public static final Filler<String> STR_ZERO_RIGHT = new Filler<String>("0", SideToFill.RIGHT);
-	
-	/**
 	 * Filler padrão para preenchimento com espaços em branco a esquerda.
 	 */
-	public static final Filler<Character> CHAR_WHITE_SPACE_LEFT = new Filler<Character>(' ', SideToFill.LEFT);
+	public static final Filler<String> WHITE_SPACE_LEFT = new Filler<String>(Util4String.WHITE_SPACE, SideToFill.LEFT);
 	
 	/**
 	 * Filler padrão para preenchimento com espaços em branco a direita.
 	 */
-	public static final Filler<Character> CHAR_WHITE_SPACE_RIGHT = new Filler<Character>(' ', SideToFill.RIGHT);
-	
-	/**
-	 * Filler padrão para preenchimento com espaços em branco a esquerda.
-	 */
-	public static final Filler<String> STR_WHITE_SPACE_LEFT = new Filler<String>(Util4String.WHITE_SPACE, SideToFill.LEFT);
-	
-	/**
-	 * Filler padrão para preenchimento com espaços em branco a direita.
-	 */
-	public static final Filler<String> STR_WHITE_SPACE_RIGHT = new Filler<String>(Util4String.WHITE_SPACE, SideToFill.RIGHT);
+	public static final Filler<String> WHITE_SPACE_RIGHT = new Filler<String>(Util4String.WHITE_SPACE, SideToFill.RIGHT);
 
 	/**
 	 * 

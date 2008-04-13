@@ -52,30 +52,30 @@ public class TestFiller {
 	@Test(expected=IllegalArgumentException.class)
 	public void testSetSideToFillNullValue() {
 		
-		Filler.STR_WHITE_SPACE_LEFT.setSideToFill(null);
+		Filler.WHITE_SPACE_LEFT.setSideToFill(null);
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void testSetToFillNullValue() {
 		
-		Filler.STR_WHITE_SPACE_LEFT.setToFill(null);
+		Filler.WHITE_SPACE_LEFT.setToFill(null);
 	}
 	
 	@Test
 	public void testSetToFill() {
 		
-		Filler.STR_WHITE_SPACE_LEFT.setToFill(campo);
+		Filler.WHITE_SPACE_LEFT.setToFill(campo);
 		
-		assertTrue(Filler.STR_WHITE_SPACE_LEFT.getToFill() instanceof String);
-		assertEquals(Filler.STR_WHITE_SPACE_LEFT.getToFill(), campo);
+		assertTrue(Filler.WHITE_SPACE_LEFT.getToFill() instanceof String);
+		assertEquals(Filler.WHITE_SPACE_LEFT.getToFill(), campo);
 	}
 	
 	@Test
 	public void testSetSideToFill() {
 		
-		Filler.STR_WHITE_SPACE_LEFT.setSideToFill(SideToFill.RIGHT);
+		Filler.WHITE_SPACE_LEFT.setSideToFill(SideToFill.RIGHT);
 		
-		assertEquals(Filler.STR_WHITE_SPACE_LEFT.getSideToFill(), SideToFill.RIGHT);
+		assertEquals(Filler.WHITE_SPACE_LEFT.getSideToFill(), SideToFill.RIGHT);
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
