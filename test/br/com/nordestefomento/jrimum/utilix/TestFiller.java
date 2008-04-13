@@ -39,7 +39,9 @@ import br.com.nordestefomento.jrimum.utilix.Filler.SideToFill;
 
 public class TestFiller {
 	
-	private String campo = "TESTE";
+	private static final String CAMPO = "TESTE";
+	
+	private static final int TAMANHO = 10;
 	
 	private Filler<String> fillerString;
 	
@@ -58,16 +60,16 @@ public class TestFiller {
 	@Test(expected=IllegalArgumentException.class)
 	public void testSetToFillNullValue() {
 		
-		Filler.WHITE_SPACE_LEFT.setToFill(null);
+		Filler.WHITE_SPACE_LEFT.setFillWith(null);
 	}
 	
 	@Test
 	public void testSetToFill() {
 		
-		Filler.WHITE_SPACE_LEFT.setToFill(campo);
+		Filler.WHITE_SPACE_LEFT.setFillWith(CAMPO);
 		
-		assertTrue(Filler.WHITE_SPACE_LEFT.getToFill() instanceof String);
-		assertEquals(Filler.WHITE_SPACE_LEFT.getToFill(), campo);
+		assertTrue(Filler.WHITE_SPACE_LEFT.getFillWith() instanceof String);
+		assertEquals(Filler.WHITE_SPACE_LEFT.getFillWith(), CAMPO);
 	}
 	
 	@Test
@@ -85,53 +87,145 @@ public class TestFiller {
 		new Filler<String>("", null);
 		new Filler<String>(null, SideToFill.LEFT);
 	}
+	
+	@Test
+	public void testFillString() {
+		
+		assertEquals(CAMPO + "00000", Filler.ZERO_RIGHT.fill(CAMPO, TAMANHO));
+		assertEquals("00000" + CAMPO, Filler.ZERO_LEFT.fill(CAMPO, TAMANHO));
+	}
+	
+	@Test
+	public void testFillLong() {
+		
+		assertEquals(1L + "000000000", Filler.ZERO_RIGHT.fill(1L, TAMANHO));
+		assertEquals("000000000" + 1L, Filler.ZERO_LEFT.fill(1L, TAMANHO));
+	}
+	
+	@Test
+	public void testFillInt() {
+		
+		assertEquals(1 + "000000000", Filler.ZERO_RIGHT.fill(1, TAMANHO));
+		assertEquals("000000000" + 1, Filler.ZERO_LEFT.fill(1, TAMANHO));
+	}
+	
+	@Test
+	public void testFillShort() {
+		
+		assertEquals((short)1 + "000000000", Filler.ZERO_RIGHT.fill((short)1, TAMANHO));
+		assertEquals("000000000" + (short)1, Filler.ZERO_LEFT.fill((short)1, TAMANHO));
+	}
+	
+	@Test
+	public void testFillByte() {
+		
+		assertEquals((byte)1 + "000000000", Filler.ZERO_RIGHT.fill((byte)1, TAMANHO));
+		assertEquals("000000000" + (byte)1, Filler.ZERO_LEFT.fill((byte)1, TAMANHO));
+	}
+	
+	@Test
+	public void testFillChar() {
+		
+		assertEquals('1' + "000000000", Filler.ZERO_RIGHT.fill('1', TAMANHO));
+		assertEquals("000000000" + '1', Filler.ZERO_LEFT.fill('1', TAMANHO));
+	}
+	
+	@Test
+	public void testFillDouble() {
+		
+		assertEquals(1.0 + "0000000", Filler.ZERO_RIGHT.fill(1.0, TAMANHO));
+		assertEquals("0000000" + 1.0, Filler.ZERO_LEFT.fill(1.0, TAMANHO));
+	}
+	
+	@Test
+	public void testFillFloat() {
+		
+		assertEquals(1.0f + "0000000", Filler.ZERO_RIGHT.fill(1.0f, TAMANHO));
+		assertEquals("0000000" + 1.0f, Filler.ZERO_LEFT.fill(1.0f, TAMANHO));
+	}
+	
+	@Test
+	public void testFillObject() {
+		
+		Object object = new Object() {
+			
+			@Override
+			public String toString() {
+				return CAMPO;
+			}
+		};
+		
+		assertEquals(object + "00000", Filler.ZERO_RIGHT.fill(object, TAMANHO));
+		assertEquals("00000" + object, Filler.ZERO_LEFT.fill(object, TAMANHO));
+	}
+	
+	@Test
+	public void testFillITextStream() {
+		
+		ITextStream textStream = new ITextStream() {
+
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void read(String g) {}
+
+			@Override
+			public String write() {
+				
+				return CAMPO;
+			}
+		};
+		
+		assertEquals(textStream.write() + "00000", Filler.ZERO_RIGHT.fill(textStream, TAMANHO));
+		assertEquals("00000" + textStream.write(), Filler.ZERO_LEFT.fill(textStream, TAMANHO));
+	}
 
 	@Test
 	public void testFill() {
 		
 		fillerString = new Filler<String>("ABC", SideToFill.LEFT);
-		assertTrue(fillerString.getToFill() instanceof String);
-		assertEquals("ABCAB" + campo, fillerString.fill(campo, 10));
-		assertEquals(campo, fillerString.fill(campo, 0));
-		assertEquals(campo, fillerString.fill(campo, -10));
+		assertTrue(fillerString.getFillWith() instanceof String);
+		assertEquals("ABCAB" + CAMPO, fillerString.fill(CAMPO, TAMANHO));
+		assertEquals(CAMPO, fillerString.fill(CAMPO, 0));
+		assertEquals(CAMPO, fillerString.fill(CAMPO, -TAMANHO));
 		
 		fillerString.setSideToFill(SideToFill.RIGHT);
-		assertEquals(campo + "ABCAB", fillerString.fill(campo, 10));
-		assertEquals(campo, fillerString.fill(campo, 0));
-		assertEquals(campo, fillerString.fill(campo, -10));
+		assertEquals(CAMPO + "ABCAB", fillerString.fill(CAMPO, TAMANHO));
+		assertEquals(CAMPO, fillerString.fill(CAMPO, 0));
+		assertEquals(CAMPO, fillerString.fill(CAMPO, -TAMANHO));
 		
-		fillerInteger = new Filler<Integer>(new Integer(10), SideToFill.LEFT);
-		assertTrue(fillerInteger.getToFill() instanceof Integer);
-		assertEquals("10101" + campo, fillerInteger.fill(campo, 10));
-		assertEquals(campo, fillerInteger.fill(campo, 0));
-		assertEquals(campo, fillerInteger.fill(campo, -10));
+		fillerInteger = new Filler<Integer>(new Integer(TAMANHO), SideToFill.LEFT);
+		assertTrue(fillerInteger.getFillWith() instanceof Integer);
+		assertEquals("10101" + CAMPO, fillerInteger.fill(CAMPO, TAMANHO));
+		assertEquals(CAMPO, fillerInteger.fill(CAMPO, 0));
+		assertEquals(CAMPO, fillerInteger.fill(CAMPO, -TAMANHO));
 		
 		fillerInteger.setSideToFill(SideToFill.RIGHT);
-		assertEquals(campo + "10101", fillerInteger.fill(campo, 10));
-		assertEquals(campo, fillerInteger.fill(campo, 0));
-		assertEquals(campo, fillerInteger.fill(campo, -10));
+		assertEquals(CAMPO + "10101", fillerInteger.fill(CAMPO, TAMANHO));
+		assertEquals(CAMPO, fillerInteger.fill(CAMPO, 0));
+		assertEquals(CAMPO, fillerInteger.fill(CAMPO, -TAMANHO));
 		
 		fillerDouble = new Filler<Double>(new Double(10.9), SideToFill.LEFT);
-		assertTrue(fillerDouble.getToFill() instanceof Double);
-		assertEquals("10.91" + campo, fillerDouble.fill(campo, 10));
-		assertEquals(campo, fillerDouble.fill(campo, 0));
-		assertEquals(campo, fillerDouble.fill(campo, -10));
+		assertTrue(fillerDouble.getFillWith() instanceof Double);
+		assertEquals("10.91" + CAMPO, fillerDouble.fill(CAMPO, TAMANHO));
+		assertEquals(CAMPO, fillerDouble.fill(CAMPO, 0));
+		assertEquals(CAMPO, fillerDouble.fill(CAMPO, -TAMANHO));
 		
 		fillerDouble.setSideToFill(SideToFill.RIGHT);
-		assertEquals(campo + "10.91", fillerDouble.fill(campo, 10));
-		assertEquals(campo, fillerDouble.fill(campo, 0));
-		assertEquals(campo, fillerDouble.fill(campo, -10));
+		assertEquals(CAMPO + "10.91", fillerDouble.fill(CAMPO, TAMANHO));
+		assertEquals(CAMPO, fillerDouble.fill(CAMPO, 0));
+		assertEquals(CAMPO, fillerDouble.fill(CAMPO, -TAMANHO));
 		
 		fillerSide = new Filler<SideToFill>(SideToFill.LEFT, SideToFill.LEFT);
-		assertTrue(fillerSide.getToFill() instanceof SideToFill);
-		assertEquals("LEFTL" + campo, fillerSide.fill(campo, 10));
-		assertEquals(campo, fillerSide.fill(campo, 0));
-		assertEquals(campo, fillerSide.fill(campo, -10));
+		assertTrue(fillerSide.getFillWith() instanceof SideToFill);
+		assertEquals("LEFTL" + CAMPO, fillerSide.fill(CAMPO, TAMANHO));
+		assertEquals(CAMPO, fillerSide.fill(CAMPO, 0));
+		assertEquals(CAMPO, fillerSide.fill(CAMPO, -TAMANHO));
 		
 		fillerSide.setSideToFill(SideToFill.RIGHT);
-		assertEquals(campo + "LEFTL", fillerSide.fill(campo, 10));
-		assertEquals(campo, fillerSide.fill(campo, 0));
-		assertEquals(campo, fillerSide.fill(campo, -10));
+		assertEquals(CAMPO + "LEFTL", fillerSide.fill(CAMPO, TAMANHO));
+		assertEquals(CAMPO, fillerSide.fill(CAMPO, 0));
+		assertEquals(CAMPO, fillerSide.fill(CAMPO, -TAMANHO));
 	}
 
 }

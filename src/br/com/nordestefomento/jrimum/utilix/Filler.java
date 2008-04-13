@@ -94,7 +94,7 @@ public class Filler<G> extends ACurbitaObject{
 	/**
 	 * 
 	 */
-	private G toFill;
+	private G fillWith;
 	
 	/**
 	 * 
@@ -102,29 +102,29 @@ public class Filler<G> extends ACurbitaObject{
 	private SideToFill sideToFill;
 	
 	/**
-	 * @param toFill
+	 * @param fillWith
 	 * @param sideToFill
 	 */
-	public Filler(G toFill, SideToFill sideToFill) {
+	public Filler(G fillWith, SideToFill sideToFill) {
 		
-		setToFill(toFill);
+		setFillWith(fillWith);
 		setSideToFill(sideToFill);
 	}
 	
-	public G getToFill() {
-		return toFill;
+	public G getFillWith() {
+		return fillWith;
 	}
 
 	/**
 	 * @param filler
 	 */
-	public void setToFill(G toFill) {
+	public void setFillWith(G fillWith) {
 		
-		if(toFill != null)
-			this.toFill = toFill;
+		if(fillWith != null)
+			this.fillWith = fillWith;
 		
 		else
-			throw new IllegalArgumentException("Invalid filler [ " + toFill + " ]!");
+			throw new IllegalArgumentException("Invalid filler [ " + fillWith + " ]!");
 	}
 
 	/**
@@ -147,29 +147,32 @@ public class Filler<G> extends ACurbitaObject{
 	}
 	
 	/**
+	 * <p>
 	 * Preenche o campo com o caracter especificado e no lado especificado.
-	 * <br/>
-	 * Por exemplo:
+	 * </p>
+	 * <p>
+	 * Exemplo:
 	 * <br/>
 	 * Se <code>sideToFill == SideToFill.LEFT</code>, o caracter especificado será adicionado à String
 	 * no lado esquerdo até que o campo fique com o tamanho que foi definido.
+	 * </p>
 	 * 
-	 * @param field
+	 * @param toFill
 	 * @param length
 	 * @return
 	 */
-	public String fill(String field, int length){
+	public String fill(String toFill, int length){
 		
 		String str = null;
 		
 		switch(sideToFill){
 		
 			case LEFT:
-				str = fillLeft(field, length);
+				str = fillLeft(toFill, length);
 				break;
 				
 			case RIGHT:
-				str = fillRight(field, length);
+				str = fillRight(toFill, length);
 				break;
 		}
 		
@@ -177,28 +180,222 @@ public class Filler<G> extends ACurbitaObject{
 	}
 	
 	/**
-	 * @param field
+	 * 
+	 * <p>
+	 * Executa o método <code>fill(String, int)</code> passando o parâmetro
+	 * <code>toFill</code> como <code>String.valueOf(toFill)</code>.
+	 * </p>
+	 * 
+	 * @param tofill
 	 * @param length
 	 * @return
+	 * 
+	 * @see Filler#fill(String, int)
+	 * 
+	 * @since
 	 */
-	private String fillRight(String field, int length) {
-		
-		return StringUtils.rightPad(field, length, toFill.toString());
+	public String fill(long tofill, int length){
+		return fill(String.valueOf(tofill), length);
 	}
-
-	/**
-	 * @param field
-	 * @param length
-	 * @return
-	 */
-	private String fillLeft(String field, int length) {
-		
-		return StringUtils.leftPad(field, length, toFill.toString());
-	}
-
+	
 	/**
 	 * 
-	 *
+	 * <p>
+	 * Executa o método <code>fill(String, int)</code> passando o parâmetro
+	 * <code>toFill</code> como <code>String.valueOf(toFill)</code>.
+	 * </p>
+	 * 
+	 * @param tofill
+	 * @param length
+	 * @return
+	 * 
+	 * @see Filler#fill(String, int)
+	 * 
+	 * @since
+	 */
+	public String fill(int tofill, int length){
+		return fill(String.valueOf(tofill), length);
+	}
+	
+	/**
+	 * 
+	 * <p>
+	 * Executa o método <code>fill(String, int)</code> passando o parâmetro
+	 * <code>toFill</code> como <code>String.valueOf(toFill)</code>.
+	 * </p>
+	 * 
+	 * @param tofill
+	 * @param length
+	 * @return
+	 * 
+	 * @see Filler#fill(String, int)
+	 * 
+	 * @since
+	 */
+	public String fill(short tofill, int length){
+		return fill(String.valueOf(tofill), length);
+	}
+	
+	/**
+	 * 
+	 * <p>
+	 * Executa o método <code>fill(String, int)</code> passando o parâmetro
+	 * <code>toFill</code> como <code>String.valueOf(toFill)</code>.
+	 * </p>
+	 * 
+	 * @param tofill
+	 * @param length
+	 * @return
+	 * 
+	 * @see Filler#fill(String, int)
+	 * 
+	 * @since
+	 */
+	public String fill(byte tofill, int length){
+		return fill(String.valueOf(tofill), length);
+	}
+	
+	/**
+	 * 
+	 * <p>
+	 * Executa o método <code>fill(String, int)</code> passando o parâmetro
+	 * <code>toFill</code> como <code>String.valueOf(toFill)</code>.
+	 * </p>
+	 * 
+	 * @param tofill
+	 * @param length
+	 * @return
+	 * 
+	 * @see Filler#fill(String, int)
+	 * 
+	 * @since
+	 */
+	public String fill(char tofill, int length){
+		return fill(String.valueOf(tofill), length);
+	}
+	
+	/**
+	 * 
+	 * <p>
+	 * Executa o método <code>fill(String, int)</code> passando o parâmetro
+	 * <code>toFill</code> como <code>String.valueOf(toFill)</code>.
+	 * </p>
+	 * 
+	 * @param tofill
+	 * @param length
+	 * @return
+	 * 
+	 * @see Filler#fill(String, int)
+	 * 
+	 * @since
+	 */
+	public String fill(double tofill, int length){
+		return fill(String.valueOf(tofill), length);
+	}
+	
+	/**
+	 * 
+	 * <p>
+	 * Executa o método <code>fill(String, int)</code> passando o parâmetro
+	 * <code>toFill</code> como <code>String.valueOf(toFill)</code>.
+	 * </p>
+	 * 
+	 * @param tofill
+	 * @param length
+	 * @return
+	 * 
+	 * @see Filler#fill(String, int)
+	 * 
+	 * @since
+	 */
+	public String fill(float tofill, int length){
+		return fill(String.valueOf(tofill), length);
+	}
+	
+	/**
+	 * 
+	 * <p>
+	 * Executa o método <code>fill(String, int)</code> passando o parâmetro
+	 * <code>toFill</code> como <code>toFill.toString()</code>.
+	 * <br/>
+	 * </p>
+	 * <p>
+	 * Caso <code>toFill</code> seja <code>null</code>, o método 
+	 * <code>fill(String, int)</code> receberá uma String nula como parâmetro.
+	 * </p>
+	 * 
+	 * @param tofill
+	 * @param length
+	 * @return
+	 * 
+	 * @see Filler#fill(String, int)
+	 * 
+	 * @since
+	 */
+	public String fill(Object tofill, int length){
+		
+		String toFillTemp = null;
+		
+		if(tofill != null)
+			toFillTemp = tofill.toString();
+		
+		return fill(toFillTemp, length);
+	}
+	
+	/**
+	 * 
+	 * <p>
+	 * Executa o método <code>fill(String, int)</code> passando o parâmetro
+	 * <code>toFill</code> como <code>toFill.write()</code>.
+	 * <br/>
+	 * </p>
+	 * <p>
+	 * Caso <code>toFill</code> seja <code>null</code>, o método 
+	 * <code>fill(String, int)</code> receberá uma String nula como parâmetro.
+	 * </p>
+	 * 
+	 * @param tofill
+	 * @param length
+	 * @return
+	 * 
+	 * @see Filler#fill(String, int)
+	 * 
+	 * @since
+	 */
+	public String fill(ITextStream tofill, int length){
+
+		String toFillTemp = null;
+		
+		if(tofill != null)
+			toFillTemp = tofill.write();
+		
+		return fill(toFillTemp, length);
+	}
+	
+	/**
+	 * @param toFill
+	 * @param length
+	 * @return
+	 */
+	private String fillRight(String toFill, int length) {
+		
+		return StringUtils.rightPad(toFill, length, fillWith.toString());
+	}
+
+	/**
+	 * @param toFill
+	 * @param length
+	 * @return
+	 */
+	private String fillLeft(String toFill, int length) {
+		
+		return StringUtils.leftPad(toFill, length, fillWith.toString());
+	}
+
+	/**
+	 * <p>
+	 * Lados para preencher.
+	 * </p> 
 	 */
 	public enum SideToFill{
 		
