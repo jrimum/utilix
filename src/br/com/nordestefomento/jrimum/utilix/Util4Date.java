@@ -73,6 +73,11 @@ public class Util4Date  extends ACurbitaObject{
 	public static final DateFormat fmt_ddMMyy = new SimpleDateFormat("ddMMyy");
 	
 	/**
+	 * Formatador de datas no padrão yyMMdd.
+	 */
+	public static final DateFormat fmt_yyMMdd = new SimpleDateFormat("yyMMdd");
+	
+	/**
 	 * Representa uma data inexistente. Usada em casos que não se pode usar
 	 * <code>null</code>.
 	 * <br/>
