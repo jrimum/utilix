@@ -115,7 +115,7 @@ public class Util4Banco extends ACurbitaObject {
 		
 		final long fatorMinimo = 1000;
 		final long fatorMaximo = 9999;
-		long fator = Util4Date.calcularDiferencaEmDias(DATA_BASE_DO_FATOR_DE_VENCIMENTO, dataVencimento);
+		long fator = Util4Date.calculeDiferencaEmDias(DATA_BASE_DO_FATOR_DE_VENCIMENTO, dataVencimento);
 		
 		if (fator < fatorMinimo) {
 			fator = 0;

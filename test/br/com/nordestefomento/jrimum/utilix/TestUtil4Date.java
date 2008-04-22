@@ -66,20 +66,20 @@ public class TestUtil4Date {
 	}
 
 	@Test
-	public void testCalcularDiferencaEmDias() {
+	public void testCalculeDiferencaEmDias() {
 		
-		assertEquals(0, Util4Date.calcularDiferencaEmDias(null, null));
-		assertEquals(0, Util4Date.calcularDiferencaEmDias(null, data2));
-		assertEquals(0, Util4Date.calcularDiferencaEmDias(data1, null));
-		assertEquals(0, Util4Date.calcularDiferencaEmDias(data1, data1));
-		assertEquals(0, Util4Date.calcularDiferencaEmDias(data2, data2));
-		assertEquals(31, Util4Date.calcularDiferencaEmDias(data1, data2));
+		assertEquals(0, Util4Date.calculeDiferencaEmDias(null, null));
+		assertEquals(0, Util4Date.calculeDiferencaEmDias(null, data2));
+		assertEquals(0, Util4Date.calculeDiferencaEmDias(data1, null));
+		assertEquals(0, Util4Date.calculeDiferencaEmDias(data1, data1));
+		assertEquals(0, Util4Date.calculeDiferencaEmDias(data2, data2));
+		assertEquals(31, Util4Date.calculeDiferencaEmDias(data1, data2));
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
-	public void testCalcularDiferencaEmDiasException() {
+	public void testCalculeDiferencaEmDiasException() {
 		
-		Util4Date.calcularDiferencaEmDias(data2, data1);
+		Util4Date.calculeDiferencaEmDias(data2, data1);
 	}
 
 }

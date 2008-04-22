@@ -101,7 +101,7 @@ public class Util4Date  extends ACurbitaObject{
 	 * @param dataFinal - data final do intervalo.
 	 * @return número de dias entre as datas.
 	 */
-	public static long calcularDiferencaEmDias(Date dataInicial, Date dataFinal) {
+	public static long calculeDiferencaEmDias(Date dataInicial, Date dataFinal) {
 		
 		long fator = 0;
 	
