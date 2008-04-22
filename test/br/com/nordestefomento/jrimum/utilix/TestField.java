@@ -151,48 +151,48 @@ public class TestField {
 	@Test
 	public void testEscrever() {
 		
-		assertNotNull(campoString.toString());
-		assertEquals("        ", campoString.toString());
-		assertEquals(8, campoString.toString().length());
+		assertNotNull(campoString.write());
+		assertEquals("        ", campoString.write());
+		assertEquals(8, campoString.write().length());
 		
-		assertNotNull(campoDate.toString());
-		assertEquals("220707", campoDate.toString());
-		assertEquals(6, campoDate.toString().length());
+		assertNotNull(campoDate.write());
+		assertEquals("220707", campoDate.write());
+		assertEquals(6, campoDate.write().length());
 		
 		campoDate.setField(Util4Date.DATE_NULL);
 		campoDate.setFiller(Filler.ZERO_LEFT);
-		assertNotNull(campoDate.toString());
-		assertEquals("000000", campoDate.toString());
-		assertEquals(6, campoDate.toString().length());
+		assertNotNull(campoDate.write());
+		assertEquals("000000", campoDate.write());
+		assertEquals(6, campoDate.write().length());
 		
-		assertNotNull(campoInteger.toString());
-		assertEquals("000000", campoInteger.toString());
-		assertEquals(6, campoInteger.toString().length());
+		assertNotNull(campoInteger.write());
+		assertEquals("000000", campoInteger.write());
+		assertEquals(6, campoInteger.write().length());
 		
-		assertNotNull(campoLong.toString());
-		assertEquals("000000", campoLong.toString());
-		assertEquals(6, campoLong.toString().length());
+		assertNotNull(campoLong.write());
+		assertEquals("000000", campoLong.write());
+		assertEquals(6, campoLong.write().length());
 		
-		assertNotNull(campoDecimal.toString());
-		assertEquals("00000087598", campoDecimal.toString());
-		assertEquals(11, campoDecimal.toString().length());
+		assertNotNull(campoDecimal.write());
+		assertEquals("00000087598", campoDecimal.write());
+		assertEquals(11, campoDecimal.write().length());
 		
-		assertNotNull(campoDecimal_v9.toString());
-		assertEquals("00000008759", campoDecimal_v9.toString());
-		assertEquals(11, campoDecimal_v9.toString().length());
+		assertNotNull(campoDecimal_v9.write());
+		assertEquals("00000008759", campoDecimal_v9.write());
+		assertEquals(11, campoDecimal_v9.write().length());
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void testEscreverException() {
 		
 		Field<String> campo = new Field<String>("tamanho", 5);
-		assertEquals(5, campo.toString().length());
+		assertEquals(5, campo.write().length());
 		
 		Field<Integer> campo1 = new Field<Integer>(1234, 3);
-		assertEquals(3, campo1.toString().length());
+		assertEquals(3, campo1.write().length());
 		
 		Field<Integer> campo2 = new Field<Integer>(12, 3);
-		assertEquals(3, campo2.toString().length());
+		assertEquals(3, campo2.write().length());
 	}
 
 	@Test(expected=IllegalArgumentException.class)

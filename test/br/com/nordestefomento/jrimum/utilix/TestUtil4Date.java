@@ -27,7 +27,6 @@
  * 
  */
 
-
 package br.com.nordestefomento.jrimum.utilix;
 
 import static org.junit.Assert.*;
@@ -72,10 +71,15 @@ public class TestUtil4Date {
 		assertEquals(0, Util4Date.calcularDiferencaEmDias(null, null));
 		assertEquals(0, Util4Date.calcularDiferencaEmDias(null, data2));
 		assertEquals(0, Util4Date.calcularDiferencaEmDias(data1, null));
-		assertEquals(0, Util4Date.calcularDiferencaEmDias(data2, data1));
 		assertEquals(0, Util4Date.calcularDiferencaEmDias(data1, data1));
 		assertEquals(0, Util4Date.calcularDiferencaEmDias(data2, data2));
-		assertEquals(30, Util4Date.calcularDiferencaEmDias(data1, data2));
+		assertEquals(31, Util4Date.calcularDiferencaEmDias(data1, data2));
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testCalcularDiferencaEmDiasException() {
+		
+		Util4Date.calcularDiferencaEmDias(data2, data1);
 	}
 
 }
