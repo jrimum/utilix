@@ -1,4 +1,3 @@
-
 /* 
  * Copyright 2008 JRimum Project
  * 
@@ -32,9 +31,6 @@
 package br.com.nordestefomento.jrimum.utilix;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -82,17 +78,6 @@ public class Util4PDF extends ACurbitaObject{
 	
 	protected static final Logger LOG = Logger.getLogger(Util4PDF.class);
 
-	public static void main(String[] args) throws FileNotFoundException, IOException {
-		
-		List<byte[]> arqs = new ArrayList<byte[]>();
-		
-		arqs.add(Util4File.bytesFromFile(new File("D:/Gilmatryx/TradApache2.0-rev1.01.pdf")));
-		arqs.add(Util4File.bytesFromFile(new File("D:/Gilmatryx/TradBSD-rev.1.01.pdf")));
-		
-		Util4File.bytes2File("D:/Gilmatryx/teste.pdf", mergeFiles(arqs));
-	}
-	
-	
 	public static RectanglePDF changeField2Image(PdfStamper stamper, float[] positions , Image image) throws DocumentException{
 						
 				RectanglePDF rect =  new RectanglePDF(positions);
@@ -188,8 +173,7 @@ public class Util4PDF extends ACurbitaObject{
 							document = new Document(reader
 									.getPageSizeWithRotation(1));
 
-							// passo 2: criar um writer que observar o documento
-
+							// passo 2: criar um writer que observa o documento
 							writer = new PdfCopy(document, byteOS);
 							document.addAuthor("JRimum");
 							document.addSubject("JRimum Merged Document");
