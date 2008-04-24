@@ -51,10 +51,11 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses
 ( 
 		{ 
-			TestField.class, 
-			TestFiller.class, 
+			TestField.class,
+			TestFiller.class,
 			TestUtil4Date.class,
-			TestUtil4Monetary.class, 
+			TestUtil4Monetary.class,
+			TestUtil4PDF.class,
 			TestUtil4String.class
 		}
 )

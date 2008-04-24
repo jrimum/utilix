@@ -30,7 +30,8 @@
 
 package br.com.nordestefomento.jrimum.utilix;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 import java.math.BigDecimal;
 import java.text.ParseException;
@@ -40,8 +41,6 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-import br.com.nordestefomento.jrimum.utilix.Util4Monetary;
 
 public class TestUtil4Monetary {
 	
