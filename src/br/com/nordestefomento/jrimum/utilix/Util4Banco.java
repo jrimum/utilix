@@ -67,10 +67,9 @@ public class Util4Banco extends ACurbitaObject {
 	/**
 	 *
 	 *<p>
-	 * 		Calcula o fator de vencimento no formato juliano, com base na
-	 * 		subtração entre a DATA DE VENCIMENTO do título
-	 * 		e a DATA BASE , fixada em 07.10.1997 (03.07.2000 retrocedidos 1000
-	 * 		dias do início do processo).
+	 * 		Calcula o fator de vencimento, com base na subtração entre a 
+	 * 		DATA DE VENCIMENTO do título e a DATA BASE , fixada em
+	 * 		07.10.1997 (03.07.2000 retrocedidos 1000 dias do início do processo).
 	 * 		Trata-se de um referencial numérico de 4 dígitos, situado nas
 	 * 		quatro primeiras posições do campo “valor”, que representa a
 	 * 		quantidade de dias decorridos da data base à data de vencimento
@@ -109,7 +108,7 @@ public class Util4Banco extends ACurbitaObject {
 	 *</p>
 	 *
 	 * @param dataVencimento - data de vencimento.
-	 * @return fator de vencimento no formato juliano.
+	 * @return fator de vencimento.
 	 */	
 	public static int calculcarFatorVencimento(Date dataVencimento) throws JRimumException{
 		
