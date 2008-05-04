@@ -33,6 +33,11 @@ package br.com.nordestefomento.jrimum.utilix;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+
+import org.apache.commons.lang.time.DateUtils;
+
+import com.sun.image.codec.jpeg.TruncatedFileException;
+
 import br.com.nordestefomento.jrimum.ACurbitaObject;
 import br.com.nordestefomento.jrimum.JRimumException;
 
@@ -62,6 +67,7 @@ public class Util4Banco extends ACurbitaObject {
 	
 
 	private static final Date DATA_BASE_DO_FATOR_DE_VENCIMENTO = new GregorianCalendar(1997, Calendar.OCTOBER, 7).getTime();
+	private static final Date DATA_LIMITE_DO_FATOR_DE_VENCIMENTO = new GregorianCalendar(2025, Calendar.FEBRUARY, 21).getTime();
 	
 	
 	/**
@@ -77,7 +83,7 @@ public class Util4Banco extends ACurbitaObject {
 	 *</p>
 	 *<p>
 	 * 		Os bloquetos de cobrança emitidos a partir de 1º de setembro
-	 * 		de 2000 (primeiro dia útil = 03/07/2000 - SEGUNDA)
+	 * 		de 2000 (primeiro dia útil = 03/07/2000 - SEGUNDA) OBRIGATORIAMENTE 
 	 * 		devem conter essas características, para que quando
 	 * 		forem capturados pela rede bancária, os sistemas possam realizar
 	 * 		operação inversa, ou seja, adicionar à data base o fator de
@@ -93,16 +99,16 @@ public class Util4Banco extends ACurbitaObject {
 	 *		Observações: 
 	 *		<ul>
 	 *			<li>
-	 *				O valor limite mínimo para o fator de vencimento é 1000
-	 *				(data de vencimento = 03/07/2000). Caso a data de vencimento seja
-	 *				anterior a 03/07/2000, ao fator de vencimento é atribuído o 
-	 *				valor 0(ZERO).
+	 *				A data base para o cálculo do fator de vencimento é 
+	 *				07/10/1997 (Fator de vencimento = 0).Caso a data de
+	 *              vencimento seja anterior a data base, uma exceção do tipo 
+	 *              IllegalArgumentException será lançada.
 	 *			</li>
 	 *			<li>
-	 *				O valor limite máximo para o fator de vencimento é 9999
-	 *				(data de vencimento = 21/02/2025). Caso a data de vencimento seja
-	 *				posterior a 21/02/2025, uma exceção do tipo JRimumException
-	 *				será lançada.
+	 *				A data limite para o cálculo do fator de vencimento é 
+	 *				21/02/2025 (Fator de vencimento = 9999) Caso a data de 
+	 *				vencimento seja posterior a data limite, uma exceção do tipo 
+	 *				IllegalArgumentException será lançada.
 	 *			</li>
 	 *		</ul>
 	 *</p>
@@ -112,31 +118,30 @@ public class Util4Banco extends ACurbitaObject {
 	 */	
 	public static int calculcarFatorVencimento(Date dataVencimento) throws JRimumException{
 		
-		final long fatorMinimo = 1000;
-		final long fatorMaximo = 9999;
-		long fator = Util4Date.calculeDiferencaEmDias(DATA_BASE_DO_FATOR_DE_VENCIMENTO, dataVencimento);
+		Date dataVencTruncada = null;
+		int fator;
 		
-		if (fator < fatorMinimo) {
-			fator = 0;
-			
-			if(log.isDebugEnabled()) {
-				log.debug(
-						    "Cálculo do fator de vencimento: Como a data de " +
-						    "vencimento informada (" +
-						    Util4Date.fmt_dd_MM_yyyy.format(dataVencimento) +
-						    ") é anterior a 03/07/2000, ao fator de vencimento" +
-						    " foi atribuído o valor ZERO."
-						 ); 
+		
+		if (isNull(dataVencimento)) {
+			throw new IllegalArgumentException("Impossível realizar o cálculo do fator" +
+					" de vencimento de uma data nula.");
+		}
+		else {
+			dataVencTruncada = DateUtils.truncate(dataVencimento, Calendar.DATE);
+			if (
+					 dataVencTruncada.before(DATA_BASE_DO_FATOR_DE_VENCIMENTO)
+				  || dataVencTruncada.after(DATA_LIMITE_DO_FATOR_DE_VENCIMENTO)		  
+				) {
+				throw new IllegalArgumentException("Para o cálculo do fator de" +
+					" vencimento se faz necessário informar uma data entre" +
+					" " + Util4Date.fmt_dd_MM_yyyy.format(DATA_BASE_DO_FATOR_DE_VENCIMENTO) +
+					" e " + Util4Date.fmt_dd_MM_yyyy.format(DATA_LIMITE_DO_FATOR_DE_VENCIMENTO));
 			}
-		}
-		else if (fator > fatorMaximo) {
-			throw new JRimumException("Fator de vencimento: Limite máximo " +
-					"ultrapassado devido ao fato da data de vencimento " +
-					"informada (" + Util4Date.fmt_dd_MM_yyyy.format(dataVencimento) +
-					") ser superior ao 21/02/2025(Fator = " + fatorMaximo + ").");
-		}
-			
+			else {
+				fator = (int)Util4Date.calculeDiferencaEmDias(DATA_BASE_DO_FATOR_DE_VENCIMENTO, dataVencTruncada);
+			}
+		}	
 		
-		return (int) fator;
+		return fator; 		
 	}
 }

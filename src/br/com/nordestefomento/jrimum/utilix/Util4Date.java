@@ -94,28 +94,33 @@ public class Util4Date  extends ACurbitaObject{
 	}
 
 	/**
-	 * Calcula a diferença em dias entre duas datas. A data final deve ser sempre maior que a data inicial, caso isso 
-	 * não ocorra o resultado do cálculo será 0 (zero).
+	 * Calcula a diferença de dias entre duas datas. O resultado é modular, 
+	 * ou seja, maior ou igual a zero, logo a data final nao precisa ser
+	 * necessariamente maior que a data inicial.
 	 * 
 	 * @param dataInicial - data inicial do intervalo.
 	 * @param dataFinal - data final do intervalo.
-	 * @return número de dias entre as datas.
+	 * @return número(módulo) de dias entre as datas.
 	 */
 	public static long calculeDiferencaEmDias(Date dataInicial, Date dataFinal) {
 		
 		long fator = 0;
+		Date dataInicialTruncada, dataFinalTruncada;
 	
+		
 		if (dataInicial != null && dataFinal != null) {
-	
-			DateUtils.truncate(dataInicial, Calendar.DATE);
 			
-			DateUtils.truncate(dataFinal, Calendar.DATE);
+			dataInicialTruncada = DateUtils.truncate(dataInicial, Calendar.DATE);
+			dataFinalTruncada   = DateUtils.truncate(dataFinal, Calendar.DATE);
 			
-			if (!dataFinal.before(dataInicial)) {
-	
-				fator = ((dataFinal.getTime() - dataInicial.getTime()) / DateUtils.MILLIS_PER_DAY);
-	
-			}
+			fator = ((dataFinalTruncada.getTime() - dataInicialTruncada.getTime()) / DateUtils.MILLIS_PER_DAY);
+			if (fator < 0)
+			  fator = fator * -1;
+		}
+		else {
+			throw new IllegalArgumentException("Para o cálculo da diferença de dias" +
+					" entre duas datas a data inicial e a data final devem ser" +
+					"informadas.");			
 		}
 	
 		return fator;
