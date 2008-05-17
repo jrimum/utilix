@@ -27,7 +27,6 @@
  * 
  */
 
-
 package br.com.nordestefomento.jrimum.utilix;
 
 import java.util.Calendar;
@@ -36,17 +35,14 @@ import java.util.GregorianCalendar;
 
 import org.apache.commons.lang.time.DateUtils;
 
-import com.sun.image.codec.jpeg.TruncatedFileException;
-
 import br.com.nordestefomento.jrimum.ACurbitaObject;
 import br.com.nordestefomento.jrimum.JRimumException;
 
-
 /**
- * 
+ * <p>
  * Esta classe tem a responsabilidade de prover serviços utilitários
  * do universo bancário, como por exemplo calcular o fator de vencimento.</code>
- * 
+ * </p>
  * 
  * @author <a href="http://gilmatryx.googlepages.com/">Gilmar P.S.L</a>
  * @author Misael Barreto 
@@ -57,18 +53,22 @@ import br.com.nordestefomento.jrimum.JRimumException;
  * 
  * @version 1.0
  */
-
 public class Util4Banco extends ACurbitaObject {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
 
+	/**
+	 * <p>
+	 * Data base para o cálculo do fator de vencimento fixada em 07.10.1997 
+	 * (03.07.2000 retrocedidos 1000 dias do início do processo) segundo a FEBRABAN.
+	 * </p>
+	 */
 	private static final Date DATA_BASE_DO_FATOR_DE_VENCIMENTO = new GregorianCalendar(1997, Calendar.OCTOBER, 7).getTime();
-	private static final Date DATA_LIMITE_DO_FATOR_DE_VENCIMENTO = new GregorianCalendar(2025, Calendar.FEBRUARY, 21).getTime();
 	
+	private static final Date DATA_LIMITE_DO_FATOR_DE_VENCIMENTO = new GregorianCalendar(2025, Calendar.FEBRUARY, 21).getTime();
 	
 	/**
 	 *
@@ -115,16 +115,18 @@ public class Util4Banco extends ACurbitaObject {
 	 *
 	 * @param dataVencimento - data de vencimento.
 	 * @return fator de vencimento.
+	 * 
+	 * @throws JRimumException Caso alguma condição de entrada não seja respeitada.
 	 */	
-	public static int calculcarFatorVencimento(Date dataVencimento) throws JRimumException{
+	public static int calculceFatorDeVencimento(Date dataVencimento) throws JRimumException {
 		
 		Date dataVencTruncada = null;
 		int fator;
 		
 		
 		if (isNull(dataVencimento)) {
-			throw new IllegalArgumentException("Impossível realizar o cálculo do fator" +
-					" de vencimento de uma data nula.");
+			throw new JRimumException(new IllegalArgumentException("Impossível realizar o cálculo do fator" +
+					" de vencimento de uma data nula."));
 		}
 		else {
 			dataVencTruncada = DateUtils.truncate(dataVencimento, Calendar.DATE);
@@ -132,10 +134,10 @@ public class Util4Banco extends ACurbitaObject {
 					 dataVencTruncada.before(DATA_BASE_DO_FATOR_DE_VENCIMENTO)
 				  || dataVencTruncada.after(DATA_LIMITE_DO_FATOR_DE_VENCIMENTO)		  
 				) {
-				throw new IllegalArgumentException("Para o cálculo do fator de" +
+				throw new JRimumException(new IllegalArgumentException("Para o cálculo do fator de" +
 					" vencimento se faz necessário informar uma data entre" +
 					" " + Util4Date.fmt_dd_MM_yyyy.format(DATA_BASE_DO_FATOR_DE_VENCIMENTO) +
-					" e " + Util4Date.fmt_dd_MM_yyyy.format(DATA_LIMITE_DO_FATOR_DE_VENCIMENTO));
+					" e " + Util4Date.fmt_dd_MM_yyyy.format(DATA_LIMITE_DO_FATOR_DE_VENCIMENTO)));
 			}
 			else {
 				fator = (int)Util4Date.calculeDiferencaEmDias(DATA_BASE_DO_FATOR_DE_VENCIMENTO, dataVencTruncada);

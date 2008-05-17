@@ -27,7 +27,6 @@
  * 
  */
 
-
 package br.com.nordestefomento.jrimum.utilix;
 
 import java.text.DateFormat;
@@ -94,33 +93,37 @@ public class Util4Date  extends ACurbitaObject{
 	}
 
 	/**
+	 * <p>
 	 * Calcula a diferença de dias entre duas datas. O resultado é modular, 
-	 * ou seja, maior ou igual a zero, logo a data final nao precisa ser
+	 * ou seja, maior ou igual a zero, logo a data final não precisa ser 
 	 * necessariamente maior que a data inicial.
+	 * </p>
 	 * 
 	 * @param dataInicial - data inicial do intervalo.
 	 * @param dataFinal - data final do intervalo.
 	 * @return número(módulo) de dias entre as datas.
+	 * 
+	 * @throws IllegalArgumentException Caso pelo menos uma das duas datas seja <code>null</code>.
 	 */
-	public static long calculeDiferencaEmDias(Date dataInicial, Date dataFinal) {
+	public static long calculeDiferencaEmDias(final Date dataInicial, final Date dataFinal) throws IllegalArgumentException {
 		
 		long fator = 0;
 		Date dataInicialTruncada, dataFinalTruncada;
 	
 		
-		if (dataInicial != null && dataFinal != null) {
+		if (isNotNull(dataInicial) && isNotNull(dataFinal)) {
 			
 			dataInicialTruncada = DateUtils.truncate(dataInicial, Calendar.DATE);
 			dataFinalTruncada   = DateUtils.truncate(dataFinal, Calendar.DATE);
 			
 			fator = ((dataFinalTruncada.getTime() - dataInicialTruncada.getTime()) / DateUtils.MILLIS_PER_DAY);
+			
 			if (fator < 0)
-			  fator = fator * -1;
+			  fator *= -1;
 		}
 		else {
-			throw new IllegalArgumentException("Para o cálculo da diferença de dias" +
-					" entre duas datas a data inicial e a data final devem ser" +
-					"informadas.");			
+			throw new IllegalArgumentException("A data inicial [" + dataInicial + "] e a data final [" + dataFinal + "] " +
+					"não podem ter valor 'null'.");			
 		}
 	
 		return fator;

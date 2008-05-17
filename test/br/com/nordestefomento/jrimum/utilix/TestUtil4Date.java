@@ -42,40 +42,61 @@ import br.com.nordestefomento.jrimum.utilix.Util4Date;
 
 public class TestUtil4Date {
 	
-	private static Date data1;
+	private static Date dataInicial;
 	
-	private static Date data2;
+	private static Date dataFinal;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		
 		Calendar calendar1 = Calendar.getInstance();
 		calendar1.set(2007, Calendar.OCTOBER, 16);
-		data1 = calendar1.getTime();
+		dataInicial = calendar1.getTime();
 		
 		Calendar calendar2 = Calendar.getInstance();
 		calendar2.set(2007, Calendar.NOVEMBER, 16);
-		data2 = calendar2.getTime();
+		dataFinal = calendar2.getTime();
 	}
 
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
 		
-		data1 = null;
-		data2 = null;
+		dataInicial = null;
+		dataFinal = null;
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testCalculeDiferencaEmDiasDatasNull() {
+		
+		Util4Date.calculeDiferencaEmDias(null, null);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testCalculeDiferencaEmDiasDataInicialNull() {
+		
+		Util4Date.calculeDiferencaEmDias(null, dataFinal);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void testCalculeDiferencaEmDiasDataFinalNull() {
+		
+		Util4Date.calculeDiferencaEmDias(dataInicial, null);
+	}
+	
+	@Test
+	public void testCalculeDiferencaEmDiasGaranteModulo() {
+		
+		assertTrue(Util4Date.calculeDiferencaEmDias(dataInicial, dataFinal) > 0);
+		assertTrue(Util4Date.calculeDiferencaEmDias(dataFinal, dataInicial) > 0);
 	}
 
 	@Test
 	public void testCalculeDiferencaEmDias() {
-		assertEquals(0, Util4Date.calculeDiferencaEmDias(data1, data1));
-		assertEquals(0, Util4Date.calculeDiferencaEmDias(data2, data2));
-		assertEquals(31, Util4Date.calculeDiferencaEmDias(data1, data2));
-		assertEquals(31, Util4Date.calculeDiferencaEmDias(data2, data1));
-	}
-	
-	@Test(expected = IllegalArgumentException.class)
-	public void testCalculeDiferencaEmDiasException() {
-		Util4Date.calculeDiferencaEmDias(null, data1);
+		
+		assertEquals(0, Util4Date.calculeDiferencaEmDias(dataInicial, dataInicial));
+		assertEquals(0, Util4Date.calculeDiferencaEmDias(dataFinal, dataFinal));
+		assertEquals(31, Util4Date.calculeDiferencaEmDias(dataInicial, dataFinal));
+		assertEquals(31, Util4Date.calculeDiferencaEmDias(dataFinal, dataInicial));
 	}
 
 }
