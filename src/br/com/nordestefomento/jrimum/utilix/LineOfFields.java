@@ -89,7 +89,7 @@ public abstract class LineOfFields extends ACurbitaObject implements ITextStream
 			log.debug("Parameters stringLength: "+stringLength);
 		}
 		
-		if(!isNull(fieldsLength, "fieldsLength") && !isNull(stringLength, "stringLength")){
+		if(isNotNull(fieldsLength, "fieldsLength") && isNotNull(stringLength, "stringLength")){
 			
 			if(fieldsLength > 0){
 				if(stringLength > 0){
@@ -134,7 +134,7 @@ public abstract class LineOfFields extends ACurbitaObject implements ITextStream
 	 */
 	public void read(String lineOfFields){
 		
-		if(!isNull(lineOfFields, "lineOfFields")){
+		if(isNotNull(lineOfFields, "lineOfFields")){
 			
 			isConsistent(lineOfFields);
 			
@@ -154,7 +154,7 @@ public abstract class LineOfFields extends ACurbitaObject implements ITextStream
 		
 		StringBuilder lineOfFields = new StringBuilder(StringUtils.EMPTY);
 		
-		if(!isNull(fields,"fields")){
+		if(isNotNull(fields,"fields")){
 			
 			for(Field<?> field : fields)
 				lineOfFields.append(field.write());

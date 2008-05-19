@@ -150,7 +150,7 @@ public class Util4File extends ACurbitaObject{
 		
 		File f = null;
 		
-		if(!isNull(pathName,"pathName") && !isNull(bytes,"bytes")){
+		if(isNotNull(pathName,"pathName") && isNotNull(bytes,"bytes")){
 			
 			f = new File(pathName);
 			
@@ -182,7 +182,7 @@ public class Util4File extends ACurbitaObject{
 		
 		ByteArrayOutputStream byteOut = null;
 		
-		if(!isNull(bytes,"bytes")){
+		if(isNotNull(bytes,"bytes")){
 			
 			byteOut = new ByteArrayOutputStream();
 			

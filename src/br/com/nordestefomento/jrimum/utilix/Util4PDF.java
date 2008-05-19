@@ -64,9 +64,9 @@ import com.lowagie.text.pdf.SimpleBookmark;
  * 
  * @author Gilmar P.S.L.
  * 
- * @since 
+ * @since 0.2
  * 
- * @version 
+ * @version 0.2 
  */
 
 public class Util4PDF extends ACurbitaObject{
@@ -175,9 +175,9 @@ public class Util4PDF extends ACurbitaObject{
 
 							// passo 2: criar um writer que observa o documento
 							writer = new PdfCopy(document, byteOS);
-							document.addAuthor("JRimum");
+							document.addAuthor("JRimum Group");
 							document.addSubject("JRimum Merged Document");
-							document.addCreator("JRimum");
+							document.addCreator("JRimum Utilix");
 
 							// passo 3: abre-se o documento
 							document.open();
