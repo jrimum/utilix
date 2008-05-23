@@ -68,7 +68,7 @@ public class Util4String extends ACurbitaObject{
 	 */
 	public static String eliminateSymbols(String str){
 		
-		if(str != null){
+		if(isNotNull(str)){
 			
 			str = StringUtils.replace(str,"-","");
 			str = StringUtils.replace(str,"_","");

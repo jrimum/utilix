@@ -124,7 +124,7 @@ public class Util4PDF extends ACurbitaObject{
 		// retorno
 		byte[] bytes = null;
 
-		if (pdfFiles != null && !pdfFiles.isEmpty()) {
+		if (isNotNull(pdfFiles) && !pdfFiles.isEmpty()) {
 
 			int pageOffset = 0;
 			boolean first = true;
@@ -141,7 +141,7 @@ public class Util4PDF extends ACurbitaObject{
 
 				for (byte[] doc : pdfFiles) {
 
-					if (doc != null) {
+					if (isNotNull(doc)) {
 
 						// cria-se um reader para cada documento
 
@@ -157,7 +157,7 @@ public class Util4PDF extends ACurbitaObject{
 						int n = reader.getNumberOfPages();
 						List bookmarks = SimpleBookmark.getBookmark(reader);
 
-						if (bookmarks != null) {
+						if (isNotNull(bookmarks)) {
 							if (pageOffset != 0) {
 								SimpleBookmark.shiftPageNumbers(bookmarks,
 										pageOffset, null);
@@ -200,7 +200,7 @@ public class Util4PDF extends ACurbitaObject{
 				}
 
 				// passo 5: fecha-se o documento
-				if (document != null) {
+				if (isNotNull(document)) {
 					document.close();
 				}
 

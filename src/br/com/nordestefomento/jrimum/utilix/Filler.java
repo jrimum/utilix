@@ -120,7 +120,7 @@ public class Filler<G> extends ACurbitaObject{
 	 */
 	public void setFillWith(G fillWith) {
 		
-		if(fillWith != null)
+		if(isNotNull(fillWith))
 			this.fillWith = fillWith;
 		
 		else
@@ -139,7 +139,7 @@ public class Filler<G> extends ACurbitaObject{
 	 */
 	public void setSideToFill(SideToFill sideToFill) {
 		
-		if(sideToFill != null)
+		if(isNotNull(sideToFill))
 			this.sideToFill = sideToFill;
 		
 		else
@@ -336,7 +336,7 @@ public class Filler<G> extends ACurbitaObject{
 		
 		String toFillTemp = null;
 		
-		if(tofill != null)
+		if(isNotNull(tofill))
 			toFillTemp = tofill.toString();
 		
 		return fill(toFillTemp, length);
@@ -366,7 +366,7 @@ public class Filler<G> extends ACurbitaObject{
 
 		String toFillTemp = null;
 		
-		if(tofill != null)
+		if(isNotNull(tofill))
 			toFillTemp = tofill.write();
 		
 		return fill(toFillTemp, length);

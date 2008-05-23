@@ -155,7 +155,7 @@ public class Field <G> extends ACurbitaObject implements ITextStream{
 	 */
 	public void read(String value){
 		
-		if(value == null)
+		if(isNull(value))
 			throw new IllegalArgumentException("Invalid string [ " + value + " ]!");
 		
 		if(value.length() != length)
@@ -274,7 +274,7 @@ public class Field <G> extends ACurbitaObject implements ITextStream{
 
 	private String fill(String str) {
 		
-		if(filler != null)
+		if(isNotNull(filler))
 			str = filler.fill(str, length);
 		
 		return str;
@@ -287,7 +287,7 @@ public class Field <G> extends ACurbitaObject implements ITextStream{
 	
 	public void setField(G field) {
 	
-		if (field != null)
+		if (isNotNull(field))
 			this.field = field;
 		else
 			throw new IllegalArgumentException("Invalid Field [" + field + "]!");
@@ -316,7 +316,7 @@ public class Field <G> extends ACurbitaObject implements ITextStream{
 
 	public void setFormat(Format format) {
 		
-		if (format != null)
+		if (isNotNull(format))
 			this.format = format;
 		else
 			throw new IllegalArgumentException("Invalid Format [ " + format + " ]!");
@@ -328,7 +328,7 @@ public class Field <G> extends ACurbitaObject implements ITextStream{
 
 	public void setFiller(Filler<?> filler) {
 		
-		if(filler != null)
+		if(isNotNull(filler))
 			this.filler = filler;
 		
 		else

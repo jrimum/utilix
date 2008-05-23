@@ -95,7 +95,7 @@ public class Util4File extends ACurbitaObject{
 		
 		byte[] bytes = null;
 		
-		if(file != null){
+		if(isNotNull(file)){
 			
 			// medida do arquivo
 			long length = file.length();
@@ -298,7 +298,7 @@ public class Util4File extends ACurbitaObject{
 		ByteBuffer[] bybffArray = null;
 		String line = null;
 		
-		if(lines != null && !lines.isEmpty()){
+		if(isNotNull(lines) && !lines.isEmpty()){
 			
 			bybffArray = new ByteBuffer[lines.size()];
 			
@@ -333,7 +333,7 @@ public class Util4File extends ACurbitaObject{
 		
 		boolean is = true;
 		
-		if(file != null){
+		if(isNotNull(file)){
 			is = (file.length() > 0);
 		}else
 			throw new IllegalArgumentException("file : [" + file + "]!");
@@ -360,7 +360,7 @@ public class Util4File extends ACurbitaObject{
 
 		int size = 0;
 
-		if (fileChannel != null) {
+		if (isNotNull(fileChannel)) {
 			if (lengthOfBlock > 0) {
 
 				try {
@@ -448,7 +448,7 @@ public class Util4File extends ACurbitaObject{
 
 	public static List<String> readFile(String pathName) {
 		
-		if (pathName != null) {
+		if (isNotNull(pathName)) {
 			
 			List<String> lines = new ArrayList<String>();
 
@@ -461,10 +461,10 @@ public class Util4File extends ACurbitaObject{
 
 				do {
 					s = reader.readLine();
-					if (s != null) {
+					if (isNotNull(s)) {
 						lines.add(s);
 					}
-				} while (s != null);
+				} while (isNotNull(s));
 
 				reader.close();
 				
@@ -496,10 +496,10 @@ public class Util4File extends ACurbitaObject{
 
 				do {
 					s = reader.readLine();
-					if (s != null) {
+					if (isNotNull(s)) {
 						lines.add(s);
 					}
-				} while (s != null);
+				} while (isNotNull(s));
 
 				reader.close();
 				
@@ -517,7 +517,7 @@ public class Util4File extends ACurbitaObject{
 	
 	public static void markAs(String pathName, String tag) {
 		
-		if (pathName != null & tag != null) {
+		if (isNotNull(pathName) & isNotNull(tag)) {
 
 			File file = new File(pathName);
 			File newFile = new File(pathName+tag);
@@ -530,7 +530,7 @@ public class Util4File extends ACurbitaObject{
 
 	public static boolean renameTo(String path, String name,String newName) {
 		
-		if (path != null & name != null & newName != null) {
+		if (isNotNull(path) & isNotNull(name) & isNotNull(newName)) {
 
 			File file = new File(path+"/"+name);
 			File newFile = new File(path+"/"+newName);
