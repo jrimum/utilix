@@ -103,6 +103,40 @@ public class Util4String extends ACurbitaObject{
 		return str;
 	}
 	
+	
+	/**
+	 * <p>
+	 * Remove os zeros iniciais de uma <code>String</code>, seja ela numérica ou não.
+	 * </p>
+	 * <p>
+	 * <code>removeStartWithZeros("00000") => 0</code><br />
+	 * <code>removeStartWithZeros("00023") => 23</code><br />
+	 * <code>removeStartWithZeros("02003") => 2003</code>
+	 * <p>
+	 * @param str
+	 * @return a string sem zeros inicias ou um único zero.
+	 * 
+	 * @since 0.2
+	 */
+		
+	public static String removeStartWithZeros(String str){
+		String withoutZeros = null; 
+		
+		if(isNotNull(str)){
+			if(StringUtils.startsWith(str, "0")){
+				withoutZeros = StringUtils.removeStart(str, "0"); 
+				while(StringUtils.startsWith(withoutZeros, "0"))
+					withoutZeros = StringUtils.removeStart(withoutZeros, "0");
+				
+				if(withoutZeros.trim().length() == 0)
+					withoutZeros = "0";
+			}else
+				withoutZeros = str;
+		}
+
+		return withoutZeros;
+	}
+	
 	/**
 	 * Remove a acentuação do texto, que inclui os acentos:
 	 * <ul>
