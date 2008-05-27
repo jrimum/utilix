@@ -49,9 +49,9 @@ import br.com.nordestefomento.jrimum.JRimumException;
  * @author Rômulo Augusto
  * @author <a href="http://www.nordeste-fomento.com.br">Nordeste Fomento Mercantil</a>
  * 
- * @since Utilix 1.0
+ * @since 0.2
  * 
- * @version 1.0
+ * @version 0.2
  */
 public class Util4Banco extends ACurbitaObject {
 

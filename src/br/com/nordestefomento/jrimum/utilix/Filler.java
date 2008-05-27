@@ -61,7 +61,7 @@ import br.com.nordestefomento.jrimum.ACurbitaObject;
  * 
  * @since JRimum 1.0
  * 
- * @version 1.0
+ * @version 0.2
  *
  */
 public class Filler<G> extends ACurbitaObject{

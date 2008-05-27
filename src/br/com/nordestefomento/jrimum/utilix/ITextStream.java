@@ -41,9 +41,9 @@ package br.com.nordestefomento.jrimum.utilix;
  * @author <a href="http://www.nordeste-fomento.com.br">Nordeste Fomento
  *         Mercantil</a>
  * 
- * @since JMatryx 1.0
+ * @since 0.2
  * 
- * @version 1.0
+ * @version 0.2
  */
 public interface ITextStream extends IReadWriteStream<String> {
 	

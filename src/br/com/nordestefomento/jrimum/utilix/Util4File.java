@@ -60,9 +60,9 @@ import br.com.nordestefomento.jrimum.ACurbitaObject;
  * @author <a href="http://www.nordeste-fomento.com.br">Nordeste Fomento
  *         Mercantil</a>
  * 
- * @since JMatryx 1.0
+ * @since 0.2
  * 
- * @version 1.0
+ * @version 0.2
  */
 public class Util4File extends ACurbitaObject{
 	
