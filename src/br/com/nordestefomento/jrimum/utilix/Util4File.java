@@ -122,15 +122,15 @@ public class Util4File extends ACurbitaObject{
 
 				// Assegurando que todos os dados foram lidos
 				if (offset < bytes.length) {
-					throw new IOException("Could not completely read file "
-							+ file.getName());
+					throw new IOException("Não foi possível ler completamente o arquivo. ["
+							+ file.getName() + "]");
 				}
 
 				// Feche o input stream
 				is.close();
 				
 			}else
-				throw new IOException("File is too large for this tranformation.");
+				throw new IOException("O arquivo é muito grande para esta transformação.");
 			
 		}
 		
@@ -235,10 +235,10 @@ public class Util4File extends ACurbitaObject{
 				}
 			} else
 				throw new IllegalArgumentException("lineOrdinalNumber : ["
-						+ lineOrdinalNumber + "] must be > 0!");
+						+ lineOrdinalNumber + "] deve ser > 0!");
 		} else
 			throw new IllegalArgumentException("lengthOfBlock : ["
-					+ lengthOfBlock + "] must be > 0!");
+					+ lengthOfBlock + "] deve ser > 0!");
 
 		return line;
 	}
@@ -279,14 +279,14 @@ public class Util4File extends ACurbitaObject{
 
 				} else
 					throw new IllegalArgumentException("file : [" + file
-							+ "] is empty!");
+							+ "] está vazio!");
 
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		} else
 			throw new IllegalArgumentException("lengthOfBlock : ["
-					+ lengthOfBlock + "] must be > 0!");
+					+ lengthOfBlock + "] deve ser > 0!");
 
 		return blocks;
 	}
@@ -351,7 +351,7 @@ public class Util4File extends ACurbitaObject{
 
 		} else
 			throw new IllegalArgumentException("lengthOfBlock : ["
-					+ lengthOfBlock + "] must be > 0!");
+					+ lengthOfBlock + "] deve ser > 0!");
 
 		return size;
 	}
@@ -377,7 +377,7 @@ public class Util4File extends ACurbitaObject{
 				}
 			} else
 				throw new IllegalArgumentException("lengthOfBlock : ["
-						+ lengthOfBlock + "] must be > 0!");
+						+ lengthOfBlock + "] deve ser > 0!");
 		} else
 			throw new IllegalArgumentException("fileChannel : [" + fileChannel
 					+ "]!");

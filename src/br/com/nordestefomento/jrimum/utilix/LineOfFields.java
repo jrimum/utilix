@@ -101,7 +101,7 @@ public abstract class LineOfFields extends ACurbitaObject implements ITextStream
 					
 				}else{
 					
-					IllegalArgumentException e = new IllegalArgumentException("The stringLength [ " + stringLength + " ] must be greater than 0!");
+					IllegalArgumentException e = new IllegalArgumentException("O tamanho da String [ " + stringLength + " ] deve ser maior que 0!");
 					
 					log.error(StringUtils.EMPTY, e);
 					
@@ -109,7 +109,7 @@ public abstract class LineOfFields extends ACurbitaObject implements ITextStream
 				}
 			}else{
 			
-				IllegalArgumentException e = new IllegalArgumentException("The fieldsLength [ " + fieldsLength + " ] must be greater than 0!");
+				IllegalArgumentException e = new IllegalArgumentException("O tamanho dos campos [ " + fieldsLength + " ] deve ser maior que 0!");
 				
 				log.error(StringUtils.EMPTY, e);
 				
@@ -173,7 +173,7 @@ public abstract class LineOfFields extends ACurbitaObject implements ITextStream
 			if(fieldsLength == size()){
 				is = true;
 			}else{
-				IllegalStateException e = new IllegalStateException("The fields length [ " + size() + " ] incompatible with specified ["+fieldsLength+"]!");
+				IllegalStateException e = new IllegalStateException("O tamanho dos campos [ " + size() + " ] é incompatível com o especificado ["+fieldsLength+"]!");
 				
 				log.error(StringUtils.EMPTY, e);
 				
@@ -189,7 +189,7 @@ public abstract class LineOfFields extends ACurbitaObject implements ITextStream
 		if(lineOfFields.length() == stringLength){
 				is = true;
 		}else{
-			IllegalStateException e = new IllegalStateException("The string of fields length [ " + lineOfFields.length() + " ] incompatible with specified ["+stringLength+"]!");
+			IllegalStateException e = new IllegalStateException("O tamanho da String de campos [ " + lineOfFields.length() + " ] é incompatível com o especificado ["+stringLength+"]!");
 			
 			log.error(StringUtils.EMPTY, e);
 			

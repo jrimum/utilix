@@ -156,10 +156,10 @@ public class Field <G> extends ACurbitaObject implements ITextStream{
 	public void read(String value){
 		
 		if(isNull(value))
-			throw new IllegalArgumentException("Invalid string [ " + value + " ]!");
+			throw new IllegalArgumentException("String inválida [ " + value + " ]!");
 		
 		if(value.length() != length)
-			throw new IllegalArgumentException("String length [ " + value + " ] incompatible with specified [ "+length+" ]!");
+			throw new IllegalArgumentException("O tamanho da String [ " + value + " ] é incompatível com o especificado [ "+length+" ]!");
 		
 		if(field instanceof ITextStream){
 			ITextStream reader = (ITextStream) field;
@@ -266,8 +266,8 @@ public class Field <G> extends ACurbitaObject implements ITextStream{
 		str = fill(str);
 
 		if (str.length() != length)
-			throw new IllegalArgumentException("Field [ " + str
-					+ " ] incompatible with specified [" + length + "]!");
+			throw new IllegalArgumentException("O campo [ " + str
+					+ " ] é incompatível com o especificado [" + length + "]!");
 		
 		return Util4String.eliminateAccent(str).toUpperCase();
 	}
@@ -290,7 +290,7 @@ public class Field <G> extends ACurbitaObject implements ITextStream{
 		if (isNotNull(field))
 			this.field = field;
 		else
-			throw new IllegalArgumentException("Invalid Field [" + field + "]!");
+			throw new IllegalArgumentException("Campo inválido [" + field + "]!");
 	
 	}
 
@@ -305,7 +305,7 @@ public class Field <G> extends ACurbitaObject implements ITextStream{
 		if (length > 0)
 			this.length = length;
 		else
-			throw new IllegalArgumentException("Invalid Length [ " + length + " ]!");
+			throw new IllegalArgumentException("Tamanho inválido [ " + length + " ]!");
 	
 	}
 	
@@ -319,7 +319,7 @@ public class Field <G> extends ACurbitaObject implements ITextStream{
 		if (isNotNull(format))
 			this.format = format;
 		else
-			throw new IllegalArgumentException("Invalid Format [ " + format + " ]!");
+			throw new IllegalArgumentException("Formato inválido [ " + format + " ]!");
 	}
 	
 	public Filler<?> getFiller() {
@@ -332,13 +332,13 @@ public class Field <G> extends ACurbitaObject implements ITextStream{
 			this.filler = filler;
 		
 		else
-			throw new IllegalArgumentException("Invalid Filler [ " + filler + " ]!");
+			throw new IllegalArgumentException("Filler inválido [ " + filler + " ]!");
 	}
 	
 	private static Exception errorG(Exception e, String value){		
 		
 		StackTraceElement[] stackTrace = e.getStackTrace();
-		e = new RuntimeException("Problems between instace and value: [ " + value + " ]!\nCaused by: "+e.getCause());
+		e = new RuntimeException("Problemas entre instância e valor: [ " + value + " ]!\nCausado por: "+e.getCause());
 		e.setStackTrace(stackTrace);
 		
 		return e;

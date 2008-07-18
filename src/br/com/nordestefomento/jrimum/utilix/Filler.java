@@ -124,7 +124,7 @@ public class Filler<G> extends ACurbitaObject{
 			this.fillWith = fillWith;
 		
 		else
-			throw new IllegalArgumentException("Invalid filler [ " + fillWith + " ]!");
+			throw new IllegalArgumentException("Filler inválido [ " + fillWith + " ]!");
 	}
 
 	/**
@@ -143,7 +143,7 @@ public class Filler<G> extends ACurbitaObject{
 			this.sideToFill = sideToFill;
 		
 		else
-			throw new IllegalArgumentException("Invalid side [ " + sideToFill + " ]!");
+			throw new IllegalArgumentException("Lado inválido [ " + sideToFill + " ]!");
 	}
 	
 	/**
