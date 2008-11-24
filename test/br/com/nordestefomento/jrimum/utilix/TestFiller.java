@@ -166,10 +166,8 @@ public class TestFiller {
 
 			private static final long serialVersionUID = 1L;
 
-			@Override
 			public void read(String g) {}
 
-			@Override
 			public String write() {
 				
 				return CAMPO;

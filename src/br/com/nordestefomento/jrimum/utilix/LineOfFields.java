@@ -237,7 +237,7 @@ public abstract class LineOfFields extends ACurbitaObject implements ITextStream
 	/**
 	 * @see java.util.List#add(java.lang.Object)
 	 */
-	@Override
+
 	public boolean add(Field<?> e) {
 		
 		return fields.add(e);
@@ -246,7 +246,7 @@ public abstract class LineOfFields extends ACurbitaObject implements ITextStream
 	/**
 	 * @see java.util.List#add(int, java.lang.Object)
 	 */
-	@Override
+
 	public void add(int index, Field<?> element) {
 		
 		fields.add(index, element);
@@ -255,7 +255,7 @@ public abstract class LineOfFields extends ACurbitaObject implements ITextStream
 	/**
 	 * @see java.util.List#addAll(java.util.Collection)
 	 */
-	@Override
+
 	public boolean addAll(Collection<? extends Field<?>> c) {
 		
 		return fields.addAll(c);
@@ -264,7 +264,7 @@ public abstract class LineOfFields extends ACurbitaObject implements ITextStream
 	/**
 	 * @see java.util.List#addAll(int, java.util.Collection)
 	 */
-	@Override
+
 	public boolean addAll(int index, Collection<? extends Field<?>> c) {
 		
 		return fields.addAll(index, c);
@@ -273,7 +273,7 @@ public abstract class LineOfFields extends ACurbitaObject implements ITextStream
 	/**
 	 * @see java.util.List#clear()
 	 */
-	@Override
+
 	public void clear() {
 		
 		fields.clear();
@@ -282,7 +282,7 @@ public abstract class LineOfFields extends ACurbitaObject implements ITextStream
 	/**
 	 * @see java.util.List#contains(java.lang.Object)
 	 */
-	@Override
+
 	public boolean contains(Object o) {
 		
 		return fields.contains(o);
@@ -291,7 +291,7 @@ public abstract class LineOfFields extends ACurbitaObject implements ITextStream
 	/**
 	 * @see java.util.List#containsAll(java.util.Collection)
 	 */
-	@Override
+
 	public boolean containsAll(Collection<?> c) {
 		
 		return fields.containsAll(c);
@@ -300,7 +300,7 @@ public abstract class LineOfFields extends ACurbitaObject implements ITextStream
 	/**
 	 * @see java.util.List#get(int)
 	 */
-	@Override
+
 	public Field<?> get(int index) {
 		
 		return fields.get(index);
@@ -309,7 +309,7 @@ public abstract class LineOfFields extends ACurbitaObject implements ITextStream
 	/**
 	 * @see java.util.List#indexOf(java.lang.Object)
 	 */
-	@Override
+
 	public int indexOf(Object o) {
 		
 		return fields.indexOf(o);
@@ -318,7 +318,7 @@ public abstract class LineOfFields extends ACurbitaObject implements ITextStream
 	/**
 	 * @see java.util.List#isEmpty()
 	 */
-	@Override
+
 	public boolean isEmpty() {
 		
 		return fields.isEmpty();
@@ -327,7 +327,7 @@ public abstract class LineOfFields extends ACurbitaObject implements ITextStream
 	/**
 	 * @see java.util.List#iterator()
 	 */
-	@Override
+
 	public Iterator<Field<?>> iterator() {
 		
 		return fields.iterator();
@@ -336,7 +336,7 @@ public abstract class LineOfFields extends ACurbitaObject implements ITextStream
 	/**
 	 * @see java.util.List#lastIndexOf(java.lang.Object)
 	 */
-	@Override
+
 	public int lastIndexOf(Object o) {
 		
 		return fields.indexOf(o);
@@ -345,7 +345,7 @@ public abstract class LineOfFields extends ACurbitaObject implements ITextStream
 	/**
 	 * @see java.util.List#listIterator()
 	 */
-	@Override
+
 	public ListIterator<Field<?>> listIterator() {
 		
 		return fields.listIterator();
@@ -354,7 +354,7 @@ public abstract class LineOfFields extends ACurbitaObject implements ITextStream
 	/**
 	 * @see java.util.List#listIterator(int)
 	 */
-	@Override
+
 	public ListIterator<Field<?>> listIterator(int index) {
 		
 		return fields.listIterator(index);
@@ -363,7 +363,7 @@ public abstract class LineOfFields extends ACurbitaObject implements ITextStream
 	/**
 	 * @see java.util.List#remove(int)
 	 */
-	@Override
+
 	public Field<?> remove(int index) {
 		
 		return fields.remove(index);
@@ -372,7 +372,7 @@ public abstract class LineOfFields extends ACurbitaObject implements ITextStream
 	/**
 	 * @see java.util.List#remove(java.lang.Object)
 	 */
-	@Override
+
 	public boolean remove(Object o) {
 		
 		return fields.remove(o);
@@ -381,7 +381,7 @@ public abstract class LineOfFields extends ACurbitaObject implements ITextStream
 	/**
 	 * @see java.util.List#removeAll(java.util.Collection)
 	 */
-	@Override
+
 	public boolean removeAll(Collection<?> c) {
 		
 		return fields.removeAll(c);
@@ -390,7 +390,7 @@ public abstract class LineOfFields extends ACurbitaObject implements ITextStream
 	/**
 	 * @see java.util.List#retainAll(java.util.Collection)
 	 */
-	@Override
+
 	public boolean retainAll(Collection<?> c) {
 		
 		return fields.retainAll(c);
@@ -399,7 +399,7 @@ public abstract class LineOfFields extends ACurbitaObject implements ITextStream
 	/**
 	 * @see java.util.List#set(int, java.lang.Object)
 	 */
-	@Override
+
 	public Field<?> set(int index, Field<?> element) {
 		
 		return fields.set(index, element);
@@ -408,7 +408,7 @@ public abstract class LineOfFields extends ACurbitaObject implements ITextStream
 	/**
 	 * @see java.util.List#size()
 	 */
-	@Override
+
 	public int size() {
 		
 		return fields.size();
@@ -417,7 +417,7 @@ public abstract class LineOfFields extends ACurbitaObject implements ITextStream
 	/**
 	 * @see java.util.List#subList(int, int)
 	 */
-	@Override
+
 	public List<Field<?>> subList(int fromIndex, int toIndex) {
 		
 		return fields.subList(fromIndex, toIndex);
@@ -426,7 +426,7 @@ public abstract class LineOfFields extends ACurbitaObject implements ITextStream
 	/**
 	 * @see java.util.List#toArray()
 	 */
-	@Override
+
 	public Object[] toArray() {
 		
 		return fields.toArray();
@@ -435,7 +435,7 @@ public abstract class LineOfFields extends ACurbitaObject implements ITextStream
 	/**
 	 * @see java.util.List#toArray(T[])
 	 */
-	@Override
+
 	public <T> T[] toArray(T[] a) {
 		
 		return fields.toArray(a);
