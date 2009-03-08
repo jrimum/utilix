@@ -30,9 +30,9 @@
 
 package br.com.nordestefomento.jrimum.utilix;
 
-import br.com.nordestefomento.jrimum.ICurbitaObject;
+import java.io.Serializable;
 
-public interface IReadWriteStream <G> extends ICurbitaObject{
+public interface IReadWriteStream <G> extends Serializable{
 	
 	
 	/**
