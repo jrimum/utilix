@@ -38,8 +38,6 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import br.com.nordestefomento.jrimum.utilix.Util4Date;
-
 public class TestUtil4Date {
 	
 	private static Date dataInicial;

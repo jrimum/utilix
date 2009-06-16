@@ -68,7 +68,6 @@ import com.lowagie.text.pdf.SimpleBookmark;
  * 
  * @version 0.2 
  */
-
 public class Util4PDF extends ACurbitaObject{
 
 	/**

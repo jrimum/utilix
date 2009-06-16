@@ -30,8 +30,7 @@
 
 package br.com.nordestefomento.jrimum.utilix;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 import java.math.BigDecimal;
 import java.text.ParseException;

@@ -27,7 +27,6 @@
  * 
  */
 
-
 package br.com.nordestefomento.jrimum.utilix;
 
 import static org.junit.Assert.*;
@@ -42,11 +41,6 @@ import org.apache.commons.lang.StringUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import br.com.nordestefomento.jrimum.utilix.Field;
-import br.com.nordestefomento.jrimum.utilix.Filler;
-import br.com.nordestefomento.jrimum.utilix.Util4Date;
-import br.com.nordestefomento.jrimum.utilix.Util4Monetary;
 
 public class TestField {
 
@@ -120,12 +114,12 @@ public class TestField {
 		campoInteger.read("000001");
 		assertNotNull(campoInteger.getField());
 		assertTrue(campoInteger.getField() instanceof Integer);
-		assertEquals(1, campoInteger.getField());
+		assertEquals(new Integer(1), campoInteger.getField());
 		
 		campoLong.read("000001");
 		assertNotNull(campoLong.getField());
 		assertTrue(campoLong.getField() instanceof Long);
-		assertEquals(1L, campoLong.getField());
+		assertEquals(new Long(1), campoLong.getField());
 		
 		campoDecimal.read("00000523676");
 		assertNotNull(campoDecimal.getField());

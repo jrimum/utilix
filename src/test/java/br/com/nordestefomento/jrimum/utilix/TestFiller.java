@@ -34,7 +34,6 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import br.com.nordestefomento.jrimum.utilix.Filler;
 import br.com.nordestefomento.jrimum.utilix.Filler.SideToFill;
 
 public class TestFiller {
