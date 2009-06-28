@@ -63,4 +63,64 @@ public class TestUtil4String {
 		assertEquals("", Util4String.eliminateSymbols("><,;.:!*&%+-_<>[]\\/"));
 	}
 
+	@Test
+	public void testEliminateAccent() {
+		
+		assertEquals("c", Util4String.eliminateAccent("ç"));
+		assertEquals("C", Util4String.eliminateAccent("Ç"));
+		
+		assertEquals("a", Util4String.eliminateAccent("à"));
+		assertEquals("a", Util4String.eliminateAccent("á"));
+		assertEquals("a", Util4String.eliminateAccent("â"));
+		assertEquals("a", Util4String.eliminateAccent("ã"));
+		assertEquals("a", Util4String.eliminateAccent("ä"));
+		
+		assertEquals("e", Util4String.eliminateAccent("è"));
+		assertEquals("e", Util4String.eliminateAccent("é"));
+		assertEquals("e", Util4String.eliminateAccent("ê"));
+		assertEquals("e", Util4String.eliminateAccent("ë"));
+		
+		assertEquals("i", Util4String.eliminateAccent("ì"));
+		assertEquals("i", Util4String.eliminateAccent("í"));
+		assertEquals("i", Util4String.eliminateAccent("î"));
+		assertEquals("i", Util4String.eliminateAccent("ï"));
+		
+		assertEquals("o", Util4String.eliminateAccent("ò"));
+		assertEquals("o", Util4String.eliminateAccent("ó"));
+		assertEquals("o", Util4String.eliminateAccent("ô"));
+		assertEquals("o", Util4String.eliminateAccent("õ"));
+		assertEquals("o", Util4String.eliminateAccent("ö"));
+		
+		assertEquals("u", Util4String.eliminateAccent("ù"));
+		assertEquals("u", Util4String.eliminateAccent("ú"));
+		assertEquals("u", Util4String.eliminateAccent("û"));
+		assertEquals("u", Util4String.eliminateAccent("ü"));
+		
+		assertEquals("A", Util4String.eliminateAccent("À"));
+		assertEquals("A", Util4String.eliminateAccent("Á"));
+		assertEquals("A", Util4String.eliminateAccent("Â"));
+		assertEquals("A", Util4String.eliminateAccent("Ã"));
+		assertEquals("A", Util4String.eliminateAccent("Ä"));
+		
+		assertEquals("E", Util4String.eliminateAccent("È"));
+		assertEquals("E", Util4String.eliminateAccent("É"));
+		assertEquals("E", Util4String.eliminateAccent("Ê"));
+		assertEquals("E", Util4String.eliminateAccent("Ë"));
+		
+		assertEquals("I", Util4String.eliminateAccent("Ì"));
+		assertEquals("I", Util4String.eliminateAccent("Í"));
+		assertEquals("I", Util4String.eliminateAccent("Î"));
+		assertEquals("I", Util4String.eliminateAccent("Ï"));
+		
+		assertEquals("O", Util4String.eliminateAccent("Ò"));
+		assertEquals("O", Util4String.eliminateAccent("Ó"));
+		assertEquals("O", Util4String.eliminateAccent("Ô"));
+		assertEquals("O", Util4String.eliminateAccent("Õ"));
+		assertEquals("O", Util4String.eliminateAccent("Ö"));
+		
+		assertEquals("U", Util4String.eliminateAccent("Ù"));
+		assertEquals("U", Util4String.eliminateAccent("Ú"));
+		assertEquals("U", Util4String.eliminateAccent("Û"));
+		assertEquals("U", Util4String.eliminateAccent("Ü"));
+	}
 }
