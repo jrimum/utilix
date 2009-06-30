@@ -10,4 +10,8 @@
 		<groupId>jrimum</groupId>
 		<version>0.3.0-SNAPSHOT</version>
 	</parent>
+	<scm>
+		<connection>scm:svn:http://jrimum.nordestefomento.com.br/svn/utilix</connection>
+		<url>http://jrimum.nordestefomento.com.br/svn/utilix</url>
+	</scm>
 </project>
