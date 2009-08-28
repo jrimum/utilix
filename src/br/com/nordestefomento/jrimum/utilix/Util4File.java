@@ -158,9 +158,8 @@ public class Util4File extends ACurbitaObject{
 			
 			out.write(bytes);
 			out.flush();
-			out.close();	
+			out.close();
 		}
-		
 		
 		return f;
 	}
