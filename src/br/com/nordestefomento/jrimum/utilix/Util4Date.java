@@ -30,6 +30,7 @@
 package br.com.nordestefomento.jrimum.utilix;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -64,17 +65,17 @@ public class Util4Date  extends ACurbitaObject{
 	/**
 	 * Formatador de datas no padrão dd/MM/yyyy.
 	 */
-	public static final DateFormat fmt_dd_MM_yyyy = new SimpleDateFormat("dd/MM/yyyy");
+	public static final DateFormat FORMAT_DD_MM_YYYY = new SimpleDateFormat("dd/MM/yyyy");
 	
 	/**
 	 * Formatador de datas no padrão ddMMyy.
 	 */
-	public static final DateFormat fmt_ddMMyy = new SimpleDateFormat("ddMMyy");
+	public static final DateFormat FORMAT_DDMMYY = new SimpleDateFormat("ddMMyy");
 	
 	/**
 	 * Formatador de datas no padrão yyMMdd.
 	 */
-	public static final DateFormat fmt_yyMMdd = new SimpleDateFormat("yyMMdd");
+	public static final DateFormat FORMAT_YYMMDD = new SimpleDateFormat("yyMMdd");
 	
 	/**
 	 * Representa uma data inexistente. Usada em casos que não se pode usar
@@ -91,7 +92,101 @@ public class Util4Date  extends ACurbitaObject{
 		calendar.setLenient(false);
 		DATE_NULL = DateUtils.truncate(calendar.getTime(), Calendar.YEAR);
 	}
-
+	
+	/**
+	 * <p>
+	 * Converte um objeto <code>String</code> em um objeto <code>java.util.Date</code>
+	 * no formato de data padrão brasileiro: dd/MM/yyyy.
+	 * </p>
+	 * <p> 
+	 * Utiliza a sobrecarca <code>parse(String dateAsString, DateFormat dateFormat)</code> para
+	 * realizar a conversão.
+	 * </p>
+	 * 
+	 * @param dateAsString - um valor de data em forma de <code>String</code>.
+	 * @param dateFormat - formato de data
+	 * @return Objeto <code>java.util.Date</code> convertido a partir do objeto <code>String</code>
+	 * 
+	 * @throws IllegalArgumentException caso o objeto <code>String</code> não seja um valor válido
+	 * de data suportado pelo formato.
+	 */
+	public static Date parse(String dateAsString) {
+		
+		return parse(dateAsString, FORMAT_DD_MM_YYYY);
+	}
+	
+	/**
+	 * <p>
+	 * Converte um objeto <code>String</code> em um objeto <code>java.util.Date</code>
+	 * a partir do formato de data especificado.
+	 * </p>
+	 * <p> 
+	 * Utiliza a sobrecarca <code>parse(String dateAsString, DateFormat dateFormat)</code> para
+	 * realizar a conversão.
+	 * </p>
+	 * 
+	 * @param dateAsString - um valor de data em forma de <code>String</code>.
+	 * @param dateFormat - formato de data
+	 * @return Objeto <code>java.util.Date</code> convertido a partir do objeto <code>String</code>
+	 * 
+	 * @throws IllegalArgumentException caso o objeto <code>String</code> não seja um valor válido
+	 * de data suportado pelo formato.
+	 */
+	public static Date parse(String dateAsString, String dateFormat) {
+		
+		if (dateFormat == null) {
+			throw new NullPointerException("O formato da data não pode ter valor [null].");
+		}
+		
+		return parse(dateAsString, new SimpleDateFormat(dateFormat));
+	}
+	
+	/**
+	 * Converte um objeto <code>String</code> em um objeto <code>java.util.Date</code>
+	 * através do objeto <code>java.text.DateFormat</code> especificado. 
+	 * 
+	 * @param dateAsString - um valor de data em forma de <code>String</code>.
+	 * @param dateFormat - formatador para objetos <code>java.util.Date</code>.
+	 * @return Objeto <code>java.util.Date</code> convertido a partir do objeto <code>String</code>
+	 * 
+	 * @throws IllegalArgumentException caso o objeto <code>String</code> não seja um valor válido
+	 * de data suportado pelo formatador.
+	 */
+	public static Date parse(String dateAsString, DateFormat dateFormat) {
+		
+		Date date = null;
+		
+		if (dateAsString == null) {
+			throw new NullPointerException("A String a ser convertida não pode ter valor [null].");
+		}
+		
+		if (dateFormat == null) {
+			throw new NullPointerException("O formatador não pode ter valor [null].");
+		}
+		
+		try {
+			
+			date = dateFormat.parse(dateAsString);
+			
+		} catch (ParseException e) {
+			
+			String msg = "A String [" + dateAsString + "] deve ser uma data válida no formato";
+			if (dateFormat instanceof SimpleDateFormat) {
+				SimpleDateFormat sdf = (SimpleDateFormat) dateFormat;
+				msg += " [" + sdf.toPattern() + "].";
+				
+			} else {
+				msg += " especificado.";
+			}
+			
+			IllegalArgumentException iae = new IllegalArgumentException(msg);
+			iae.initCause(e);
+			throw iae;
+		}
+		
+		return date;
+	}
+	
 	/**
 	 * <p>
 	 * Calcula a diferença de dias entre duas datas. O resultado é modular, 
@@ -105,7 +200,7 @@ public class Util4Date  extends ACurbitaObject{
 	 * 
 	 * @throws IllegalArgumentException Caso pelo menos uma das duas datas seja <code>null</code>.
 	 */
-	public static long calculeDiferencaEmDias(final Date dataInicial, final Date dataFinal) throws IllegalArgumentException {
+	public static long calculeDiferencaEmDias(final Date dataInicial, final Date dataFinal) {
 		
 		long fator = 0;
 		Date dataInicialTruncada, dataFinalTruncada;

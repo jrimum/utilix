@@ -68,7 +68,7 @@ public class TestField {
 		campoString = new Field<String>(StringUtils.EMPTY, 8);
 		campoString.setFiller(Filler.WHITE_SPACE_RIGHT);
 		
-		campoDate = new Field<Date>(new GregorianCalendar(2007, Calendar.JULY, 22).getTime(), 6, Util4Date.fmt_ddMMyy);
+		campoDate = new Field<Date>(new GregorianCalendar(2007, Calendar.JULY, 22).getTime(), 6, Util4Date.FORMAT_DDMMYY);
 		
 		campoInteger = new Field<Integer>(0, 6);
 		campoInteger.setFiller(Filler.ZERO_LEFT);
@@ -99,8 +99,8 @@ public class TestField {
 		
 		Format format = null;
 		
-		campoDate = new Field<Date>(new Date(), 0, Util4Date.fmt_ddMMyy);
-		campoDate = new Field<Date>(null, 1, Util4Date.fmt_ddMMyy);
+		campoDate = new Field<Date>(new Date(), 0, Util4Date.FORMAT_DDMMYY);
+		campoDate = new Field<Date>(null, 1, Util4Date.FORMAT_DDMMYY);
 		campoDate = new Field<Date>(new Date(), 0, format);
 	}
 
@@ -115,7 +115,7 @@ public class TestField {
 		campoDate.read("011002");
 		assertNotNull(campoDate.getField());
 		assertTrue(campoDate.getField() instanceof Date);
-		assertEquals("011002", Util4Date.fmt_ddMMyy.format(campoDate.getField()));
+		assertEquals("011002", Util4Date.FORMAT_DDMMYY.format(campoDate.getField()));
 				
 		campoInteger.read("000001");
 		assertNotNull(campoInteger.getField());

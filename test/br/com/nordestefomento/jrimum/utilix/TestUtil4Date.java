@@ -29,7 +29,9 @@
 
 package br.com.nordestefomento.jrimum.utilix;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -37,8 +39,6 @@ import java.util.Date;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-import br.com.nordestefomento.jrimum.utilix.Util4Date;
 
 public class TestUtil4Date {
 	
@@ -99,4 +99,48 @@ public class TestUtil4Date {
 		assertEquals(31, Util4Date.calculeDiferencaEmDias(dataFinal, dataInicial));
 	}
 
+	@Test
+	public void testParseFormatoDDMMYYYY() {
+		assertNotNull(Util4Date.parse("01/01/2000"));
+	}
+	
+	@Test(expected = NullPointerException.class)
+	public void testParseFormatoDDMMYYYYNullPointerException() {
+		assertNotNull(Util4Date.parse(null));
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testParseFormatoDDMMYYYYIllegalArgumentException() {
+		assertNotNull(Util4Date.parse(""));
+		assertNotNull(Util4Date.parse("2000-01-01"));
+	}
+	
+	@Test
+	public void testParseStringString() {
+		assertNotNull(Util4Date.parse("2000-01-01", "yyyy-MM-dd"));
+	}
+	
+	@Test(expected = NullPointerException.class)
+	public void testParseStringStringDataNull() {
+		assertNotNull(Util4Date.parse(null, "yyyy-MM-dd"));
+	}
+	
+	@Test(expected = NullPointerException.class)
+	public void testParseStringStringFormatoNull() {
+		String formato = null;
+		assertNotNull(Util4Date.parse("2000-01-01", formato));
+	}
+	
+	@Test(expected = NullPointerException.class)
+	public void testParseStringStringAmbosNull() {
+		String formato = null;
+		assertNotNull(Util4Date.parse(null, formato));
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testParseStringStringIllegalArgumentException() {
+		assertNotNull(Util4Date.parse("", "yyyy-MM-dd"));
+		assertNotNull(Util4Date.parse("01/01/2000", ""));
+		assertNotNull(Util4Date.parse("01/01/2000", "yyyy-MM-dd"));
+	}
 }
