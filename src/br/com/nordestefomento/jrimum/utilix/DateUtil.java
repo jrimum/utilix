@@ -55,7 +55,7 @@ import br.com.nordestefomento.jrimum.ACurbitaObject;
  * 
  * @version 0.2
  */
-public class Util4Date  extends ACurbitaObject{
+public class DateUtil  extends ACurbitaObject{
 	
 	/**
 	 * 

@@ -64,11 +64,11 @@ import br.com.nordestefomento.jrimum.ACurbitaObject;
  * 
  * @version 0.2
  */
-public class Util4File extends ACurbitaObject{
+public class FileUtil extends ACurbitaObject{
 	
 	//TODO Criar Metodo que recebe um arquivo e coisas para verificar nele, como: (isVazio,Numero de linhas, etc)
 	
-	protected static final Logger LOG = Logger.getLogger(Util4File.class);
+	protected static final Logger LOG = Logger.getLogger(FileUtil.class);
 	
 	/**
 	 * 

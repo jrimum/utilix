@@ -45,8 +45,8 @@ import org.junit.Test;
 
 import br.com.nordestefomento.jrimum.utilix.Field;
 import br.com.nordestefomento.jrimum.utilix.Filler;
-import br.com.nordestefomento.jrimum.utilix.Util4Date;
-import br.com.nordestefomento.jrimum.utilix.Util4Monetary;
+import br.com.nordestefomento.jrimum.utilix.DateUtil;
+import br.com.nordestefomento.jrimum.utilix.MonetaryUtil;
 
 public class TestField {
 
@@ -68,7 +68,7 @@ public class TestField {
 		campoString = new Field<String>(StringUtils.EMPTY, 8);
 		campoString.setFiller(Filler.WHITE_SPACE_RIGHT);
 		
-		campoDate = new Field<Date>(new GregorianCalendar(2007, Calendar.JULY, 22).getTime(), 6, Util4Date.FORMAT_DDMMYY);
+		campoDate = new Field<Date>(new GregorianCalendar(2007, Calendar.JULY, 22).getTime(), 6, DateUtil.FORMAT_DDMMYY);
 		
 		campoInteger = new Field<Integer>(0, 6);
 		campoInteger.setFiller(Filler.ZERO_LEFT);
@@ -76,10 +76,10 @@ public class TestField {
 		campoLong = new Field<Long>(0L, 6);
 		campoLong.setFiller(Filler.ZERO_LEFT);
 		
-		campoDecimal = new Field<BigDecimal>(new BigDecimal("875.98"), 11, Util4Monetary.fmt_Real);
+		campoDecimal = new Field<BigDecimal>(new BigDecimal("875.98"), 11, MonetaryUtil.FORMAT_REAL);
 		campoDecimal.setFiller(Filler.ZERO_LEFT);
 		
-		campoDecimal_v9 = new Field<BigDecimal>(new BigDecimal("875.9"), 11, Util4Monetary.fmt_Real_v9);
+		campoDecimal_v9 = new Field<BigDecimal>(new BigDecimal("875.9"), 11, MonetaryUtil.FORMAT_REAL_UMA_CASA_DECIMAL);
 		campoDecimal_v9.setFiller(Filler.ZERO_LEFT);
 	}
 	
@@ -99,8 +99,8 @@ public class TestField {
 		
 		Format format = null;
 		
-		campoDate = new Field<Date>(new Date(), 0, Util4Date.FORMAT_DDMMYY);
-		campoDate = new Field<Date>(null, 1, Util4Date.FORMAT_DDMMYY);
+		campoDate = new Field<Date>(new Date(), 0, DateUtil.FORMAT_DDMMYY);
+		campoDate = new Field<Date>(null, 1, DateUtil.FORMAT_DDMMYY);
 		campoDate = new Field<Date>(new Date(), 0, format);
 	}
 
@@ -115,7 +115,7 @@ public class TestField {
 		campoDate.read("011002");
 		assertNotNull(campoDate.getField());
 		assertTrue(campoDate.getField() instanceof Date);
-		assertEquals("011002", Util4Date.FORMAT_DDMMYY.format(campoDate.getField()));
+		assertEquals("011002", DateUtil.FORMAT_DDMMYY.format(campoDate.getField()));
 				
 		campoInteger.read("000001");
 		assertNotNull(campoInteger.getField());
@@ -159,7 +159,7 @@ public class TestField {
 		assertEquals("220707", campoDate.write());
 		assertEquals(6, campoDate.write().length());
 		
-		campoDate.setField(Util4Date.DATE_NULL);
+		campoDate.setField(DateUtil.DATE_NULL);
 		campoDate.setFiller(Filler.ZERO_LEFT);
 		assertNotNull(campoDate.write());
 		assertEquals("000000", campoDate.write());

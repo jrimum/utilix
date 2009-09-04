@@ -53,10 +53,10 @@ import org.junit.runners.Suite;
 		{ 
 			TestField.class,
 			TestFiller.class,
-			TestUtil4Date.class,
-			TestUtil4Monetary.class,
-			TestUtil4PDF.class,
-			TestUtil4String.class
+			TestDateUtil.class,
+			TestMonetaryId.class,
+			TestPDFUtil.class,
+			TestStringUtil.class
 		}
 )
 public class TestSuiteUtilix {

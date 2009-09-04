@@ -84,12 +84,12 @@ public class Filler<G> extends ACurbitaObject{
 	/**
 	 * Filler padrão para preenchimento com espaços em branco a esquerda.
 	 */
-	public static final Filler<String> WHITE_SPACE_LEFT = new Filler<String>(Util4String.WHITE_SPACE, SideToFill.LEFT);
+	public static final Filler<String> WHITE_SPACE_LEFT = new Filler<String>(StringUtil.WHITE_SPACE, SideToFill.LEFT);
 	
 	/**
 	 * Filler padrão para preenchimento com espaços em branco a direita.
 	 */
-	public static final Filler<String> WHITE_SPACE_RIGHT = new Filler<String>(Util4String.WHITE_SPACE, SideToFill.RIGHT);
+	public static final Filler<String> WHITE_SPACE_RIGHT = new Filler<String>(StringUtil.WHITE_SPACE, SideToFill.RIGHT);
 
 	/**
 	 * 

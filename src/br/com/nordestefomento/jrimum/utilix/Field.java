@@ -250,7 +250,7 @@ public class Field <G> extends ACurbitaObject implements ITextStream{
 
 			Date campoDate = (Date) field;
 
-			if (campoDate.compareTo(Util4Date.DATE_NULL) == 0)
+			if (campoDate.compareTo(DateUtil.DATE_NULL) == 0)
 				str = StringUtils.EMPTY;
 
 			else
@@ -269,7 +269,7 @@ public class Field <G> extends ACurbitaObject implements ITextStream{
 			throw new IllegalArgumentException("O campo [ " + str
 					+ " ] é incompatível com o especificado [" + length + "]!");
 		
-		return Util4String.eliminateAccent(str).toUpperCase();
+		return StringUtil.eliminateAccent(str).toUpperCase();
 	}
 
 	private String fill(String str) {

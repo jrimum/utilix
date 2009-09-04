@@ -69,14 +69,14 @@ import com.lowagie.text.pdf.SimpleBookmark;
  * @version 0.2 
  */
 
-public class Util4PDF extends ACurbitaObject{
+public class PDFUtil extends ACurbitaObject{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	protected static final Logger LOG = Logger.getLogger(Util4PDF.class);
+	protected static final Logger LOG = Logger.getLogger(PDFUtil.class);
 
 	public static RectanglePDF changeField2Image(PdfStamper stamper, float[] positions , Image image) throws DocumentException{
 						

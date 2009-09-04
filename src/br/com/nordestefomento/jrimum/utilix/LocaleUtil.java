@@ -31,20 +31,7 @@ package br.com.nordestefomento.jrimum.utilix;
 
 import java.util.Locale;
 
-
 /**
- * 
- * <p>
- * DEFINIÇÃO DA CLASSE
- * </p>
- * 
- * <p>
- * OBJETIVO/PROPÓSITO
- * </p>
- * 
- * <p>
- * EXEMPLO:
- * </p> 
  * 
  * @author Rômulo
  * 
@@ -52,7 +39,7 @@ import java.util.Locale;
  * 
  * @version 
  */
-public class Util4Locales {
+public class LocaleUtil {
 
 	public static final Locale PORTUGUESE = new Locale("pt");
 	

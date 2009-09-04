@@ -53,7 +53,7 @@ import br.com.nordestefomento.jrimum.JRimumException;
  * 
  * @version 0.2
  */
-public class Util4Banco extends ACurbitaObject {
+public class BancoUtil extends ACurbitaObject {
 
 	/**
 	 * 
@@ -136,11 +136,11 @@ public class Util4Banco extends ACurbitaObject {
 				) {
 				throw new JRimumException(new IllegalArgumentException("Para o cálculo do fator de" +
 					" vencimento se faz necessário informar uma data entre" +
-					" " + Util4Date.FORMAT_DD_MM_YYYY.format(DATA_BASE_DO_FATOR_DE_VENCIMENTO) +
-					" e " + Util4Date.FORMAT_DD_MM_YYYY.format(DATA_LIMITE_DO_FATOR_DE_VENCIMENTO)));
+					" " + DateUtil.FORMAT_DD_MM_YYYY.format(DATA_BASE_DO_FATOR_DE_VENCIMENTO) +
+					" e " + DateUtil.FORMAT_DD_MM_YYYY.format(DATA_LIMITE_DO_FATOR_DE_VENCIMENTO)));
 			}
 			else {
-				fator = (int)Util4Date.calculeDiferencaEmDias(DATA_BASE_DO_FATOR_DE_VENCIMENTO, dataVencTruncada);
+				fator = (int)DateUtil.calculeDiferencaEmDias(DATA_BASE_DO_FATOR_DE_VENCIMENTO, dataVencTruncada);
 			}
 		}	
 		
