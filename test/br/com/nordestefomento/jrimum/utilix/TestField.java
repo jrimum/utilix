@@ -120,12 +120,12 @@ public class TestField {
 		campoInteger.read("000001");
 		assertNotNull(campoInteger.getField());
 		assertTrue(campoInteger.getField() instanceof Integer);
-		assertEquals(1, campoInteger.getField());
+		assertTrue(new Integer(1).compareTo(campoInteger.getField()) == 0);
 		
 		campoLong.read("000001");
 		assertNotNull(campoLong.getField());
 		assertTrue(campoLong.getField() instanceof Long);
-		assertEquals(1L, campoLong.getField());
+		assertTrue(new Long(1L).compareTo(campoLong.getField()) == 0);
 		
 		campoDecimal.read("00000523676");
 		assertNotNull(campoDecimal.getField());
