@@ -42,7 +42,7 @@ import org.apache.log4j.Logger;
  * </p>
  * 
  * <p>
- * Todas as classes do projeto devem herdar de <code>ACurbitaObject</code>
+ * Todas as classes do projeto devem herdar de <code>ObjectUtil</code>
  * para reutilizar métodos como o <code>toString()</code> e
  * <code>isNull(Object, String)</code>.
  * </p>
@@ -59,11 +59,15 @@ import org.apache.log4j.Logger;
  * @see <a href="http://pt.wikipedia.org/wiki/Cucurbita" >Cucurbita</a>
  */
 
-public abstract class ACurbitaObject implements Serializable {
+public class ObjectUtil implements Serializable {
 
 	private static final long serialVersionUID = -6790981191128287923L;
 	
-	private static Logger log = Logger.getLogger(ACurbitaObject.class);
+	private static Logger log = Logger.getLogger(ObjectUtil.class);
+	
+	private ObjectUtil() {
+		throw new AssertionError();
+	}
 
 	/**
 	 * <p>
@@ -83,18 +87,17 @@ public abstract class ACurbitaObject implements Serializable {
 	 * 
 	 * @since 0.2
 	 */
-	public static boolean isNull(Object object, String name)
-			throws IllegalArgumentException {
+	public static boolean isNull(Object object, String name) throws IllegalArgumentException {
 
 		boolean is = true;
 
 		if (object != null) {
 			is = false;
+			
 		} else {
 
 			IllegalArgumentException e = new IllegalArgumentException(
-					(name != null ? name : "Objeto ") + " inválido : [" + object
-							+ "]!");
+					(name != null ? name : "Objeto ") + " inválido : [" + object + "]!");
 
 			log.error(StringUtils.EMPTY, e);
 
@@ -127,8 +130,7 @@ public abstract class ACurbitaObject implements Serializable {
 	 * 
 	 * @since 0.2
 	 */
-	public static boolean isNotNull(Object object, String name)
-			throws IllegalArgumentException {
+	public static boolean isNotNull(Object object, String name) throws IllegalArgumentException {
 		return !isNull(object, name);
 	}
 
@@ -184,19 +186,6 @@ public abstract class ACurbitaObject implements Serializable {
 	}
 
 	/**
-	 * Exibe os valores de instância.
-	 * 
-	 * @see org.apache.commons.lang.builder.ToStringBuilder#reflectionToString
-	 * 
-	 * @since 0.2
-	 */
-	@Override
-	public String toString() {
-
-		return "JRimumObject: "+ToStringBuilder.reflectionToString(this);
-	}
-	
-	/**
 	 * Exibe os valores de instância para um objeto JRimum.
 	 * 
 	 * @see org.apache.commons.lang.builder.ToStringBuilder#reflectionToString
@@ -206,7 +195,6 @@ public abstract class ACurbitaObject implements Serializable {
 	 * @see #toString()
 	 */
 	public static String toString(Object obj) {
-
-		return "JRimumObject: "+ToStringBuilder.reflectionToString(obj);
+		return "JRimumObject: " + ToStringBuilder.reflectionToString(obj);
 	}
 }

@@ -29,8 +29,8 @@
 
 package br.com.nordestefomento.jrimum.utilix;
 
-import static br.com.nordestefomento.jrimum.utilix.ACurbitaObject.isNotNull;
-import static br.com.nordestefomento.jrimum.utilix.ACurbitaObject.isNull;
+import static br.com.nordestefomento.jrimum.utilix.ObjectUtil.isNotNull;
+import static br.com.nordestefomento.jrimum.utilix.ObjectUtil.isNull;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -343,7 +343,9 @@ public class Field <G> implements ITextStream {
 		
 		return e;
 	}
+	
+	@Override
+	public String toString() {
+		return ObjectUtil.toString(this);
+	}
 }
-
-
-

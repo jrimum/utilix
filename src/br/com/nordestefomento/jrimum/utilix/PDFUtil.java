@@ -30,7 +30,7 @@
 	
 package br.com.nordestefomento.jrimum.utilix;
 
-import static br.com.nordestefomento.jrimum.utilix.ACurbitaObject.isNotNull;
+import static br.com.nordestefomento.jrimum.utilix.ObjectUtil.isNotNull;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;

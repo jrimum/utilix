@@ -29,7 +29,7 @@
 
 package br.com.nordestefomento.jrimum.utilix;
 
-import static br.com.nordestefomento.jrimum.utilix.ACurbitaObject.isNotNull;
+import static br.com.nordestefomento.jrimum.utilix.ObjectUtil.isNotNull;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -214,8 +214,9 @@ public class DateUtil {
 			
 			fator = ((dataFinalTruncada.getTime() - dataInicialTruncada.getTime()) / DateUtils.MILLIS_PER_DAY);
 			
-			if (fator < 0)
-			  fator *= -1;
+			if (fator < 0) {
+				fator *= -1;
+			}
 		}
 		else {
 			throw new IllegalArgumentException("A data inicial [" + dataInicial + "] e a data final [" + dataFinal + "] " +

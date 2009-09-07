@@ -29,7 +29,7 @@
 
 package br.com.nordestefomento.jrimum.utilix;
 
-import static br.com.nordestefomento.jrimum.utilix.ACurbitaObject.isNull;
+import static br.com.nordestefomento.jrimum.utilix.ObjectUtil.isNull;
 
 import java.util.Calendar;
 import java.util.Date;
