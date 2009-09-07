@@ -108,34 +108,34 @@ public class TestField {
 	public void testLer() {
 		
 		campoString.read("COBRANCA");
-		assertNotNull(campoString.getField());
-		assertTrue(campoString.getField() instanceof String);
-		assertEquals("COBRANCA", campoString.getField().toString());
+		assertNotNull(campoString.getValue());
+		assertTrue(campoString.getValue() instanceof String);
+		assertEquals("COBRANCA", campoString.getValue().toString());
 
 		campoDate.read("011002");
-		assertNotNull(campoDate.getField());
-		assertTrue(campoDate.getField() instanceof Date);
-		assertEquals("011002", DateUtil.FORMAT_DDMMYY.format(campoDate.getField()));
+		assertNotNull(campoDate.getValue());
+		assertTrue(campoDate.getValue() instanceof Date);
+		assertEquals("011002", DateUtil.FORMAT_DDMMYY.format(campoDate.getValue()));
 				
 		campoInteger.read("000001");
-		assertNotNull(campoInteger.getField());
-		assertTrue(campoInteger.getField() instanceof Integer);
-		assertTrue(new Integer(1).compareTo(campoInteger.getField()) == 0);
+		assertNotNull(campoInteger.getValue());
+		assertTrue(campoInteger.getValue() instanceof Integer);
+		assertTrue(new Integer(1).compareTo(campoInteger.getValue()) == 0);
 		
 		campoLong.read("000001");
-		assertNotNull(campoLong.getField());
-		assertTrue(campoLong.getField() instanceof Long);
-		assertTrue(new Long(1L).compareTo(campoLong.getField()) == 0);
+		assertNotNull(campoLong.getValue());
+		assertTrue(campoLong.getValue() instanceof Long);
+		assertTrue(new Long(1L).compareTo(campoLong.getValue()) == 0);
 		
 		campoDecimal.read("00000523676");
-		assertNotNull(campoDecimal.getField());
-		assertTrue(campoDecimal.getField() instanceof BigDecimal);
-		assertTrue(new BigDecimal("5236.76").compareTo(campoDecimal.getField()) == 0);
+		assertNotNull(campoDecimal.getValue());
+		assertTrue(campoDecimal.getValue() instanceof BigDecimal);
+		assertTrue(new BigDecimal("5236.76").compareTo(campoDecimal.getValue()) == 0);
 		
 		campoDecimal_v9.read("00000523676");
-		assertNotNull(campoDecimal_v9.getField());
-		assertTrue(campoDecimal_v9.getField() instanceof BigDecimal);
-		assertTrue(new BigDecimal("52367.6").compareTo(campoDecimal_v9.getField()) == 0);
+		assertNotNull(campoDecimal_v9.getValue());
+		assertTrue(campoDecimal_v9.getValue() instanceof BigDecimal);
+		assertTrue(new BigDecimal("52367.6").compareTo(campoDecimal_v9.getValue()) == 0);
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
@@ -159,7 +159,7 @@ public class TestField {
 		assertEquals("220707", campoDate.write());
 		assertEquals(6, campoDate.write().length());
 		
-		campoDate.setField(DateUtil.DATE_NULL);
+		campoDate.setValue(DateUtil.DATE_NULL);
 		campoDate.setFiller(Filler.ZERO_LEFT);
 		assertNotNull(campoDate.write());
 		assertEquals("000000", campoDate.write());
@@ -198,7 +198,7 @@ public class TestField {
 	@Test(expected=IllegalArgumentException.class)
 	public void testSetCampo() {
 
-		campoInteger.setField(null);
+		campoInteger.setValue(null);
 	}
 
 	@Test(expected=IllegalArgumentException.class)

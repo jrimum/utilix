@@ -73,43 +73,43 @@ public class Field <G> implements ITextStream {
 	/**
 	 * 
 	 */
-	private G field;
+	private G value;
 	
 	/**
-	 * Formatador utilizado na leitura e na escrita do field. <br/> - Na leitura para realizar o <code>parse</code> da String.<br/> - Na escrita para transformar o objeto em uma String e assim ser possível tratá-la para ser escrita.
+	 * Formatador utilizado na leitura e na escrita do value. <br/> - Na leitura para realizar o <code>parse</code> da String.<br/> - Na escrita para transformar o objeto em uma String e assim ser possível tratá-la para ser escrita.
 	 * 
 	 */
 	private Format format;
 	
 	/**
-	 * Preenchedor do field utilizado na hora da escrita.
+	 * Preenchedor do value utilizado na hora da escrita.
 	 */
 	private Filler<?> filler;
 	
 	/**
 	 * Cria um <code>Field</code> sem um formatador. Isto significa que a leitura da String 
 	 * pelo objeto criado será como uma atribuição simples. 
-	 * @param field
-	 * @param length Tamanho que o field deve possuir.
+	 * @param value
+	 * @param length Tamanho que o value deve possuir.
 	 */
 	public Field(G field, Integer length){
 		
-		setField(field);
+		setValue(field);
 		setLength(length);
 	}
 	
 	/**
 	 * Cria um <code>Field</code> com um formatador. Isto significa que a leitura da String pelo
 	 * objeto criado será de acordo com o formatador.
-	 * @param field
+	 * @param value
 	 * @param length
-	 * @param format Formatador que irá formatar a String fornecida na leitura para o field 
+	 * @param format Formatador que irá formatar a String fornecida na leitura para o value 
 	 * especificado.
 	 */
 	public Field(G field, Integer length, Format format){
 		
 		setLength(length);
-		setField(field);
+		setValue(field);
 		setFormat(format);
 	}
 	
@@ -117,21 +117,21 @@ public class Field <G> implements ITextStream {
 	 * Cria um <code>Field</code> com um preenchedor. Este preenchedor é utilizado na escrita do 
 	 * <code>Field</code> quado é necessário preencher com caracteres especificados até o length definido. 
 	 * 
-	 * @param field
+	 * @param value
 	 * @param length
 	 * @param filler
 	 */
 	public Field(G field, Integer length, Filler<?> filler){
 		
 		setLength(length);
-		setField(field);
+		setValue(field);
 		setFiller(filler);
 	}
 	
 	/**
 	 * Cria um <code>Field</code> com um formatador e com um preenchedor. 
 	 * 
-	 * @param field
+	 * @param value
 	 * @param length
 	 * @param format
 	 * @param filler
@@ -139,47 +139,47 @@ public class Field <G> implements ITextStream {
 	public Field(G field, Integer length, Format format, Filler<?> filler){
 		
 		setLength(length);
-		setField(field);
+		setValue(field);
 		setFormat(format);
 		setFiller(filler);
 	}
 	
 
 	/**
-	 * Converte a String fornecida para o field representado pelo objeto.
+	 * Converte a String fornecida para o value representado pelo objeto.
 	 * <br />
 	 * A conversão é realizada a partir do formatador fornecido para o objeto. Se não houver 
-	 * formatador a String fornecida será atribuída como o valor do field.
+	 * formatador a String fornecida será atribuída como o valor do value.
 	 * 
-	 * @param value
+	 * @param valueAsString
 	 */
-	public void read(String value){
+	public void read(String valueAsString){
 		
-		if(isNull(value))
-			throw new IllegalArgumentException("String inválida [ " + value + " ]!");
+		if(isNull(valueAsString))
+			throw new IllegalArgumentException("String inválida [ " + valueAsString + " ]!");
 		
-		if(value.length() != length)
-			throw new IllegalArgumentException("O tamanho da String [ " + value + " ] é incompatível com o especificado [ "+length+" ]!");
+		if(valueAsString.length() != length)
+			throw new IllegalArgumentException("O tamanho da String [ " + valueAsString + " ] é incompatível com o especificado [ "+length+" ]!");
 		
-		if(field instanceof ITextStream){
-			ITextStream reader = (ITextStream) field;
-			reader.read(value);
-		}else if(field instanceof BigDecimal){
+		if(value instanceof ITextStream){
+			ITextStream reader = (ITextStream) value;
+			reader.read(valueAsString);
+		}else if(value instanceof BigDecimal){
 		
-			readDecimalField(value);
-		}else if(field instanceof Date) {
+			readDecimalField(valueAsString);
+		}else if(value instanceof Date) {
 			
-			readDateField(value);
+			readDateField(valueAsString);
 		}else {
 			
-			readStringOrNumericField(value);
+			readStringOrNumericField(valueAsString);
 		}
 	}
 
 	@SuppressWarnings("unchecked")
-	private void readStringOrNumericField(String value) {
+	private void readStringOrNumericField(String valueAsString) {
 		
-		Class<?> c = field.getClass();
+		Class<?> c = value.getClass();
 
 		for (Constructor<?> cons : c.getConstructors()) {
 
@@ -187,16 +187,16 @@ public class Field <G> implements ITextStream {
 				if (cons.getParameterTypes()[0].equals(String.class)){
 					try {
 						
-						field = (G) cons.newInstance(value);
+						value = (G) cons.newInstance(valueAsString);
 
 					} catch (IllegalArgumentException e) {
-						errorG(e, value).printStackTrace();
+						errorG(e, valueAsString).printStackTrace();
 					} catch (InstantiationException e) {
-						errorG(e, value).printStackTrace();
+						errorG(e, valueAsString).printStackTrace();
 					} catch (IllegalAccessException e) {
-						errorG(e, value).printStackTrace();
+						errorG(e, valueAsString).printStackTrace();
 					} catch (InvocationTargetException e) {
-						errorG(e, value).printStackTrace();
+						errorG(e, valueAsString).printStackTrace();
 					}
 				}
 			}
@@ -204,35 +204,35 @@ public class Field <G> implements ITextStream {
 	}
 
 	@SuppressWarnings("unchecked")
-	private void readDateField(String value){
+	private void readDateField(String valueAsString){
 		
 		try {
 			
-			field = (G) format.parseObject(value);
+			value = (G) format.parseObject(valueAsString);
 		} 
 		catch (ParseException e) {
 			
-			errorG(e, value);
+			errorG(e, valueAsString);
 		}
 	}
 
 	@SuppressWarnings("unchecked")
-	private void readDecimalField(String value){
+	private void readDecimalField(String valueAsString){
 		
 		DecimalFormat decimalFormat = (DecimalFormat) format;
 		
 		try {
 			
-			Long parsedValue = (Long) format.parseObject(value);
+			Long parsedValue = (Long) format.parseObject(valueAsString);
 			BigDecimal decimalValue = new BigDecimal(parsedValue.longValue());
 			decimalValue = decimalValue.movePointLeft(decimalFormat.getMaximumFractionDigits());
 							
-			field = (G) decimalValue;
+			value = (G) decimalValue;
 			
 		} 
 		catch (ParseException e) {
 			
-			errorG(e, value);
+			errorG(e, valueAsString);
 		}
 	}
 	
@@ -240,57 +240,62 @@ public class Field <G> implements ITextStream {
 		
 		String str = null;
 
-		if (field instanceof ITextStream) {
+		if (value instanceof ITextStream) {
 
-			ITextStream its = (ITextStream) field;
+			ITextStream its = (ITextStream) value;
 
 			str = its.write();
 
-		} else if (field instanceof Date) {
+		} else if (value instanceof Date) {
 
-			Date campoDate = (Date) field;
+			Date campoDate = (Date) value;
 
-			if (campoDate.compareTo(DateUtil.DATE_NULL) == 0)
+			if (campoDate.compareTo(DateUtil.DATE_NULL) == 0) {
 				str = StringUtils.EMPTY;
-
-			else
-				str = format.format(field);
+				
+			} else {
+				str = format.format(value);
+			}
+			
+		} else if (value instanceof BigDecimal) {
+			str = StringUtils.replaceChars(value.toString(), ".", StringUtils.EMPTY);
+			
+		} else {
+			str = value.toString();
 		}
-
-		else if (field instanceof BigDecimal)
-			str = StringUtils.replaceChars(field.toString(), ".", "");
-
-		else
-			str = field.toString();
 
 		str = fill(str);
 
-		if (str.length() != length)
+		if (str.length() != length) {
 			throw new IllegalArgumentException("O campo [ " + str
 					+ " ] é incompatível com o especificado [" + length + "]!");
+		}
 		
 		return StringUtil.eliminateAccent(str).toUpperCase();
 	}
 
 	private String fill(String str) {
 		
-		if(isNotNull(filler))
+		if(isNotNull(filler)) {
 			str = filler.fill(str, length);
+		}
 		
 		return str;
 	}
 
-	public G getField() {
-		return field;
+	public G getValue() {
+		return value;
 	}
 
 	
-	public void setField(G field) {
+	public void setValue(G field) {
 	
-		if (isNotNull(field))
-			this.field = field;
-		else
+		if (isNotNull(field)) {
+			this.value = field;
+			
+		} else {
 			throw new IllegalArgumentException("Campo inválido [" + field + "]!");
+		}
 	
 	}
 
@@ -302,10 +307,12 @@ public class Field <G> implements ITextStream {
 	
 	public void setLength(Integer length) {
 	
-		if (length > 0)
+		if (length > 0) {
 			this.length = length;
-		else
+			
+		} else {
 			throw new IllegalArgumentException("Tamanho inválido [ " + length + " ]!");
+		}
 	
 	}
 	
@@ -316,10 +323,12 @@ public class Field <G> implements ITextStream {
 
 	public void setFormat(Format format) {
 		
-		if (isNotNull(format))
+		if (isNotNull(format)) {
 			this.format = format;
-		else
+			
+		} else {
 			throw new IllegalArgumentException("Formato inválido [ " + format + " ]!");
+		}
 	}
 	
 	public Filler<?> getFiller() {
@@ -328,11 +337,12 @@ public class Field <G> implements ITextStream {
 
 	public void setFiller(Filler<?> filler) {
 		
-		if(isNotNull(filler))
+		if(isNotNull(filler)) {
 			this.filler = filler;
-		
-		else
+			
+		} else {
 			throw new IllegalArgumentException("Filler inválido [ " + filler + " ]!");
+		}
 	}
 	
 	private static Exception errorG(Exception e, String value){		

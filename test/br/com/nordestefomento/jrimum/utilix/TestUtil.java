@@ -12,8 +12,8 @@ public class TestUtil {
 		
 		//>>>
 		assertNotNull(campo);
-		assertTrue(tipo.isInstance(campo.getField()));
-		assertEquals(valorDeEntrada,campo.getField());
+		assertTrue(tipo.isInstance(campo.getValue()));
+		assertEquals(valorDeEntrada,campo.getValue());
 		assertNotNull(campo.write());
 		assertEquals(strEsperada,campo.write());
 		assertTrue(tamanho == campo.getLength());
@@ -24,12 +24,12 @@ public class TestUtil {
 		
 		//<<<
 		campo.read(strDeEntrada);
-		assertTrue(tipo.isInstance(campo.getField()));
+		assertTrue(tipo.isInstance(campo.getValue()));
 		
-		if(campo.getField() instanceof Date)//compareNoFormatoEscrito
+		if(campo.getValue() instanceof Date)//compareNoFormatoEscrito
 			assertEquals(campo.getFormat().format(valorEsperado),campo.write());
 		else
-			assertEquals(valorEsperado,campo.getField());
+			assertEquals(valorEsperado,campo.getValue());
 	
 	}
 	
