@@ -58,7 +58,7 @@ import org.apache.commons.lang.StringUtils;
  * 
  * @version 0.2
  */
-public class Field <G> implements ITextStream {
+public class Field <G> implements TextStream {
 	
 	/**
 	 * 
@@ -161,8 +161,8 @@ public class Field <G> implements ITextStream {
 		if(valueAsString.length() != length)
 			throw new IllegalArgumentException("O tamanho da String [ " + valueAsString + " ] é incompatível com o especificado [ "+length+" ]!");
 		
-		if(value instanceof ITextStream){
-			ITextStream reader = (ITextStream) value;
+		if(value instanceof TextStream){
+			TextStream reader = (TextStream) value;
 			reader.read(valueAsString);
 		}else if(value instanceof BigDecimal){
 		
@@ -240,9 +240,9 @@ public class Field <G> implements ITextStream {
 		
 		String str = null;
 
-		if (value instanceof ITextStream) {
+		if (value instanceof TextStream) {
 
-			ITextStream its = (ITextStream) value;
+			TextStream its = (TextStream) value;
 
 			str = its.write();
 

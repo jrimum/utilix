@@ -57,7 +57,7 @@ import org.apache.log4j.Logger;
  * 
  * @version 0.2
  */
-public abstract class LineOfFields implements ITextStream, List<Field<?>> {
+public abstract class AbstractLineOfFields implements TextStream, List<Field<?>> {
 	
 	//TODO implementar isConsistent para os methods do tipo List em função de fieldsLength e stringLength.
 	
@@ -66,7 +66,7 @@ public abstract class LineOfFields implements ITextStream, List<Field<?>> {
 	 */
 	private static final long serialVersionUID = 9071816265288953266L;
 	
-	private static Logger log = Logger.getLogger(LineOfFields.class);
+	private static Logger log = Logger.getLogger(AbstractLineOfFields.class);
 
 	/**
 	 * 
@@ -88,7 +88,7 @@ public abstract class LineOfFields implements ITextStream, List<Field<?>> {
 	 * @param fieldsLength
 	 * @param stringLength
 	 */
-	public LineOfFields(Integer fieldsLength, Integer stringLength) {
+	public AbstractLineOfFields(Integer fieldsLength, Integer stringLength) {
 		
 		if(log.isTraceEnabled())
 			log.trace("Initializing");

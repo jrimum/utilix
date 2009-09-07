@@ -362,7 +362,7 @@ public class Filler<G> {
 	 * 
 	 * @since
 	 */
-	public String fill(ITextStream tofill, int length){
+	public String fill(TextStream tofill, int length){
 
 		String toFillTemp = null;
 		
