@@ -30,13 +30,14 @@
 
 package br.com.nordestefomento.jrimum.utilix;
 
+import static br.com.nordestefomento.jrimum.utilix.ACurbitaObject.isNotNull;
+
 import org.apache.commons.lang.StringUtils;
 
-import br.com.nordestefomento.jrimum.ACurbitaObject;
 
 /**
  * 
- * Esta classe tem a responsábilidade de prover serviços utilitários
+ * Esta classe tem a responsabilidade de prover serviços utilitários
  * relacionados a manipulação de <code>Strings</code>
  * 
  * 
@@ -50,7 +51,7 @@ import br.com.nordestefomento.jrimum.ACurbitaObject;
  * 
  * @version 0.2
  */
-public class StringUtil extends ACurbitaObject{
+public class StringUtil {
 
 	public static final String WHITE_SPACE = " ";
 	

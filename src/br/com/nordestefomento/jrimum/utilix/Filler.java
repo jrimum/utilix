@@ -30,9 +30,9 @@
 
 package br.com.nordestefomento.jrimum.utilix;
 
+import static br.com.nordestefomento.jrimum.utilix.ACurbitaObject.isNotNull;
 import org.apache.commons.lang.StringUtils;
 
-import br.com.nordestefomento.jrimum.ACurbitaObject;
 
 /**
  * <p>
@@ -64,7 +64,7 @@ import br.com.nordestefomento.jrimum.ACurbitaObject;
  * @version 0.2
  *
  */
-public class Filler<G> extends ACurbitaObject{
+public class Filler<G> {
 	
 	/**
 	 * 

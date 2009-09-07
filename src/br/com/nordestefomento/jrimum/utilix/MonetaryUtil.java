@@ -34,9 +34,8 @@ import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-import br.com.nordestefomento.jrimum.ACurbitaObject;
 
-public class MonetaryUtil extends ACurbitaObject{
+public class MonetaryUtil {
 	
 	/**
 	 * 

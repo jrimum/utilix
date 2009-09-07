@@ -29,13 +29,14 @@
 
 package br.com.nordestefomento.jrimum.utilix;
 
+import static br.com.nordestefomento.jrimum.utilix.ACurbitaObject.isNull;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
 import org.apache.commons.lang.time.DateUtils;
 
-import br.com.nordestefomento.jrimum.ACurbitaObject;
 import br.com.nordestefomento.jrimum.JRimumException;
 
 /**
@@ -53,7 +54,7 @@ import br.com.nordestefomento.jrimum.JRimumException;
  * 
  * @version 0.2
  */
-public class BancoUtil extends ACurbitaObject {
+public class BancoUtil {
 
 	/**
 	 * 

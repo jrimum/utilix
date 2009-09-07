@@ -30,6 +30,8 @@
 
 package br.com.nordestefomento.jrimum.utilix;
 
+import static br.com.nordestefomento.jrimum.utilix.ACurbitaObject.isNotNull;
+
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -47,8 +49,6 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import br.com.nordestefomento.jrimum.ACurbitaObject;
-
 /**
  * 
  * Descrição:
@@ -64,7 +64,7 @@ import br.com.nordestefomento.jrimum.ACurbitaObject;
  * 
  * @version 0.2
  */
-public class FileUtil extends ACurbitaObject{
+public class FileUtil {
 	
 	//TODO Criar Metodo que recebe um arquivo e coisas para verificar nele, como: (isVazio,Numero de linhas, etc)
 	

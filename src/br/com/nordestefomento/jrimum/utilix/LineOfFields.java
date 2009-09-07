@@ -30,6 +30,8 @@
 
 package br.com.nordestefomento.jrimum.utilix;
 
+import static br.com.nordestefomento.jrimum.utilix.ACurbitaObject.isNotNull;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -37,8 +39,8 @@ import java.util.List;
 import java.util.ListIterator;
 
 import org.apache.commons.lang.StringUtils;
+import org.apache.log4j.Logger;
 
-import br.com.nordestefomento.jrimum.ACurbitaObject;
 
 /**
  * 
@@ -55,10 +57,17 @@ import br.com.nordestefomento.jrimum.ACurbitaObject;
  * 
  * @version 0.2
  */
-public abstract class LineOfFields extends ACurbitaObject implements ITextStream, List<Field<?>>{
+public abstract class LineOfFields implements ITextStream, List<Field<?>> {
 	
 	//TODO implementar isConsistent para os methods do tipo List em função de fieldsLength e stringLength.
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 9071816265288953266L;
+	
+	private static Logger log = Logger.getLogger(LineOfFields.class);
+
 	/**
 	 * 
 	 */

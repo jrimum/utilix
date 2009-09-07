@@ -29,6 +29,8 @@
 
 package br.com.nordestefomento.jrimum.utilix;
 
+import static br.com.nordestefomento.jrimum.utilix.ACurbitaObject.isNotNull;
+
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -37,7 +39,6 @@ import java.util.Date;
 
 import org.apache.commons.lang.time.DateUtils;
 
-import br.com.nordestefomento.jrimum.ACurbitaObject;
 
 /**
  * 
@@ -55,7 +56,7 @@ import br.com.nordestefomento.jrimum.ACurbitaObject;
  * 
  * @version 0.2
  */
-public class DateUtil  extends ACurbitaObject{
+public class DateUtil {
 	
 	/**
 	 * 

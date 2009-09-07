@@ -27,8 +27,10 @@
  * 
  */
 
-
 package br.com.nordestefomento.jrimum.utilix;
+
+import static br.com.nordestefomento.jrimum.utilix.ACurbitaObject.isNotNull;
+import static br.com.nordestefomento.jrimum.utilix.ACurbitaObject.isNull;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -39,8 +41,6 @@ import java.text.ParseException;
 import java.util.Date;
 
 import org.apache.commons.lang.StringUtils;
-
-import br.com.nordestefomento.jrimum.ACurbitaObject;
 
 
 /**
@@ -58,7 +58,7 @@ import br.com.nordestefomento.jrimum.ACurbitaObject;
  * 
  * @version 0.2
  */
-public class Field <G> extends ACurbitaObject implements ITextStream{
+public class Field <G> implements ITextStream {
 	
 	/**
 	 * 
