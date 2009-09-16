@@ -489,6 +489,8 @@ public class FileUtil {
 			
 			try {
 				
+				lines = new ArrayList<String>();
+				
 				BufferedReader reader = new BufferedReader(new FileReader(file));
 
 				String s;
