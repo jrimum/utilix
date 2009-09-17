@@ -38,15 +38,15 @@ public interface ReadWriteStream <G> extends Serializable{
 	/**
 	 * Escreve o tipo infomado.
 	 * 
-	 * @return
+	 * @return Um valor no mesmo tipo do tipo parametrizado
 	 */
 	public abstract G write();
 	
 	
 	/**
-	 * Ler o tipo informado.
+	 * Lê o tipo informado.
 	 * 
-	 * @param g
+	 * @param g - valor a ser lido
 	 */
 	public abstract void read(G g);
 

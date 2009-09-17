@@ -113,8 +113,7 @@ public class PDFUtil {
 	/**
 	 * Junta varios arquivos pdf em um soh.
 	 * 
-	 * @param Lista
-	 *            de arquivos pdf
+	 * @param pdfFiles Lista de array de bytes
 	 * 
 	 * @return Arquivo PDF em forma de byte
 	 */

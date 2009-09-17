@@ -105,7 +105,6 @@ public class DateUtil {
 	 * </p>
 	 * 
 	 * @param dateAsString - um valor de data em forma de <code>String</code>.
-	 * @param dateFormat - formato de data
 	 * @return Objeto <code>java.util.Date</code> convertido a partir do objeto <code>String</code>
 	 * 
 	 * @throws IllegalArgumentException caso o objeto <code>String</code> não seja um valor válido

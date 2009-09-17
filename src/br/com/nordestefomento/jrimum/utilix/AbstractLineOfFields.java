@@ -442,7 +442,7 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	}
 
 	/**
-	 * @see java.util.List#toArray(T[])
+	 * @see java.util.List#toArray(Object[])
 	 */
 
 	public <T> T[] toArray(T[] a) {

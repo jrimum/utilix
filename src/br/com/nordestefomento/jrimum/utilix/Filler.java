@@ -116,7 +116,7 @@ public class Filler<G> {
 	}
 
 	/**
-	 * @param filler
+	 * @param fillWith valor que preenche o real valor do campo
 	 */
 	public void setFillWith(G fillWith) {
 		
@@ -128,14 +128,14 @@ public class Filler<G> {
 	}
 
 	/**
-	 * @return
+	 * @return enum SideToFill
 	 */
 	public SideToFill getSideToFill() {
 		return sideToFill;
 	}
 
 	/**
-	 * @param sideToFill
+	 * @param sideToFill enum com a informaçao de qual lado a ser preenchido
 	 */
 	public void setSideToFill(SideToFill sideToFill) {
 		
@@ -157,9 +157,9 @@ public class Filler<G> {
 	 * no lado esquerdo até que o campo fique com o tamanho que foi definido.
 	 * </p>
 	 * 
-	 * @param toFill
-	 * @param length
-	 * @return
+	 * @param toFill String a ser preenchida
+	 * @param length tamanho máximo que a String deve ter depois de preenchida
+	 * @return Nova String preenchida de acordo com o preenchedor do objeto até o tamanho especificado
 	 */
 	public String fill(String toFill, int length){
 		
@@ -186,16 +186,14 @@ public class Filler<G> {
 	 * <code>toFill</code> como <code>String.valueOf(toFill)</code>.
 	 * </p>
 	 * 
-	 * @param tofill
-	 * @param length
-	 * @return
+	 * @param toFill Valor a ser preenchido
+	 * @param length tamanho máximo que o valor deve ter depois de preenchido
+	 * @return Nova String preenchida de acordo com o preenchedor do objeto até o tamanho especificado
 	 * 
 	 * @see Filler#fill(String, int)
-	 * 
-	 * @since
 	 */
-	public String fill(long tofill, int length){
-		return fill(String.valueOf(tofill), length);
+	public String fill(long toFill, int length){
+		return fill(String.valueOf(toFill), length);
 	}
 	
 	/**
@@ -205,16 +203,14 @@ public class Filler<G> {
 	 * <code>toFill</code> como <code>String.valueOf(toFill)</code>.
 	 * </p>
 	 * 
-	 * @param tofill
-	 * @param length
-	 * @return
+	 * @param toFill Valor a ser preenchido
+	 * @param length tamanho máximo que o valor deve ter depois de preenchido
+	 * @return Nova String preenchida de acordo com o preenchedor do objeto até o tamanho especificado
 	 * 
 	 * @see Filler#fill(String, int)
-	 * 
-	 * @since
 	 */
-	public String fill(int tofill, int length){
-		return fill(String.valueOf(tofill), length);
+	public String fill(int toFill, int length){
+		return fill(String.valueOf(toFill), length);
 	}
 	
 	/**
@@ -224,16 +220,14 @@ public class Filler<G> {
 	 * <code>toFill</code> como <code>String.valueOf(toFill)</code>.
 	 * </p>
 	 * 
-	 * @param tofill
-	 * @param length
-	 * @return
+	 * @param toFill Valor a ser preenchido
+	 * @param length tamanho máximo que o valor deve ter depois de preenchido
+	 * @return Nova String preenchida de acordo com o preenchedor do objeto até o tamanho especificado
 	 * 
 	 * @see Filler#fill(String, int)
-	 * 
-	 * @since
 	 */
-	public String fill(short tofill, int length){
-		return fill(String.valueOf(tofill), length);
+	public String fill(short toFill, int length){
+		return fill(String.valueOf(toFill), length);
 	}
 	
 	/**
@@ -243,16 +237,14 @@ public class Filler<G> {
 	 * <code>toFill</code> como <code>String.valueOf(toFill)</code>.
 	 * </p>
 	 * 
-	 * @param tofill
-	 * @param length
-	 * @return
+	 * @param toFill Valor a ser preenchido
+	 * @param length tamanho máximo que o valor deve ter depois de preenchido
+	 * @return Nova String preenchida de acordo com o preenchedor do objeto até o tamanho especificado
 	 * 
 	 * @see Filler#fill(String, int)
-	 * 
-	 * @since
 	 */
-	public String fill(byte tofill, int length){
-		return fill(String.valueOf(tofill), length);
+	public String fill(byte toFill, int length){
+		return fill(String.valueOf(toFill), length);
 	}
 	
 	/**
@@ -262,16 +254,14 @@ public class Filler<G> {
 	 * <code>toFill</code> como <code>String.valueOf(toFill)</code>.
 	 * </p>
 	 * 
-	 * @param tofill
-	 * @param length
-	 * @return
+	 * @param toFill Valor a ser preenchido
+	 * @param length tamanho máximo que o valor deve ter depois de preenchido
+	 * @return Nova String preenchida de acordo com o preenchedor do objeto até o tamanho especificado
 	 * 
 	 * @see Filler#fill(String, int)
-	 * 
-	 * @since
 	 */
-	public String fill(char tofill, int length){
-		return fill(String.valueOf(tofill), length);
+	public String fill(char toFill, int length){
+		return fill(String.valueOf(toFill), length);
 	}
 	
 	/**
@@ -281,16 +271,14 @@ public class Filler<G> {
 	 * <code>toFill</code> como <code>String.valueOf(toFill)</code>.
 	 * </p>
 	 * 
-	 * @param tofill
-	 * @param length
-	 * @return
+	 * @param toFill Valor a ser preenchido
+	 * @param length tamanho máximo que o valor deve ter depois de preenchido
+	 * @return Nova String preenchida de acordo com o preenchedor do objeto até o tamanho especificado
 	 * 
 	 * @see Filler#fill(String, int)
-	 * 
-	 * @since
 	 */
-	public String fill(double tofill, int length){
-		return fill(String.valueOf(tofill), length);
+	public String fill(double toFill, int length){
+		return fill(String.valueOf(toFill), length);
 	}
 	
 	/**
@@ -300,16 +288,14 @@ public class Filler<G> {
 	 * <code>toFill</code> como <code>String.valueOf(toFill)</code>.
 	 * </p>
 	 * 
-	 * @param tofill
-	 * @param length
-	 * @return
+	 * @param toFill Valor a ser preenchido
+	 * @param length tamanho máximo que o valor deve ter depois de preenchido
+	 * @return Nova String preenchida de acordo com o preenchedor do objeto até o tamanho especificado
 	 * 
 	 * @see Filler#fill(String, int)
-	 * 
-	 * @since
 	 */
-	public String fill(float tofill, int length){
-		return fill(String.valueOf(tofill), length);
+	public String fill(float toFill, int length){
+		return fill(String.valueOf(toFill), length);
 	}
 	
 	/**
@@ -324,20 +310,19 @@ public class Filler<G> {
 	 * <code>fill(String, int)</code> receberá uma String nula como parâmetro.
 	 * </p>
 	 * 
-	 * @param tofill
-	 * @param length
-	 * @return
+	 * @param toFill Valor a ser preenchido
+	 * @param length tamanho máximo que o valor deve ter depois de preenchido
+	 * @return Nova String preenchida de acordo com o preenchedor do objeto até o tamanho especificado
 	 * 
 	 * @see Filler#fill(String, int)
-	 * 
-	 * @since
 	 */
-	public String fill(Object tofill, int length){
+	public String fill(Object toFill, int length){
 		
 		String toFillTemp = null;
 		
-		if(isNotNull(tofill))
-			toFillTemp = tofill.toString();
+		if (isNotNull(toFill)) {
+			toFillTemp = toFill.toString();
+		}
 		
 		return fill(toFillTemp, length);
 	}
@@ -354,28 +339,28 @@ public class Filler<G> {
 	 * <code>fill(String, int)</code> receberá uma String nula como parâmetro.
 	 * </p>
 	 * 
-	 * @param tofill
-	 * @param length
-	 * @return
+	 * @param toFill Valor a ser preenchido
+	 * @param length tamanho máximo que o valor deve ter depois de preenchido
+	 * @return Nova String preenchida de acordo com o preenchedor do objeto até o tamanho especificado
 	 * 
 	 * @see Filler#fill(String, int)
-	 * 
-	 * @since
 	 */
-	public String fill(TextStream tofill, int length){
+	public String fill(TextStream toFill, int length){
 
 		String toFillTemp = null;
 		
-		if(isNotNull(tofill))
-			toFillTemp = tofill.write();
+		if(isNotNull(toFill))
+			toFillTemp = toFill.write();
 		
 		return fill(toFillTemp, length);
 	}
 	
 	/**
-	 * @param toFill
-	 * @param length
-	 * @return
+	 * Preenche a String a direita com valor do atributo "fillWith"
+	 * 
+	 * @param toFill Valor a ser preenchido
+	 * @param length tamanho máximo que o valor deve ter depois de preenchido
+	 * @return Nova String preenchida de acordo com o preenchedor do objeto até o tamanho especificado
 	 */
 	private String fillRight(String toFill, int length) {
 		
@@ -383,9 +368,11 @@ public class Filler<G> {
 	}
 
 	/**
-	 * @param toFill
-	 * @param length
-	 * @return
+	 * Preenche a String a direita com valor do atributo "fillWith"
+	 * 
+	 * @param toFill Valor a ser preenchido
+	 * @param length tamanho máximo que o valor deve ter depois de preenchido
+	 * @return Nova String preenchida de acordo com o preenchedor do objeto até o tamanho especificado
 	 */
 	private String fillLeft(String toFill, int length) {
 		

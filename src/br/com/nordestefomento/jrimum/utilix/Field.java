@@ -89,27 +89,27 @@ public class Field <G> implements TextStream {
 	/**
 	 * Cria um <code>Field</code> sem um formatador. Isto significa que a leitura da String 
 	 * pelo objeto criado será como uma atribuição simples. 
-	 * @param value
+	 * @param value Valor do campo
 	 * @param length Tamanho que o value deve possuir.
 	 */
-	public Field(G field, Integer length){
+	public Field(G value, Integer length){
 		
-		setValue(field);
+		setValue(value);
 		setLength(length);
 	}
 	
 	/**
 	 * Cria um <code>Field</code> com um formatador. Isto significa que a leitura da String pelo
 	 * objeto criado será de acordo com o formatador.
-	 * @param value
-	 * @param length
+	 * @param value Valor do campo
+	 * @param length tamanho do campo
 	 * @param format Formatador que irá formatar a String fornecida na leitura para o value 
 	 * especificado.
 	 */
-	public Field(G field, Integer length, Format format){
+	public Field(G value, Integer length, Format format){
 		
 		setLength(length);
-		setValue(field);
+		setValue(value);
 		setFormat(format);
 	}
 	
@@ -117,29 +117,30 @@ public class Field <G> implements TextStream {
 	 * Cria um <code>Field</code> com um preenchedor. Este preenchedor é utilizado na escrita do 
 	 * <code>Field</code> quado é necessário preencher com caracteres especificados até o length definido. 
 	 * 
-	 * @param value
-	 * @param length
-	 * @param filler
+	 * @param value valor do campo
+	 * @param length tamaho do campo
+	 * @param filler preenchedor
 	 */
-	public Field(G field, Integer length, Filler<?> filler){
+	public Field(G value, Integer length, Filler<?> filler){
 		
 		setLength(length);
-		setValue(field);
+		setValue(value);
 		setFiller(filler);
 	}
 	
 	/**
 	 * Cria um <code>Field</code> com um formatador e com um preenchedor. 
 	 * 
-	 * @param value
-	 * @param length
-	 * @param format
-	 * @param filler
+	 * @param value Valor do campo
+	 * @param length Tamanho do campo
+	 * @param format Formatador que irá formatar a String fornecida na leitura para o value 
+	 * especificado.
+	 * @param filler preenchedor
 	 */
-	public Field(G field, Integer length, Format format, Filler<?> filler){
+	public Field(G value, Integer length, Format format, Filler<?> filler){
 		
 		setLength(length);
-		setValue(field);
+		setValue(value);
 		setFormat(format);
 		setFiller(filler);
 	}
@@ -151,26 +152,31 @@ public class Field <G> implements TextStream {
 	 * A conversão é realizada a partir do formatador fornecido para o objeto. Se não houver 
 	 * formatador a String fornecida será atribuída como o valor do value.
 	 * 
-	 * @param valueAsString
+	 * @param valueAsString valor do campo como uma String
 	 */
 	public void read(String valueAsString){
 		
-		if(isNull(valueAsString))
+		if (isNull(valueAsString)) {
 			throw new IllegalArgumentException("String inválida [ " + valueAsString + " ]!");
+		}
 		
-		if(valueAsString.length() != length)
+		if (valueAsString.length() != length) {
 			throw new IllegalArgumentException("O tamanho da String [ " + valueAsString + " ] é incompatível com o especificado [ "+length+" ]!");
+		}
 		
-		if(value instanceof TextStream){
+		if (value instanceof TextStream) {
 			TextStream reader = (TextStream) value;
 			reader.read(valueAsString);
-		}else if(value instanceof BigDecimal){
+			
+		} else if (value instanceof BigDecimal) {
 		
-			readDecimalField(valueAsString);
-		}else if(value instanceof Date) {
+		 	readDecimalField(valueAsString);
+		 	
+		} else if (value instanceof Date) {
 			
 			readDateField(valueAsString);
-		}else {
+			
+		} else {
 			
 			readStringOrNumericField(valueAsString);
 		}

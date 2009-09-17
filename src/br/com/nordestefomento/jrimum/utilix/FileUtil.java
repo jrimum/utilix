@@ -87,7 +87,7 @@ public class FileUtil {
 	 * Retorna o conteúdo de um arquivo em um array de bytes.
 	 * 
 	 * @param file
-	 * @return
+	 * @return Array de bytes com o conteúdo de um File
 	 * @throws IOException
 	 */
 	public static byte[] bytesFromFile(File file) throws IOException {
@@ -142,7 +142,7 @@ public class FileUtil {
 	 * 
 	 * @param pathName
 	 * @param bytes
-	 * @return
+	 * @return Objeto File com o conteúdo sendo o dos bytes
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 */

@@ -33,11 +33,9 @@ import java.util.Locale;
 
 /**
  * 
- * @author Rômulo
+ * @author Rômulo Augusto
  * 
- * @since 
- * 
- * @version 
+ * @version 0.2
  */
 public class LocaleUtil {
 
