@@ -9,14 +9,14 @@ import org.junit.Test;
 
 import br.com.nordestefomento.jrimum.JRimumException;
 
-public class TestUtil4Banco {
+public class TestBancoUtil {
 
 	GregorianCalendar data = new GregorianCalendar();
 	
 	@Test(expected=JRimumException.class)
 	public void testCalculeFatorDeVencimentoDataNull() {
 		
-		Util4Banco.calculceFatorDeVencimento(null);
+		BancoUtil.calculceFatorDeVencimento(null);
 	}
 	
 	@Test(expected=JRimumException.class)
@@ -24,7 +24,7 @@ public class TestUtil4Banco {
 		
 		data.set(1997, Calendar.JANUARY, 1);
 		
-		Util4Banco.calculceFatorDeVencimento(data.getTime());
+		BancoUtil.calculceFatorDeVencimento(data.getTime());
 	}
 	
 	@Test(expected=JRimumException.class)
@@ -32,20 +32,20 @@ public class TestUtil4Banco {
 		
 		data.set(2025, Calendar.FEBRUARY, 22);
 		
-		Util4Banco.calculceFatorDeVencimento(data.getTime());
+		BancoUtil.calculceFatorDeVencimento(data.getTime());
 	}
 	
 	@Test
 	public final void testCalculceFatorDeVencimento() {
 		
 		data.set(2000, Calendar.JULY, 3);
-		assertEquals(1000, Util4Banco.calculceFatorDeVencimento(data.getTime()));
+		assertEquals(1000, BancoUtil.calculceFatorDeVencimento(data.getTime()));
 		
 		data.set(2000, Calendar.JULY, 5);
-		assertEquals(1002, Util4Banco.calculceFatorDeVencimento(data.getTime()));
+		assertEquals(1002, BancoUtil.calculceFatorDeVencimento(data.getTime()));
 		
 		data.set(2025, Calendar.FEBRUARY, 21);
-		assertEquals(9999, Util4Banco.calculceFatorDeVencimento(data.getTime()));		
+		assertEquals(9999, BancoUtil.calculceFatorDeVencimento(data.getTime()));		
 	}
 
 }

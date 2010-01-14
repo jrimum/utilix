@@ -27,15 +27,17 @@
  * 
  */
 
+
 package br.com.nordestefomento.jrimum.utilix;
+
+import static br.com.nordestefomento.jrimum.utilix.ObjectUtil.isNotNull;
 
 import org.apache.commons.lang.StringUtils;
 
-import br.com.nordestefomento.jrimum.ACurbitaObject;
 
 /**
  * 
- * Esta classe tem a responsábilidade de prover serviços utilitários
+ * Esta classe tem a responsabilidade de prover serviços utilitários
  * relacionados a manipulação de <code>Strings</code>
  * 
  * 
@@ -49,7 +51,7 @@ import br.com.nordestefomento.jrimum.ACurbitaObject;
  * 
  * @version 0.2
  */
-public final class Util4String extends ACurbitaObject {
+public class StringUtil {
 
 	public static final String WHITE_SPACE = " ";
 	
@@ -61,7 +63,7 @@ public final class Util4String extends ACurbitaObject {
 	/**
 	 * Construtor privado que previne a instanciação da classe até por reflection
 	 */
-	private Util4String() {
+	private StringUtil() {
 		throw new AssertionError();
 	}
 	
@@ -129,20 +131,21 @@ public final class Util4String extends ACurbitaObject {
 		
 	public static String removeStartWithZeros(final String str){
 		
-		String withoutZeros = StringUtils.EMPTY; 
+		String withoutZeros = StringUtils.EMPTY;
+		final String zero = "0";
 		
-		if(isNotNull(str)){
+		if (isNotNull(str)) {
 			
-			if(StringUtils.startsWith(str, "0")){
+			if (StringUtils.startsWith(str, zero)) {
 				
-				withoutZeros = StringUtils.removeStart(str, "0");
+				withoutZeros = StringUtils.removeStart(str, zero);
 				
-				while(StringUtils.startsWith(withoutZeros, "0")) {
-					withoutZeros = StringUtils.removeStart(withoutZeros, "0");
+				while (StringUtils.startsWith(withoutZeros, zero)) {
+					withoutZeros = StringUtils.removeStart(withoutZeros, zero);
 				}
 				
 				if(withoutZeros.trim().length() == 0) {
-					withoutZeros = "0";
+					withoutZeros = zero;
 				}
 				
 			} else {

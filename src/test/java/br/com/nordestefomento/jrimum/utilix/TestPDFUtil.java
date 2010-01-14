@@ -10,7 +10,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  * 
- * Created at: 04/04/2009 - 10:34:47
+ * Created at: 30/03/2008 - 23:49:00
  *
  * ================================================================================
  *
@@ -24,39 +24,51 @@
  * expressas ou tácitas. Veja a LICENÇA para a redação específica a reger permissões 
  * e limitações sob esta LICENÇA.
  * 
- * Criado em: 04/04/2009 - 10:34:47
+ * Criado em: 30/03/2008 - 23:49:00
  * 
  */
+
 package br.com.nordestefomento.jrimum.utilix;
 
-import java.util.Locale;
+import static org.junit.Assert.*;
 
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
-/**
- * 
- * <p>
- * DEFINIÇÃO DA CLASSE
- * </p>
- * 
- * <p>
- * OBJETIVO/PROPÓSITO
- * </p>
- * 
- * <p>
- * EXEMPLO:
- * </p> 
- * 
- * @author Rômulo
- * 
- * @since 
- * 
- * @version 
- */
-public class Util4Locales {
+public class TestPDFUtil {
 
-	public static final Locale PORTUGUESE = new Locale("pt");
-	
-	public static final Locale PORTUGAL = new Locale("pt", "PT");
-	
-	public static final Locale BRAZIL = new Locale("pt", "BR");
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
+	}
+
+	@AfterClass
+	public static void tearDownAfterClass() throws Exception {
+	}
+
+	@Before
+	public void setUp() throws Exception {
+	}
+
+	@After
+	public void tearDown() throws Exception {
+	}
+
+	@Test
+	public void testChangeField2ImagePdfStamperFloatArrayImage() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testChangeField2ImagePdfStamperRectanglePDFImage() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testMergeFiles() {
+		fail("Not yet implemented");
+	}
+
 }

@@ -9,7 +9,7 @@
  * OF ANY KIND, either express or implied. See the License for the specific
  * language governing permissions and limitations under the License.
  * 
- * Created at: 30/03/2008 - 18:17:10
+ * Created at: 30/03/2008 - 18:17:20
  * 
  * ================================================================================
  * 
@@ -23,31 +23,28 @@
  * TIPO, sejam expressas ou tácitas. Veja a LICENÇA para a redação específica a
  * reger permissões e limitações sob esta LICENÇA.
  * 
- * Criado em: 30/03/2008 - 18:17:10
+ * Criado em: 30/03/2008 - 18:17:20
  * 
  */
 
 
 package br.com.nordestefomento.jrimum.utilix;
 
-import java.io.Serializable;
-
-public interface IReadWriteStream <G> extends Serializable{
+/**
+ * 
+ * Interface usada para objetos com serviços de leitura e escrita de textos. 
+ * 
+ * 
+ * @author <a href="http://gilmatryx.googlepages.com/">Gilmar P.S.L</a>
+ * @author Misael Barreto
+ * @author Rômulo Augusto
+ * @author <a href="http://www.nordeste-fomento.com.br">Nordeste Fomento
+ *         Mercantil</a>
+ * 
+ * @since 0.2
+ * 
+ * @version 0.2
+ */
+public interface TextStream extends ReadWriteStream<String> {
 	
-	
-	/**
-	 * Escreve o tipo infomado.
-	 * 
-	 * @return
-	 */
-	public abstract G write();
-	
-	
-	/**
-	 * Ler o tipo informado.
-	 * 
-	 * @param g
-	 */
-	public abstract void read(G g);
-
 }

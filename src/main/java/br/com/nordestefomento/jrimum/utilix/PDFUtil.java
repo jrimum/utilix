@@ -30,13 +30,13 @@
 	
 package br.com.nordestefomento.jrimum.utilix;
 
+import static br.com.nordestefomento.jrimum.utilix.ObjectUtil.isNotNull;
+
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
-
-import br.com.nordestefomento.jrimum.ACurbitaObject;
 
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
@@ -68,14 +68,15 @@ import com.lowagie.text.pdf.SimpleBookmark;
  * 
  * @version 0.2 
  */
-public class Util4PDF extends ACurbitaObject{
+
+public class PDFUtil {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	protected static final Logger LOG = Logger.getLogger(Util4PDF.class);
+	protected static final Logger LOG = Logger.getLogger(PDFUtil.class);
 
 	public static RectanglePDF changeField2Image(PdfStamper stamper, float[] positions , Image image) throws DocumentException{
 						
@@ -112,8 +113,7 @@ public class Util4PDF extends ACurbitaObject{
 	/**
 	 * Junta varios arquivos pdf em um soh.
 	 * 
-	 * @param Lista
-	 *            de arquivos pdf
+	 * @param pdfFiles Lista de array de bytes
 	 * 
 	 * @return Arquivo PDF em forma de byte
 	 */

@@ -34,6 +34,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import br.com.nordestefomento.jrimum.utilix.Filler;
 import br.com.nordestefomento.jrimum.utilix.Filler.SideToFill;
 
 public class TestFiller {
@@ -161,7 +162,7 @@ public class TestFiller {
 	@Test
 	public void testFillITextStream() {
 		
-		ITextStream textStream = new ITextStream() {
+		TextStream textStream = new TextStream() {
 
 			private static final long serialVersionUID = 1L;
 

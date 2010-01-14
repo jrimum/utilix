@@ -10,7 +10,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  * 
- * Created at: 30/03/2008 - 23:49:00
+ * Created at: 04/04/2009 - 10:34:47
  *
  * ================================================================================
  *
@@ -24,52 +24,24 @@
  * expressas ou tácitas. Veja a LICENÇA para a redação específica a reger permissões 
  * e limitações sob esta LICENÇA.
  * 
- * Criado em: 30/03/2008 - 23:49:00
+ * Criado em: 04/04/2009 - 10:34:47
  * 
  */
-
 package br.com.nordestefomento.jrimum.utilix;
 
-import static org.junit.Assert.*;
+import java.util.Locale;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+/**
+ * 
+ * @author Rômulo Augusto
+ * 
+ * @version 0.2
+ */
+public class LocaleUtil {
 
-
-public class TestUtil4PDF {
-
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-	}
-
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
-
-	@Before
-	public void setUp() throws Exception {
-	}
-
-	@After
-	public void tearDown() throws Exception {
-	}
-
-	@Test
-	public void testChangeField2ImagePdfStamperFloatArrayImage() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testChangeField2ImagePdfStamperRectanglePDFImage() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testMergeFiles() {
-		fail("Not yet implemented");
-	}
-
+	public static final Locale PORTUGUESE = new Locale("pt");
+	
+	public static final Locale PORTUGAL = new Locale("pt", "PT");
+	
+	public static final Locale BRAZIL = new Locale("pt", "BR");
 }

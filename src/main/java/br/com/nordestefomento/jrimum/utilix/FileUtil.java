@@ -30,6 +30,8 @@
 
 package br.com.nordestefomento.jrimum.utilix;
 
+import static br.com.nordestefomento.jrimum.utilix.ObjectUtil.isNotNull;
+
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -47,8 +49,6 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import br.com.nordestefomento.jrimum.ACurbitaObject;
-
 /**
  * 
  * Descrição:
@@ -64,11 +64,11 @@ import br.com.nordestefomento.jrimum.ACurbitaObject;
  * 
  * @version 0.2
  */
-public class Util4File extends ACurbitaObject{
+public class FileUtil {
 	
 	//TODO Criar Metodo que recebe um arquivo e coisas para verificar nele, como: (isVazio,Numero de linhas, etc)
 	
-	protected static final Logger LOG = Logger.getLogger(Util4File.class);
+	protected static final Logger LOG = Logger.getLogger(FileUtil.class);
 	
 	/**
 	 * 
@@ -87,7 +87,7 @@ public class Util4File extends ACurbitaObject{
 	 * Retorna o conteúdo de um arquivo em um array de bytes.
 	 * 
 	 * @param file
-	 * @return
+	 * @return Array de bytes com o conteúdo de um File
 	 * @throws IOException
 	 */
 	public static byte[] bytesFromFile(File file) throws IOException {
@@ -142,7 +142,7 @@ public class Util4File extends ACurbitaObject{
 	 * 
 	 * @param pathName
 	 * @param bytes
-	 * @return
+	 * @return Objeto File com o conteúdo sendo o dos bytes
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 */
@@ -158,9 +158,8 @@ public class Util4File extends ACurbitaObject{
 			
 			out.write(bytes);
 			out.flush();
-			out.close();	
+			out.close();
 		}
-		
 		
 		return f;
 	}
@@ -489,6 +488,8 @@ public class Util4File extends ACurbitaObject{
 		if(!isEmpty(file)){
 			
 			try {
+				
+				lines = new ArrayList<String>();
 				
 				BufferedReader reader = new BufferedReader(new FileReader(file));
 
