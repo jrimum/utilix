@@ -27,7 +27,6 @@
  * 
  */
 
-
 package br.com.nordestefomento.jrimum.utilix;
 
 import static br.com.nordestefomento.jrimum.utilix.ObjectUtil.isNotNull;
@@ -43,7 +42,9 @@ import org.apache.log4j.Logger;
 
 /**
  * 
- * Descrição:
+ * <p>
+ * Utilitário para manipular arquivos e fluxos de arquivos.
+ * </p>
  * 
  * 
  * @author <a href="http://gilmatryx.googlepages.com/">Gilmar P.S.L</a>
@@ -57,24 +58,10 @@ import org.apache.log4j.Logger;
  * @version 0.2
  */
 public class FileUtil {
-	
-	//TODO Criar Metodo que recebe um arquivo e coisas para verificar nele, como: (isVazio,Numero de linhas, etc)
-	
+
 	protected static final Logger LOG = Logger.getLogger(FileUtil.class);
-	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1227314921804015225L;
-
-	private static final int EOF = -1;
-
-	private static final int CARRIAGE_RETURN = 1;
-
-	private static final int NEXT_LINE = 2;
-	
-	private static final String NEW_LINE = "\r\n";
-
 
 	/**
 	 * <p>
@@ -86,26 +73,28 @@ public class FileUtil {
 	 * @return Objeto File com o conteúdo sendo o dos bytes
 	 * @throws FileNotFoundException
 	 * @throws IOException
+	 * 
+	 * @since 0.2
 	 */
-	public static File bytes2File(String pathName, byte[] bytes) throws FileNotFoundException, IOException {
-		
+	public static File bytes2File(String pathName, byte[] bytes)
+			throws FileNotFoundException, IOException {
+
 		File f = null;
-		
-		if(isNotNull(pathName,"pathName") && isNotNull(bytes,"bytes")){
-			
+
+		if (isNotNull(pathName, "pathName") && isNotNull(bytes, "bytes")) {
+
 			f = new File(pathName);
-			
+
 			OutputStream out = new FileOutputStream(f);
-			
+
 			out.write(bytes);
 			out.flush();
 			out.close();
 		}
-		
+
 		return f;
 	}
-	
-	
+
 	/**
 	 * <p>
 	 * Transforma um array de bytes em um <code>ByteArrayOutputStream</code>.
@@ -115,16 +104,17 @@ public class FileUtil {
 	 * @return ByteArrayOutputStream ou null
 	 * @throws IOException
 	 * 
-	 * @since 
+	 * @since 0.2
 	 */
-	public static ByteArrayOutputStream bytes2Stream(byte[] bytes) throws IOException{
-		
+	public static ByteArrayOutputStream bytes2Stream(byte[] bytes)
+			throws IOException {
+
 		ByteArrayOutputStream byteOut = null;
-		
-		if(isNotNull(bytes,"bytes")){
-			
+
+		if (isNotNull(bytes, "bytes")) {
+
 			byteOut = new ByteArrayOutputStream();
-			
+
 			byteOut.write(bytes);
 		}
 

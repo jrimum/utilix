@@ -39,25 +39,26 @@ import java.util.Date;
 
 import org.apache.commons.lang.time.DateUtils;
 
-
 /**
  * 
- * Esta classe tem a responsabilidade de prover serviços utilitários
- * relacionados a manipulação de Objetos <code>Date, Calendar, GregorianCalendar.</code>
+ * <p>
+ * Serviços utilitários relacionados a manipulação de Objetos
+ * <code>Date, Calendar, GregorianCalendar.</code></p>
  * 
  * 
  * 
  * @author <a href="http://gilmatryx.googlepages.com/">Gilmar P.S.L</a>
- * @author Misael Barreto 
+ * @author Misael Barreto
  * @author Rômulo Augusto
- * @author <a href="http://www.nordeste-fomento.com.br">Nordeste Fomento Mercantil</a>
+ * @author <a href="http://www.nordeste-fomento.com.br">Nordeste Fomento
+ *         Mercantil</a>
  * 
  * @since 0.2
  * 
  * @version 0.2
  */
 public class DateUtil {
-	
+
 	/**
 	 * 
 	 */
@@ -66,162 +67,189 @@ public class DateUtil {
 	/**
 	 * Formatador de datas no padrão dd/MM/yyyy.
 	 */
-	public static final DateFormat FORMAT_DD_MM_YYYY = new SimpleDateFormat("dd/MM/yyyy");
-	
+	public static final DateFormat FORMAT_DD_MM_YYYY = new SimpleDateFormat(
+			"dd/MM/yyyy");
+
 	/**
 	 * Formatador de datas no padrão ddMMyy.
 	 */
-	public static final DateFormat FORMAT_DDMMYY = new SimpleDateFormat("ddMMyy");
-	
+	public static final DateFormat FORMAT_DDMMYY = new SimpleDateFormat(
+			"ddMMyy");
+
 	/**
 	 * Formatador de datas no padrão yyMMdd.
 	 */
-	public static final DateFormat FORMAT_YYMMDD = new SimpleDateFormat("yyMMdd");
-	
+	public static final DateFormat FORMAT_YYMMDD = new SimpleDateFormat(
+			"yyMMdd");
+
 	/**
 	 * Representa uma data inexistente. Usada em casos que não se pode usar
-	 * <code>null</code>.
-	 * <br/>
-	 * É obtida da seguinte forma: <code>new GregorianCalendar(1, 0, 1).getTime()</code>
+	 * <code>null</code>. <br/>
+	 * É obtida da seguinte forma:
+	 * <code>new GregorianCalendar(1, 0, 1).getTime()</code>
 	 */
 	public static final Date DATE_NULL;
-	
+
 	static {
-		
+
 		Calendar calendar = Calendar.getInstance();
 		calendar.set(1, 0, 1);
 		calendar.setLenient(false);
 		DATE_NULL = DateUtils.truncate(calendar.getTime(), Calendar.YEAR);
 	}
-	
+
 	/**
 	 * <p>
-	 * Converte um objeto <code>String</code> em um objeto <code>java.util.Date</code>
-	 * no formato de data padrão brasileiro: dd/MM/yyyy.
+	 * Converte um objeto <code>String</code> em um objeto
+	 * <code>java.util.Date</code> no formato de data padrão brasileiro:
+	 * dd/MM/yyyy.
 	 * </p>
-	 * <p> 
-	 * Utiliza a sobrecarca <code>parse(String dateAsString, DateFormat dateFormat)</code> para
+	 * <p>
+	 * Utiliza a sobrecarca
+	 * <code>parse(String dateAsString, DateFormat dateFormat)</code> para
 	 * realizar a conversão.
 	 * </p>
 	 * 
-	 * @param dateAsString - um valor de data em forma de <code>String</code>.
-	 * @return Objeto <code>java.util.Date</code> convertido a partir do objeto <code>String</code>
+	 * @param dateAsString
+	 *            - um valor de data em forma de <code>String</code>.
+	 * @return Objeto <code>java.util.Date</code> convertido a partir do objeto
+	 *         <code>String</code>
 	 * 
-	 * @throws IllegalArgumentException caso o objeto <code>String</code> não seja um valor válido
-	 * de data suportado pelo formato.
+	 * @throws IllegalArgumentException
+	 *             caso o objeto <code>String</code> não seja um valor válido de
+	 *             data suportado pelo formato.
 	 */
 	public static Date parse(String dateAsString) {
-		
+
 		return parse(dateAsString, FORMAT_DD_MM_YYYY);
 	}
-	
+
 	/**
 	 * <p>
-	 * Converte um objeto <code>String</code> em um objeto <code>java.util.Date</code>
-	 * a partir do formato de data especificado.
+	 * Converte um objeto <code>String</code> em um objeto
+	 * <code>java.util.Date</code> a partir do formato de data especificado.
 	 * </p>
-	 * <p> 
-	 * Utiliza a sobrecarca <code>parse(String dateAsString, DateFormat dateFormat)</code> para
+	 * <p>
+	 * Utiliza a sobrecarca
+	 * <code>parse(String dateAsString, DateFormat dateFormat)</code> para
 	 * realizar a conversão.
 	 * </p>
 	 * 
-	 * @param dateAsString - um valor de data em forma de <code>String</code>.
-	 * @param dateFormat - formato de data
-	 * @return Objeto <code>java.util.Date</code> convertido a partir do objeto <code>String</code>
+	 * @param dateAsString
+	 *            - um valor de data em forma de <code>String</code>.
+	 * @param dateFormat
+	 *            - formato de data
+	 * @return Objeto <code>java.util.Date</code> convertido a partir do objeto
+	 *         <code>String</code>
 	 * 
-	 * @throws IllegalArgumentException caso o objeto <code>String</code> não seja um valor válido
-	 * de data suportado pelo formato.
+	 * @throws IllegalArgumentException
+	 *             caso o objeto <code>String</code> não seja um valor válido de
+	 *             data suportado pelo formato.
 	 */
 	public static Date parse(String dateAsString, String dateFormat) {
-		
+
 		if (dateFormat == null) {
-			throw new NullPointerException("O formato da data não pode ter valor [null].");
+			throw new NullPointerException(
+					"O formato da data não pode ter valor [null].");
 		}
-		
+
 		return parse(dateAsString, new SimpleDateFormat(dateFormat));
 	}
-	
+
 	/**
-	 * Converte um objeto <code>String</code> em um objeto <code>java.util.Date</code>
-	 * através do objeto <code>java.text.DateFormat</code> especificado. 
+	 * Converte um objeto <code>String</code> em um objeto
+	 * <code>java.util.Date</code> através do objeto
+	 * <code>java.text.DateFormat</code> especificado.
 	 * 
-	 * @param dateAsString - um valor de data em forma de <code>String</code>.
-	 * @param dateFormat - formatador para objetos <code>java.util.Date</code>.
-	 * @return Objeto <code>java.util.Date</code> convertido a partir do objeto <code>String</code>
+	 * @param dateAsString
+	 *            - um valor de data em forma de <code>String</code>.
+	 * @param dateFormat
+	 *            - formatador para objetos <code>java.util.Date</code>.
+	 * @return Objeto <code>java.util.Date</code> convertido a partir do objeto
+	 *         <code>String</code>
 	 * 
-	 * @throws IllegalArgumentException caso o objeto <code>String</code> não seja um valor válido
-	 * de data suportado pelo formatador.
+	 * @throws IllegalArgumentException
+	 *             caso o objeto <code>String</code> não seja um valor válido de
+	 *             data suportado pelo formatador.
 	 */
 	public static Date parse(String dateAsString, DateFormat dateFormat) {
-		
+
 		Date date = null;
-		
+
 		if (dateAsString == null) {
-			throw new NullPointerException("A String a ser convertida não pode ter valor [null].");
+			throw new NullPointerException(
+					"A String a ser convertida não pode ter valor [null].");
 		}
-		
+
 		if (dateFormat == null) {
-			throw new NullPointerException("O formatador não pode ter valor [null].");
+			throw new NullPointerException(
+					"O formatador não pode ter valor [null].");
 		}
-		
+
 		try {
-			
+
 			date = dateFormat.parse(dateAsString);
-			
+
 		} catch (ParseException e) {
-			
-			String msg = "A String [" + dateAsString + "] deve ser uma data válida no formato";
+
+			String msg = "A String [" + dateAsString
+					+ "] deve ser uma data válida no formato";
 			if (dateFormat instanceof SimpleDateFormat) {
 				SimpleDateFormat sdf = (SimpleDateFormat) dateFormat;
 				msg += " [" + sdf.toPattern() + "].";
-				
+
 			} else {
 				msg += " especificado.";
 			}
-			
+
 			IllegalArgumentException iae = new IllegalArgumentException(msg);
 			iae.initCause(e);
 			throw iae;
 		}
-		
+
 		return date;
 	}
-	
+
 	/**
 	 * <p>
-	 * Calcula a diferença de dias entre duas datas. O resultado é modular, 
-	 * ou seja, maior ou igual a zero, logo a data final não precisa ser 
+	 * Calcula a diferença de dias entre duas datas. O resultado é modular, ou
+	 * seja, maior ou igual a zero, logo a data final não precisa ser
 	 * necessariamente maior que a data inicial.
 	 * </p>
 	 * 
-	 * @param dataInicial - data inicial do intervalo.
-	 * @param dataFinal - data final do intervalo.
+	 * @param dataInicial
+	 *            - data inicial do intervalo.
+	 * @param dataFinal
+	 *            - data final do intervalo.
 	 * @return número(módulo) de dias entre as datas.
 	 * 
-	 * @throws IllegalArgumentException Caso pelo menos uma das duas datas seja <code>null</code>.
+	 * @throws IllegalArgumentException
+	 *             Caso pelo menos uma das duas datas seja <code>null</code>.
 	 */
-	public static long calculeDiferencaEmDias(final Date dataInicial, final Date dataFinal) {
-		
+	public static long calculeDiferencaEmDias(final Date dataInicial,
+			final Date dataFinal) {
+
 		long fator = 0;
 		Date dataInicialTruncada, dataFinalTruncada;
-	
-		
+
 		if (isNotNull(dataInicial) && isNotNull(dataFinal)) {
-			
-			dataInicialTruncada = DateUtils.truncate(dataInicial, Calendar.DATE);
-			dataFinalTruncada   = DateUtils.truncate(dataFinal, Calendar.DATE);
-			
-			fator = ((dataFinalTruncada.getTime() - dataInicialTruncada.getTime()) / DateUtils.MILLIS_PER_DAY);
-			
+
+			dataInicialTruncada = DateUtils
+					.truncate(dataInicial, Calendar.DATE);
+			dataFinalTruncada = DateUtils.truncate(dataFinal, Calendar.DATE);
+
+			fator = ((dataFinalTruncada.getTime() - dataInicialTruncada
+					.getTime()) / DateUtils.MILLIS_PER_DAY);
+
 			if (fator < 0) {
 				fator *= -1;
 			}
+		} else {
+			throw new IllegalArgumentException("A data inicial [" + dataInicial
+					+ "] e a data final [" + dataFinal + "] "
+					+ "não podem ter valor 'null'.");
 		}
-		else {
-			throw new IllegalArgumentException("A data inicial [" + dataInicial + "] e a data final [" + dataFinal + "] " +
-					"não podem ter valor 'null'.");			
-		}
-	
+
 		return fator;
 	}
 

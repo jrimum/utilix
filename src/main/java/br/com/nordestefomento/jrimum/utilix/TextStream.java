@@ -32,7 +32,7 @@ package br.com.nordestefomento.jrimum.utilix;
 
 /**
  * 
- * Interface usada para objetos com serviços de leitura e escrita de textos. 
+ * <p>Interface usada para objetos com serviços de leitura e escrita de textos.</p> 
  * 
  * 
  * @author <a href="http://gilmatryx.googlepages.com/">Gilmar P.S.L</a>

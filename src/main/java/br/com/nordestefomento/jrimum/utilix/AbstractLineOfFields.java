@@ -27,7 +27,6 @@
  * 
  */
 
-
 package br.com.nordestefomento.jrimum.utilix;
 
 import static br.com.nordestefomento.jrimum.utilix.ObjectUtil.isNotNull;
@@ -41,10 +40,11 @@ import java.util.ListIterator;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
-
 /**
  * 
- * Descrição:
+ * <p>
+ * Uma lista sequencial de campos string.
+ * </p>
  * 
  * 
  * @author <a href="http://gilmatryx.googlepages.com/">Gilmar P.S.L</a>
@@ -53,168 +53,220 @@ import org.apache.log4j.Logger;
  * @author <a href="http://www.nordeste-fomento.com.br">Nordeste Fomento
  *         Mercantil</a>
  * 
+ * @see TextStream
+ * @see java.util.List
+ * 
  * @since 0.2
  * 
  * @version 0.2
  */
-public abstract class AbstractLineOfFields implements TextStream, List<Field<?>> {
-	
-	//TODO implementar isConsistent para os methods do tipo List em função de fieldsLength e stringLength.
-	
-	/**
-	 * 
-	 */
+public abstract class AbstractLineOfFields implements TextStream,
+		List<Field<?>> {
+
+	// TODO implementar isConsistent para os methods do tipo List em função de
+	// fieldsLength e stringLength.
+
 	private static final long serialVersionUID = 9071816265288953266L;
-	
+
 	private static Logger log = Logger.getLogger(AbstractLineOfFields.class);
 
 	/**
-	 * 
+	 * <p>
+	 * Número de campos da lista.
+	 * </p>
 	 */
 	private Integer fieldsLength;
-	
+
 	/**
-	 * 
+	 * <p>
+	 * Tamanho da string escrita pelos campos.
+	 * </p>
 	 */
 	private Integer stringLength;
-	
+
 	/**
-	 * 
+	 * <p>
+	 * Campos armazenados na lista.
+	 * </p>
 	 */
 	private List<Field<?>> fields;
-	
 
 	/**
 	 * @param fieldsLength
 	 * @param stringLength
+	 * @since 0.2
 	 */
 	public AbstractLineOfFields(Integer fieldsLength, Integer stringLength) {
-		
-		if(log.isTraceEnabled())
+
+		if (log.isTraceEnabled())
 			log.trace("Initializing");
-		
-		if(log.isDebugEnabled()){
-			log.debug("Parameters fieldsLength: "+fieldsLength);
-			log.debug("Parameters stringLength: "+stringLength);
+
+		if (log.isDebugEnabled()) {
+			log.debug("Parameters fieldsLength: " + fieldsLength);
+			log.debug("Parameters stringLength: " + stringLength);
 		}
-		
-		if(isNotNull(fieldsLength, "fieldsLength") && isNotNull(stringLength, "stringLength")){
-			
-			if(fieldsLength > 0){
-				if(stringLength > 0){
-					
+
+		if (isNotNull(fieldsLength, "fieldsLength")
+				&& isNotNull(stringLength, "stringLength")) {
+
+			if (fieldsLength > 0) {
+				if (stringLength > 0) {
+
 					fields = new ArrayList<Field<?>>(fieldsLength);
-					
+
 					this.fieldsLength = fieldsLength;
 					this.stringLength = stringLength;
-					
-				}else{
-					
-					IllegalArgumentException e = new IllegalArgumentException("O tamanho da String [ " + stringLength + " ] deve ser maior que 0!");
-					
+
+				} else {
+
+					IllegalArgumentException e = new IllegalArgumentException(
+							"O tamanho da String [ " + stringLength
+									+ " ] deve ser maior que 0!");
+
 					log.error(StringUtils.EMPTY, e);
-					
+
 					throw e;
 				}
-			}else{
-			
-				IllegalArgumentException e = new IllegalArgumentException("O tamanho dos campos [ " + fieldsLength + " ] deve ser maior que 0!");
-				
+			} else {
+
+				IllegalArgumentException e = new IllegalArgumentException(
+						"O tamanho dos campos [ " + fieldsLength
+								+ " ] deve ser maior que 0!");
+
 				log.error(StringUtils.EMPTY, e);
-				
+
 				throw e;
 			}
-				
-			
+
 		}
-		
-		if(log.isTraceEnabled())
+
+		if (log.isTraceEnabled())
 			log.trace("LineOfFields Initialized.");
-		
-		if(log.isDebugEnabled()){
-			log.debug("Instance fieldsLength: "+fieldsLength);
-			log.debug("Instance stringLength: "+stringLength);
+
+		if (log.isDebugEnabled()) {
+			log.debug("Instance fieldsLength: " + fieldsLength);
+			log.debug("Instance stringLength: " + stringLength);
 		}
-		
+
 	}
-	
+
 	/**
+	 * <p>
+	 * Ler a string de a cordo com a configuração de campos
+	 * </p>
+	 * 
+	 * @see TextStream#read(String)
 	 * @param lineOfFields
+	 * @since 0.2
 	 */
-	public void read(String lineOfFields){
-		
-		if(isNotNull(lineOfFields, "lineOfFields")){
-			
+	public void read(String lineOfFields) {
+
+		if (isNotNull(lineOfFields, "lineOfFields")) {
+
 			isConsistent(lineOfFields);
-			
+
 			StringBuilder builder = new StringBuilder(lineOfFields);
-			
-			for(Field<?> field : fields){
-				
+
+			for (Field<?> field : fields) {
+
 				field.read(builder.substring(0, field.getLength()));
 				builder.delete(0, field.getLength());
 			}
-			
+
 			builder = null;
 		}
 	}
 
-	public String write(){
-		
+	/**
+	 * <p>
+	 * Escreve a string em função da configuração de campos da instância
+	 * </p>
+	 * 
+	 * @see TextStream#write()
+	 * @since 0.2
+	 */
+	public String write() {
+
 		StringBuilder lineOfFields = new StringBuilder(StringUtils.EMPTY);
-		
-		if(isNotNull(fields,"fields")){
-			
-			for(Field<?> field : fields)
+
+		if (isNotNull(fields, "fields")) {
+
+			for (Field<?> field : fields)
 				lineOfFields.append(field.write());
-			
+
 			isConsistent(lineOfFields);
-		
+
 		}
-		
+
 		return lineOfFields.toString();
 	}
-	
-	protected final boolean isConsistent(StringBuilder lineOfFields){
+
+	/**
+	 * <p>
+	 * Verifica se a escrever possue o mesmo tamnho que o definido para a
+	 * instância.
+	 * </p>
+	 * 
+	 * @param lineOfFields
+	 * @return
+	 * 
+	 * @since 0.2
+	 */
+
+	protected final boolean isConsistent(StringBuilder lineOfFields) {
 		boolean is = false;
-		
-		if(isConsistent(lineOfFields.toString())){
-			if(fieldsLength == size()){
+
+		if (isConsistent(lineOfFields.toString())) {
+			if (fieldsLength == size()) {
 				is = true;
-			}else{
-				IllegalStateException e = new IllegalStateException("O tamanho dos campos [ " + size() + " ] é incompatível com o especificado ["+fieldsLength+"]!");
-				
+			} else {
+				IllegalStateException e = new IllegalStateException(
+						"O tamanho dos campos [ " + size()
+								+ " ] é incompatível com o especificado ["
+								+ fieldsLength + "]!");
 				log.error(StringUtils.EMPTY, e);
-				
 				throw e;
 			}
 		}
 		return is;
 	}
-	
-	protected final boolean isConsistent(String lineOfFields){
+
+	/**
+	 * <p>
+	 * Verifica se a escrever possue o mesmo tamnho que o definido para a
+	 * instância.
+	 * </p>
+	 * 
+	 * @param lineOfFields
+	 * @return
+	 * 
+	 * @since 0.2
+	 */
+
+	protected final boolean isConsistent(String lineOfFields) {
 		boolean is = false;
-		
-		if(lineOfFields.length() == stringLength){
-				is = true;
-		}else{
-			IllegalStateException e = new IllegalStateException("O tamanho da String de campos [ " + lineOfFields.length() + " ] é incompatível com o especificado ["+stringLength+"]!");
-			
+
+		if (lineOfFields.length() == stringLength) {
+			is = true;
+		} else {
+			IllegalStateException e = new IllegalStateException(
+					"O tamanho da String de campos [ " + lineOfFields.length()
+							+ " ] é incompatível com o especificado ["
+							+ stringLength + "]!");
 			log.error(StringUtils.EMPTY, e);
-			
 			throw e;
 		}
 		return is;
 	}
-	
+
 	/**
 	 * @return length of line as string.
 	 */
-	public int stringSize(){
-		
+	public int stringSize() {
+
 		return write().length();
 	}
-	
+
 	/**
 	 * @return the fieldsLength
 	 */
@@ -223,7 +275,8 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	}
 
 	/**
-	 * @param fieldsLength the fieldsLength to set
+	 * @param fieldsLength
+	 *            the fieldsLength to set
 	 */
 	public void setFieldsLength(Integer fieldsLength) {
 		this.fieldsLength = fieldsLength;
@@ -237,7 +290,8 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	}
 
 	/**
-	 * @param stringLength the stringLength to set
+	 * @param stringLength
+	 *            the stringLength to set
 	 */
 	public void setStringLength(Integer stringLength) {
 		this.stringLength = stringLength;
@@ -248,7 +302,7 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	 */
 
 	public boolean add(Field<?> e) {
-		
+
 		return fields.add(e);
 	}
 
@@ -257,7 +311,7 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	 */
 
 	public void add(int index, Field<?> element) {
-		
+
 		fields.add(index, element);
 	}
 
@@ -266,7 +320,7 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	 */
 
 	public boolean addAll(Collection<? extends Field<?>> c) {
-		
+
 		return fields.addAll(c);
 	}
 
@@ -275,7 +329,7 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	 */
 
 	public boolean addAll(int index, Collection<? extends Field<?>> c) {
-		
+
 		return fields.addAll(index, c);
 	}
 
@@ -284,7 +338,7 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	 */
 
 	public void clear() {
-		
+
 		fields.clear();
 	}
 
@@ -293,7 +347,7 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	 */
 
 	public boolean contains(Object o) {
-		
+
 		return fields.contains(o);
 	}
 
@@ -302,7 +356,7 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	 */
 
 	public boolean containsAll(Collection<?> c) {
-		
+
 		return fields.containsAll(c);
 	}
 
@@ -311,7 +365,7 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	 */
 
 	public Field<?> get(int index) {
-		
+
 		return fields.get(index);
 	}
 
@@ -320,7 +374,7 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	 */
 
 	public int indexOf(Object o) {
-		
+
 		return fields.indexOf(o);
 	}
 
@@ -329,7 +383,7 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	 */
 
 	public boolean isEmpty() {
-		
+
 		return fields.isEmpty();
 	}
 
@@ -338,7 +392,7 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	 */
 
 	public Iterator<Field<?>> iterator() {
-		
+
 		return fields.iterator();
 	}
 
@@ -347,7 +401,7 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	 */
 
 	public int lastIndexOf(Object o) {
-		
+
 		return fields.indexOf(o);
 	}
 
@@ -356,7 +410,7 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	 */
 
 	public ListIterator<Field<?>> listIterator() {
-		
+
 		return fields.listIterator();
 	}
 
@@ -365,7 +419,7 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	 */
 
 	public ListIterator<Field<?>> listIterator(int index) {
-		
+
 		return fields.listIterator(index);
 	}
 
@@ -374,7 +428,7 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	 */
 
 	public Field<?> remove(int index) {
-		
+
 		return fields.remove(index);
 	}
 
@@ -383,7 +437,7 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	 */
 
 	public boolean remove(Object o) {
-		
+
 		return fields.remove(o);
 	}
 
@@ -392,7 +446,7 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	 */
 
 	public boolean removeAll(Collection<?> c) {
-		
+
 		return fields.removeAll(c);
 	}
 
@@ -401,7 +455,7 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	 */
 
 	public boolean retainAll(Collection<?> c) {
-		
+
 		return fields.retainAll(c);
 	}
 
@@ -410,7 +464,7 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	 */
 
 	public Field<?> set(int index, Field<?> element) {
-		
+
 		return fields.set(index, element);
 	}
 
@@ -419,7 +473,7 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	 */
 
 	public int size() {
-		
+
 		return fields.size();
 	}
 
@@ -428,7 +482,7 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	 */
 
 	public List<Field<?>> subList(int fromIndex, int toIndex) {
-		
+
 		return fields.subList(fromIndex, toIndex);
 	}
 
@@ -437,7 +491,7 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	 */
 
 	public Object[] toArray() {
-		
+
 		return fields.toArray();
 	}
 
@@ -446,7 +500,7 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	 */
 
 	public <T> T[] toArray(T[] a) {
-		
+
 		return fields.toArray(a);
 	}
 
