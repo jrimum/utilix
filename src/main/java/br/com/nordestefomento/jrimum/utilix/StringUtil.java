@@ -27,25 +27,26 @@
  * 
  */
 
-
 package br.com.nordestefomento.jrimum.utilix;
 
 import static br.com.nordestefomento.jrimum.utilix.ObjectUtil.isNotNull;
 
 import org.apache.commons.lang.StringUtils;
 
-
 /**
  * 
+ * <p>
  * Esta classe tem a responsabilidade de prover serviços utilitários
  * relacionados a manipulação de <code>Strings</code>
+ * </p>
  * 
  * 
  * 
  * @author <a href="http://gilmatryx.googlepages.com/">Gilmar P.S.L</a>
- * @author Misael Barreto 
+ * @author Misael Barreto
  * @author Rômulo Augusto
- * @author <a href="http://www.nordeste-fomento.com.br">Nordeste Fomento Mercantil</a>
+ * @author <a href="http://www.nordeste-fomento.com.br">Nordeste Fomento
+ *         Mercantil</a>
  * 
  * @since 0.2
  * 
@@ -54,100 +55,102 @@ import org.apache.commons.lang.StringUtils;
 public class StringUtil {
 
 	public static final String WHITE_SPACE = " ";
-	
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 7425529940068032055L;
-	
+
 	/**
-	 * Construtor privado que previne a instanciação da classe até por reflection
+	 * Construtor privado que previne a instanciação da classe até por
+	 * reflection
 	 */
 	private StringUtil() {
 		throw new AssertionError();
 	}
-	
+
 	/**
-	 * Elimina simbolos como:
-	 * ><,;.:!*&%+-_<>[]\/
+	 * Elimina simbolos como: ><,;.:!*&%+-_<>[]\/
 	 * 
-	 * @param str String com os símbolos a serem removidos.
+	 * @param str
+	 *            String com os símbolos a serem removidos.
 	 * @return String sem símbolos.
 	 */
-	public static String eliminateSymbols(final String str){
-		
+	public static String eliminateSymbols(final String str) {
+
 		String modifiedStr = str;
-		
-		if(isNotNull(modifiedStr)){
-			
-			modifiedStr = StringUtils.replace(str,"-", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str,"_", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str,"=", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str,"+", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str,"%", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str,"*", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str,"@", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str,"#", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str,"&", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str,":", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str,".", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str,";", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str,",", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str,"!", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str,"?", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str,"(", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str,")", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str,"{", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str,"}", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str,"[", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str,"]", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str,"/", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str,"\\", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str,">", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str,"<", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str,"\"", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str,"'", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str,"`", StringUtils.EMPTY);
+
+		if (isNotNull(modifiedStr)) {
+
+			modifiedStr = StringUtils.replace(str, "-", StringUtils.EMPTY);
+			modifiedStr = StringUtils.replace(str, "_", StringUtils.EMPTY);
+			modifiedStr = StringUtils.replace(str, "=", StringUtils.EMPTY);
+			modifiedStr = StringUtils.replace(str, "+", StringUtils.EMPTY);
+			modifiedStr = StringUtils.replace(str, "%", StringUtils.EMPTY);
+			modifiedStr = StringUtils.replace(str, "*", StringUtils.EMPTY);
+			modifiedStr = StringUtils.replace(str, "@", StringUtils.EMPTY);
+			modifiedStr = StringUtils.replace(str, "#", StringUtils.EMPTY);
+			modifiedStr = StringUtils.replace(str, "&", StringUtils.EMPTY);
+			modifiedStr = StringUtils.replace(str, ":", StringUtils.EMPTY);
+			modifiedStr = StringUtils.replace(str, ".", StringUtils.EMPTY);
+			modifiedStr = StringUtils.replace(str, ";", StringUtils.EMPTY);
+			modifiedStr = StringUtils.replace(str, ",", StringUtils.EMPTY);
+			modifiedStr = StringUtils.replace(str, "!", StringUtils.EMPTY);
+			modifiedStr = StringUtils.replace(str, "?", StringUtils.EMPTY);
+			modifiedStr = StringUtils.replace(str, "(", StringUtils.EMPTY);
+			modifiedStr = StringUtils.replace(str, ")", StringUtils.EMPTY);
+			modifiedStr = StringUtils.replace(str, "{", StringUtils.EMPTY);
+			modifiedStr = StringUtils.replace(str, "}", StringUtils.EMPTY);
+			modifiedStr = StringUtils.replace(str, "[", StringUtils.EMPTY);
+			modifiedStr = StringUtils.replace(str, "]", StringUtils.EMPTY);
+			modifiedStr = StringUtils.replace(str, "/", StringUtils.EMPTY);
+			modifiedStr = StringUtils.replace(str, "\\", StringUtils.EMPTY);
+			modifiedStr = StringUtils.replace(str, ">", StringUtils.EMPTY);
+			modifiedStr = StringUtils.replace(str, "<", StringUtils.EMPTY);
+			modifiedStr = StringUtils.replace(str, "\"", StringUtils.EMPTY);
+			modifiedStr = StringUtils.replace(str, "'", StringUtils.EMPTY);
+			modifiedStr = StringUtils.replace(str, "`", StringUtils.EMPTY);
 		}
-			
+
 		return modifiedStr;
 	}
-	
-	
+
 	/**
 	 * <p>
-	 * Remove os zeros iniciais de uma <code>String</code>, seja ela numérica ou não.
+	 * Remove os zeros iniciais de uma <code>String</code>, seja ela numérica ou
+	 * não.
 	 * </p>
 	 * <p>
 	 * <code>removeStartWithZeros("00000") => 0</code><br />
 	 * <code>removeStartWithZeros("00023") => 23</code><br />
 	 * <code>removeStartWithZeros("02003") => 2003</code>
 	 * <p>
+	 * 
 	 * @param str
 	 * @return a string sem zeros inicias ou um único zero.
 	 * 
 	 * @since 0.2
 	 */
-		
-	public static String removeStartWithZeros(final String str){
-		
+
+	public static String removeStartWithZeros(final String str) {
+
 		String withoutZeros = StringUtils.EMPTY;
 		final String zero = "0";
-		
+
 		if (isNotNull(str)) {
-			
+
 			if (StringUtils.startsWith(str, zero)) {
-				
+
 				withoutZeros = StringUtils.removeStart(str, zero);
-				
+
 				while (StringUtils.startsWith(withoutZeros, zero)) {
 					withoutZeros = StringUtils.removeStart(withoutZeros, zero);
 				}
-				
-				if(withoutZeros.trim().length() == 0) {
+
+				if (withoutZeros.trim().length() == 0) {
 					withoutZeros = zero;
 				}
-				
+
 			} else {
 				withoutZeros = str;
 			}
@@ -155,7 +158,7 @@ public class StringUtil {
 
 		return withoutZeros;
 	}
-	
+
 	/**
 	 * Remove a acentuação do texto, que inclui os acentos:
 	 * <ul>
@@ -166,85 +169,86 @@ public class StringUtil {
 	 * <li>Circunflexo. ex.: â</li>
 	 * </ul>
 	 * 
-	 * e o Cedilha (ç).
-	 * <br />
-	 * Os acentos são removidos tanto para letras minúsculas como para letras maiúsculas.
+	 * e o Cedilha (ç). <br />
+	 * Os acentos são removidos tanto para letras minúsculas como para letras
+	 * maiúsculas.
 	 * 
-	 * @param value String com os caracteres a serem removidos.
+	 * @param value
+	 *            String com os caracteres a serem removidos.
 	 * @return String sem acentuação.
 	 */
 	public static String eliminateAccent(final String value) {
-		
+
 		String modifiedValue = value;
-		
-		//Para ç e Ç
+
+		// Para ç e Ç
 		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00E7', 'c');
 		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00C7', 'C');
 
-		//Para à, á, â, ã e ä
+		// Para à, á, â, ã e ä
 		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00E0', 'a');
 		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00E1', 'a');
 		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00E2', 'a');
 		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00E3', 'a');
 		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00E4', 'a');
 
-		//Para è, é, ê e ë
+		// Para è, é, ê e ë
 		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00E8', 'e');
 		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00E9', 'e');
 		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00EA', 'e');
 		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00EB', 'e');
 
-		//Para ì, í, î e ï
+		// Para ì, í, î e ï
 		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00EC', 'i');
 		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00ED', 'i');
 		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00EE', 'i');
 		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00EF', 'i');
 
-		//Para ò, ó, ô, õ e ö
+		// Para ò, ó, ô, õ e ö
 		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00F2', 'o');
 		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00F3', 'o');
 		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00F4', 'o');
 		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00F5', 'o');
 		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00F6', 'o');
 
-		//Para ù, ú, û e ü
+		// Para ù, ú, û e ü
 		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00F9', 'u');
 		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00FA', 'u');
 		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00FB', 'u');
 		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00FC', 'u');
 
-		//Para À, Á, Â, Ã e Ä
+		// Para À, Á, Â, Ã e Ä
 		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00C0', 'A');
 		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00C1', 'A');
 		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00C2', 'A');
 		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00C3', 'A');
 		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00C4', 'A');
 
-		//Para È, É, Ê e Ë
+		// Para È, É, Ê e Ë
 		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00C8', 'E');
 		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00C9', 'E');
 		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00CA', 'E');
 		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00CB', 'E');
 
-		//Para Ì, Í, Î e Ï
+		// Para Ì, Í, Î e Ï
 		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00CC', 'I');
 		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00CD', 'I');
 		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00CE', 'I');
 		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00CF', 'I');
 
-		//Para Ò, Ó, Ô, Õ e Ö
+		// Para Ò, Ó, Ô, Õ e Ö
 		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00D2', 'O');
 		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00D3', 'O');
 		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00D4', 'O');
 		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00D5', 'O');
 		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00D6', 'O');
 
-		//Para Ù, Ú, Û e Ü
+		// Para Ù, Ú, Û e Ü
 		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00D9', 'U');
 		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00DA', 'U');
 		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00DB', 'U');
 		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00DC', 'U');
-		
+
 		return modifiedValue;
 	}
 }

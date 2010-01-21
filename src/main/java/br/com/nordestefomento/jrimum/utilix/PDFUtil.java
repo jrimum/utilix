@@ -27,7 +27,7 @@
  * Criado em: 30/03/2008 - 23:49:00
  * 
  */
-	
+
 package br.com.nordestefomento.jrimum.utilix;
 
 import static br.com.nordestefomento.jrimum.utilix.ObjectUtil.isNotNull;
@@ -47,44 +47,33 @@ import com.lowagie.text.pdf.PdfReader;
 import com.lowagie.text.pdf.PdfStamper;
 import com.lowagie.text.pdf.SimpleBookmark;
 
-
 /**
  * 
  * <p>
- * DEFINIÇÃO DA CLASSE
+ * Serviços e atividades relacionadas a manipulação de Objetos relacionados a
+ * PDF (provavelmente da lib iText).
  * </p>
  * 
- * <p>
- * OBJETIVO/PROPÓSITO
- * </p>
- * 
- * <p>
- * EXEMPLO: 
- * </p>
  * 
  * @author Gilmar P.S.L.
  * 
  * @since 0.2
  * 
- * @version 0.2 
+ * @version 0.2
  */
 
 public class PDFUtil {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
 	protected static final Logger LOG = Logger.getLogger(PDFUtil.class);
 
-	public static RectanglePDF changeField2Image(PdfStamper stamper, float[] positions , Image image) throws DocumentException{
-						
-				RectanglePDF rect =  new RectanglePDF(positions);
-				
-				return changeField2Image(stamper,rect,image);
+	public static RectanglePDF changeField2Image(PdfStamper stamper,
+			float[] positions, Image image) throws DocumentException {
+
+		RectanglePDF rect = new RectanglePDF(positions);
+
+		return changeField2Image(stamper, rect, image);
 	}
-	
+
 	public static RectanglePDF changeField2Image(PdfStamper stamper,
 			RectanglePDF rect, Image image) throws DocumentException {
 
@@ -109,11 +98,14 @@ public class PDFUtil {
 
 		return rect;
 	}
-	
+
 	/**
+	 * <p>
 	 * Junta varios arquivos pdf em um soh.
+	 * </p>
 	 * 
-	 * @param pdfFiles Lista de array de bytes
+	 * @param pdfFiles
+	 *            Lista de array de bytes
 	 * 
 	 * @return Arquivo PDF em forma de byte
 	 */

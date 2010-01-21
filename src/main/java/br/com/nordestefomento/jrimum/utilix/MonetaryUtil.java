@@ -34,9 +34,21 @@ import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 import java.util.Locale;
 
+/**
+ * 
+ * <p>
+ * Formatadores relacionados a moeda.
+ * </p>
+ * 
+ * @author <a href=http://gilmatryx.googlepages.com/>Gilmar P.S.L.</a>
+ * 
+ * @since 0.2
+ * 
+ * @version 0.2
+ */
 
 public class MonetaryUtil {
-	
+
 	/**
 	 * 
 	 */
@@ -45,26 +57,33 @@ public class MonetaryUtil {
 	/**
 	 * DecimalFormatSymbols com localização (Processo de localização) Brasil.
 	 */
-	public static final DecimalFormatSymbols BRASIL_DECIMAL_SYMBOLS = new DecimalFormatSymbols(new Locale("pt", "BR"));
-	
+	public static final DecimalFormatSymbols BRASIL_DECIMAL_SYMBOLS = new DecimalFormatSymbols(
+			new Locale("pt", "BR"));
+
 	/**
 	 * DecimalFormatSymbols com localização (Processo de localização) England.
 	 */
-	public static final DecimalFormatSymbols ENGLAND_DECIMAL_SYMBOLS = new DecimalFormatSymbols(new Locale("en", "US"));
-	
+	public static final DecimalFormatSymbols ENGLAND_DECIMAL_SYMBOLS = new DecimalFormatSymbols(
+			new Locale("en", "US"));
+
 	/**
 	 * NumberFormat usado para formatar valores monetários em real.
 	 */
-	public static final NumberFormat FORMAT_REAL = new DecimalFormat("#,##0.00", BRASIL_DECIMAL_SYMBOLS);
-	
+	public static final NumberFormat FORMAT_REAL = new DecimalFormat(
+			"#,##0.00", BRASIL_DECIMAL_SYMBOLS);
+
 	/**
-	 * NumberFormat usado para formatar valores monetários em real com apenas UMA casa decimal.
+	 * NumberFormat usado para formatar valores monetários em real com apenas
+	 * UMA casa decimal.
 	 */
-	public static final NumberFormat FORMAT_REAL_UMA_CASA_DECIMAL = new DecimalFormat("#,##0.0", BRASIL_DECIMAL_SYMBOLS);
-	
+	public static final NumberFormat FORMAT_REAL_UMA_CASA_DECIMAL = new DecimalFormat(
+			"#,##0.0", BRASIL_DECIMAL_SYMBOLS);
+
 	/**
-	 * NumberFormat usado para formatar valores monetários em real com o prefixo R$, exemplo: R$ 10,00.
+	 * NumberFormat usado para formatar valores monetários em real com o prefixo
+	 * R$, exemplo: R$ 10,00.
 	 */
-	public static final NumberFormat FORMAT_REAL_COM_PREFIXO = new DecimalFormat("R$ #,##0.00", BRASIL_DECIMAL_SYMBOLS);
+	public static final NumberFormat FORMAT_REAL_COM_PREFIXO = new DecimalFormat(
+			"R$ #,##0.00", BRASIL_DECIMAL_SYMBOLS);
 
 }

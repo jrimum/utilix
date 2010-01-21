@@ -42,10 +42,11 @@ import java.util.Date;
 
 import org.apache.commons.lang.StringUtils;
 
-
 /**
  * 
- * Descrição:
+ * <p>
+ * Um campo de texto, número, data ou outro como <code>TextStream</code>.
+ * </p>
  * 
  * 
  * @author <a href="http://gilmatryx.googlepages.com/">Gilmar P.S.L</a>
@@ -54,145 +55,187 @@ import org.apache.commons.lang.StringUtils;
  * @author <a href="http://www.nordeste-fomento.com.br">Nordeste Fomento
  *         Mercantil</a>
  * 
+ * @see TextStream
+ * 
  * @since 0.2
  * 
  * @version 0.2
  */
-public class Field <G> implements TextStream {
-	
+public class Field<G> implements TextStream {
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -7432509456997808459L;
 
 	/**
-	 * 
+	 * <p>
+	 * Tamanho do campo como string.
+	 * </p>
 	 */
 	private Integer length;
-	
+
 	/**
-	 * 
+	 * <p>
+	 * Valor do campo.
+	 * </p>
 	 */
 	private G value;
-	
+
 	/**
-	 * Formatador utilizado na leitura e na escrita do value. <br/> - Na leitura para realizar o <code>parse</code> da String.<br/> - Na escrita para transformar o objeto em uma String e assim ser possível tratá-la para ser escrita.
+	 * <p>
+	 * Formatador utilizado na leitura e na escrita do value.
+	 * </p>
 	 * 
 	 */
 	private Format format;
-	
-	/**
-	 * Preenchedor do value utilizado na hora da escrita.
-	 */
-	private Filler<?> filler;
-	
-	/**
-	 * Cria um <code>Field</code> sem um formatador. Isto significa que a leitura da String 
-	 * pelo objeto criado será como uma atribuição simples. 
-	 * @param value Valor do campo
-	 * @param length Tamanho que o value deve possuir.
-	 */
-	public Field(G value, Integer length){
-		
-		setValue(value);
-		setLength(length);
-	}
-	
-	/**
-	 * Cria um <code>Field</code> com um formatador. Isto significa que a leitura da String pelo
-	 * objeto criado será de acordo com o formatador.
-	 * @param value Valor do campo
-	 * @param length tamanho do campo
-	 * @param format Formatador que irá formatar a String fornecida na leitura para o value 
-	 * especificado.
-	 */
-	public Field(G value, Integer length, Format format){
-		
-		setLength(length);
-		setValue(value);
-		setFormat(format);
-	}
-	
-	/**
-	 * Cria um <code>Field</code> com um preenchedor. Este preenchedor é utilizado na escrita do 
-	 * <code>Field</code> quado é necessário preencher com caracteres especificados até o length definido. 
-	 * 
-	 * @param value valor do campo
-	 * @param length tamaho do campo
-	 * @param filler preenchedor
-	 */
-	public Field(G value, Integer length, Filler<?> filler){
-		
-		setLength(length);
-		setValue(value);
-		setFiller(filler);
-	}
-	
-	/**
-	 * Cria um <code>Field</code> com um formatador e com um preenchedor. 
-	 * 
-	 * @param value Valor do campo
-	 * @param length Tamanho do campo
-	 * @param format Formatador que irá formatar a String fornecida na leitura para o value 
-	 * especificado.
-	 * @param filler preenchedor
-	 */
-	public Field(G value, Integer length, Format format, Filler<?> filler){
-		
-		setLength(length);
-		setValue(value);
-		setFormat(format);
-		setFiller(filler);
-	}
-	
 
 	/**
-	 * Converte a String fornecida para o value representado pelo objeto.
-	 * <br />
-	 * A conversão é realizada a partir do formatador fornecido para o objeto. Se não houver 
-	 * formatador a String fornecida será atribuída como o valor do value.
-	 * 
-	 * @param valueAsString valor do campo como uma String
+	 * <p>
+	 * Preenchedor do value utilizado na hora da escrita.
+	 * </p>
 	 */
-	public void read(String valueAsString){
-		
+	private Filler<?> filler;
+
+	/**
+	 * Cria um <code>Field</code> sem um formatador. Isto significa que a
+	 * leitura da String pelo objeto criado será como uma atribuição simples.
+	 * 
+	 * @param value
+	 *            Valor do campo
+	 * @param length
+	 *            Tamanho que o value deve possuir.
+	 */
+	public Field(G value, Integer length) {
+
+		setValue(value);
+		setLength(length);
+	}
+
+	/**
+	 * <p>
+	 * Cria um <code>Field</code> com um formatador. Isto significa que a
+	 * leitura da String pelo objeto criado será de acordo com o formatador.
+	 * </p>
+	 * 
+	 * @param value
+	 *            Valor do campo
+	 * @param length
+	 *            tamanho do campo
+	 * @param format
+	 *            Formatador que irá formatar a String fornecida na leitura para
+	 *            o value especificado.
+	 * @since 0.2
+	 */
+	public Field(G value, Integer length, Format format) {
+
+		setLength(length);
+		setValue(value);
+		setFormat(format);
+	}
+
+	/**
+	 * <p>
+	 * Cria um <code>Field</code> com um preenchedor. Este preenchedor é
+	 * utilizado na escrita do <code>Field</code> quado é necessário preencher
+	 * com caracteres especificados até o length definido.
+	 * </p>
+	 * 
+	 * @param value
+	 *            valor do campo
+	 * @param length
+	 *            tamaho do campo
+	 * @param filler
+	 *            preenchedor
+	 * @since 0.2
+	 */
+	public Field(G value, Integer length, Filler<?> filler) {
+
+		setLength(length);
+		setValue(value);
+		setFiller(filler);
+	}
+
+	/**
+	 * <p>
+	 * Cria um <code>Field</code> com um formatador e com um preenchedor.
+	 * </p>
+	 * 
+	 * @param value
+	 *            Valor do campo
+	 * @param length
+	 *            Tamanho do campo
+	 * @param format
+	 *            Formatador que irá formatar a String fornecida na leitura para
+	 *            o value especificado.
+	 * @param filler
+	 *            preenchedor
+	 * @since 0.2
+	 */
+	public Field(G value, Integer length, Format format, Filler<?> filler) {
+
+		setLength(length);
+		setValue(value);
+		setFormat(format);
+		setFiller(filler);
+	}
+
+	/**
+	 * <p>
+	 * Converte a String fornecida para o value representado pelo objeto.
+	 * </p>
+	 * <p>
+	 * A conversão é realizada a partir do formatador fornecido para o objeto.
+	 * Se não houver formatador a String fornecida será atribuída como o valor
+	 * do value.
+	 * </p>
+	 * 
+	 * @param valueAsString
+	 *            valor do campo como uma String
+	 * @since 0.2
+	 */
+	public void read(String valueAsString) {
+
 		if (isNull(valueAsString)) {
-			throw new IllegalArgumentException("String inválida [ " + valueAsString + " ]!");
+			throw new IllegalArgumentException("String inválida [ "
+					+ valueAsString + " ]!");
 		}
-		
+
 		if (valueAsString.length() != length) {
-			throw new IllegalArgumentException("O tamanho da String [ " + valueAsString + " ] é incompatível com o especificado [ "+length+" ]!");
+			throw new IllegalArgumentException("O tamanho da String [ "
+					+ valueAsString + " ] é incompatível com o especificado [ "
+					+ length + " ]!");
 		}
-		
+
 		if (value instanceof TextStream) {
 			TextStream reader = (TextStream) value;
 			reader.read(valueAsString);
-			
+
 		} else if (value instanceof BigDecimal) {
-		
-		 	readDecimalField(valueAsString);
-		 	
+
+			readDecimalField(valueAsString);
+
 		} else if (value instanceof Date) {
-			
+
 			readDateField(valueAsString);
-			
+
 		} else {
-			
+
 			readStringOrNumericField(valueAsString);
 		}
 	}
 
 	@SuppressWarnings("unchecked")
 	private void readStringOrNumericField(String valueAsString) {
-		
+
 		Class<?> c = value.getClass();
 
 		for (Constructor<?> cons : c.getConstructors()) {
 
-			if (cons.getParameterTypes().length == 1){
-				if (cons.getParameterTypes()[0].equals(String.class)){
+			if (cons.getParameterTypes().length == 1) {
+				if (cons.getParameterTypes()[0].equals(String.class)) {
 					try {
-						
+
 						value = (G) cons.newInstance(valueAsString);
 
 					} catch (IllegalArgumentException e) {
@@ -210,40 +253,49 @@ public class Field <G> implements TextStream {
 	}
 
 	@SuppressWarnings("unchecked")
-	private void readDateField(String valueAsString){
-		
+	private void readDateField(String valueAsString) {
+
 		try {
-			
+
 			value = (G) format.parseObject(valueAsString);
-		} 
-		catch (ParseException e) {
-			
+		} catch (ParseException e) {
+
 			errorG(e, valueAsString);
 		}
 	}
 
 	@SuppressWarnings("unchecked")
-	private void readDecimalField(String valueAsString){
-		
+	private void readDecimalField(String valueAsString) {
+
 		DecimalFormat decimalFormat = (DecimalFormat) format;
-		
+
 		try {
-			
+
 			Long parsedValue = (Long) format.parseObject(valueAsString);
 			BigDecimal decimalValue = new BigDecimal(parsedValue.longValue());
-			decimalValue = decimalValue.movePointLeft(decimalFormat.getMaximumFractionDigits());
-							
+			decimalValue = decimalValue.movePointLeft(decimalFormat
+					.getMaximumFractionDigits());
+
 			value = (G) decimalValue;
-			
-		} 
-		catch (ParseException e) {
-			
+
+		} catch (ParseException e) {
+
 			errorG(e, valueAsString);
 		}
 	}
-	
-	public String write(){
-		
+
+	/**
+	 * <p>
+	 * Escreve o campo no formato e tamanho especificado.
+	 * </p>
+	 * 
+	 * @see TextStream#write()
+	 * 
+	 * @return campo escrito
+	 * @since 0.2
+	 */
+	public String write() {
+
 		String str = null;
 
 		if (value instanceof TextStream) {
@@ -258,14 +310,15 @@ public class Field <G> implements TextStream {
 
 			if (campoDate.compareTo(DateUtil.DATE_NULL) == 0) {
 				str = StringUtils.EMPTY;
-				
+
 			} else {
 				str = format.format(value);
 			}
-			
+
 		} else if (value instanceof BigDecimal) {
-			str = StringUtils.replaceChars(value.toString(), ".", StringUtils.EMPTY);
-			
+			str = StringUtils.replaceChars(value.toString(), ".",
+					StringUtils.EMPTY);
+
 		} else {
 			str = value.toString();
 		}
@@ -276,90 +329,182 @@ public class Field <G> implements TextStream {
 			throw new IllegalArgumentException("O campo [ " + str
 					+ " ] é incompatível com o especificado [" + length + "]!");
 		}
-		
+
 		return StringUtil.eliminateAccent(str).toUpperCase();
 	}
 
 	private String fill(String str) {
-		
-		if(isNotNull(filler)) {
+
+		if (isNotNull(filler)) {
 			str = filler.fill(str, length);
 		}
-		
+
 		return str;
 	}
+
+	/**
+	 * <p>
+	 * Retorna o valor que o campo contém.
+	 * </p>
+	 * 
+	 * @return objeto valor do campo
+	 * 
+	 * @since 0.2
+	 */
 
 	public G getValue() {
 		return value;
 	}
 
-	
+	/**
+	 * <p>
+	 * Atribui um valor a instância.
+	 * </p>
+	 * 
+	 * @param field
+	 * 
+	 * @since 0.2
+	 */
+
 	public void setValue(G field) {
-	
+
 		if (isNotNull(field)) {
 			this.value = field;
-			
+
 		} else {
-			throw new IllegalArgumentException("Campo inválido [" + field + "]!");
+			throw new IllegalArgumentException("Campo inválido [" + field
+					+ "]!");
 		}
-	
+
 	}
 
-	
+	/**
+	 * <p>
+	 * Tamanho do campo como string.
+	 * </p>
+	 * 
+	 * @return
+	 * 
+	 * @since 0.2
+	 */
+
 	public Integer getLength() {
 		return length;
 	}
 
-	
+	/**
+	 * <p>
+	 * Atribui um tamanho (maior que zero) a instância.
+	 * </p>
+	 * 
+	 * @param length
+	 * 
+	 * @since 0.2
+	 */
+
 	public void setLength(Integer length) {
-	
+
 		if (length > 0) {
 			this.length = length;
-			
+
 		} else {
-			throw new IllegalArgumentException("Tamanho inválido [ " + length + " ]!");
+			throw new IllegalArgumentException("Tamanho inválido [ " + length
+					+ " ]!");
 		}
-	
+
 	}
-	
-	
+
+	/**
+	 * <p>
+	 * Formatador utilizado na leitura e na escrita do value.
+	 * </p>
+	 * 
+	 * <p>
+	 * <ul>
+	 * <li>Na leitura para realizar o <code>parse</code> da String.</li>
+	 * <li>Na escrita para transformar o objeto em uma String e assim ser
+	 * possível tratá-la para ser escrita.</li>
+	 * </ul>
+	 * </p>
+	 * 
+	 * @return formatador
+	 * 
+	 * @since 0.2
+	 */
+
 	public Format getFormat() {
 		return format;
 	}
 
+	/**
+	 * <p>
+	 * Atribui um formatador a instância.
+	 * </p>
+	 * 
+	 * @param format
+	 * 
+	 * @since 0.2
+	 */
+
 	public void setFormat(Format format) {
-		
+
 		if (isNotNull(format)) {
 			this.format = format;
-			
+
 		} else {
-			throw new IllegalArgumentException("Formato inválido [ " + format + " ]!");
+			throw new IllegalArgumentException("Formato inválido [ " + format
+					+ " ]!");
 		}
 	}
-	
+
+	/**
+	 * <p>
+	 * Retorna o preenchedor do campo.
+	 * </p>
+	 * 
+	 * @return preenchedor
+	 * 
+	 * @since 0.2
+	 */
+
 	public Filler<?> getFiller() {
 		return filler;
 	}
 
+	/**
+	 * <p>
+	 * Atribui um preenchedor a instância.
+	 * </p>
+	 * 
+	 * @param filler
+	 * 
+	 * @since 0.2
+	 */
+
 	public void setFiller(Filler<?> filler) {
-		
-		if(isNotNull(filler)) {
+
+		if (isNotNull(filler)) {
 			this.filler = filler;
-			
+
 		} else {
-			throw new IllegalArgumentException("Filler inválido [ " + filler + " ]!");
+			throw new IllegalArgumentException("Filler inválido [ " + filler
+					+ " ]!");
 		}
 	}
-	
-	private static Exception errorG(Exception e, String value){		
-		
+
+	private static Exception errorG(Exception e, String value) {
+
 		StackTraceElement[] stackTrace = e.getStackTrace();
-		e = new RuntimeException("Problemas entre instância e valor: [ " + value + " ]!\nCausado por: "+e.getCause());
+		e = new RuntimeException("Problemas entre instância e valor: [ "
+				+ value + " ]!\nCausado por: " + e.getCause());
 		e.setStackTrace(stackTrace);
-		
+
 		return e;
 	}
-	
+
+	/**
+	 * @see ObjectUtil#toString()
+	 */
 	@Override
 	public String toString() {
 		return ObjectUtil.toString(this);
