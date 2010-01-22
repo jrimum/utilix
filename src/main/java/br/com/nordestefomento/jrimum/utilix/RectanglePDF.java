@@ -34,7 +34,7 @@ import com.lowagie.text.Rectangle;
 /**
  * 
  * <p>
- * Classe adapter para facilitar as operações com os fields pdf.
+ * Classe adapter para facilitar as operações com os fields pdf com a lib iText.
  * </p>
  * 
  * @author <a href=http://gilmatryx.googlepages.com/>Gilmar P.S.L.</a>
@@ -81,15 +81,14 @@ public class RectanglePDF extends Rectangle {
 		super(arg0);
 	}
 
+	/**
+	 * @return page
+	 */
 	public int getPage() {
 		return page;
 	}
 
 	/**
-	 * <p>
-	 * SOBRE O MÉTODO
-	 * </p>
-	 * 
 	 * @return llx - lower left x
 	 */
 	public float getLowerLeftX() {
@@ -97,10 +96,6 @@ public class RectanglePDF extends Rectangle {
 	}
 
 	/**
-	 * <p>
-	 * SOBRE O MÉTODO
-	 * </p>
-	 * 
 	 * @return lly - lower left y
 	 */
 	public float getLowerLeftY() {
@@ -108,25 +103,15 @@ public class RectanglePDF extends Rectangle {
 	}
 
 	/**
-	 * <p>
-	 * SOBRE O MÉTODO
-	 * </p>
 	 * 
 	 * @return urx - upper right x
-	 * 
 	 */
 	public float getUpperRightX() {
 		return urx;
 	}
 
 	/**
-	 * <p>
-	 * SOBRE O MÉTODO
-	 * </p>
-	 * 
 	 * @return ury - upper right y
-	 * 
-	 * @since 1.0
 	 */
 	public float getUpperRightY() {
 		return ury;

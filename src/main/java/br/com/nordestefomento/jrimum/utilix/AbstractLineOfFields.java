@@ -92,6 +92,11 @@ public abstract class AbstractLineOfFields implements TextStream,
 	private List<Field<?>> fields;
 
 	/**
+	 * <p>
+	 * Cria um line of fields com um número de campos e tamanho da string a ser
+	 * escrita específicos.
+	 * </p>
+	 * 
 	 * @param fieldsLength
 	 * @param stringLength
 	 * @since 0.2

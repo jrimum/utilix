@@ -58,7 +58,7 @@ import org.apache.log4j.Logger;
  * 
  * @version 0.2
  */
-public class FileUtil implements Serializable{
+public class FileUtil implements Serializable {
 
 	protected static final Logger LOG = Logger.getLogger(FileUtil.class);
 

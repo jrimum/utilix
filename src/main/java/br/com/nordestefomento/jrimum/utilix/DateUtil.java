@@ -44,7 +44,8 @@ import org.apache.commons.lang.time.DateUtils;
  * 
  * <p>
  * Serviços utilitários relacionados a manipulação de Objetos
- * <code>Date, Calendar, GregorianCalendar.</code></p>
+ * <code>Date, Calendar, GregorianCalendar.</code>
+ * </p>
  * 
  * 
  * 
@@ -58,7 +59,7 @@ import org.apache.commons.lang.time.DateUtils;
  * 
  * @version 0.2
  */
-public class DateUtil implements Serializable{
+public class DateUtil implements Serializable {
 
 	/**
 	 * 
@@ -66,28 +67,35 @@ public class DateUtil implements Serializable{
 	private static final long serialVersionUID = 4339951860440604914L;
 
 	/**
-	 * Formatador de datas no padrão dd/MM/yyyy.
+	 * <p>
+	 * Formatador de datas no padrão <tt>dd/MM/yyyy</tt>.
+	 * </p>
 	 */
 	public static final DateFormat FORMAT_DD_MM_YYYY = new SimpleDateFormat(
 			"dd/MM/yyyy");
 
 	/**
-	 * Formatador de datas no padrão ddMMyy.
+	 * <p>
+	 * Formatador de datas no padrão <tt>ddMMyy</tt>.
+	 * </p>
 	 */
 	public static final DateFormat FORMAT_DDMMYY = new SimpleDateFormat(
 			"ddMMyy");
 
 	/**
-	 * Formatador de datas no padrão yyMMdd.
+	 * <p>
+	 * Formatador de datas no padrão <tt>yyMMdd</tt>.
+	 * </p>
 	 */
 	public static final DateFormat FORMAT_YYMMDD = new SimpleDateFormat(
 			"yyMMdd");
 
 	/**
-	 * Representa uma data inexistente. Usada em casos que não se pode usar
-	 * <code>null</code>. <br/>
-	 * É obtida da seguinte forma:
-	 * <code>new GregorianCalendar(1, 0, 1).getTime()</code>
+	 * <p>
+	 * Representa uma data inexistente, pode ser usada em casos que não se pode
+	 * usar <code>null</code> [ <em>é obtida da seguinte forma:
+	 * <code>new GregorianCalendar(1, 0, 1).getTime()</code></em> ]
+	 * </p>
 	 */
 	public static final Date DATE_NULL;
 
@@ -103,7 +111,7 @@ public class DateUtil implements Serializable{
 	 * <p>
 	 * Converte um objeto <code>String</code> em um objeto
 	 * <code>java.util.Date</code> no formato de data padrão brasileiro:
-	 * dd/MM/yyyy.
+	 * <tt>dd/MM/yyyy</tt>.
 	 * </p>
 	 * <p>
 	 * Utiliza a sobrecarca
@@ -119,6 +127,7 @@ public class DateUtil implements Serializable{
 	 * @throws IllegalArgumentException
 	 *             caso o objeto <code>String</code> não seja um valor válido de
 	 *             data suportado pelo formato.
+	 * @since 0.2
 	 */
 	public static Date parse(String dateAsString) {
 
@@ -146,6 +155,7 @@ public class DateUtil implements Serializable{
 	 * @throws IllegalArgumentException
 	 *             caso o objeto <code>String</code> não seja um valor válido de
 	 *             data suportado pelo formato.
+	 * @since 0.2
 	 */
 	public static Date parse(String dateAsString, String dateFormat) {
 
@@ -158,9 +168,11 @@ public class DateUtil implements Serializable{
 	}
 
 	/**
+	 * <p>
 	 * Converte um objeto <code>String</code> em um objeto
 	 * <code>java.util.Date</code> através do objeto
 	 * <code>java.text.DateFormat</code> especificado.
+	 * </p>
 	 * 
 	 * @param dateAsString
 	 *            - um valor de data em forma de <code>String</code>.
@@ -172,6 +184,7 @@ public class DateUtil implements Serializable{
 	 * @throws IllegalArgumentException
 	 *             caso o objeto <code>String</code> não seja um valor válido de
 	 *             data suportado pelo formatador.
+	 * @since 0.2
 	 */
 	public static Date parse(String dateAsString, DateFormat dateFormat) {
 
@@ -226,6 +239,7 @@ public class DateUtil implements Serializable{
 	 * 
 	 * @throws IllegalArgumentException
 	 *             Caso pelo menos uma das duas datas seja <code>null</code>.
+	 * @since 0.2
 	 */
 	public static long calculeDiferencaEmDias(final Date dataInicial,
 			final Date dataFinal) {

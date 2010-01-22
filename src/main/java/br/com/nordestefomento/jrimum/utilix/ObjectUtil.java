@@ -42,8 +42,8 @@ import org.apache.log4j.Logger;
  * </p>
  * 
  * <p>
- * Todas as classes do projeto devem herdar de <code>ObjectUtil</code>
- * para reutilizar métodos como o <code>toString()</code> e
+ * Todas as classes do projeto devem herdar de <code>ObjectUtil</code> para
+ * reutilizar métodos como o <code>toString()</code> e
  * <code>isNull(Object, String)</code>.
  * </p>
  * 
@@ -56,15 +56,14 @@ import org.apache.log4j.Logger;
  * 
  * @see #isNull(Object, String)
  * @see #toString()
- * @see <a href="http://pt.wikipedia.org/wiki/Cucurbita" >Cucurbita</a>
  */
 
 public class ObjectUtil implements Serializable {
 
 	private static final long serialVersionUID = -6790981191128287923L;
-	
+
 	private static Logger log = Logger.getLogger(ObjectUtil.class);
-	
+
 	private ObjectUtil() {
 		throw new AssertionError();
 	}
@@ -87,17 +86,19 @@ public class ObjectUtil implements Serializable {
 	 * 
 	 * @since 0.2
 	 */
-	public static boolean isNull(Object object, String name) throws IllegalArgumentException {
+	public static boolean isNull(Object object, String name)
+			throws IllegalArgumentException {
 
 		boolean is = true;
 
 		if (object != null) {
 			is = false;
-			
+
 		} else {
 
 			IllegalArgumentException e = new IllegalArgumentException(
-					(name != null ? name : "Objeto ") + " inválido : [" + object + "]!");
+					(name != null ? name : "Objeto ") + " inválido : ["
+							+ object + "]!");
 
 			log.error(StringUtils.EMPTY, e);
 
@@ -130,7 +131,8 @@ public class ObjectUtil implements Serializable {
 	 * 
 	 * @since 0.2
 	 */
-	public static boolean isNotNull(Object object, String name) throws IllegalArgumentException {
+	public static boolean isNotNull(Object object, String name)
+			throws IllegalArgumentException {
 		return !isNull(object, name);
 	}
 
@@ -150,7 +152,7 @@ public class ObjectUtil implements Serializable {
 	public static boolean isNotNull(Object object) {
 		return (object != null);
 	}
-	
+
 	/**
 	 * <p>
 	 * Verifica se existe uma referência ao objeto dado.
@@ -192,7 +194,7 @@ public class ObjectUtil implements Serializable {
 	 * 
 	 * @since 0.2
 	 * 
-	 * @see #toString()
+	 * @see java.lang.Object#toString()
 	 */
 	public static String toString(Object obj) {
 		return "JRimumObject: " + ToStringBuilder.reflectionToString(obj);

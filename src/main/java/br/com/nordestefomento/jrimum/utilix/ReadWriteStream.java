@@ -53,6 +53,7 @@ public interface ReadWriteStream<G> extends Serializable {
 	 * </p>
 	 * 
 	 * @return Um valor no mesmo tipo do tipo parametrizado
+	 * @since 0.2
 	 */
 	public abstract G write();
 
@@ -62,7 +63,8 @@ public interface ReadWriteStream<G> extends Serializable {
 	 * </p>
 	 * 
 	 * @param g
-	 *            - valor a ser lido
+	 *            valor a ser lido
+	 * @since 0.2
 	 */
 	public abstract void read(G g);
 

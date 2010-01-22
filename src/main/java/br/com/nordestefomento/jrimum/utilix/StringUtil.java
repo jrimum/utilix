@@ -54,7 +54,7 @@ import org.apache.commons.lang.StringUtils;
  * 
  * @version 0.2
  */
-public class StringUtil implements Serializable{
+public class StringUtil implements Serializable {
 
 	public static final String WHITE_SPACE = " ";
 
@@ -64,19 +64,26 @@ public class StringUtil implements Serializable{
 	private static final long serialVersionUID = 7425529940068032055L;
 
 	/**
+	 * <p>
 	 * Construtor privado que previne a instanciação da classe até por
 	 * reflection
+	 * </p>
+	 * 
+	 * @since 0.2
 	 */
 	private StringUtil() {
 		throw new AssertionError();
 	}
 
 	/**
-	 * Elimina simbolos como: ><,;.:!*&%+-_<>[]\/
+	 * <p>
+	 * Elimina simbolos como: <pre>><,;.:!*&%+-_<>[]\/</pre>
+	 * </p>
 	 * 
 	 * @param str
 	 *            String com os símbolos a serem removidos.
 	 * @return String sem símbolos.
+	 * @since 0.2
 	 */
 	public static String eliminateSymbols(final String str) {
 
@@ -162,6 +169,7 @@ public class StringUtil implements Serializable{
 	}
 
 	/**
+	 * <p>
 	 * Remove a acentuação do texto, que inclui os acentos:
 	 * <ul>
 	 * <li>Agudo. ex.: á</li>
@@ -170,14 +178,17 @@ public class StringUtil implements Serializable{
 	 * <li>Trema. ex.: ä</li>
 	 * <li>Circunflexo. ex.: â</li>
 	 * </ul>
-	 * 
-	 * e o Cedilha (ç). <br />
+	 * e o Cedilha (ç).
+	 * </p>
+	 * <p>
 	 * Os acentos são removidos tanto para letras minúsculas como para letras
 	 * maiúsculas.
+	 * </p>
 	 * 
 	 * @param value
 	 *            String com os caracteres a serem removidos.
 	 * @return String sem acentuação.
+	 * @since 0.2
 	 */
 	public static String eliminateAccent(final String value) {
 

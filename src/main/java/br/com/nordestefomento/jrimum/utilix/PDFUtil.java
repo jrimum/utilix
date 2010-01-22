@@ -63,14 +63,28 @@ import com.lowagie.text.pdf.SimpleBookmark;
  * @version 0.2
  */
 
-public class PDFUtil implements Serializable{
+public class PDFUtil implements Serializable {
 
 	/**
 	 *
 	 */
 	private static final long serialVersionUID = 317122634334581419L;
-	
+
 	protected static final Logger LOG = Logger.getLogger(PDFUtil.class);
+
+	/**
+	 * <p>
+	 * Muda um input field para uma imgem com as dimensões e possição do field.
+	 * </p>
+	 * 
+	 * @param stamper
+	 * @param positions
+	 * @param image
+	 * @return rectanglePDF
+	 * @throws DocumentException
+	 * 
+	 * @since 0.2
+	 */
 
 	public static RectanglePDF changeField2Image(PdfStamper stamper,
 			float[] positions, Image image) throws DocumentException {
@@ -79,6 +93,20 @@ public class PDFUtil implements Serializable{
 
 		return changeField2Image(stamper, rect, image);
 	}
+
+	/**
+	 * <p>
+	 * Muda um input field para uma imgem com as dimensões e possição do field.
+	 * </p>
+	 * 
+	 * @param stamper
+	 * @param rect
+	 * @param image
+	 * @return rectanglePDF
+	 * @throws DocumentException
+	 * 
+	 * @since 0.2
+	 */
 
 	public static RectanglePDF changeField2Image(PdfStamper stamper,
 			RectanglePDF rect, Image image) throws DocumentException {
@@ -114,6 +142,7 @@ public class PDFUtil implements Serializable{
 	 *            Lista de array de bytes
 	 * 
 	 * @return Arquivo PDF em forma de byte
+	 * @since 0.2
 	 */
 	@SuppressWarnings("unchecked")
 	public static byte[] mergeFiles(List<byte[]> pdfFiles) {

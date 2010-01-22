@@ -56,8 +56,7 @@ import br.com.nordestefomento.jrimum.JRimumException;
  * 
  * @version 0.2
  */
-public class BancoUtil implements Serializable{
-
+public class BancoUtil implements Serializable {
 
 	/**
 	 *
@@ -119,6 +118,7 @@ public class BancoUtil implements Serializable{
 	 * 
 	 * @throws JRimumException
 	 *             Caso alguma condição de entrada não seja respeitada.
+	 * @since 0.2
 	 */
 	public static int calculceFatorDeVencimento(Date dataVencimento)
 			throws JRimumException {

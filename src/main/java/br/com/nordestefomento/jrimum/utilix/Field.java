@@ -98,13 +98,16 @@ public class Field<G> implements TextStream {
 	private Filler<?> filler;
 
 	/**
+	 * <p>
 	 * Cria um <code>Field</code> sem um formatador. Isto significa que a
 	 * leitura da String pelo objeto criado será como uma atribuição simples.
+	 * </p>
 	 * 
 	 * @param value
 	 *            Valor do campo
 	 * @param length
 	 *            Tamanho que o value deve possuir.
+	 * @since 0.2
 	 */
 	public Field(G value, Integer length) {
 
