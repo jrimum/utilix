@@ -37,6 +37,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.Serializable;
 
 import org.apache.log4j.Logger;
 
@@ -57,7 +58,7 @@ import org.apache.log4j.Logger;
  * 
  * @version 0.2
  */
-public class FileUtil {
+public class FileUtil implements Serializable{
 
 	protected static final Logger LOG = Logger.getLogger(FileUtil.class);
 

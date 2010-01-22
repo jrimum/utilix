@@ -29,6 +29,7 @@
 
 package br.com.nordestefomento.jrimum.utilix;
 
+import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
@@ -47,7 +48,7 @@ import java.util.Locale;
  * @version 0.2
  */
 
-public class MonetaryUtil {
+public class MonetaryUtil implements Serializable{
 
 	/**
 	 * 

@@ -31,6 +31,7 @@ package br.com.nordestefomento.jrimum.utilix;
 
 import static br.com.nordestefomento.jrimum.utilix.ObjectUtil.isNotNull;
 
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -57,7 +58,7 @@ import org.apache.commons.lang.time.DateUtils;
  * 
  * @version 0.2
  */
-public class DateUtil {
+public class DateUtil implements Serializable{
 
 	/**
 	 * 

@@ -31,6 +31,7 @@ package br.com.nordestefomento.jrimum.utilix;
 
 import static br.com.nordestefomento.jrimum.utilix.ObjectUtil.isNull;
 
+import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -55,8 +56,13 @@ import br.com.nordestefomento.jrimum.JRimumException;
  * 
  * @version 0.2
  */
-public class BancoUtil {
+public class BancoUtil implements Serializable{
 
+
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = -9041865935492749542L;
 
 	/**
 	 * <p>

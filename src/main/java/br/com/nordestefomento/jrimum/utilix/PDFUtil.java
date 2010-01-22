@@ -33,6 +33,7 @@ package br.com.nordestefomento.jrimum.utilix;
 import static br.com.nordestefomento.jrimum.utilix.ObjectUtil.isNotNull;
 
 import java.io.ByteArrayOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,8 +63,13 @@ import com.lowagie.text.pdf.SimpleBookmark;
  * @version 0.2
  */
 
-public class PDFUtil {
+public class PDFUtil implements Serializable{
 
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 317122634334581419L;
+	
 	protected static final Logger LOG = Logger.getLogger(PDFUtil.class);
 
 	public static RectanglePDF changeField2Image(PdfStamper stamper,

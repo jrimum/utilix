@@ -30,6 +30,9 @@
 package br.com.nordestefomento.jrimum.utilix;
 
 import static br.com.nordestefomento.jrimum.utilix.ObjectUtil.isNotNull;
+
+import java.io.Serializable;
+
 import org.apache.commons.lang.StringUtils;
 
 /**
@@ -66,7 +69,7 @@ import org.apache.commons.lang.StringUtils;
  * @version 0.2
  * 
  */
-public class Filler<G> {
+public class Filler<G> implements Serializable{
 
 	/**
 	 * 
