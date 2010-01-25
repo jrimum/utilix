@@ -242,13 +242,13 @@ public class Field<G> implements TextStream {
 						value = (G) cons.newInstance(valueAsString);
 
 					} catch (IllegalArgumentException e) {
-						errorG(e, valueAsString).printStackTrace();
+						getGenericReadError(e, valueAsString).printStackTrace();
 					} catch (InstantiationException e) {
-						errorG(e, valueAsString).printStackTrace();
+						getGenericReadError(e, valueAsString).printStackTrace();
 					} catch (IllegalAccessException e) {
-						errorG(e, valueAsString).printStackTrace();
+						getGenericReadError(e, valueAsString).printStackTrace();
 					} catch (InvocationTargetException e) {
-						errorG(e, valueAsString).printStackTrace();
+						getGenericReadError(e, valueAsString).printStackTrace();
 					}
 				}
 			}
@@ -263,7 +263,7 @@ public class Field<G> implements TextStream {
 			value = (G) format.parseObject(valueAsString);
 		} catch (ParseException e) {
 
-			errorG(e, valueAsString);
+			getGenericReadError(e, valueAsString);
 		}
 	}
 
@@ -283,7 +283,7 @@ public class Field<G> implements TextStream {
 
 		} catch (ParseException e) {
 
-			errorG(e, valueAsString);
+			getGenericReadError(e, valueAsString);
 		}
 	}
 
@@ -329,7 +329,7 @@ public class Field<G> implements TextStream {
 		str = fill(str);
 
 		if (str.length() != length) {
-			throw new IllegalArgumentException("O campo [ " + str
+			throw new IllegalArgumentException("O tamaho do campo [ " + str
 					+ " ] é incompatível com o especificado [" + length + "]!");
 		}
 
@@ -495,10 +495,10 @@ public class Field<G> implements TextStream {
 		}
 	}
 
-	private static Exception errorG(Exception e, String value) {
+	private static Exception getGenericReadError(Exception e, String value) {
 
 		StackTraceElement[] stackTrace = e.getStackTrace();
-		e = new RuntimeException("Problemas entre instância e valor: [ "
+		e = new RuntimeException("VALOR INVÁLIDO [ "
 				+ value + " ]!\nCausado por: " + e.getCause());
 		e.setStackTrace(stackTrace);
 

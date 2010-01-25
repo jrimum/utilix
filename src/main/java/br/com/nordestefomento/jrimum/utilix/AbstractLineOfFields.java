@@ -174,7 +174,15 @@ public abstract class AbstractLineOfFields implements TextStream,
 
 			for (Field<?> field : fields) {
 
-				field.read(builder.substring(0, field.getLength()));
+				try{
+					
+					field.read(builder.substring(0, field.getLength()));
+					
+				}catch (Exception e) {
+					log.error("ERRO DE LEITURA");
+					throw new IllegalStateException("Erro na leitura do campo de posição [ "+fields.indexOf(field)+" ]",e);
+				}
+				
 				builder.delete(0, field.getLength());
 			}
 
@@ -196,11 +204,18 @@ public abstract class AbstractLineOfFields implements TextStream,
 
 		if (isNotNull(fields, "fields")) {
 
-			for (Field<?> field : fields)
-				lineOfFields.append(field.write());
+			for (Field<?> field : fields){
+				try{
+					
+					lineOfFields.append(field.write());
+					
+				}catch (Exception e) {
+					log.error("ERRO DE LEITURA");
+					throw new IllegalStateException("Erro na leitura do campo de posição [ "+fields.indexOf(field)+" ]",e);
+				}
+			}
 
 			isConsistent(lineOfFields);
-
 		}
 
 		return lineOfFields.toString();
