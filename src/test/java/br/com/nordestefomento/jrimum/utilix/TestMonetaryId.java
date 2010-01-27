@@ -27,7 +27,6 @@
  * 
  */
 
-
 package br.com.nordestefomento.jrimum.utilix;
 
 import static org.junit.Assert.assertEquals;
@@ -43,7 +42,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class TestMonetaryId {
-	
+
 	private BigDecimal numero;
 
 	@BeforeClass
@@ -61,63 +60,76 @@ public class TestMonetaryId {
 	@After
 	public void tearDown() throws Exception {
 	}
-	
+
 	@Test
 	public void testFmt_Real() {
-		
+
 		try {
-			
+
 			numero = new BigDecimal(".50");
 			assertEquals("0,50", MonetaryUtil.FORMAT_REAL.format(numero));
-			assertEquals(numero, MonetaryUtil.FORMAT_REAL.parse(MonetaryUtil.FORMAT_REAL.format(numero)));
-			
+			assertEquals(numero, MonetaryUtil.FORMAT_REAL
+					.parse(MonetaryUtil.FORMAT_REAL.format(numero)));
+
 			numero = new BigDecimal("100.50");
 			assertEquals("100,50", MonetaryUtil.FORMAT_REAL.format(numero));
-			assertEquals(numero, MonetaryUtil.FORMAT_REAL.parse(MonetaryUtil.FORMAT_REAL.format(numero)));
-			
+			assertEquals(numero, MonetaryUtil.FORMAT_REAL
+					.parse(MonetaryUtil.FORMAT_REAL.format(numero)));
+
 			numero = new BigDecimal("15100.50");
 			assertEquals("15.100,50", MonetaryUtil.FORMAT_REAL.format(numero));
-			assertEquals(numero, MonetaryUtil.FORMAT_REAL.parse(MonetaryUtil.FORMAT_REAL.format(numero)));
-			
+			assertEquals(numero, MonetaryUtil.FORMAT_REAL
+					.parse(MonetaryUtil.FORMAT_REAL.format(numero)));
+
 			numero = new BigDecimal("100.509");
 			assertEquals("100,51", MonetaryUtil.FORMAT_REAL.format(numero));
-			assertEquals(numero, MonetaryUtil.FORMAT_REAL.parse(MonetaryUtil.FORMAT_REAL.format(numero)));
-			
+			assertEquals(numero, MonetaryUtil.FORMAT_REAL
+					.parse(MonetaryUtil.FORMAT_REAL.format(numero)));
+
 			numero = new BigDecimal("10050");
 			assertEquals("10.050,00", MonetaryUtil.FORMAT_REAL.format(numero));
-			assertEquals(numero, MonetaryUtil.FORMAT_REAL.parse(MonetaryUtil.FORMAT_REAL.format(numero)));
-		}
-		catch(ParseException e) {
+			assertEquals(numero, MonetaryUtil.FORMAT_REAL
+					.parse(MonetaryUtil.FORMAT_REAL.format(numero)));
+		} catch (ParseException e) {
 			fail("Erro de PARSE: " + e);
 		}
 	}
-	
+
 	@Test
 	public void testFmt_R$_Real() {
-		
+
 		try {
-		
+
 			numero = new BigDecimal("0.50");
-			assertEquals("R$ 0,50", MonetaryUtil.FORMAT_REAL_COM_PREFIXO.format(numero));
-			assertEquals(numero, MonetaryUtil.FORMAT_REAL_COM_PREFIXO.parse(MonetaryUtil.FORMAT_REAL_COM_PREFIXO.format(numero)));
-			
+			assertEquals("R$ 0,50", MonetaryUtil.FORMAT_REAL_COM_PREFIXO
+					.format(numero));
+			assertEquals(numero, MonetaryUtil.FORMAT_REAL_COM_PREFIXO
+					.parse(MonetaryUtil.FORMAT_REAL_COM_PREFIXO.format(numero)));
+
 			numero = new BigDecimal("100.50");
-			assertEquals("R$ 100,50", MonetaryUtil.FORMAT_REAL_COM_PREFIXO.format(numero));
-			assertEquals(numero, MonetaryUtil.FORMAT_REAL_COM_PREFIXO.parse(MonetaryUtil.FORMAT_REAL_COM_PREFIXO.format(numero)));
-			
+			assertEquals("R$ 100,50", MonetaryUtil.FORMAT_REAL_COM_PREFIXO
+					.format(numero));
+			assertEquals(numero, MonetaryUtil.FORMAT_REAL_COM_PREFIXO
+					.parse(MonetaryUtil.FORMAT_REAL_COM_PREFIXO.format(numero)));
+
 			numero = new BigDecimal("15100.50");
-			assertEquals("R$ 15.100,50", MonetaryUtil.FORMAT_REAL_COM_PREFIXO.format(numero));
-			assertEquals(numero, MonetaryUtil.FORMAT_REAL_COM_PREFIXO.parse(MonetaryUtil.FORMAT_REAL_COM_PREFIXO.format(numero)));
-			
+			assertEquals("R$ 15.100,50", MonetaryUtil.FORMAT_REAL_COM_PREFIXO
+					.format(numero));
+			assertEquals(numero, MonetaryUtil.FORMAT_REAL_COM_PREFIXO
+					.parse(MonetaryUtil.FORMAT_REAL_COM_PREFIXO.format(numero)));
+
 			numero = new BigDecimal("100.509");
-			assertEquals("R$ 100,51", MonetaryUtil.FORMAT_REAL_COM_PREFIXO.format(numero));
-			assertEquals(numero, MonetaryUtil.FORMAT_REAL_COM_PREFIXO.parse(MonetaryUtil.FORMAT_REAL_COM_PREFIXO.format(numero)));
-			
+			assertEquals("R$ 100,51", MonetaryUtil.FORMAT_REAL_COM_PREFIXO
+					.format(numero));
+			assertEquals(numero, MonetaryUtil.FORMAT_REAL_COM_PREFIXO
+					.parse(MonetaryUtil.FORMAT_REAL_COM_PREFIXO.format(numero)));
+
 			numero = new BigDecimal("10050");
-			assertEquals("R$ 10.050,00", MonetaryUtil.FORMAT_REAL_COM_PREFIXO.format(numero));
-			assertEquals(numero, MonetaryUtil.FORMAT_REAL_COM_PREFIXO.parse(MonetaryUtil.FORMAT_REAL_COM_PREFIXO.format(numero)));
-		}
-		catch(ParseException e) {
+			assertEquals("R$ 10.050,00", MonetaryUtil.FORMAT_REAL_COM_PREFIXO
+					.format(numero));
+			assertEquals(numero, MonetaryUtil.FORMAT_REAL_COM_PREFIXO
+					.parse(MonetaryUtil.FORMAT_REAL_COM_PREFIXO.format(numero)));
+		} catch (ParseException e) {
 			fail("Erro de PARSE: " + e);
 		}
 	}

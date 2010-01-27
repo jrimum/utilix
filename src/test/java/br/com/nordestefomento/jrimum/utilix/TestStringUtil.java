@@ -27,7 +27,6 @@
  * 
  */
 
-
 package br.com.nordestefomento.jrimum.utilix;
 
 import static org.junit.Assert.assertEquals;
@@ -58,65 +57,65 @@ public class TestStringUtil {
 
 	@Test
 	public void testEliminateSymbols() {
-		
+
 		assertEquals("", StringUtil.eliminateSymbols("><,;.:!*&%+-_<>[]\\/"));
 	}
 
 	@Test
 	public void testEliminateAccent() {
-		
+
 		assertEquals("c", StringUtil.eliminateAccent("ç"));
 		assertEquals("C", StringUtil.eliminateAccent("Ç"));
-		
+
 		assertEquals("a", StringUtil.eliminateAccent("à"));
 		assertEquals("a", StringUtil.eliminateAccent("á"));
 		assertEquals("a", StringUtil.eliminateAccent("â"));
 		assertEquals("a", StringUtil.eliminateAccent("ã"));
 		assertEquals("a", StringUtil.eliminateAccent("ä"));
-		
+
 		assertEquals("e", StringUtil.eliminateAccent("è"));
 		assertEquals("e", StringUtil.eliminateAccent("é"));
 		assertEquals("e", StringUtil.eliminateAccent("ê"));
 		assertEquals("e", StringUtil.eliminateAccent("ë"));
-		
+
 		assertEquals("i", StringUtil.eliminateAccent("ì"));
 		assertEquals("i", StringUtil.eliminateAccent("í"));
 		assertEquals("i", StringUtil.eliminateAccent("î"));
 		assertEquals("i", StringUtil.eliminateAccent("ï"));
-		
+
 		assertEquals("o", StringUtil.eliminateAccent("ò"));
 		assertEquals("o", StringUtil.eliminateAccent("ó"));
 		assertEquals("o", StringUtil.eliminateAccent("ô"));
 		assertEquals("o", StringUtil.eliminateAccent("õ"));
 		assertEquals("o", StringUtil.eliminateAccent("ö"));
-		
+
 		assertEquals("u", StringUtil.eliminateAccent("ù"));
 		assertEquals("u", StringUtil.eliminateAccent("ú"));
 		assertEquals("u", StringUtil.eliminateAccent("û"));
 		assertEquals("u", StringUtil.eliminateAccent("ü"));
-		
+
 		assertEquals("A", StringUtil.eliminateAccent("À"));
 		assertEquals("A", StringUtil.eliminateAccent("Á"));
 		assertEquals("A", StringUtil.eliminateAccent("Â"));
 		assertEquals("A", StringUtil.eliminateAccent("Ã"));
 		assertEquals("A", StringUtil.eliminateAccent("Ä"));
-		
+
 		assertEquals("E", StringUtil.eliminateAccent("È"));
 		assertEquals("E", StringUtil.eliminateAccent("É"));
 		assertEquals("E", StringUtil.eliminateAccent("Ê"));
 		assertEquals("E", StringUtil.eliminateAccent("Ë"));
-		
+
 		assertEquals("I", StringUtil.eliminateAccent("Ì"));
 		assertEquals("I", StringUtil.eliminateAccent("Í"));
 		assertEquals("I", StringUtil.eliminateAccent("Î"));
 		assertEquals("I", StringUtil.eliminateAccent("Ï"));
-		
+
 		assertEquals("O", StringUtil.eliminateAccent("Ò"));
 		assertEquals("O", StringUtil.eliminateAccent("Ó"));
 		assertEquals("O", StringUtil.eliminateAccent("Ô"));
 		assertEquals("O", StringUtil.eliminateAccent("Õ"));
 		assertEquals("O", StringUtil.eliminateAccent("Ö"));
-		
+
 		assertEquals("U", StringUtil.eliminateAccent("Ù"));
 		assertEquals("U", StringUtil.eliminateAccent("Ú"));
 		assertEquals("U", StringUtil.eliminateAccent("Û"));

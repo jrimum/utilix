@@ -32,11 +32,11 @@ package br.com.nordestefomento.jrimum.utilix;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
-
 /**
  * 
  * <p>
- * Classe responsável pela execução do conjunto de testes do projeto <em>Utilix</em>
+ * Classe responsável pela execução do conjunto de testes do projeto
+ * <em>Utilix</em>
  * </p>
  * 
  * 
@@ -46,19 +46,10 @@ import org.junit.runners.Suite;
  * 
  * @version 0.2
  */
-	
+
 @RunWith(Suite.class)
-@Suite.SuiteClasses
-( 
-		{ 
-			TestField.class,
-			TestFiller.class,
-			TestDateUtil.class,
-			TestMonetaryId.class,
-			TestPDFUtil.class,
-			TestStringUtil.class
-		}
-)
+@Suite.SuiteClasses( { TestField.class, TestFiller.class, TestDateUtil.class,
+		TestMonetaryId.class, TestPDFUtil.class, TestStringUtil.class })
 public class TestSuiteUtilix {
 	/*
 	 * The class remains completely empty, being used only as a holder for the
