@@ -4,11 +4,12 @@
 	<groupId>jrimum</groupId>
 	<artifactId>utilix</artifactId>
 	<name>Projeto Utilix</name>
-	<version>0.3.0-SNAPSHOT</version>
+	<version>0.2.3-SNAPSHOT</version>
 	<parent>
 		<artifactId>jrimum</artifactId>
 		<groupId>jrimum</groupId>
-		<version>0.3.0-SNAPSHOT</version>
+		<version>0.2.3-SNAPSHOT</version>
+		<relativePath>../_JRimum/pom.xml</relativePath>
 	</parent>
 	<ciManagement>
 		<system>hudson</system>
