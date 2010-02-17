@@ -201,7 +201,7 @@ public class ObjectUtil implements Serializable {
 	 * @since 0.2
 	 */
 	public static boolean isEmpty(Map<?, ?> map) {
-		return isNull(map) || map.size() <= 0;
+		return isNull(map) || map.size() == 0;
 	}
 	
 	/**
