@@ -29,11 +29,16 @@
 
 package br.com.nordestefomento.jrimum.utilix;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+
+import junit.framework.Assert;
 
 import org.junit.Test;
 
@@ -64,11 +69,12 @@ public class TestObjectUtil {
 	}
 	
 	@Test
-	public void testIsEmpty() {
+	public void testIsEmptyMap() {
 		
+		Map<Object, Object> mapaNull = null;
 		Map<Object, Object> mapa = new HashMap<Object, Object>();
 		
-		assertTrue(ObjectUtil.isEmpty(null));
+		assertTrue(ObjectUtil.isEmpty(mapaNull));
 		assertTrue(ObjectUtil.isEmpty(mapa));
 		
 		mapa.put(new Object(), new Object());
@@ -77,7 +83,7 @@ public class TestObjectUtil {
 	}
 	
 	@Test
-	public void testIsNotEmpty() {
+	public void testIsNotEmptyMap() {
 		
 		Map<Object, Object> mapa = new HashMap<Object, Object>();
 		mapa.put(new Object(), new Object());
@@ -86,8 +92,40 @@ public class TestObjectUtil {
 		
 		mapa.clear();
 		
-		assertFalse(ObjectUtil.isNotEmpty(null));
+		Map<Object, Object> mapaNull = null;
+		
+		assertFalse(ObjectUtil.isNotEmpty(mapaNull));
 		assertFalse(ObjectUtil.isNotEmpty(mapa));
+	}
+	
+	@Test
+	public void testIsEmptyCollection() {
+		
+		Collection<Object> collectionNull = null;
+		Collection<Object> collection = new ArrayList<Object>();
+		
+		assertTrue(ObjectUtil.isEmpty(collectionNull));
+		assertTrue(ObjectUtil.isEmpty(collection));
+		
+		collection.add(new Object());
+		
+		assertFalse(ObjectUtil.isEmpty(collection));
+	}
+	
+	@Test
+	public void testIsNotEmptyCollection() {
+		
+		Collection<Object> collection = new ArrayList<Object>();
+		collection.add(new Object());
+		
+		assertTrue(ObjectUtil.isNotEmpty(collection));
+		
+		collection.clear();
+		
+		Collection<Object> collectionNull = null;
+		
+		assertFalse(ObjectUtil.isNotEmpty(collectionNull));
+		assertFalse(ObjectUtil.isNotEmpty(collection));
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
@@ -95,13 +133,49 @@ public class TestObjectUtil {
 		ObjectUtil.checkNull(new Object());
 	}
 	
+	@Test(expected = IllegalArgumentException.class)
+	public void testCheckNullComMensagem() {
+		ObjectUtil.checkNull(new Object(), "Argumento não nulo");
+	}
+	
+	@Test
+	public void testMensagemCheckNullComMensagem() {
+		
+		try {
+			
+			ObjectUtil.checkNull(new Object(), "Argumento não nulo");
+			Assert.fail("Exceção não disparada.");
+			
+		} catch (IllegalArgumentException e) {
+			assertEquals("Argumento não nulo", e.getMessage());
+		}
+	}
+	
 	@Test(expected = NullPointerException.class)
 	public void testCheckNotNull() {
 		ObjectUtil.checkNotNull(null);
 	}
 	
+	@Test(expected = NullPointerException.class)
+	public void testCheckNotNullComMensagem() {
+		ObjectUtil.checkNotNull(null, "Argumento nulo");
+	}
+	
+	@Test
+	public void testMensagemChecNotkNullComMensagem() {
+		
+		try {
+			
+			ObjectUtil.checkNotNull(null, "Argumento nulo");
+			Assert.fail("Exceção não disparada.");
+			
+		} catch (NullPointerException e) {
+			assertEquals("Argumento nulo", e.getMessage());
+		}
+	}
+	
 	@Test(expected = IllegalArgumentException.class)
-	public void testCheckEmpty() {
+	public void testCheckEmptyMap() {
 		
 		Map<Object, Object> mapa = new HashMap<Object, Object>();
 		mapa.put(new Object(), new Object());
@@ -109,10 +183,37 @@ public class TestObjectUtil {
 		ObjectUtil.checkEmpty(mapa);
 	}
 	
+	@Test(expected = IllegalArgumentException.class)
+	public void testCheckEmptyMapComMensagem() {
+		
+		Map<Object, Object> mapa = new HashMap<Object, Object>();
+		mapa.put(new Object(), new Object());
+		
+		ObjectUtil.checkEmpty(mapa, "Argumento não nulo");
+	}
+	
+	@Test
+	public void testMensagemCheckEmptyMapComMensagem() {
+		
+		Map<Object, Object> mapa = new HashMap<Object, Object>();
+		mapa.put(new Object(), new Object());
+		
+		try {
+			
+			ObjectUtil.checkEmpty(mapa, "Argumento não nulo");
+			Assert.fail("Exceção não disparada");
+			
+		} catch (IllegalArgumentException e) {
+			assertEquals("Argumento não nulo", e.getMessage());
+		}
+	}
+	
 	@Test(expected = NullPointerException.class)
-	public void testCheckNotEmpty() {
+	public void testCheckNotEmptyMap() {
 		
 		ObjectUtil.checkNotEmpty(null);
 		ObjectUtil.checkNotEmpty(new HashMap<Object, Object>());
 	}
+	
+	
 }

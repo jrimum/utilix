@@ -30,6 +30,7 @@
 package br.com.nordestefomento.jrimum.utilix;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
@@ -195,7 +196,7 @@ public class ObjectUtil implements Serializable {
 	 * <strong>não</strong> possui elementos. 
 	 * </p>
 	 * 
-	 * @param map - Instância de <code>Map</code> analisado.
+	 * @param map - Instância de <code>Map</code> analisado
 	 * @return (map == null || map.size() == 0 ? true : false)
 	 * 
 	 * @since 0.2
@@ -210,7 +211,7 @@ public class ObjectUtil implements Serializable {
 	 * e possui elementos. 
 	 * </p>
 	 * 
-	 * @param map - Instância de <code>Map</code> analisado.
+	 * @param map - Instância de <code>Map</code> analisado
 	 * @return (map != null && map.size() > 0 ? true : false)
 	 * 
 	 * @see #isEmpty(Map)
@@ -223,6 +224,61 @@ public class ObjectUtil implements Serializable {
 	
 	/**
 	 * <p>
+	 * Verifica se a <code>Collection</code> passada por parâmetro é <code>null</code> ou 
+	 * <strong>não</strong> possui elementos. 
+	 * </p>
+	 * 
+	 * @param collection - Instância de <code>Collection</code> analisado
+	 * @return (collection == null || collection.size() == 0 ? true : false)
+	 * 
+	 * @since 0.2
+	 */
+	public static boolean isEmpty(Collection<?> collection) {
+		return isNull(collection) || collection.size() == 0;
+	}
+	
+	/**
+	 * <p>
+	 * Verifica se a <code>Collection</code> passada por parâmetro <strong>não</strong> é <code>null</code> 
+	 * e possui elementos. 
+	 * </p>
+	 * 
+	 * @param collection - Instância de <code>Map</code> analisado.
+	 * @return (collection != null && collection.size() > 0 ? true : false)
+	 * 
+	 * @see #isEmpty(Collection)
+	 * 
+	 * @since 0.2
+	 */
+	public static boolean isNotEmpty(Collection<?> collection) {
+		return !isEmpty(collection);
+	}
+	
+	/**
+	 * <p>
+	 * Verifica se o objeto é nulo e lança <code>IllegalArgumentException</code>, com a mensagem 
+	 * informada, caso <strong>não</strong> seja.
+	 * </p>
+	 * 
+	 * @thows IllegalArgumentException - Caso o objeto <strong>não</strong> seja <code>null</code>.
+	 * 
+	 * @see #isNull(Object)
+	 * @see #isNotNull(Object)
+	 * 
+	 * @since 0.2
+	 * 
+	 * @param object - Objeto analisado
+	 * @param message - Mensagem utilizada na exceção
+	 */
+	public static void checkNull(Object object, String message) {
+		
+		if (isNotNull(object)) {
+			throw new IllegalArgumentException(message);
+		}
+	}
+	
+	/**
+	 * <p>
 	 * Verifica se o objeto é nulo e lança <code>IllegalArgumentException</code> caso 
 	 * <strong>não</strong> seja.
 	 * </p>
@@ -231,15 +287,36 @@ public class ObjectUtil implements Serializable {
 	 * 
 	 * @thows IllegalArgumentException - Caso o objeto <strong>não</strong> seja <code>null</code>.
 	 * 
+	 * @see #checkNull(Object, String)
 	 * @see #isNull(Object)
 	 * @see #isNotNull(Object)
 	 * 
 	 * @since 0.2
 	 */
 	public static void checkNull(Object object) {
+		checkNull(object, "Objeto não nulo. Valor [" + object + "]");
+	}
+	
+	/**
+	 * <p>
+	 * Verifica se o objeto <strong>não</strong> é nulo e lança <code>NullPointerException</code>, com
+	 * a mensagem informada, caso seja.
+	 * </p>
+	 * 
+	 * @param object - Objeto analisado
+	 * @param message - Mensagem utilizada na exceção
+	 * 
+	 * @thows NullPointerException - Caso o objeto seja <code>null</code>.
+	 * 
+	 * @see #isNull(Object)
+	 * @see #isNotNull(Object)
+	 * 
+	 * @since 0.2
+	 */
+	public static void checkNotNull(Object object, String message) {
 		
-		if (isNotNull(object)) {
-			throw new IllegalArgumentException("Objeto não nulo. Valor [" + object + "]");
+		if (isNull(object)) {
+			throw new NullPointerException(message);
 		}
 	}
 	
@@ -253,25 +330,25 @@ public class ObjectUtil implements Serializable {
 	 * 
 	 * @thows NullPointerException - Caso o objeto seja <code>null</code>.
 	 * 
+	 * @see #checkNotNull(Object, String)
 	 * @see #isNull(Object)
 	 * @see #isNotNull(Object)
 	 * 
 	 * @since 0.2
 	 */
 	public static void checkNotNull(Object object) {
-		
-		if (isNull(object)) {
-			throw new NullPointerException("Objeto nulo");
-		}
+		checkNotNull(object, "Objeto nulo");
 	}
 	
 	/**
 	 * <p>
 	 * Verifica se o <code>Map</code> passado por parâmetro é <code>null</code> ou 
-	 * <strong>não</strong> possui elementos e lança exceção caso não preencha estes requisitos.
+	 * <strong>não</strong> possui elementos e lança exceção, com a mensagem informada, 
+	 * caso não preencha estes requisitos.
 	 * </p>
 	 * 
-	 * @param object - Objeto analisado
+	 * @param map - Instância de <code>Map</code> analisado
+	 * @param message - Mensagem utilizada na exceção
 	 * 
 	 * @thows IllegalArgumentException - Caso o mapa <strong>não</strong> seja <code>null</code> e possua elementos.
 	 * 
@@ -280,10 +357,10 @@ public class ObjectUtil implements Serializable {
 	 * 
 	 * @since 0.2
 	 */
-	public static void checkEmpty(Map<?, ?> map) {
+	public static void checkEmpty(Map<?, ?> map, String message) {
 		
 		if (isNotEmpty(map)) {
-			throw new IllegalArgumentException("Map não nulo e com elementos. Valor [" + map + "]");
+			throw new IllegalArgumentException(message);
 		}
 	}
 	
@@ -293,7 +370,28 @@ public class ObjectUtil implements Serializable {
 	 * <strong>não</strong> possui elementos e lança exceção caso não preencha estes requisitos.
 	 * </p>
 	 * 
-	 * @param object - Objeto analisado
+	 * @param map - Instância de <code>Map</code> analisado
+	 * 
+	 * @thows IllegalArgumentException - Caso o mapa <strong>não</strong> seja <code>null</code> e possua elementos.
+	 * 
+	 * @see #checkEmpty(Map, String)
+	 * @see #isEmpty(Map)
+	 * @see #isNotEmpty(Map)
+	 * 
+	 * @since 0.2
+	 */
+	public static void checkEmpty(Map<?, ?> map) {
+		checkEmpty(map, "Map não nulo e com elementos. Valor [" + map + "]");
+	}
+	
+	/**
+	 * <p>
+	 * Verifica se o <code>Map</code> passado por parâmetro <strong>não</strong> é <code>null</code> e 
+	 * possui elementos e lança exceção, com a mensagem informada, caso não preencha estes requisitos.
+	 * </p>
+	 * 
+	 * @param map - Instância de <code>Map</code> analisado
+	 * @param message - Mensagem utiliada na exceção
 	 * 
 	 * @throws NullPointerException - Caso o mapa seja <code>null</code>.
 	 * @thows IllegalArgumentException - Caso o mapa <strong>não</strong> possua elementos.
@@ -303,14 +401,58 @@ public class ObjectUtil implements Serializable {
 	 * 
 	 * @since 0.2
 	 */
+	public static void checkNotEmpty(Map<?, ?> map, String message) {
+		checkNotEmpty(map, message, message);
+	}
+	
+	/**
+	 * <p>
+	 * Verifica se o <code>Map</code> passado por parâmetro <strong>não</strong> é <code>null</code> e 
+	 * possui elementos e lança exceção caso não preencha estes requisitos.
+	 * </p>
+	 * 
+	 * @param map - Instância de <code>Map</code> analisado
+	 * 
+	 * @throws NullPointerException - Caso o mapa seja <code>null</code>.
+	 * @thows IllegalArgumentException - Caso o mapa <strong>não</strong> possua elementos.
+	 * 
+	 * @see #checkNotEmpty(Map, String)
+	 * @see #isEmpty(Map)
+	 * @see #isNotEmpty(Map)
+	 * 
+	 * @since 0.2
+	 */
 	public static void checkNotEmpty(Map<?, ?> map) {
+		checkNotEmpty(map, "Objeto nulo", "Map sem elementos");
+	}
+	
+	/**
+	 * <p>
+	 * Método privado para fins de reutilização de código.
+	 * </p>
+	 * <p>
+	 * Verifica se o <code>Map</code> passado por parâmetro <strong>não</strong> é <code>null</code> e 
+	 * possui elementos e lança exceção caso não preencha estes requisitos.
+	 * </p>
+	 * <p>
+	 * Caso o objeto seja <code>null</code>, lança <code>NullPointerException</code> com a mensagem informada no
+	 * parâmetro <code>messageNullPointer</code> (primeiro parâmetro String). Caso o objeto não seja 
+	 * <code>null</code> e não possua elementos, lança <code>IllegalArgumentException</code> com a mensagem 
+	 * informada no parâmetro <code>messageIllegalArgument</code> (segundo parâmetro String).
+	 * </p>
+	 * 
+	 * @param map - Instância de <code>Map</code> analisado
+	 * @param messageNullPointer - Mensagem utiliada na exceção <code>NullPointerException</code>
+	 * @param messageIllegalArgument - Mensagem utiliada na exceção <code>IllegalArgumentException</code>
+	 */
+	private static void checkNotEmpty(Map<?, ?> map, String messageNullPointer, String messageIllegalArgument) {
 		
 		if (isNull(map)) {
-			throw new NullPointerException("Objeto nulo");
+			throw new NullPointerException(messageNullPointer);
 		}
 		
 		if (isEmpty(map)) {
-			throw new IllegalArgumentException("Map sem elementos");
+			throw new IllegalArgumentException(messageIllegalArgument);
 		}
 	}
 
