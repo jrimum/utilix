@@ -192,49 +192,17 @@ public class ObjectUtil implements Serializable {
 	
 	/**
 	 * <p>
-	 * Verifica se o <code>Map</code> passado por parâmetro é <code>null</code> ou 
-	 * <strong>não</strong> possui elementos. 
-	 * </p>
-	 * 
-	 * @param map - Instância de <code>Map</code> analisado
-	 * @return (map == null || map.size() == 0 ? true : false)
-	 * 
-	 * @since 0.2
-	 */
-	public static boolean isEmpty(Map<?, ?> map) {
-		return isNull(map) || map.size() == 0;
-	}
-	
-	/**
-	 * <p>
-	 * Verifica se o <code>Map</code> passado por parâmetro <strong>não</strong> é <code>null</code> 
-	 * e possui elementos. 
-	 * </p>
-	 * 
-	 * @param map - Instância de <code>Map</code> analisado
-	 * @return (map != null && map.size() > 0 ? true : false)
-	 * 
-	 * @see #isEmpty(Map)
-	 * 
-	 * @since 0.2
-	 */
-	public static boolean isNotEmpty(Map<?, ?> map) {
-		return !isEmpty(map);
-	}
-	
-	/**
-	 * <p>
 	 * Verifica se a <code>Collection</code> passada por parâmetro é <code>null</code> ou 
 	 * <strong>não</strong> possui elementos. 
 	 * </p>
 	 * 
-	 * @param collection - Instância de <code>Collection</code> analisado
+	 * @param collection - Instância de <code>Collection</code> analisada
 	 * @return (collection == null || collection.size() == 0 ? true : false)
 	 * 
 	 * @since 0.2
 	 */
 	public static boolean isEmpty(Collection<?> collection) {
-		return isNull(collection) || collection.size() == 0;
+		return isEmpty((Object) collection);
 	}
 	
 	/**
@@ -243,7 +211,7 @@ public class ObjectUtil implements Serializable {
 	 * e possui elementos. 
 	 * </p>
 	 * 
-	 * @param collection - Instância de <code>Map</code> analisado.
+	 * @param collection - Instância de <code>Collection</code> analisada
 	 * @return (collection != null && collection.size() > 0 ? true : false)
 	 * 
 	 * @see #isEmpty(Collection)
@@ -251,7 +219,87 @@ public class ObjectUtil implements Serializable {
 	 * @since 0.2
 	 */
 	public static boolean isNotEmpty(Collection<?> collection) {
-		return !isEmpty(collection);
+		return isNotEmpty((Object) collection);
+	}
+	
+	/**
+	 * <p>
+	 * Verifica se o <code>Map</code> passado por parâmetro é <code>null</code> ou 
+	 * <strong>não</strong> possui elementos. 
+	 * </p>
+	 * 
+	 * @param map - Instância de <code>Map</code> analisada
+	 * @return (map == null || map.size() == 0 ? true : false)
+	 * 
+	 * @since 0.2
+	 */
+	public static boolean isEmpty(Map<?, ?> map) {
+		return isEmpty((Object) map);
+	}
+	
+	/**
+	 * <p>
+	 * Verifica se o <code>Map</code> passado por parâmetro <strong>não</strong> é <code>null</code> 
+	 * e possui elementos. 
+	 * </p>
+	 * 
+	 * @param map - Instância de <code>Map</code> analisada
+	 * @return (map != null && map.size() > 0 ? true : false)
+	 * 
+	 * @see #isEmpty(Map)
+	 * 
+	 * @since 0.2
+	 */
+	public static boolean isNotEmpty(Map<?, ?> map) {
+		return isNotEmpty((Object) map);
+	}
+	
+	/**
+	 * <p>
+	 * Método privado para fins de reutilização de código. Deve ser utilizado para verificar se 
+	 * coleções ou mapas são vazios.
+	 * </p>
+	 * <p>
+	 * Verifica se o objeto passado por parâmetro é <code>null</code> ou se tem tamanho zero. Para verificar
+	 * o tamanho, primeiro realiza um "cast" para <code>Collection</code>, caso seja instância de <code>Collection</code>,
+	 * ou para <code>Map</code>, caso seja instância de <code>Map</code>, e utiliza o método "size()".
+	 * </p>
+	 * 
+	 * @param object - Objeto analisado
+	 * @return isNull(object) || size == 0;
+	 */
+	private static boolean isEmpty(Object object) {
+		
+		int size = 0;
+		
+		if (object instanceof Collection<?>) {
+			size = ((Collection<?>) object).size();
+			
+		} else if (object instanceof Map<?, ?>) {
+			size = ((Map<?, ?>) object).size();
+		}
+		
+		return isNull(object) || size == 0;
+	}
+	
+	/**
+	 * <p>
+	 * Método privado para fins de reutilização de código. Deve ser utilizado para verificar se 
+	 * coleções ou mapas não são vazios.
+	 * </p>
+	 * <p>
+	 * Verifica se o objeto passado por parâmetro <strong>não</strong> é <code>null</code> ou se tem tamanho zero.
+	 * Para verificar o tamanho, primeiro realiza um "cast" para <code>Collection</code>, caso seja instância de <code>Collection</code>,
+	 * ou para <code>Map</code>, caso seja instância de <code>Map</code>, e utiliza o método "size()".
+	 * </p>
+	 * 
+	 * @param object - Objecto analisado
+	 * @return (object != null && size > 0 ? true : false)
+	 * 
+	 * @since 0.2
+	 */
+	public static boolean isNotEmpty(Object object) {
+		return !isEmpty(object);
 	}
 	
 	/**
@@ -342,12 +390,95 @@ public class ObjectUtil implements Serializable {
 	
 	/**
 	 * <p>
+	 * Verifica se a <code>Collection</code> passado por parâmetro é <code>null</code> ou 
+	 * <strong>não</strong> possui elementos e lança exceção, com a mensagem informada, 
+	 * caso não preencha estes requisitos.
+	 * </p>
+	 * 
+	 * @param collection - Instância de <code>Collection</code> analisada
+	 * @param message - Mensagem utilizada na exceção
+	 * 
+	 * @thows IllegalArgumentException - Caso a coleção <strong>não</strong> seja <code>null</code> e possua elementos.
+	 * 
+	 * @see #isEmpty(Collection)
+	 * @see #isNotEmpty(Collection)
+	 * 
+	 * @since 0.2
+	 */
+	public static void checkEmpty(Collection<?> collection, String message) {
+		checkEmpty((Object) collection, message);
+	}
+	
+	/**
+	 * <p>
+	 * Verifica se a <code>Collection</code> passada por parâmetro é <code>null</code> ou 
+	 * <strong>não</strong> possui elementos e lança exceção caso não preencha estes requisitos.
+	 * </p>
+	 * 
+	 * @param collection - Instância de <code>Collection</code> analisada
+	 * 
+	 * @thows IllegalArgumentException - Caso a coleção <strong>não</strong> seja <code>null</code> e possua elementos.
+	 * 
+	 * @see #checkEmpty(Collection, String)
+	 * @see #isEmpty(Collection)
+	 * @see #isNotEmpty(Collection)
+	 * 
+	 * @since 0.2
+	 */
+	public static void checkEmpty(Collection<?> collection) {
+		checkEmpty(collection, "Collection não nulo e com elementos. Valor [" + collection + "]");
+	}
+	
+	/**
+	 * <p>
+	 * Verifica se a <code>Collection</code> passada por parâmetro <strong>não</strong> é <code>null</code> e 
+	 * possui elementos e lança exceção, com a mensagem informada, caso não preencha estes requisitos.
+	 * </p>
+	 * 
+	 * @param collection - Instância de <code>Collection</code> analisada
+	 * @param message - Mensagem utiliada na exceção
+	 * 
+	 * @throws NullPointerException - Caso a coleção seja <code>null</code>.
+	 * @thows IllegalArgumentException - Caso a coleção <strong>não</strong> possua elementos.
+	 * 
+	 * @see #isEmpty(Collection)
+	 * @see #isNotEmpty(Collection)
+	 * 
+	 * @since 0.2
+	 */
+	public static void checkNotEmpty(Collection<?> collection, String message) {
+		checkNotEmpty(collection, message, message);
+	}
+	
+	/**
+	 * <p>
+	 * Verifica se a <code>Collection</code> passada por parâmetro <strong>não</strong> é <code>null</code> e 
+	 * possui elementos e lança exceção caso não preencha estes requisitos.
+	 * </p>
+	 * 
+	 * @param map - Instância de <code>Collection</code> analisada
+	 * 
+	 * @throws NullPointerException - Caso a coleção seja <code>null</code>.
+	 * @thows IllegalArgumentException - Caso a coleção <strong>não</strong> possua elementos.
+	 * 
+	 * @see #checkNotEmpty(Collection, String)
+	 * @see #isEmpty(Collection)
+	 * @see #isNotEmpty(Collection)
+	 * 
+	 * @since 0.2
+	 */
+	public static void checkNotEmpty(Collection<?> collection) {
+		checkNotEmpty(collection, "Objeto nulo", "Collection sem elementos");
+	}
+	
+	/**
+	 * <p>
 	 * Verifica se o <code>Map</code> passado por parâmetro é <code>null</code> ou 
 	 * <strong>não</strong> possui elementos e lança exceção, com a mensagem informada, 
 	 * caso não preencha estes requisitos.
 	 * </p>
 	 * 
-	 * @param map - Instância de <code>Map</code> analisado
+	 * @param map - Instância de <code>Map</code> analisada
 	 * @param message - Mensagem utilizada na exceção
 	 * 
 	 * @thows IllegalArgumentException - Caso o mapa <strong>não</strong> seja <code>null</code> e possua elementos.
@@ -358,10 +489,7 @@ public class ObjectUtil implements Serializable {
 	 * @since 0.2
 	 */
 	public static void checkEmpty(Map<?, ?> map, String message) {
-		
-		if (isNotEmpty(map)) {
-			throw new IllegalArgumentException(message);
-		}
+		checkEmpty((Object) map, message);
 	}
 	
 	/**
@@ -370,7 +498,7 @@ public class ObjectUtil implements Serializable {
 	 * <strong>não</strong> possui elementos e lança exceção caso não preencha estes requisitos.
 	 * </p>
 	 * 
-	 * @param map - Instância de <code>Map</code> analisado
+	 * @param map - Instância de <code>Map</code> analisada
 	 * 
 	 * @thows IllegalArgumentException - Caso o mapa <strong>não</strong> seja <code>null</code> e possua elementos.
 	 * 
@@ -386,11 +514,34 @@ public class ObjectUtil implements Serializable {
 	
 	/**
 	 * <p>
+	 * Método privado para fins de reutilização de código. Deve ser utilizado para verificar se 
+	 * coleções ou mapas são vazios.
+	 * </p>
+	 * <p>
+	 * Verifica se o objeto passado por parâmetro é <code>null</code> ou se tem tamanho zero.
+	 * Para verificar o tamanho, primeiro realiza um "cast" para <code>Collection</code>, caso seja instância de <code>Collection</code>,
+	 * ou para <code>Map</code>, caso seja instância de <code>Map</code>, e utiliza o método "size()".
+	 * </p>
+	 * 
+	 * @param object - Objeto analisado
+	 * @param message - Mensagem utilizada na exceção
+	 * 
+	 * @throws IllegalArgumentException Caso o objeto não seja vazio 
+	 */
+	private static void checkEmpty(Object object, String message) {
+		
+		if (isNotEmpty(object)) {
+			throw new IllegalArgumentException(message);
+		}
+	}
+	
+	/**
+	 * <p>
 	 * Verifica se o <code>Map</code> passado por parâmetro <strong>não</strong> é <code>null</code> e 
 	 * possui elementos e lança exceção, com a mensagem informada, caso não preencha estes requisitos.
 	 * </p>
 	 * 
-	 * @param map - Instância de <code>Map</code> analisado
+	 * @param map - Instância de <code>Map</code> analisada
 	 * @param message - Mensagem utiliada na exceção
 	 * 
 	 * @throws NullPointerException - Caso o mapa seja <code>null</code>.
@@ -411,7 +562,7 @@ public class ObjectUtil implements Serializable {
 	 * possui elementos e lança exceção caso não preencha estes requisitos.
 	 * </p>
 	 * 
-	 * @param map - Instância de <code>Map</code> analisado
+	 * @param map - Instância de <code>Map</code> analisada
 	 * 
 	 * @throws NullPointerException - Caso o mapa seja <code>null</code>.
 	 * @thows IllegalArgumentException - Caso o mapa <strong>não</strong> possua elementos.
@@ -428,11 +579,13 @@ public class ObjectUtil implements Serializable {
 	
 	/**
 	 * <p>
-	 * Método privado para fins de reutilização de código.
+	 * Método privado para fins de reutilização de código. Deve ser utilizado para verificar se 
+	 * coleções ou mapas não são vazios.
 	 * </p>
 	 * <p>
-	 * Verifica se o <code>Map</code> passado por parâmetro <strong>não</strong> é <code>null</code> e 
-	 * possui elementos e lança exceção caso não preencha estes requisitos.
+	 * Verifica se o objeto passado por parâmetro <strong>não</strong> é <code>null</code> ou se tem tamanho zero.
+	 * Para verificar o tamanho, primeiro realiza um "cast" para <code>Collection</code>, caso seja instância de <code>Collection</code>,
+	 * ou para <code>Map</code>, caso seja instância de <code>Map</code>, e utiliza o método "size()".
 	 * </p>
 	 * <p>
 	 * Caso o objeto seja <code>null</code>, lança <code>NullPointerException</code> com a mensagem informada no
@@ -441,17 +594,17 @@ public class ObjectUtil implements Serializable {
 	 * informada no parâmetro <code>messageIllegalArgument</code> (segundo parâmetro String).
 	 * </p>
 	 * 
-	 * @param map - Instância de <code>Map</code> analisado
+	 * @param object - Objeto analisado
 	 * @param messageNullPointer - Mensagem utiliada na exceção <code>NullPointerException</code>
 	 * @param messageIllegalArgument - Mensagem utiliada na exceção <code>IllegalArgumentException</code>
 	 */
-	private static void checkNotEmpty(Map<?, ?> map, String messageNullPointer, String messageIllegalArgument) {
+	private static void checkNotEmpty(Object object, String messageNullPointer, String messageIllegalArgument) {
 		
-		if (isNull(map)) {
+		if (isNull(object)) {
 			throw new NullPointerException(messageNullPointer);
 		}
 		
-		if (isEmpty(map)) {
+		if (isEmpty(object)) {
 			throw new IllegalArgumentException(messageIllegalArgument);
 		}
 	}

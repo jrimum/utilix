@@ -35,6 +35,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -55,29 +56,36 @@ import org.junit.Test;
  *
  */
 public class TestObjectUtil {
+	
+	private static final Object NULL_OBJECT = null;
+	
+	private static final Object EMPTY_OBJECT = new Object();
+	
+	private static final Map<Object, Object> NULL_MAP = null;
+	
+	private static final Collection<Object> NULL_COLLECTION = null;
 
 	@Test
 	public void testIsNull() {
-		assertTrue(ObjectUtil.isNull(null));
-		assertFalse(ObjectUtil.isNull(new Object()));
+		assertTrue(ObjectUtil.isNull(NULL_OBJECT));
+		assertFalse(ObjectUtil.isNull(EMPTY_OBJECT));
 	}
 	
 	@Test
 	public void testIsNotNull() {
-		assertTrue(ObjectUtil.isNotNull(new Object()));
-		assertFalse(ObjectUtil.isNotNull(null));
+		assertTrue(ObjectUtil.isNotNull(EMPTY_OBJECT));
+		assertFalse(ObjectUtil.isNotNull(NULL_OBJECT));
 	}
 	
 	@Test
 	public void testIsEmptyMap() {
 		
-		Map<Object, Object> mapaNull = null;
 		Map<Object, Object> mapa = new HashMap<Object, Object>();
 		
-		assertTrue(ObjectUtil.isEmpty(mapaNull));
+		assertTrue(ObjectUtil.isEmpty(NULL_MAP));
 		assertTrue(ObjectUtil.isEmpty(mapa));
 		
-		mapa.put(new Object(), new Object());
+		mapa.put(EMPTY_OBJECT, EMPTY_OBJECT);
 		
 		assertFalse(ObjectUtil.isEmpty(mapa));
 	}
@@ -86,28 +94,25 @@ public class TestObjectUtil {
 	public void testIsNotEmptyMap() {
 		
 		Map<Object, Object> mapa = new HashMap<Object, Object>();
-		mapa.put(new Object(), new Object());
+		mapa.put(EMPTY_OBJECT, EMPTY_OBJECT);
 		
 		assertTrue(ObjectUtil.isNotEmpty(mapa));
 		
 		mapa.clear();
 		
-		Map<Object, Object> mapaNull = null;
-		
-		assertFalse(ObjectUtil.isNotEmpty(mapaNull));
+		assertFalse(ObjectUtil.isNotEmpty(NULL_MAP));
 		assertFalse(ObjectUtil.isNotEmpty(mapa));
 	}
 	
 	@Test
 	public void testIsEmptyCollection() {
 		
-		Collection<Object> collectionNull = null;
 		Collection<Object> collection = new ArrayList<Object>();
 		
-		assertTrue(ObjectUtil.isEmpty(collectionNull));
+		assertTrue(ObjectUtil.isEmpty(NULL_COLLECTION));
 		assertTrue(ObjectUtil.isEmpty(collection));
 		
-		collection.add(new Object());
+		collection.add(EMPTY_OBJECT);
 		
 		assertFalse(ObjectUtil.isEmpty(collection));
 	}
@@ -116,26 +121,24 @@ public class TestObjectUtil {
 	public void testIsNotEmptyCollection() {
 		
 		Collection<Object> collection = new ArrayList<Object>();
-		collection.add(new Object());
+		collection.add(EMPTY_OBJECT);
 		
 		assertTrue(ObjectUtil.isNotEmpty(collection));
 		
 		collection.clear();
 		
-		Collection<Object> collectionNull = null;
-		
-		assertFalse(ObjectUtil.isNotEmpty(collectionNull));
+		assertFalse(ObjectUtil.isNotEmpty(NULL_COLLECTION));
 		assertFalse(ObjectUtil.isNotEmpty(collection));
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testCheckNull() {
-		ObjectUtil.checkNull(new Object());
+		ObjectUtil.checkNull(EMPTY_OBJECT);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testCheckNullComMensagem() {
-		ObjectUtil.checkNull(new Object(), "Argumento não nulo");
+		ObjectUtil.checkNull(EMPTY_OBJECT, "Argumento não nulo");
 	}
 	
 	@Test
@@ -143,7 +146,7 @@ public class TestObjectUtil {
 		
 		try {
 			
-			ObjectUtil.checkNull(new Object(), "Argumento não nulo");
+			ObjectUtil.checkNull(EMPTY_OBJECT, "Argumento não nulo");
 			Assert.fail("Exceção não disparada.");
 			
 		} catch (IllegalArgumentException e) {
@@ -153,12 +156,12 @@ public class TestObjectUtil {
 	
 	@Test(expected = NullPointerException.class)
 	public void testCheckNotNull() {
-		ObjectUtil.checkNotNull(null);
+		ObjectUtil.checkNotNull(NULL_OBJECT);
 	}
 	
 	@Test(expected = NullPointerException.class)
 	public void testCheckNotNullComMensagem() {
-		ObjectUtil.checkNotNull(null, "Argumento nulo");
+		ObjectUtil.checkNotNull(NULL_OBJECT, "Argumento nulo");
 	}
 	
 	@Test
@@ -178,7 +181,7 @@ public class TestObjectUtil {
 	public void testCheckEmptyMap() {
 		
 		Map<Object, Object> mapa = new HashMap<Object, Object>();
-		mapa.put(new Object(), new Object());
+		mapa.put(EMPTY_OBJECT, EMPTY_OBJECT);
 		
 		ObjectUtil.checkEmpty(mapa);
 	}
@@ -187,7 +190,7 @@ public class TestObjectUtil {
 	public void testCheckEmptyMapComMensagem() {
 		
 		Map<Object, Object> mapa = new HashMap<Object, Object>();
-		mapa.put(new Object(), new Object());
+		mapa.put(EMPTY_OBJECT, EMPTY_OBJECT);
 		
 		ObjectUtil.checkEmpty(mapa, "Argumento não nulo");
 	}
@@ -196,7 +199,7 @@ public class TestObjectUtil {
 	public void testMensagemCheckEmptyMapComMensagem() {
 		
 		Map<Object, Object> mapa = new HashMap<Object, Object>();
-		mapa.put(new Object(), new Object());
+		mapa.put(EMPTY_OBJECT, EMPTY_OBJECT);
 		
 		try {
 			
@@ -209,11 +212,44 @@ public class TestObjectUtil {
 	}
 	
 	@Test(expected = NullPointerException.class)
-	public void testCheckNotEmptyMap() {
-		
-		ObjectUtil.checkNotEmpty(null);
-		ObjectUtil.checkNotEmpty(new HashMap<Object, Object>());
+	public void testCheckNotEmptyMapNullPointer() {
+		ObjectUtil.checkNotEmpty(NULL_MAP);
 	}
 	
+	@Test(expected = IllegalArgumentException.class)
+	public void testCheckNotEmptyMapIllegalArgument() {
+		ObjectUtil.checkNotEmpty(Collections.EMPTY_MAP);
+	}
 	
+	@Test(expected = NullPointerException.class)
+	public void testCheckNotEmptyMapComMensagemNullPointer() {
+		ObjectUtil.checkNotEmpty(NULL_MAP, "Argumento nulo");
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testCheckNotEmptyMapComMensagemIllegalArgument() {
+		ObjectUtil.checkNotEmpty(Collections.EMPTY_MAP, "Map vazio");
+	}
+	
+	@Test
+	public void testMensagemCheckNotEmptyMapComMensagem() {
+		
+		try {
+			
+			ObjectUtil.checkNotEmpty(NULL_MAP, "Argumento nulo");
+			Assert.fail("Exceção não disparada");
+						
+		} catch (NullPointerException e) {
+			assertEquals("Argumento nulo", e.getMessage());
+		}
+		
+		try {
+			
+			ObjectUtil.checkNotEmpty(Collections.EMPTY_MAP, "Map vazio");
+			Assert.fail("Exceção não disparada");
+						
+		} catch (IllegalArgumentException e) {
+			assertEquals("Map vazio", e.getMessage());
+		}
+	}
 }
