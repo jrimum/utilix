@@ -71,6 +71,89 @@ public class ObjectUtil implements Serializable {
 	
 	/**
 	 * <p>
+	 * Método privado para fins de reutilização de código. Deve ser utilizado para verificar se 
+	 * coleções ou mapas são vazios.
+	 * </p>
+	 * <p>
+	 * Verifica se o objeto passado por parâmetro é <code>null</code> ou se tem tamanho zero. Para verificar
+	 * o tamanho, primeiro realiza um "cast" para <code>Collection</code>, caso seja instância de <code>Collection</code>,
+	 * ou para <code>Map</code>, caso seja instância de <code>Map</code>, e utiliza o método "size()".
+	 * </p>
+	 * 
+	 * @param object - Objeto analisado
+	 * @return isNull(object) || size == 0;
+	 */
+	private static boolean isEmpty(Object object) {
+		
+		int size = 0;
+		
+		if (object instanceof Collection<?>) {
+			size = ((Collection<?>) object).size();
+			
+		} else if (object instanceof Map<?, ?>) {
+			size = ((Map<?, ?>) object).size();
+		}
+		
+		return isNull(object) || size == 0;
+	}
+	
+	/**
+	 * <p>
+	 * Método privado para fins de reutilização de código. Deve ser utilizado para verificar se 
+	 * coleções ou mapas são vazios.
+	 * </p>
+	 * <p>
+	 * Verifica se o objeto passado por parâmetro é <code>null</code> ou se tem tamanho zero.
+	 * Para verificar o tamanho, primeiro realiza um "cast" para <code>Collection</code>, caso seja instância de <code>Collection</code>,
+	 * ou para <code>Map</code>, caso seja instância de <code>Map</code>, e utiliza o método "size()".
+	 * </p>
+	 * 
+	 * @param object - Objeto analisado
+	 * @param message - Mensagem utilizada na exceção
+	 * 
+	 * @throws IllegalArgumentException Caso o objeto não seja vazio 
+	 */
+	private static void checkEmpty(Object object, String message) {
+		
+		if (isNotEmpty(object)) {
+			throw new IllegalArgumentException(message);
+		}
+	}
+	
+	/**
+	 * <p>
+	 * Método privado para fins de reutilização de código. Deve ser utilizado para verificar se 
+	 * coleções ou mapas não são vazios.
+	 * </p>
+	 * <p>
+	 * Verifica se o objeto passado por parâmetro <strong>não</strong> é <code>null</code> ou se tem tamanho zero.
+	 * Para verificar o tamanho, primeiro realiza um "cast" para <code>Collection</code>, caso seja instância de <code>Collection</code>,
+	 * ou para <code>Map</code>, caso seja instância de <code>Map</code>, e utiliza o método "size()".
+	 * </p>
+	 * <p>
+	 * Caso o objeto seja <code>null</code>, lança <code>NullPointerException</code> com a mensagem informada no
+	 * parâmetro <code>messageNullPointer</code> (primeiro parâmetro String). Caso o objeto não seja 
+	 * <code>null</code> e não possua elementos, lança <code>IllegalArgumentException</code> com a mensagem 
+	 * informada no parâmetro <code>messageIllegalArgument</code> (segundo parâmetro String).
+	 * </p>
+	 * 
+	 * @param object - Objeto analisado
+	 * @param messageNullPointer - Mensagem utiliada na exceção <code>NullPointerException</code>
+	 * @param messageIllegalArgument - Mensagem utiliada na exceção <code>IllegalArgumentException</code>
+	 */
+	private static void checkNotEmpty(Object object, String messageNullPointer, String messageIllegalArgument) {
+		
+		if (isNull(object)) {
+			throw new NullPointerException(messageNullPointer);
+		}
+		
+		if (isEmpty(object)) {
+			throw new IllegalArgumentException(messageIllegalArgument);
+		}
+	}
+	
+	/**
+	 * <p>
 	 * Verifica a referência ao objeto e lança uma exceção para casos onde a
 	 * referência é nula incluíndo na mensagem de exceção o nome do parâmetro
 	 * passado.
@@ -252,34 +335,6 @@ public class ObjectUtil implements Serializable {
 	 */
 	public static boolean isNotEmpty(Map<?, ?> map) {
 		return isNotEmpty((Object) map);
-	}
-	
-	/**
-	 * <p>
-	 * Método privado para fins de reutilização de código. Deve ser utilizado para verificar se 
-	 * coleções ou mapas são vazios.
-	 * </p>
-	 * <p>
-	 * Verifica se o objeto passado por parâmetro é <code>null</code> ou se tem tamanho zero. Para verificar
-	 * o tamanho, primeiro realiza um "cast" para <code>Collection</code>, caso seja instância de <code>Collection</code>,
-	 * ou para <code>Map</code>, caso seja instância de <code>Map</code>, e utiliza o método "size()".
-	 * </p>
-	 * 
-	 * @param object - Objeto analisado
-	 * @return isNull(object) || size == 0;
-	 */
-	private static boolean isEmpty(Object object) {
-		
-		int size = 0;
-		
-		if (object instanceof Collection<?>) {
-			size = ((Collection<?>) object).size();
-			
-		} else if (object instanceof Map<?, ?>) {
-			size = ((Map<?, ?>) object).size();
-		}
-		
-		return isNull(object) || size == 0;
 	}
 	
 	/**
@@ -514,29 +569,6 @@ public class ObjectUtil implements Serializable {
 	
 	/**
 	 * <p>
-	 * Método privado para fins de reutilização de código. Deve ser utilizado para verificar se 
-	 * coleções ou mapas são vazios.
-	 * </p>
-	 * <p>
-	 * Verifica se o objeto passado por parâmetro é <code>null</code> ou se tem tamanho zero.
-	 * Para verificar o tamanho, primeiro realiza um "cast" para <code>Collection</code>, caso seja instância de <code>Collection</code>,
-	 * ou para <code>Map</code>, caso seja instância de <code>Map</code>, e utiliza o método "size()".
-	 * </p>
-	 * 
-	 * @param object - Objeto analisado
-	 * @param message - Mensagem utilizada na exceção
-	 * 
-	 * @throws IllegalArgumentException Caso o objeto não seja vazio 
-	 */
-	private static void checkEmpty(Object object, String message) {
-		
-		if (isNotEmpty(object)) {
-			throw new IllegalArgumentException(message);
-		}
-	}
-	
-	/**
-	 * <p>
 	 * Verifica se o <code>Map</code> passado por parâmetro <strong>não</strong> é <code>null</code> e 
 	 * possui elementos e lança exceção, com a mensagem informada, caso não preencha estes requisitos.
 	 * </p>
@@ -577,38 +609,6 @@ public class ObjectUtil implements Serializable {
 		checkNotEmpty(map, "Objeto nulo", "Map sem elementos");
 	}
 	
-	/**
-	 * <p>
-	 * Método privado para fins de reutilização de código. Deve ser utilizado para verificar se 
-	 * coleções ou mapas não são vazios.
-	 * </p>
-	 * <p>
-	 * Verifica se o objeto passado por parâmetro <strong>não</strong> é <code>null</code> ou se tem tamanho zero.
-	 * Para verificar o tamanho, primeiro realiza um "cast" para <code>Collection</code>, caso seja instância de <code>Collection</code>,
-	 * ou para <code>Map</code>, caso seja instância de <code>Map</code>, e utiliza o método "size()".
-	 * </p>
-	 * <p>
-	 * Caso o objeto seja <code>null</code>, lança <code>NullPointerException</code> com a mensagem informada no
-	 * parâmetro <code>messageNullPointer</code> (primeiro parâmetro String). Caso o objeto não seja 
-	 * <code>null</code> e não possua elementos, lança <code>IllegalArgumentException</code> com a mensagem 
-	 * informada no parâmetro <code>messageIllegalArgument</code> (segundo parâmetro String).
-	 * </p>
-	 * 
-	 * @param object - Objeto analisado
-	 * @param messageNullPointer - Mensagem utiliada na exceção <code>NullPointerException</code>
-	 * @param messageIllegalArgument - Mensagem utiliada na exceção <code>IllegalArgumentException</code>
-	 */
-	private static void checkNotEmpty(Object object, String messageNullPointer, String messageIllegalArgument) {
-		
-		if (isNull(object)) {
-			throw new NullPointerException(messageNullPointer);
-		}
-		
-		if (isEmpty(object)) {
-			throw new IllegalArgumentException(messageIllegalArgument);
-		}
-	}
-
 	/**
 	 * Exibe os valores de instância para um objeto JRimum.
 	 * 

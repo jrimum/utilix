@@ -60,8 +60,7 @@ import org.apache.log4j.Logger;
  * 
  * @version 0.2
  */
-public abstract class AbstractLineOfFields implements TextStream,
-		List<Field<?>> {
+public abstract class AbstractLineOfFields implements TextStream, List<Field<?>> {
 
 	// TODO implementar isConsistent para os methods do tipo List em função de
 	// fieldsLength e stringLength.
