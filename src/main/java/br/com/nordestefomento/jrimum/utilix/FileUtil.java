@@ -29,8 +29,6 @@
 
 package br.com.nordestefomento.jrimum.utilix;
 
-import static br.com.nordestefomento.jrimum.utilix.ObjectUtil.isNotNull;
-
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -69,31 +67,34 @@ public class FileUtil implements Serializable {
 	 * Transforma um array de bytes em um arquivo.
 	 * </p>
 	 * 
-	 * @param pathName
-	 * @param bytes
+	 * @param pathName - Caminho do arquivo para onde os bytes serão escritos.
+	 * @param bytes - Bytes a serem copiados.
+	 * 
 	 * @return Objeto File com o conteúdo sendo o dos bytes
+	 * 
 	 * @throws FileNotFoundException
 	 * @throws IOException
+	 * @throws NullPointerException Caso <code>pathName</code> ou <code>bytes</code> sejam <code>null</code>.
+	 * @throws IllegalArgumentException Caso <code>pathName</code> seja vazio ou contenha apenas espaços em branco
 	 * 
 	 * @since 0.2
 	 */
-	public static File bytes2File(String pathName, byte[] bytes)
-			throws FileNotFoundException, IOException {
+	public static File bytes2File(String pathName, byte[] bytes) throws FileNotFoundException, IOException {
 
-		File f = null;
+		File file = null;
+		
+		StringUtil.checkNotBlank(pathName);
+		ObjectUtil.checkNotNull(bytes);
 
-		if (isNotNull(pathName, "pathName") && isNotNull(bytes, "bytes")) {
+		file = new File(pathName);
 
-			f = new File(pathName);
+		OutputStream out = new FileOutputStream(file);
 
-			OutputStream out = new FileOutputStream(f);
+		out.write(bytes);
+		out.flush();
+		out.close();
 
-			out.write(bytes);
-			out.flush();
-			out.close();
-		}
-
-		return f;
+		return file;
 	}
 
 	/**
@@ -101,23 +102,23 @@ public class FileUtil implements Serializable {
 	 * Transforma um array de bytes em um <code>ByteArrayOutputStream</code>.
 	 * </p>
 	 * 
-	 * @param bytes
+	 * @param bytes - Bytes que serão escritos no objeto ByteArrayOutputStream
+	 * 
 	 * @return ByteArrayOutputStream ou null
+	 * 
 	 * @throws IOException
+	 * @throws NullPointerException Caso <code>bytes</code> sejam <code>null</code>.
 	 * 
 	 * @since 0.2
 	 */
-	public static ByteArrayOutputStream bytes2Stream(byte[] bytes)
-			throws IOException {
+	public static ByteArrayOutputStream bytes2Stream(byte[] bytes) throws IOException {
 
 		ByteArrayOutputStream byteOut = null;
+		
+		ObjectUtil.checkNotNull(bytes);
 
-		if (isNotNull(bytes, "bytes")) {
-
-			byteOut = new ByteArrayOutputStream();
-
-			byteOut.write(bytes);
-		}
+		byteOut = new ByteArrayOutputStream();
+		byteOut.write(bytes);
 
 		return byteOut;
 	}

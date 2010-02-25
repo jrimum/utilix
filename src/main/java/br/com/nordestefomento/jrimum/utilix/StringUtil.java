@@ -99,7 +99,7 @@ public class StringUtil implements Serializable {
 	 */
 	private static void checkNotBlank(String value, String messageNullPointer, String messageIllegalArgument) {
 
-		ObjectUtil.checkNull(value, messageNullPointer);
+		ObjectUtil.checkNotNull(value, messageNullPointer);
 		
 		if (StringUtils.isBlank(value)) {
 			throw new IllegalArgumentException(messageIllegalArgument);
