@@ -89,6 +89,14 @@ public class DateUtil implements Serializable {
 	 */
 	public static final DateFormat FORMAT_YYMMDD = new SimpleDateFormat(
 			"yyMMdd");
+	
+	/**
+	 * <p>
+	 * Formatador de datas no padrão <tt>yyyyMMdd</tt>.
+	 * </p>
+	 */
+	public static final DateFormat FORMAT_YYYYMMDD = new SimpleDateFormat(
+			"yyyyMMdd");	
 
 	/**
 	 * <p>

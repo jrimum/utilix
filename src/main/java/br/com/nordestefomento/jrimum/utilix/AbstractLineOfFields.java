@@ -100,6 +100,11 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	 * @param stringLength
 	 * @since 0.2
 	 */
+	protected AbstractLineOfFields(){
+		fields = new ArrayList<Field<?>>();
+	}
+	
+	
 	public AbstractLineOfFields(Integer fieldsLength, Integer stringLength) {
 
 		if (log.isTraceEnabled())
