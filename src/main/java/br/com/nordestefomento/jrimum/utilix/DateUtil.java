@@ -275,5 +275,32 @@ public class DateUtil implements Serializable {
 
 		return fator;
 	}
+	
+	
+	/**
+	 * <p>
+	 * Retorna um objeto <code>java.util.Date</code> somente com a informação
+	 * do dia, mes e ano. A informação sobre hora, minuto, segundo e millesegundos
+	 * é zerada. Isto é altamente recomendado em rotinas nas quais datas são 
+	 * comparadas.
+	 * </p>
+	 * 
+	 * @param date
+	 *            - um data em forma de <code>java.util.Date</code>.
+	 *            
+	 * @return Objeto <code>java.util.Date</code> truncado a partir do objeto 
+	 * <code>java.util.Date</code> informado como parâmetro.
+	 * 
+	 * @throws NullPointerException
+	 *             Caso o objeto <code>java.util.Date</code> esteja nulo
+	 * @since 0.3
+	 */
+	public static Date truncarData(Date date) {
+		if (date == null) {
+			throw new NullPointerException("O data não pode ser nula. Impossível realizar o truncamento da data.");
+		}
+		
+		return DateUtils.truncate(date, Calendar.DATE);
+	}
 
 }
