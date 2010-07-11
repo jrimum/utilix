@@ -28,13 +28,11 @@
  */
 package org.jrimum.utilix;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import org.jrimum.JRimumException;
-import org.jrimum.utilix.BancoUtil;
 import org.junit.Test;
 
 
@@ -42,13 +40,13 @@ public class TestBancoUtil {
 
 	GregorianCalendar data = new GregorianCalendar();
 
-	@Test(expected = JRimumException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void testCalculeFatorDeVencimentoDataNull() {
 
 		BancoUtil.calculceFatorDeVencimento(null);
 	}
 
-	@Test(expected = JRimumException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void testCalculeFatorDeVencimentoDataMenorQueDataBase() {
 
 		data.set(1997, Calendar.JANUARY, 1);
@@ -56,7 +54,7 @@ public class TestBancoUtil {
 		BancoUtil.calculceFatorDeVencimento(data.getTime());
 	}
 
-	@Test(expected = JRimumException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void testCalculeFatorDeVencimentoDataMaiorQueDataLimite() {
 
 		data.set(2025, Calendar.FEBRUARY, 22);
