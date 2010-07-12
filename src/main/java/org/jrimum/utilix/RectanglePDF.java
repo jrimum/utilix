@@ -43,7 +43,6 @@ import com.lowagie.text.Rectangle;
  * 
  * @version 0.2
  */
-
 public class RectanglePDF extends Rectangle {
 
 	private int page;
@@ -57,28 +56,31 @@ public class RectanglePDF extends Rectangle {
 	}
 
 	/**
-	 * @param arg0
-	 * @param arg1
-	 * @param arg2
-	 * @param arg3
+	 * @param llx - lower left x
+	 * @param lly - lower left y
+	 * @param urx - upper right x
+	 * @param ury - upper right y
 	 */
-	public RectanglePDF(float arg0, float arg1, float arg2, float arg3) {
-		super(arg0, arg1, arg2, arg3);
+	public RectanglePDF(float llx, float lly, float urx, float ury) {
+		super(llx, lly, urx, ury);
 	}
 
 	/**
-	 * @param arg0
-	 * @param arg1
+	 * Cria um retângulo iniciando da origem (0,0).
+	 * 
+	 * @param urx - upper right x
+	 * @param ury - upper right y
 	 */
-	public RectanglePDF(float arg0, float arg1) {
-		super(arg0, arg1);
+	public RectanglePDF(float urx, float ury) {
+		super(urx, ury);
 	}
 
 	/**
-	 * @param arg0
+	 * Cria um retângulo a partir do objeto <code>Rectangle</code>.
+	 * @param rect
 	 */
-	public RectanglePDF(Rectangle arg0) {
-		super(arg0);
+	public RectanglePDF(Rectangle rect) {
+		super(rect);
 	}
 
 	/**
@@ -116,5 +118,4 @@ public class RectanglePDF extends Rectangle {
 	public float getUpperRightY() {
 		return ury;
 	}
-
 }

@@ -129,7 +129,6 @@ public class BancoUtil implements Serializable {
 	 * 
 	 * @since 0.2
 	 */
-
 	public static int calculceFatorDeVencimento(Date dataVencimento)
 			throws IllegalArgumentException {
 

@@ -62,7 +62,6 @@ import com.lowagie.text.pdf.SimpleBookmark;
  * 
  * @version 0.2
  */
-
 public class PDFUtil implements Serializable {
 
 	/**
@@ -85,7 +84,6 @@ public class PDFUtil implements Serializable {
 	 * 
 	 * @since 0.2
 	 */
-
 	public static RectanglePDF changeField2Image(PdfStamper stamper,
 			float[] positions, Image image) throws DocumentException {
 
@@ -107,7 +105,6 @@ public class PDFUtil implements Serializable {
 	 * 
 	 * @since 0.2
 	 */
-
 	public static RectanglePDF changeField2Image(PdfStamper stamper,
 			RectanglePDF rect, Image image) throws DocumentException {
 

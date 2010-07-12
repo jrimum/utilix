@@ -44,7 +44,6 @@ import java.io.Serializable;
  * 
  * @version 0.2
  */
-
 public interface ReadWriteStream<G> extends Serializable {
 
 	/**

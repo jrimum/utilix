@@ -228,6 +228,12 @@ public class Field<G> implements TextStream {
 		}
 	}
 
+	/**
+	 * Lê campos texto (String) ou numéricos que pode ser obtidos a partir de uma String,
+	 * usando, por exemplo, o construtor ou o método <code>valueOf</code>.
+	 * 
+	 * @param valueAsString
+	 */
 	@SuppressWarnings("unchecked")
 	private void readStringOrNumericField(String valueAsString) {
 
@@ -255,6 +261,11 @@ public class Field<G> implements TextStream {
 		}
 	}
 
+	/**
+	 * Lê campos do tipo data. O parse é feito através do formatador do campo.
+	 *  
+	 * @param valueAsString
+	 */
 	@SuppressWarnings("unchecked")
 	private void readDateField(String valueAsString) {
 
@@ -267,6 +278,10 @@ public class Field<G> implements TextStream {
 		}
 	}
 
+	/**
+	 * Lê campos de valores decimais. O parse é feito através de formatadores de números decimais.
+	 * @param valueAsString
+	 */
 	@SuppressWarnings("unchecked")
 	private void readDecimalField(String valueAsString) {
 
@@ -336,6 +351,11 @@ public class Field<G> implements TextStream {
 		return StringUtil.eliminateAccent(str).toUpperCase();
 	}
 
+	/**
+	 * Preenche a string passada de acordo com o filler do campo.
+	 * @param str
+	 * @return
+	 */
 	private String fill(String str) {
 
 		if (isNotNull(filler)) {
@@ -354,7 +374,6 @@ public class Field<G> implements TextStream {
 	 * 
 	 * @since 0.2
 	 */
-
 	public G getValue() {
 		return value;
 	}
@@ -368,7 +387,6 @@ public class Field<G> implements TextStream {
 	 * 
 	 * @since 0.2
 	 */
-
 	public void setValue(G field) {
 
 		if (isNotNull(field)) {
@@ -378,7 +396,6 @@ public class Field<G> implements TextStream {
 			throw new IllegalArgumentException("Campo inválido [" + field
 					+ "]!");
 		}
-
 	}
 
 	/**
@@ -390,7 +407,6 @@ public class Field<G> implements TextStream {
 	 * 
 	 * @since 0.2
 	 */
-
 	public Integer getLength() {
 		return length;
 	}
@@ -404,7 +420,6 @@ public class Field<G> implements TextStream {
 	 * 
 	 * @since 0.2
 	 */
-
 	public void setLength(Integer length) {
 
 		if (length > 0) {
@@ -414,7 +429,6 @@ public class Field<G> implements TextStream {
 			throw new IllegalArgumentException("Tamanho inválido [ " + length
 					+ " ]!");
 		}
-
 	}
 
 	/**
@@ -434,7 +448,6 @@ public class Field<G> implements TextStream {
 	 * 
 	 * @since 0.2
 	 */
-
 	public Format getFormat() {
 		return format;
 	}
@@ -448,7 +461,6 @@ public class Field<G> implements TextStream {
 	 * 
 	 * @since 0.2
 	 */
-
 	public void setFormat(Format format) {
 
 		if (isNotNull(format)) {
@@ -469,7 +481,6 @@ public class Field<G> implements TextStream {
 	 * 
 	 * @since 0.2
 	 */
-
 	public Filler<?> getFiller() {
 		return filler;
 	}
@@ -483,7 +494,6 @@ public class Field<G> implements TextStream {
 	 * 
 	 * @since 0.2
 	 */
-
 	public void setFiller(Filler<?> filler) {
 
 		if (isNotNull(filler)) {
@@ -495,6 +505,12 @@ public class Field<G> implements TextStream {
 		}
 	}
 
+	/**
+	 * Formata a exceção caso ela ocorra na leitura do campo.
+	 * @param e
+	 * @param value
+	 * @return
+	 */
 	private static Exception getGenericReadError(Exception e, String value) {
 
 		StackTraceElement[] stackTrace = e.getStackTrace();

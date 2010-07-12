@@ -47,7 +47,6 @@ import java.util.Locale;
  * 
  * @version 0.2
  */
-
 public class MonetaryUtil implements Serializable {
 
 	/**

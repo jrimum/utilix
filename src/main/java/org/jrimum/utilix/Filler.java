@@ -148,7 +148,6 @@ public class Filler<G> implements Serializable {
 	 * 
 	 * @since 0.2
 	 */
-
 	public G getFillWith() {
 		return fillWith;
 	}

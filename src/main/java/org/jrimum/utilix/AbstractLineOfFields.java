@@ -231,7 +231,6 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	 * 
 	 * @since 0.2
 	 */
-
 	protected final boolean isConsistent(StringBuilder lineOfFields) {
 		boolean is = false;
 
@@ -261,7 +260,6 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	 * 
 	 * @since 0.2
 	 */
-
 	protected final boolean isConsistent(String lineOfFields) {
 		boolean is = false;
 
@@ -319,7 +317,6 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	/**
 	 * @see java.util.List#add(java.lang.Object)
 	 */
-
 	public boolean add(Field<?> e) {
 
 		return fields.add(e);
@@ -328,7 +325,6 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	/**
 	 * @see java.util.List#add(int, java.lang.Object)
 	 */
-
 	public void add(int index, Field<?> element) {
 
 		fields.add(index, element);
@@ -337,7 +333,6 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	/**
 	 * @see java.util.List#addAll(java.util.Collection)
 	 */
-
 	public boolean addAll(Collection<? extends Field<?>> c) {
 
 		return fields.addAll(c);
@@ -346,7 +341,6 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	/**
 	 * @see java.util.List#addAll(int, java.util.Collection)
 	 */
-
 	public boolean addAll(int index, Collection<? extends Field<?>> c) {
 
 		return fields.addAll(index, c);
@@ -355,7 +349,6 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	/**
 	 * @see java.util.List#clear()
 	 */
-
 	public void clear() {
 
 		fields.clear();
@@ -364,7 +357,6 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	/**
 	 * @see java.util.List#contains(java.lang.Object)
 	 */
-
 	public boolean contains(Object o) {
 
 		return fields.contains(o);
@@ -373,7 +365,6 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	/**
 	 * @see java.util.List#containsAll(java.util.Collection)
 	 */
-
 	public boolean containsAll(Collection<?> c) {
 
 		return fields.containsAll(c);
@@ -382,7 +373,6 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	/**
 	 * @see java.util.List#get(int)
 	 */
-
 	public Field<?> get(int index) {
 
 		return fields.get(index);
@@ -391,7 +381,6 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	/**
 	 * @see java.util.List#indexOf(java.lang.Object)
 	 */
-
 	public int indexOf(Object o) {
 
 		return fields.indexOf(o);
@@ -400,7 +389,6 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	/**
 	 * @see java.util.List#isEmpty()
 	 */
-
 	public boolean isEmpty() {
 
 		return fields.isEmpty();
@@ -409,7 +397,6 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	/**
 	 * @see java.util.List#iterator()
 	 */
-
 	public Iterator<Field<?>> iterator() {
 
 		return fields.iterator();
@@ -418,7 +405,6 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	/**
 	 * @see java.util.List#lastIndexOf(java.lang.Object)
 	 */
-
 	public int lastIndexOf(Object o) {
 
 		return fields.indexOf(o);
@@ -427,7 +413,6 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	/**
 	 * @see java.util.List#listIterator()
 	 */
-
 	public ListIterator<Field<?>> listIterator() {
 
 		return fields.listIterator();
@@ -436,7 +421,6 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	/**
 	 * @see java.util.List#listIterator(int)
 	 */
-
 	public ListIterator<Field<?>> listIterator(int index) {
 
 		return fields.listIterator(index);
@@ -445,7 +429,6 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	/**
 	 * @see java.util.List#remove(int)
 	 */
-
 	public Field<?> remove(int index) {
 
 		return fields.remove(index);
@@ -454,7 +437,6 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	/**
 	 * @see java.util.List#remove(java.lang.Object)
 	 */
-
 	public boolean remove(Object o) {
 
 		return fields.remove(o);
@@ -463,7 +445,6 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	/**
 	 * @see java.util.List#removeAll(java.util.Collection)
 	 */
-
 	public boolean removeAll(Collection<?> c) {
 
 		return fields.removeAll(c);
@@ -472,7 +453,6 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	/**
 	 * @see java.util.List#retainAll(java.util.Collection)
 	 */
-
 	public boolean retainAll(Collection<?> c) {
 
 		return fields.retainAll(c);
@@ -481,7 +461,6 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	/**
 	 * @see java.util.List#set(int, java.lang.Object)
 	 */
-
 	public Field<?> set(int index, Field<?> element) {
 
 		return fields.set(index, element);
@@ -490,7 +469,6 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	/**
 	 * @see java.util.List#size()
 	 */
-
 	public int size() {
 
 		return fields.size();
@@ -499,7 +477,6 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	/**
 	 * @see java.util.List#subList(int, int)
 	 */
-
 	public List<Field<?>> subList(int fromIndex, int toIndex) {
 
 		return fields.subList(fromIndex, toIndex);
@@ -508,7 +485,6 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	/**
 	 * @see java.util.List#toArray()
 	 */
-
 	public Object[] toArray() {
 
 		return fields.toArray();
@@ -517,10 +493,8 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	/**
 	 * @see java.util.List#toArray(Object[])
 	 */
-
 	public <T> T[] toArray(T[] a) {
 
 		return fields.toArray(a);
 	}
-
 }
