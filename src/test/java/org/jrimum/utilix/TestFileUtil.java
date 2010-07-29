@@ -43,7 +43,7 @@ import org.junit.Test;
  * 
  * Teste da classe FileUtil.
  * 
- * @author Rômulo Augusto
+ * @author <a href="mailto:romulomail@gmail.com">Rômulo Augusto</a>
  *
  * @version 0.2.3
  * 

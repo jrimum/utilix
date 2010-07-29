@@ -49,7 +49,7 @@ import org.junit.Test;
  * Teste unitário para a classe utilitária de objetos
  * </p>
  * 
- * @author Rômulo Augusto
+ * @author <a href="mailto:romulomail@gmail.com">Rômulo Augusto</a>
  * 
  * @since 0.2
  * 
