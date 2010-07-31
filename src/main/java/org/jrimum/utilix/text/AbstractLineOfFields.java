@@ -29,7 +29,7 @@
 
 package org.jrimum.utilix.text;
 
-import static org.jrimum.utilix.ObjectUtil.isNotNull;
+import static org.apache.commons.lang.StringUtils.EMPTY;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -37,8 +37,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
+import org.jrimum.utilix.ObjectUtil;
 
 /**
  * 
@@ -61,9 +61,6 @@ import org.apache.log4j.Logger;
  * @version 0.2
  */
 public abstract class AbstractLineOfFields implements TextStream, List<Field<?>> {
-
-	// TODO implementar isConsistent para os methods do tipo List em função de
-	// fieldsLength e stringLength.
 
 	private static final long serialVersionUID = 9071816265288953266L;
 
@@ -110,38 +107,36 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 			log.debug("Parameters stringLength: " + stringLength);
 		}
 
-		if (isNotNull(fieldsLength, "fieldsLength")
-				&& isNotNull(stringLength, "stringLength")) {
+		ObjectUtil.checkNotNull(fieldsLength, "Número de campos [ fieldsLength ] nulo!");
+		ObjectUtil.checkNotNull(stringLength, "Tamanho da string [ stringLength ] nulo!");
+	
+		if (fieldsLength > 0) {
+			if (stringLength > 0) {
 
-			if (fieldsLength > 0) {
-				if (stringLength > 0) {
+				fields = new ArrayList<Field<?>>(fieldsLength);
 
-					fields = new ArrayList<Field<?>>(fieldsLength);
+				this.fieldsLength = fieldsLength;
+				this.stringLength = stringLength;
 
-					this.fieldsLength = fieldsLength;
-					this.stringLength = stringLength;
-
-				} else {
-
-					IllegalArgumentException e = new IllegalArgumentException(
-							"O tamanho da String [ " + stringLength
-									+ " ] deve ser maior que 0!");
-
-					log.error(StringUtils.EMPTY, e);
-
-					throw e;
-				}
 			} else {
 
 				IllegalArgumentException e = new IllegalArgumentException(
-						"O tamanho dos campos [ " + fieldsLength
+						"O tamanho da String [ " + stringLength
 								+ " ] deve ser maior que 0!");
 
-				log.error(StringUtils.EMPTY, e);
+				log.error(EMPTY, e);
 
 				throw e;
 			}
+		} else {
 
+			IllegalArgumentException e = new IllegalArgumentException(
+					"O tamanho dos campos [ " + fieldsLength
+							+ " ] deve ser maior que 0!");
+
+			log.error(EMPTY, e);
+
+			throw e;
 		}
 
 		if (log.isTraceEnabled())
@@ -164,28 +159,25 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	 * @since 0.2
 	 */
 	public void read(String lineOfFields) {
+		
+		ObjectUtil.checkNotNull(lineOfFields);
 
-		if (isNotNull(lineOfFields, "lineOfFields")) {
+		isConsistent(lineOfFields);
 
-			isConsistent(lineOfFields);
+		StringBuilder builder = new StringBuilder(lineOfFields);
 
-			StringBuilder builder = new StringBuilder(lineOfFields);
+		for (Field<?> field : fields) {
 
-			for (Field<?> field : fields) {
-
-				try{
-					
-					field.read(builder.substring(0, field.getLength()));
-					
-				}catch (Exception e) {
-					log.error("ERRO DE LEITURA");
-					throw new IllegalStateException("Erro na leitura do campo de posição [ "+fields.indexOf(field)+" ]",e);
-				}
+			try{
 				
-				builder.delete(0, field.getLength());
+				field.read(builder.substring(0, field.getLength()));
+				
+			}catch (Exception e) {
+				log.error("ERRO DE LEITURA");
+				throw new IllegalStateException("Erro na leitura do campo de posição [ "+fields.indexOf(field)+" ]",e);
 			}
-
-			builder = null;
+			
+			builder.delete(0, field.getLength());
 		}
 	}
 
@@ -198,25 +190,24 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	 * @since 0.2
 	 */
 	public String write() {
-
-		StringBuilder lineOfFields = new StringBuilder(StringUtils.EMPTY);
-
-		if (isNotNull(fields, "fields")) {
-
-			for (Field<?> field : fields){
-				try{
-					
-					lineOfFields.append(field.write());
-					
-				}catch (Exception e) {
-					log.error("ERRO DE LEITURA");
-					throw new IllegalStateException("Erro na leitura do campo de posição [ "+fields.indexOf(field)+" ]",e);
-				}
+		
+		ObjectUtil.checkNotNull(fields);
+		
+		StringBuilder lineOfFields = new StringBuilder(EMPTY);
+		
+		for (Field<?> field : fields){
+			try{
+				
+				lineOfFields.append(field.write());
+				
+			}catch (Exception e) {
+				log.error("ERRO DE LEITURA");
+				throw new IllegalStateException("Erro na leitura do campo de posição [ "+fields.indexOf(field)+" ]",e);
 			}
-
-			isConsistent(lineOfFields);
 		}
 
+		isConsistent(lineOfFields);
+		
 		return lineOfFields.toString();
 	}
 
@@ -232,6 +223,7 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	 * @since 0.2
 	 */
 	protected final boolean isConsistent(StringBuilder lineOfFields) {
+		
 		boolean is = false;
 
 		if (isConsistent(lineOfFields.toString())) {
@@ -242,7 +234,7 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 						"O tamanho dos campos [ " + size()
 								+ " ] é incompatível com o especificado ["
 								+ fieldsLength + "]!");
-				log.error(StringUtils.EMPTY, e);
+				log.error(EMPTY, e);
 				throw e;
 			}
 		}
@@ -261,6 +253,7 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	 * @since 0.2
 	 */
 	protected final boolean isConsistent(String lineOfFields) {
+		
 		boolean is = false;
 
 		if (lineOfFields.length() == stringLength) {
@@ -270,7 +263,7 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 					"O tamanho da String de campos [ " + lineOfFields.length()
 							+ " ] é incompatível com o especificado ["
 							+ stringLength + "]!");
-			log.error(StringUtils.EMPTY, e);
+			log.error(EMPTY, e);
 			throw e;
 		}
 		return is;
@@ -303,6 +296,7 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	 * @return the stringLength
 	 */
 	public Integer getStringLength() {
+		
 		return stringLength;
 	}
 
@@ -311,6 +305,7 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	 *            the stringLength to set
 	 */
 	public void setStringLength(Integer stringLength) {
+		
 		this.stringLength = stringLength;
 	}
 
