@@ -27,7 +27,9 @@
  * 
  */
 
-package org.jrimum.utilix;
+package org.jrimum.utilix.text;
+
+import org.jrimum.utilix.ReadWriteStream;
 
 /**
  * <p>Interface usada para objetos com serviços de leitura e escrita de textos.</p> 

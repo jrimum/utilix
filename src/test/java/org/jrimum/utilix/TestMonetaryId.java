@@ -35,44 +35,27 @@ import static org.junit.Assert.fail;
 import java.math.BigDecimal;
 import java.text.ParseException;
 
-import org.jrimum.utilix.MonetaryUtil;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
+import org.jrimum.utilix.text.MonetaryUtil;
 import org.junit.Test;
 
 public class TestMonetaryId {
 
 	private BigDecimal numero;
 
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-	}
-
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
-
-	@Before
-	public void setUp() throws Exception {
-	}
-
-	@After
-	public void tearDown() throws Exception {
-	}
-
 	@Test
 	public void testFmt_Real() {
 
 		try {
 
-			numero = new BigDecimal(".50");
+			numero = new BigDecimal("0.5");
 			assertEquals("0,50", MonetaryUtil.FORMAT_REAL.format(numero));
-			assertEquals(numero, MonetaryUtil.FORMAT_REAL
-					.parse(MonetaryUtil.FORMAT_REAL.format(numero)));
+			
+			BigDecimal numeroApartirDoFormato = new BigDecimal(MonetaryUtil.FORMAT_REAL
+					.parse(MonetaryUtil.FORMAT_REAL.format(numero)).doubleValue());
+			
+			assertEquals(numero, numeroApartirDoFormato);
 
-			numero = new BigDecimal("100.50");
+			numero = new BigDecimal("100.5");
 			assertEquals("100,50", MonetaryUtil.FORMAT_REAL.format(numero));
 			assertEquals(numero, MonetaryUtil.FORMAT_REAL
 					.parse(MonetaryUtil.FORMAT_REAL.format(numero)));

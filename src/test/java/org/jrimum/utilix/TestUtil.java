@@ -34,7 +34,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.Date;
 
-import org.jrimum.utilix.Field;
+import org.jrimum.utilix.text.Field;
 
 public class TestUtil {
 

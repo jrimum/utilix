@@ -29,9 +29,10 @@
 
 package org.jrimum.utilix;
 
+import static org.apache.commons.lang.StringUtils.EMPTY;
 import static org.junit.Assert.assertEquals;
 
-import org.jrimum.utilix.StringUtil;
+import org.jrimum.utilix.text.StringUtil;
 import org.junit.Test;
 
 public class TestStringUtil {
@@ -39,7 +40,7 @@ public class TestStringUtil {
 	@Test
 	public void testEliminateSymbols() {
 
-		assertEquals("", StringUtil.eliminateSymbols("><,;.:!*&%+-_<>[]\\/"));
+		assertEquals(EMPTY, StringUtil.eliminateSymbols("><,;.:!*&%+-_<>[]\\/"));
 	}
 
 	@Test

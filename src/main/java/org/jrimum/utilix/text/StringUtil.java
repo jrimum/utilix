@@ -27,13 +27,20 @@
  * 
  */
 
-package org.jrimum.utilix;
+package org.jrimum.utilix.text;
 
+import static org.apache.commons.lang.StringUtils.EMPTY;
+import static org.apache.commons.lang.StringUtils.isNotBlank;
+import static org.apache.commons.lang.StringUtils.removeStart;
+import static org.apache.commons.lang.StringUtils.replace;
+import static org.apache.commons.lang.StringUtils.replaceChars;
+import static org.apache.commons.lang.StringUtils.startsWith;
 import static org.jrimum.utilix.ObjectUtil.isNotNull;
 
 import java.io.Serializable;
 
 import org.apache.commons.lang.StringUtils;
+import org.jrimum.utilix.ObjectUtil;
 
 /**
  * <p>
@@ -120,36 +127,36 @@ public class StringUtil implements Serializable {
 
 		String modifiedStr = str;
 
-		if (isNotNull(modifiedStr)) {
+		if (isNotBlank(modifiedStr)) {
 
-			modifiedStr = StringUtils.replace(str, "-", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str, "_", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str, "=", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str, "+", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str, "%", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str, "*", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str, "@", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str, "#", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str, "&", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str, ":", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str, ".", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str, ";", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str, ",", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str, "!", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str, "?", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str, "(", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str, ")", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str, "{", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str, "}", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str, "[", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str, "]", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str, "/", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str, "\\", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str, ">", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str, "<", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str, "\"", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str, "'", StringUtils.EMPTY);
-			modifiedStr = StringUtils.replace(str, "`", StringUtils.EMPTY);
+			modifiedStr = replace(modifiedStr, "-", EMPTY);
+			modifiedStr = replace(modifiedStr, "_", EMPTY);
+			modifiedStr = replace(modifiedStr, "=", EMPTY);
+			modifiedStr = replace(modifiedStr, "+", EMPTY);
+			modifiedStr = replace(modifiedStr, "%", EMPTY);
+			modifiedStr = replace(modifiedStr, "*", EMPTY);
+			modifiedStr = replace(modifiedStr, "@", EMPTY);
+			modifiedStr = replace(modifiedStr, "#", EMPTY);
+			modifiedStr = replace(modifiedStr, "&", EMPTY);
+			modifiedStr = replace(modifiedStr, ":", EMPTY);
+			modifiedStr = replace(modifiedStr, ".", EMPTY);
+			modifiedStr = replace(modifiedStr, ";", EMPTY);
+			modifiedStr = replace(modifiedStr, ",", EMPTY);
+			modifiedStr = replace(modifiedStr, "!", EMPTY);
+			modifiedStr = replace(modifiedStr, "?", EMPTY);
+			modifiedStr = replace(modifiedStr, "(", EMPTY);
+			modifiedStr = replace(modifiedStr, ")", EMPTY);
+			modifiedStr = replace(modifiedStr, "{", EMPTY);
+			modifiedStr = replace(modifiedStr, "}", EMPTY);
+			modifiedStr = replace(modifiedStr, "[", EMPTY);
+			modifiedStr = replace(modifiedStr, "]", EMPTY);
+			modifiedStr = replace(modifiedStr, "/", EMPTY);
+			modifiedStr = replace(modifiedStr, "\\", EMPTY);
+			modifiedStr = replace(modifiedStr, ">", EMPTY);
+			modifiedStr = replace(modifiedStr, "<", EMPTY);
+			modifiedStr = replace(modifiedStr, "\"", EMPTY);
+			modifiedStr = replace(modifiedStr, "'", EMPTY);
+			modifiedStr = replace(modifiedStr, "`", EMPTY);
 		}
 
 		return modifiedStr;
@@ -174,17 +181,17 @@ public class StringUtil implements Serializable {
 
 	public static String removeStartWithZeros(final String str) {
 
-		String withoutZeros = StringUtils.EMPTY;
+		String withoutZeros = EMPTY;
 		final String zero = "0";
 
 		if (isNotNull(str)) {
 
-			if (StringUtils.startsWith(str, zero)) {
+			if (startsWith(str, zero)) {
 
-				withoutZeros = StringUtils.removeStart(str, zero);
+				withoutZeros = removeStart(str, zero);
 
-				while (StringUtils.startsWith(withoutZeros, zero)) {
-					withoutZeros = StringUtils.removeStart(withoutZeros, zero);
+				while (startsWith(withoutZeros, zero)) {
+					withoutZeros = removeStart(withoutZeros, zero);
 				}
 
 				if (withoutZeros.trim().length() == 0) {
@@ -226,72 +233,72 @@ public class StringUtil implements Serializable {
 		String modifiedValue = value;
 
 		// Para ç e Ç
-		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00E7', 'c');
-		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00C7', 'C');
+		modifiedValue = replaceChars(modifiedValue, '\u00E7', 'c');
+		modifiedValue = replaceChars(modifiedValue, '\u00C7', 'C');
 
 		// Para à, á, â, ã e ä
-		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00E0', 'a');
-		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00E1', 'a');
-		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00E2', 'a');
-		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00E3', 'a');
-		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00E4', 'a');
+		modifiedValue = replaceChars(modifiedValue, '\u00E0', 'a');
+		modifiedValue = replaceChars(modifiedValue, '\u00E1', 'a');
+		modifiedValue = replaceChars(modifiedValue, '\u00E2', 'a');
+		modifiedValue = replaceChars(modifiedValue, '\u00E3', 'a');
+		modifiedValue = replaceChars(modifiedValue, '\u00E4', 'a');
 
 		// Para è, é, ê e ë
-		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00E8', 'e');
-		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00E9', 'e');
-		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00EA', 'e');
-		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00EB', 'e');
+		modifiedValue = replaceChars(modifiedValue, '\u00E8', 'e');
+		modifiedValue = replaceChars(modifiedValue, '\u00E9', 'e');
+		modifiedValue = replaceChars(modifiedValue, '\u00EA', 'e');
+		modifiedValue = replaceChars(modifiedValue, '\u00EB', 'e');
 
 		// Para ì, í, î e ï
-		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00EC', 'i');
-		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00ED', 'i');
-		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00EE', 'i');
-		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00EF', 'i');
+		modifiedValue = replaceChars(modifiedValue, '\u00EC', 'i');
+		modifiedValue = replaceChars(modifiedValue, '\u00ED', 'i');
+		modifiedValue = replaceChars(modifiedValue, '\u00EE', 'i');
+		modifiedValue = replaceChars(modifiedValue, '\u00EF', 'i');
 
 		// Para ò, ó, ô, õ e ö
-		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00F2', 'o');
-		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00F3', 'o');
-		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00F4', 'o');
-		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00F5', 'o');
-		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00F6', 'o');
+		modifiedValue = replaceChars(modifiedValue, '\u00F2', 'o');
+		modifiedValue = replaceChars(modifiedValue, '\u00F3', 'o');
+		modifiedValue = replaceChars(modifiedValue, '\u00F4', 'o');
+		modifiedValue = replaceChars(modifiedValue, '\u00F5', 'o');
+		modifiedValue = replaceChars(modifiedValue, '\u00F6', 'o');
 
 		// Para ù, ú, û e ü
-		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00F9', 'u');
-		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00FA', 'u');
-		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00FB', 'u');
-		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00FC', 'u');
+		modifiedValue = replaceChars(modifiedValue, '\u00F9', 'u');
+		modifiedValue = replaceChars(modifiedValue, '\u00FA', 'u');
+		modifiedValue = replaceChars(modifiedValue, '\u00FB', 'u');
+		modifiedValue = replaceChars(modifiedValue, '\u00FC', 'u');
 
 		// Para À, Á, Â, Ã e Ä
-		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00C0', 'A');
-		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00C1', 'A');
-		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00C2', 'A');
-		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00C3', 'A');
-		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00C4', 'A');
+		modifiedValue = replaceChars(modifiedValue, '\u00C0', 'A');
+		modifiedValue = replaceChars(modifiedValue, '\u00C1', 'A');
+		modifiedValue = replaceChars(modifiedValue, '\u00C2', 'A');
+		modifiedValue = replaceChars(modifiedValue, '\u00C3', 'A');
+		modifiedValue = replaceChars(modifiedValue, '\u00C4', 'A');
 
 		// Para È, É, Ê e Ë
-		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00C8', 'E');
-		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00C9', 'E');
-		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00CA', 'E');
-		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00CB', 'E');
+		modifiedValue = replaceChars(modifiedValue, '\u00C8', 'E');
+		modifiedValue = replaceChars(modifiedValue, '\u00C9', 'E');
+		modifiedValue = replaceChars(modifiedValue, '\u00CA', 'E');
+		modifiedValue = replaceChars(modifiedValue, '\u00CB', 'E');
 
 		// Para Ì, Í, Î e Ï
-		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00CC', 'I');
-		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00CD', 'I');
-		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00CE', 'I');
-		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00CF', 'I');
+		modifiedValue = replaceChars(modifiedValue, '\u00CC', 'I');
+		modifiedValue = replaceChars(modifiedValue, '\u00CD', 'I');
+		modifiedValue = replaceChars(modifiedValue, '\u00CE', 'I');
+		modifiedValue = replaceChars(modifiedValue, '\u00CF', 'I');
 
 		// Para Ò, Ó, Ô, Õ e Ö
-		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00D2', 'O');
-		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00D3', 'O');
-		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00D4', 'O');
-		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00D5', 'O');
-		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00D6', 'O');
+		modifiedValue = replaceChars(modifiedValue, '\u00D2', 'O');
+		modifiedValue = replaceChars(modifiedValue, '\u00D3', 'O');
+		modifiedValue = replaceChars(modifiedValue, '\u00D4', 'O');
+		modifiedValue = replaceChars(modifiedValue, '\u00D5', 'O');
+		modifiedValue = replaceChars(modifiedValue, '\u00D6', 'O');
 
 		// Para Ù, Ú, Û e Ü
-		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00D9', 'U');
-		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00DA', 'U');
-		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00DB', 'U');
-		modifiedValue = StringUtils.replaceChars(modifiedValue, '\u00DC', 'U');
+		modifiedValue = replaceChars(modifiedValue, '\u00D9', 'U');
+		modifiedValue = replaceChars(modifiedValue, '\u00DA', 'U');
+		modifiedValue = replaceChars(modifiedValue, '\u00DB', 'U');
+		modifiedValue = replaceChars(modifiedValue, '\u00DC', 'U');
 
 		return modifiedValue;
 	}
@@ -299,7 +306,7 @@ public class StringUtil implements Serializable {
 	/**
 	 * <p>
 	 * Verifica se a <code>String</code> passada por parâmetro não é <code>null</code>, 
-	 * não é vazia (<code>StringUtils.EMPTY</code>) e não possui apenas espaços em branco. 
+	 * não é vazia (<code>EMPTY</code>) e não possui apenas espaços em branco. 
 	 * </p>
 	 * <p>
 	 * Lança exceção, com a mensagem passada por parâmetro (segundo parâmetro String), 
@@ -320,7 +327,7 @@ public class StringUtil implements Serializable {
 	/**
 	 * <p>
 	 * Verifica se a <code>String</code> passada por parâmetro não é <code>null</code>, 
-	 * não é vazia (<code>StringUtils.EMPTY</code>) e não possui apenas espaços em branco. 
+	 * não é vazia (<code>EMPTY</code>) e não possui apenas espaços em branco. 
 	 * Lança exceção caso não preencha estes requisitos.
 	 * </p>
 	 * 

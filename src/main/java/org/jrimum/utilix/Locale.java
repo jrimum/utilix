@@ -6,7 +6,6 @@ package org.jrimum.utilix;
  * </p>
  * 
  * @author <a href="http://gilmatryx.googlepages.com/">Gilmar P.S.L.</a>
- * 
  */
 public final class Locale {
 

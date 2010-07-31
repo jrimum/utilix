@@ -27,7 +27,7 @@
  * 
  */
 
-package org.jrimum.utilix;
+package org.jrimum.utilix.text;
 
 import static org.jrimum.utilix.ObjectUtil.isNotNull;
 import static org.jrimum.utilix.ObjectUtil.isNull;
@@ -41,6 +41,8 @@ import java.text.ParseException;
 import java.util.Date;
 
 import org.apache.commons.lang.StringUtils;
+import org.jrimum.utilix.DateUtil;
+import org.jrimum.utilix.ObjectUtil;
 
 /**
  * 

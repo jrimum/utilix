@@ -39,9 +39,9 @@ import java.util.GregorianCalendar;
 
 import org.apache.commons.lang.StringUtils;
 import org.jrimum.utilix.DateUtil;
-import org.jrimum.utilix.Field;
-import org.jrimum.utilix.Filler;
-import org.jrimum.utilix.MonetaryUtil;
+import org.jrimum.utilix.text.Field;
+import org.jrimum.utilix.text.Filler;
+import org.jrimum.utilix.text.MonetaryUtil;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

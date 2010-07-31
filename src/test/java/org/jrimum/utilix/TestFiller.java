@@ -31,9 +31,9 @@ package org.jrimum.utilix;
 
 import static org.junit.Assert.*;
 
-import org.jrimum.utilix.Filler;
-import org.jrimum.utilix.TextStream;
-import org.jrimum.utilix.Filler.SideToFill;
+import org.jrimum.utilix.text.Filler;
+import org.jrimum.utilix.text.TextStream;
+import org.jrimum.utilix.text.Filler.SideToFill;
 import org.junit.Test;
 
 
