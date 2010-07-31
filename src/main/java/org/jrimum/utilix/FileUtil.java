@@ -38,6 +38,7 @@ import java.io.OutputStream;
 import java.io.Serializable;
 
 import org.apache.log4j.Logger;
+import org.jrimum.utilix.text.StringUtil;
 
 /**
  * 
@@ -81,13 +82,44 @@ public class FileUtil implements Serializable {
 	 */
 	public static File bytes2File(String pathName, byte[] bytes) throws FileNotFoundException, IOException {
 
-		File file = null;
-		
 		StringUtil.checkNotBlank(pathName);
 		ObjectUtil.checkNotNull(bytes);
 
-		file = new File(pathName);
+		return bytes2File(new File(pathName), bytes);
+	}
+	
+	/**
+	 * <p>
+	 * Transforma um array de bytes em um arquivo.
+	 * </p>
+	 * 
+	 * @param file
+	 *            - arquivo para onde os bytes serão escritos.
+	 * @param bytes
+	 *            - Bytes a serem copiados.
+	 * 
+	 * @return Objeto File com o conteúdo sendo o dos bytes
+	 * 
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws NullPointerException
+	 *             Caso <code>pathName</code> ou <code>bytes</code> sejam
+	 *             <code>null</code>.
+	 * @throws IllegalArgumentException
+	 *             Caso <code>pathName</code> seja vazio ou contenha apenas
+	 *             espaços em branco
+	 * 
+	 * @since 0.2
+	 */
+	public static File bytes2File(File file, byte[] bytes) throws FileNotFoundException, IOException {
 
+		ObjectUtil.checkNotNull(file);
+		ObjectUtil.checkNotNull(bytes);
+
+		if(file.length() > Integer.MAX_VALUE){
+			throw new IllegalArgumentException("TAMANHO DO ARQUIVO MAIOR DO QUE O SUPORTADO: "+Integer.MAX_VALUE);
+		}
+		
 		OutputStream out = new FileOutputStream(file);
 
 		out.write(bytes);

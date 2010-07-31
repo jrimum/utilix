@@ -53,12 +53,13 @@ public class TestFileUtil {
 
 	@Test(expected = NullPointerException.class)
 	public void testBytes2FilePathNameNull() throws FileNotFoundException, IOException {
-		FileUtil.bytes2File(null, new byte[] {});
+		String filePath = null;
+		FileUtil.bytes2File(filePath, new byte[] {});
 	}
 	
 	@Test(expected = NullPointerException.class)
 	public void testBytes2FileBytesNull() throws FileNotFoundException, IOException {
-		FileUtil.bytes2File("/home", null);
+		FileUtil.bytes2File("./target", null);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
@@ -73,7 +74,7 @@ public class TestFileUtil {
 	
 	@Test(expected = FileNotFoundException.class)
 	public void testBytes2FileFileNotFound() throws FileNotFoundException, IOException {
-		FileUtil.bytes2File("/home/fileInexistente", new byte[] {1, 2, 3});
+		FileUtil.bytes2File("./\fileInexistente\\-/", new byte[] {1, 2, 3});
 	}
 	
 	@Test
@@ -84,7 +85,7 @@ public class TestFileUtil {
 		byte valor3 = (byte) 3;
 		
 		//Criar o arquivo antes de testar
-		Assert.assertNotNull(FileUtil.bytes2File("/home/romulo/teste/fileExistente", new byte[] {valor1, valor2, valor3}));
+		Assert.assertNotNull(FileUtil.bytes2File("./target/fileExistente", new byte[] {valor1, valor2, valor3}));
 	}
 	
 	@Test(expected = NullPointerException.class)
