@@ -29,13 +29,10 @@
 
 package org.jrimum.utilix;
 
-import java.io.Serializable;
 import java.util.Collection;
 import java.util.Map;
 
-import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.builder.ToStringBuilder;
-import org.apache.log4j.Logger;
 
 /**
  * <p>
@@ -54,19 +51,16 @@ import org.apache.log4j.Logger;
  * 
  * @version 0.2
  */
-public class ObjectUtil implements Serializable {
-
-	private static final long serialVersionUID = -6790981191128287923L;
-
-	private static Logger log = Logger.getLogger(ObjectUtil.class);
+public class ObjectUtil{
 
 	/**
-	 * Construtor privado para previnir a instanciação.
+	 * Utility class pattern: classe não instanciável
 	 * 
 	 * @throws AssertionError caso haja alguma tentativa de utilização deste construtor.
 	 */
 	private ObjectUtil() {
-		throw new AssertionError();
+		
+		throw new AssertionError("NOT SUPORTED OPERATION!");
 	}
 	
 	/**
@@ -150,74 +144,6 @@ public class ObjectUtil implements Serializable {
 		if (isEmpty(object)) {
 			throw new IllegalArgumentException(messageIllegalArgument);
 		}
-	}
-	
-	/**
-	 * <p>
-	 * Verifica a referência ao objeto e lança uma exceção para casos onde a
-	 * referência é nula incluíndo na mensagem de exceção o nome do parâmetro
-	 * passado.
-	 * </p>
-	 * 
-	 * @param object
-	 * @param name
-	 * 
-	 * @return (object == null ? true : false)
-	 * 
-	 * @throws IllegalArgumentException
-	 * 
-	 * @see #isNotNull(Object, String)
-	 * 
-	 * @since 0.2
-	 */
-	@Deprecated
-	public static boolean isNull(Object object, String name) throws IllegalArgumentException {
-
-		boolean is = true;
-
-		if (object != null) {
-			is = false;
-
-		} else {
-
-			IllegalArgumentException e = new IllegalArgumentException(
-					(name != null ? name : "Objeto ") + " inválido : ["
-							+ object + "]!");
-
-			log.error(StringUtils.EMPTY, e);
-
-			throw e;
-		}
-
-		return is;
-	}
-
-	/**
-	 * <p>
-	 * Verifica a referência ao objeto e lança uma exceção para casos onde a
-	 * referência é nula incluíndo na mensagem de exceção o nome do parâmetro
-	 * passado.
-	 * </p>
-	 * 
-	 * <p>
-	 * É o mesmo que usar <code>!isNull(obj1,"obj1")</code> a diferença é que
-	 * utiliza-se um símbolo <code>!</code> a menos.
-	 * </p>
-	 * 
-	 * @param object
-	 * @param name
-	 * 
-	 * @return (object != null ? true : false)
-	 * 
-	 * @throws IllegalArgumentException
-	 * 
-	 * @see #isNull(Object, String)
-	 * 
-	 * @since 0.2
-	 */
-	@Deprecated
-	public static boolean isNotNull(Object object, String name) throws IllegalArgumentException {
-		return !isNull(object, name);
 	}
 
 	/**

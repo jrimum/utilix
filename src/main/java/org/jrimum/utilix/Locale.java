@@ -6,6 +6,10 @@ package org.jrimum.utilix;
  * </p>
  * 
  * @author <a href="http://gilmatryx.googlepages.com/">Gilmar P.S.L.</a>
+ * 
+ * @since 0.2
+ * 
+ * @version 0.2
  */
 public final class Locale {
 
@@ -20,9 +24,11 @@ public final class Locale {
 	 * <p>
 	 * Utility class pattern: classe não instanciável
 	 * </p>
+	 * 
+	 * @throws AssertionError caso haja alguma tentativa de utilização deste construtor.
 	 */
 	private Locale() {
 
-		throw new AssertionError("INSTANCIA��O NÃO PERMITIDA!");
+		throw new AssertionError("NOT SUPORTED OPERATION!");
 	}
 }

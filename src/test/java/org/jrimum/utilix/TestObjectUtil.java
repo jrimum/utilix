@@ -41,7 +41,6 @@ import java.util.Map;
 
 import junit.framework.Assert;
 
-import org.jrimum.utilix.ObjectUtil;
 import org.junit.Test;
 
 /**

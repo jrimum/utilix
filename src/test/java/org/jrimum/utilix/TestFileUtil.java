@@ -36,7 +36,6 @@ import java.io.IOException;
 import junit.framework.Assert;
 
 import org.apache.commons.lang.StringUtils;
-import org.jrimum.utilix.FileUtil;
 import org.junit.Test;
 
 /**

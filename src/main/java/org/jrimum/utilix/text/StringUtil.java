@@ -37,8 +37,6 @@ import static org.apache.commons.lang.StringUtils.replaceChars;
 import static org.apache.commons.lang.StringUtils.startsWith;
 import static org.jrimum.utilix.ObjectUtil.isNotNull;
 
-import java.io.Serializable;
-
 import org.apache.commons.lang.StringUtils;
 import org.jrimum.utilix.ObjectUtil;
 
@@ -59,7 +57,7 @@ import org.jrimum.utilix.ObjectUtil;
  * 
  * @version 0.2
  */
-public class StringUtil implements Serializable {
+public class StringUtil{
 
 	public static final String WHITE_SPACE = " ";
 

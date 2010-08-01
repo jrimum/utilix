@@ -31,7 +31,6 @@ package org.jrimum.utilix;
 
 import static org.jrimum.utilix.ObjectUtil.isNotNull;
 
-import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -59,12 +58,7 @@ import org.apache.commons.lang.time.DateUtils;
  * 
  * @version 0.2
  */
-public class DateUtil implements Serializable {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 4339951860440604914L;
+public class DateUtil {
 
 	/**
 	 * <p>

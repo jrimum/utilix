@@ -29,7 +29,8 @@
 
 package org.jrimum.utilix;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.jrimum.utilix.text.Filler;
 import org.jrimum.utilix.text.TextStream;

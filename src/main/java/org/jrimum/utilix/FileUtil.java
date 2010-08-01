@@ -35,7 +35,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.io.Serializable;
 
 import org.apache.log4j.Logger;
 import org.jrimum.utilix.text.StringUtil;
@@ -57,11 +56,9 @@ import org.jrimum.utilix.text.StringUtil;
  * 
  * @version 0.2
  */
-public class FileUtil implements Serializable {
+public class FileUtil {
 
 	protected static final Logger LOG = Logger.getLogger(FileUtil.class);
-
-	private static final long serialVersionUID = 1227314921804015225L;
 
 	/**
 	 * <p>

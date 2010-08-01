@@ -29,7 +29,6 @@
 
 package org.jrimum.utilix.text;
 
-import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
@@ -47,12 +46,7 @@ import java.util.Locale;
  * 
  * @version 0.2
  */
-public class MonetaryUtil implements Serializable {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 3239576826390112911L;
+public class MonetaryUtil{
 
 	/**
 	 * <p>
