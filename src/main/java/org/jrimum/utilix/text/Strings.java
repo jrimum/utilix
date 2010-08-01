@@ -57,7 +57,7 @@ import org.jrimum.utilix.Objects;
  * 
  * @version 0.2
  */
-public class StringUtil{
+public class Strings{
 
 	public static final String WHITE_SPACE = " ";
 
@@ -69,7 +69,7 @@ public class StringUtil{
 	 * 
 	 * @since 0.2
 	 */
-	private StringUtil() {
+	private Strings() {
 		throw new AssertionError();
 	}
 	

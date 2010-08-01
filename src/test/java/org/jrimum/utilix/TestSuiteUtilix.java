@@ -49,7 +49,7 @@ import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
 @Suite.SuiteClasses( { TestField.class, TestFiller.class, TestDateUtil.class,
-		TestMonetaryId.class, TestStringUtil.class })
+		TestMonetaryId.class, TestStrings.class })
 public class TestSuiteUtilix {
 	/*
 	 * The class remains completely empty, being used only as a holder for the

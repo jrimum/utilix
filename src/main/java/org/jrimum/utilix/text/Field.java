@@ -350,7 +350,7 @@ public class Field<G> implements TextStream {
 					+ " ] é incompatível com o especificado [" + length + "]!");
 		}
 
-		return StringUtil.eliminateAccent(str).toUpperCase();
+		return Strings.eliminateAccent(str).toUpperCase();
 	}
 
 	/**

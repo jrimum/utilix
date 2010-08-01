@@ -99,7 +99,7 @@ public class Filler<G> implements Serializable {
 	 * </p>
 	 */
 	public static final Filler<String> WHITE_SPACE_LEFT = new Filler<String>(
-			StringUtil.WHITE_SPACE, SideToFill.LEFT);
+			Strings.WHITE_SPACE, SideToFill.LEFT);
 
 	/**
 	 * <p>
@@ -107,7 +107,7 @@ public class Filler<G> implements Serializable {
 	 * </p>
 	 */
 	public static final Filler<String> WHITE_SPACE_RIGHT = new Filler<String>(
-			StringUtil.WHITE_SPACE, SideToFill.RIGHT);
+			Strings.WHITE_SPACE, SideToFill.RIGHT);
 
 	/**
 	 * <p>
