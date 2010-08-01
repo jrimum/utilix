@@ -29,7 +29,7 @@
 
 package org.jrimum.utilix;
 
-import static org.jrimum.utilix.ObjectUtil.isNotNull;
+import static org.jrimum.utilix.Objects.isNotNull;
 
 import java.text.DateFormat;
 import java.text.ParseException;

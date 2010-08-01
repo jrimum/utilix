@@ -29,8 +29,8 @@
 
 package org.jrimum.utilix.text;
 
-import static org.jrimum.utilix.ObjectUtil.isNotNull;
-import static org.jrimum.utilix.ObjectUtil.isNull;
+import static org.jrimum.utilix.Objects.isNotNull;
+import static org.jrimum.utilix.Objects.isNull;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -42,7 +42,7 @@ import java.util.Date;
 
 import org.apache.commons.lang.StringUtils;
 import org.jrimum.utilix.DateUtil;
-import org.jrimum.utilix.ObjectUtil;
+import org.jrimum.utilix.Objects;
 
 /**
  * 
@@ -524,10 +524,10 @@ public class Field<G> implements TextStream {
 	}
 
 	/**
-	 * @see ObjectUtil#toString()
+	 * @see Objects#toString()
 	 */
 	@Override
 	public String toString() {
-		return ObjectUtil.toString(this);
+		return Objects.toString(this);
 	}
 }

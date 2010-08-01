@@ -29,12 +29,12 @@
 
 package org.jrimum.utilix.text;
 
-import static org.jrimum.utilix.ObjectUtil.isNotNull;
+import static org.jrimum.utilix.Objects.isNotNull;
 
 import java.io.Serializable;
 
 import org.apache.commons.lang.StringUtils;
-import org.jrimum.utilix.ObjectUtil;
+import org.jrimum.utilix.Objects;
 
 /**
  * <p>
@@ -486,10 +486,10 @@ public class Filler<G> implements Serializable {
 	}
 
 	/**
-	 * @see ObjectUtil#toString()
+	 * @see Objects#toString()
 	 */
 	@Override
 	public String toString() {
-		return ObjectUtil.toString(this);
+		return Objects.toString(this);
 	}
 }

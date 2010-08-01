@@ -80,7 +80,7 @@ public class FileUtil {
 	public static File bytes2File(String pathName, byte[] bytes) throws FileNotFoundException, IOException {
 
 		StringUtil.checkNotBlank(pathName);
-		ObjectUtil.checkNotNull(bytes);
+		Objects.checkNotNull(bytes);
 
 		return bytes2File(new File(pathName), bytes);
 	}
@@ -110,8 +110,8 @@ public class FileUtil {
 	 */
 	public static File bytes2File(File file, byte[] bytes) throws FileNotFoundException, IOException {
 
-		ObjectUtil.checkNotNull(file);
-		ObjectUtil.checkNotNull(bytes);
+		Objects.checkNotNull(file);
+		Objects.checkNotNull(bytes);
 
 		if(file.length() > Integer.MAX_VALUE){
 			throw new IllegalArgumentException("TAMANHO DO ARQUIVO MAIOR DO QUE O SUPORTADO: "+Integer.MAX_VALUE);
@@ -144,7 +144,7 @@ public class FileUtil {
 
 		ByteArrayOutputStream byteOut = null;
 		
-		ObjectUtil.checkNotNull(bytes);
+		Objects.checkNotNull(bytes);
 
 		byteOut = new ByteArrayOutputStream();
 		byteOut.write(bytes);

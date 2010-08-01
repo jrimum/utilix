@@ -38,7 +38,7 @@ import java.util.List;
 import java.util.ListIterator;
 
 import org.apache.log4j.Logger;
-import org.jrimum.utilix.ObjectUtil;
+import org.jrimum.utilix.Objects;
 
 /**
  * 
@@ -107,8 +107,8 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 			log.debug("Parameters stringLength: " + stringLength);
 		}
 
-		ObjectUtil.checkNotNull(fieldsLength, "Número de campos [ fieldsLength ] nulo!");
-		ObjectUtil.checkNotNull(stringLength, "Tamanho da string [ stringLength ] nulo!");
+		Objects.checkNotNull(fieldsLength, "Número de campos [ fieldsLength ] nulo!");
+		Objects.checkNotNull(stringLength, "Tamanho da string [ stringLength ] nulo!");
 	
 		if (fieldsLength > 0) {
 			if (stringLength > 0) {
@@ -160,7 +160,7 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	 */
 	public void read(String lineOfFields) {
 		
-		ObjectUtil.checkNotNull(lineOfFields);
+		Objects.checkNotNull(lineOfFields);
 
 		isConsistent(lineOfFields);
 
@@ -191,7 +191,7 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 	 */
 	public String write() {
 		
-		ObjectUtil.checkNotNull(fields);
+		Objects.checkNotNull(fields);
 		
 		StringBuilder lineOfFields = new StringBuilder(EMPTY);
 		

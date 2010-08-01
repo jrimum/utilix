@@ -35,10 +35,10 @@ import static org.apache.commons.lang.StringUtils.removeStart;
 import static org.apache.commons.lang.StringUtils.replace;
 import static org.apache.commons.lang.StringUtils.replaceChars;
 import static org.apache.commons.lang.StringUtils.startsWith;
-import static org.jrimum.utilix.ObjectUtil.isNotNull;
+import static org.jrimum.utilix.Objects.isNotNull;
 
 import org.apache.commons.lang.StringUtils;
-import org.jrimum.utilix.ObjectUtil;
+import org.jrimum.utilix.Objects;
 
 /**
  * <p>
@@ -60,11 +60,6 @@ import org.jrimum.utilix.ObjectUtil;
 public class StringUtil{
 
 	public static final String WHITE_SPACE = " ";
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 7425529940068032055L;
 
 	/**
 	 * <p>
@@ -104,7 +99,7 @@ public class StringUtil{
 	 */
 	private static void checkNotBlank(String value, String messageNullPointer, String messageIllegalArgument) {
 
-		ObjectUtil.checkNotNull(value, messageNullPointer);
+		Objects.checkNotNull(value, messageNullPointer);
 		
 		if (StringUtils.isBlank(value)) {
 			throw new IllegalArgumentException(messageIllegalArgument);
