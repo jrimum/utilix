@@ -34,7 +34,9 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.math.BigDecimal;
+import java.text.DateFormat;
 import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -50,6 +52,8 @@ import org.junit.Test;
 
 public class TestField {
 
+	private static final DateFormat FORMAT_DDMMYY = new SimpleDateFormat("ddMMyy");
+	
 	private Field<String> campoString;
 
 	private Field<Integer> campoInteger;
@@ -69,7 +73,7 @@ public class TestField {
 		campoString.setFiller(Filler.WHITE_SPACE_RIGHT);
 
 		campoDate = new Field<Date>(new GregorianCalendar(2007, Calendar.JULY,
-				22).getTime(), 6, DateUtil.FORMAT_DDMMYY);
+				22).getTime(), 6, FORMAT_DDMMYY);
 
 		campoInteger = new Field<Integer>(0, 6);
 		campoInteger.setFiller(Filler.ZERO_LEFT);
@@ -102,8 +106,8 @@ public class TestField {
 
 		Format format = null;
 
-		campoDate = new Field<Date>(new Date(), 0, DateUtil.FORMAT_DDMMYY);
-		campoDate = new Field<Date>(null, 1, DateUtil.FORMAT_DDMMYY);
+		campoDate = new Field<Date>(new Date(), 0, FORMAT_DDMMYY);
+		campoDate = new Field<Date>(null, 1, FORMAT_DDMMYY);
 		campoDate = new Field<Date>(new Date(), 0, format);
 	}
 
@@ -118,7 +122,7 @@ public class TestField {
 		campoDate.read("011002");
 		assertNotNull(campoDate.getValue());
 		assertTrue(campoDate.getValue() instanceof Date);
-		assertEquals("011002", DateUtil.FORMAT_DDMMYY.format(campoDate
+		assertEquals("011002", FORMAT_DDMMYY.format(campoDate
 				.getValue()));
 
 		campoInteger.read("000001");

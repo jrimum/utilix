@@ -62,30 +62,6 @@ public class DateUtil {
 
 	/**
 	 * <p>
-	 * Formatador de datas no padrão <tt>dd/MM/yyyy</tt>.
-	 * </p>
-	 */
-	public static final DateFormat FORMAT_DD_MM_YYYY = new SimpleDateFormat(
-			"dd/MM/yyyy");
-
-	/**
-	 * <p>
-	 * Formatador de datas no padrão <tt>ddMMyy</tt>.
-	 * </p>
-	 */
-	public static final DateFormat FORMAT_DDMMYY = new SimpleDateFormat(
-			"ddMMyy");
-
-	/**
-	 * <p>
-	 * Formatador de datas no padrão <tt>yyMMdd</tt>.
-	 * </p>
-	 */
-	public static final DateFormat FORMAT_YYMMDD = new SimpleDateFormat(
-			"yyMMdd");
-
-	/**
-	 * <p>
 	 * Representa uma data inexistente, pode ser usada em casos que não se pode
 	 * usar <code>null</code> [ <em>é obtida da seguinte forma:
 	 * <code>new GregorianCalendar(1, 0, 1).getTime()</code></em> ]
@@ -99,33 +75,6 @@ public class DateUtil {
 		calendar.set(1, 0, 1);
 		calendar.setLenient(false);
 		DATE_NULL = DateUtils.truncate(calendar.getTime(), Calendar.YEAR);
-	}
-
-	/**
-	 * <p>
-	 * Converte um objeto <code>String</code> em um objeto
-	 * <code>java.util.Date</code> no formato de data padrão brasileiro:
-	 * <tt>dd/MM/yyyy</tt>.
-	 * </p>
-	 * <p>
-	 * Utiliza a sobrecarca
-	 * <code>parse(String dateAsString, DateFormat dateFormat)</code> para
-	 * realizar a conversão.
-	 * </p>
-	 * 
-	 * @param dateAsString
-	 *            - um valor de data em forma de <code>String</code>.
-	 * @return Objeto <code>java.util.Date</code> convertido a partir do objeto
-	 *         <code>String</code>
-	 * 
-	 * @throws IllegalArgumentException
-	 *             caso o objeto <code>String</code> não seja um valor válido de
-	 *             data suportado pelo formato.
-	 * @since 0.2
-	 */
-	public static Date parse(String dateAsString) {
-
-		return parse(dateAsString, FORMAT_DD_MM_YYYY);
 	}
 
 	/**

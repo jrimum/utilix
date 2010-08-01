@@ -28,7 +28,7 @@
  */
 
 package org.jrimum.utilix;
-
+import static org.jrimum.utilix.text.DateFormat.DDMMYYYY_B;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -104,18 +104,18 @@ public class TestDateUtil {
 
 	@Test
 	public void testParseFormatoDDMMYYYY() {
-		assertNotNull(DateUtil.parse("01/01/2000"));
+		assertNotNull(DDMMYYYY_B.parse("01/01/2000"));
 	}
 
 	@Test(expected = NullPointerException.class)
 	public void testParseFormatoDDMMYYYYNullPointerException() {
-		assertNotNull(DateUtil.parse(null));
+		assertNotNull(DDMMYYYY_B.parse(null));
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testParseFormatoDDMMYYYYIllegalArgumentException() {
-		assertNotNull(DateUtil.parse(""));
-		assertNotNull(DateUtil.parse("2000-01-01"));
+		assertNotNull(DDMMYYYY_B.parse(""));
+		assertNotNull(DDMMYYYY_B.parse("2000-01-01"));
 	}
 
 	@Test
