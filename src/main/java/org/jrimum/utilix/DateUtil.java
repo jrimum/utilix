@@ -91,7 +91,7 @@ public class DateUtil {
 	 * <code>new GregorianCalendar(1, 0, 1).getTime()</code></em> ]
 	 * </p>
 	 */
-	public static final Date DATE_NULL;
+	private static final Date DATE_NULL;
 
 	static {
 
@@ -218,6 +218,23 @@ public class DateUtil {
 		return date;
 	}
 
+	public static boolean equalsInvalidDate(Date date){
+		
+		if(date == null){
+			
+			return false;
+			
+		}else{
+			
+			return (DATE_NULL.compareTo(date) == 0);
+		}
+	}
+	
+	public static Date invalidDate(){
+		
+		return (Date) DATE_NULL.clone();
+	}
+	
 	/**
 	 * <p>
 	 * Calcula a diferença de dias entre duas datas. O resultado é modular, ou
@@ -261,5 +278,4 @@ public class DateUtil {
 
 		return fator;
 	}
-
 }

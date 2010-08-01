@@ -328,7 +328,8 @@ public class Field<G> implements TextStream {
 
 			Date campoDate = (Date) value;
 
-			if (campoDate.compareTo(DateUtil.DATE_NULL) == 0) {
+			if (DateUtil.equalsInvalidDate(campoDate)) {
+				
 				str = StringUtils.EMPTY;
 
 			} else {
