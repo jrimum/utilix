@@ -11,7 +11,7 @@ package org.jrimum.utilix;
  * 
  * @version 0.2
  */
-public final class Locale {
+public final class Locales {
 
 	/**
 	 * <p>
@@ -27,7 +27,7 @@ public final class Locale {
 	 * 
 	 * @throws AssertionError caso haja alguma tentativa de utilização deste construtor.
 	 */
-	private Locale() {
+	private Locales() {
 
 		throw new AssertionError("NOT SUPORTED OPERATION!");
 	}

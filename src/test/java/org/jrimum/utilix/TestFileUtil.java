@@ -40,7 +40,7 @@ import org.junit.Test;
 
 /**
  * 
- * Teste da classe FileUtil.
+ * Teste da classe Files.
  * 
  * @author <a href="mailto:romulomail@gmail.com">Rômulo Augusto</a>
  *
@@ -53,27 +53,27 @@ public class TestFileUtil {
 	@Test(expected = NullPointerException.class)
 	public void testBytes2FilePathNameNull() throws FileNotFoundException, IOException {
 		String filePath = null;
-		FileUtil.bytes2File(filePath, new byte[] {});
+		Files.bytesToFile(filePath, new byte[] {});
 	}
 	
 	@Test(expected = NullPointerException.class)
 	public void testBytes2FileBytesNull() throws FileNotFoundException, IOException {
-		FileUtil.bytes2File("./target", null);
+		Files.bytesToFile("./target", null);
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testBytes2FilePathNameEmpty() throws FileNotFoundException, IOException {
-		FileUtil.bytes2File(StringUtils.EMPTY, new byte[] {});
+		Files.bytesToFile(StringUtils.EMPTY, new byte[] {});
 	}
 	
 	@Test(expected = IllegalArgumentException.class)
 	public void testBytes2FilePathNameBlank() throws FileNotFoundException, IOException {
-		FileUtil.bytes2File(StringUtils.EMPTY, new byte[] {});
+		Files.bytesToFile(StringUtils.EMPTY, new byte[] {});
 	}
 	
 	@Test(expected = FileNotFoundException.class)
 	public void testBytes2FileFileNotFound() throws FileNotFoundException, IOException {
-		FileUtil.bytes2File("./\fileInexistente\\-/", new byte[] {1, 2, 3});
+		Files.bytesToFile("./\fileInexistente\\-/", new byte[] {1, 2, 3});
 	}
 	
 	@Test
@@ -84,12 +84,12 @@ public class TestFileUtil {
 		byte valor3 = (byte) 3;
 		
 		//Criar o arquivo antes de testar
-		Assert.assertNotNull(FileUtil.bytes2File("./target/fileExistente", new byte[] {valor1, valor2, valor3}));
+		Assert.assertNotNull(Files.bytesToFile("./target/fileExistente", new byte[] {valor1, valor2, valor3}));
 	}
 	
 	@Test(expected = NullPointerException.class)
 	public void testBytes2StreamBytesNull() throws IOException {
-		FileUtil.bytes2Stream(null);
+		Files.bytesToStream(null);
 	}
 	
 	@Test
@@ -99,7 +99,7 @@ public class TestFileUtil {
 		byte valor2 = (byte) 2;
 		byte valor3 = (byte) 3;
 
-		ByteArrayOutputStream out = FileUtil.bytes2Stream(new byte[] {valor1, valor2, valor3});
+		ByteArrayOutputStream out = Files.bytesToStream(new byte[] {valor1, valor2, valor3});
 		
 		Assert.assertNotNull(out);
 		

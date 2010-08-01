@@ -36,7 +36,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-import org.apache.log4j.Logger;
 import org.jrimum.utilix.text.StringUtil;
 
 /**
@@ -56,9 +55,7 @@ import org.jrimum.utilix.text.StringUtil;
  * 
  * @version 0.2
  */
-public class FileUtil {
-
-	protected static final Logger LOG = Logger.getLogger(FileUtil.class);
+public class Files {
 
 	/**
 	 * <p>
@@ -77,12 +74,12 @@ public class FileUtil {
 	 * 
 	 * @since 0.2
 	 */
-	public static File bytes2File(String pathName, byte[] bytes) throws FileNotFoundException, IOException {
+	public static File bytesToFile(String pathName, byte[] bytes) throws FileNotFoundException, IOException {
 
 		StringUtil.checkNotBlank(pathName);
 		Objects.checkNotNull(bytes);
 
-		return bytes2File(new File(pathName), bytes);
+		return bytesToFile(new File(pathName), bytes);
 	}
 	
 	/**
@@ -108,7 +105,7 @@ public class FileUtil {
 	 * 
 	 * @since 0.2
 	 */
-	public static File bytes2File(File file, byte[] bytes) throws FileNotFoundException, IOException {
+	public static File bytesToFile(File file, byte[] bytes) throws FileNotFoundException, IOException {
 
 		Objects.checkNotNull(file);
 		Objects.checkNotNull(bytes);
@@ -140,13 +137,11 @@ public class FileUtil {
 	 * 
 	 * @since 0.2
 	 */
-	public static ByteArrayOutputStream bytes2Stream(byte[] bytes) throws IOException {
+	public static ByteArrayOutputStream bytesToStream(byte[] bytes) throws IOException {
 
-		ByteArrayOutputStream byteOut = null;
-		
 		Objects.checkNotNull(bytes);
 
-		byteOut = new ByteArrayOutputStream();
+		ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
 		byteOut.write(bytes);
 
 		return byteOut;
