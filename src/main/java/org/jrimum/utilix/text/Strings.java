@@ -57,20 +57,18 @@ import org.jrimum.utilix.Objects;
  * 
  * @version 0.2
  */
-public class Strings{
+public final class Strings{
 
 	public static final String WHITE_SPACE = " ";
 
 	/**
-	 * <p>
-	 * Construtor privado que previne a instanciação da classe até por
-	 * reflection
-	 * </p>
+	 * Utility class pattern: classe não instanciável
 	 * 
-	 * @since 0.2
+	 * @throws AssertionError caso haja alguma tentativa de utilização deste construtor.
 	 */
 	private Strings() {
-		throw new AssertionError();
+		
+		throw new AssertionError("NOT SUPORTED OPERATION!");
 	}
 	
 	/**

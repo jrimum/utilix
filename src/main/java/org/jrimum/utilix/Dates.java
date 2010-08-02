@@ -40,6 +40,7 @@ import java.util.Date;
 import org.apache.commons.lang.time.DateUtils;
 
 /**
+ * 
  * <p>
  * Serviços utilitários relacionados a manipulação de Objetos
  * <code>Date, Calendar, GregorianCalendar.</code>
@@ -57,13 +58,13 @@ import org.apache.commons.lang.time.DateUtils;
  * 
  * @version 0.2
  */
-public class Dates {
+public final class Dates {
 
 	/**
 	 * <p>
 	 * Representa uma data inexistente, pode ser usada em casos que não se pode
 	 * usar <code>null</code> [ <em>é obtida da seguinte forma:
-	 * <code>new GregorianCalendar(1, 0, 1).getTime()</code></em> ]
+	 * <code>Calendar.set(1, 0, 1)</code></em> ]
 	 * </p>
 	 */
 	private static final Date DATE_NULL;
@@ -74,6 +75,96 @@ public class Dates {
 		calendar.set(1, 0, 1);
 		calendar.setLenient(false);
 		DATE_NULL = DateUtils.truncate(calendar.getTime(), Calendar.YEAR);
+	}
+	
+	/**
+	 * Utility class pattern: classe não instanciável
+	 * 
+	 * @throws AssertionError caso haja alguma tentativa de utilização deste construtor.
+	 */
+	private Dates() {
+		
+		throw new AssertionError("NOT SUPORTED OPERATION!");
+	}
+
+	/**
+	 * <p>
+	 * Retorna uma data inexistente, pode ser usada em casos que não se pode
+	 * usar <code>null</code> [ <em>é obtida da seguinte forma:
+	 * <code>Calendar.set(1, 0, 1)</code></em> ]
+	 * </p>
+	 * 
+	 * @return data invalida - 01/01/0001
+	 */
+	public static Date invalidDate(){
+		
+		return (Date) DATE_NULL.clone();
+	}
+
+	/**
+	 * <p>
+	 * Compara uma dada data qualquer com a data invalida 01/01/0001.
+	 * </p>
+	 * 
+	 * @param date
+	 *            - Data qualquer
+	 * 
+	 * @return igualdade - Se igual a data inválida
+	 */
+	public static boolean equalsInvalidDate(Date date){
+		
+		if(date == null){
+			
+			return false;
+			
+		}else{
+			
+			return (DATE_NULL.compareTo(date) == 0);
+		}
+	}
+	
+	/**
+	 * <p>
+	 * Calcula a diferença de dias entre duas datas. O resultado é modular, ou
+	 * seja, maior ou igual a zero, logo a data final não precisa ser
+	 * necessariamente maior que a data inicial.
+	 * </p>
+	 * 
+	 * @param dataInicial
+	 *            - data inicial do intervalo.
+	 * @param dataFinal
+	 *            - data final do intervalo.
+	 * @return número(módulo) de dias entre as datas.
+	 * 
+	 * @throws IllegalArgumentException
+	 *             Caso pelo menos uma das duas datas seja <code>null</code>.
+	 * @since 0.2
+	 */
+	public static long calculeDiferencaEmDias(final Date dataInicial,
+			final Date dataFinal) {
+
+		long fator = 0;
+		Date dataInicialTruncada, dataFinalTruncada;
+
+		if (isNotNull(dataInicial) && isNotNull(dataFinal)) {
+
+			dataInicialTruncada = DateUtils
+					.truncate(dataInicial, Calendar.DATE);
+			dataFinalTruncada = DateUtils.truncate(dataFinal, Calendar.DATE);
+
+			fator = ((dataFinalTruncada.getTime() - dataInicialTruncada
+					.getTime()) / DateUtils.MILLIS_PER_DAY);
+
+			if (fator < 0) {
+				fator *= -1;
+			}
+		} else {
+			throw new IllegalArgumentException("A data inicial [" + dataInicial
+					+ "] e a data final [" + dataFinal + "] "
+					+ "não podem ter valor 'null'.");
+		}
+
+		return fator;
 	}
 
 	/**
@@ -164,98 +255,5 @@ public class Dates {
 		}
 
 		return date;
-	}
-
-	/**
-	 * <p>
-	 * Compara uma dada data com a data inválida "01/01/0001", que pode ser
-	 * obitida em <code>invalidDate()</code>.
-	 * </p>
-	 * 
-	 * @see #invalidDate()
-	 * 
-	 * @param date
-	 *            - Data a ser comparada com a data inválida
-	 * @return indicativo - Resultado da igualdade.
-	 * 
-	 * @since 0.2
-	 */
-	public static boolean equalsInvalidDate(Date date) {
-
-		if (date == null) {
-
-			return false;
-
-		} else {
-
-			return (DATE_NULL.compareTo(date) == 0);
-		}
-	}
-
-	/**
-	 * <p>
-	 * Retorna uma referência independente da data inválida "01/01/0001"
-	 * utilizada em <code>equalsInvalidDate(Date date)</code> representada por
-	 * <code>[new GregorianCalendar(1, 0, 1).getTime()]</code>
-	 * </p>
-	 * 
-	 * <p>
-	 * Pode ser usada em casos que não se pode usar <code>null</code>.
-	 * </p>
-	 * 
-	 * @see #equalsInvalidDate(Date)
-	 * 
-	 * @return data inválida - Cópia da data
-	 *         <code>new GregorianCalendar(1, 0, 1).getTime()</code>
-	 * 
-	 * @since 0.2
-	 */
-	public static Date invalidDate() {
-
-		return (Date) DATE_NULL.clone();
-	}
-
-	/**
-	 * <p>
-	 * Calcula a diferença de dias entre duas datas. O resultado é modular, ou
-	 * seja, maior ou igual a zero, logo a data final não precisa ser
-	 * necessariamente maior que a data inicial.
-	 * </p>
-	 * 
-	 * @param dataInicial
-	 *            - data inicial do intervalo.
-	 * @param dataFinal
-	 *            - data final do intervalo.
-	 * @return número(módulo) de dias entre as datas.
-	 * 
-	 * @throws IllegalArgumentException
-	 *             Caso pelo menos uma das duas datas seja <code>null</code>.
-	 * @since 0.2
-	 */
-	public static long calculeDiferencaEmDias(final Date dataInicial,
-			final Date dataFinal) {
-
-		long fator = 0;
-		Date dataInicialTruncada, dataFinalTruncada;
-
-		if (isNotNull(dataInicial) && isNotNull(dataFinal)) {
-
-			dataInicialTruncada = DateUtils
-					.truncate(dataInicial, Calendar.DATE);
-			dataFinalTruncada = DateUtils.truncate(dataFinal, Calendar.DATE);
-
-			fator = ((dataFinalTruncada.getTime() - dataInicialTruncada
-					.getTime()) / DateUtils.MILLIS_PER_DAY);
-
-			if (fator < 0) {
-				fator *= -1;
-			}
-		} else {
-			throw new IllegalArgumentException("A data inicial [" + dataInicial
-					+ "] e a data final [" + dataFinal + "] "
-					+ "não podem ter valor 'null'.");
-		}
-
-		return fator;
 	}
 }
