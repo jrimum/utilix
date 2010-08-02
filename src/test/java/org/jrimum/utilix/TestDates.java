@@ -40,7 +40,19 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class TestDateUtil {
+/**
+ * <p>
+ * Teste unitário para a classe utilitária de coleções.
+ * </p>
+ * 
+ * @author <a href="http://gilmatryx.googlepages.com/">Gilmar P.S.L.</a>
+ * @author <a href="mailto:romulomail@gmail.com">Rômulo Augusto</a>
+ * 
+ * @since 0.2
+ * 
+ * @version 0.2
+ */
+public class TestDates {
 
 	private static Date dataInicial;
 

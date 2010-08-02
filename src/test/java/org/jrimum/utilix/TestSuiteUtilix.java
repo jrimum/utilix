@@ -46,9 +46,14 @@ import org.junit.runners.Suite;
  * 
  * @version 0.2
  */
-
 @RunWith(Suite.class)
-@Suite.SuiteClasses( { TestField.class, TestFiller.class, TestDateUtil.class, TestStrings.class })
+@Suite.SuiteClasses( { 
+	TestObjects.class
+	, TestCollections.class
+	, TestField.class
+	, TestFiller.class
+	, TestDates.class
+	, TestStrings.class })
 public class TestSuiteUtilix {
 	/*
 	 * The class remains completely empty, being used only as a holder for the

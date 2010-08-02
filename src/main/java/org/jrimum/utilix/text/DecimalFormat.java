@@ -4,7 +4,7 @@ import java.text.ParseException;
 
 /**
  * <p>
- * Formatadores relacionados a moeda e outros.
+ * Formatadores thread-safe relacionados a moeda e números decimais.
  * </p>
  * 
  * @author <a href=http://gilmatryx.googlepages.com/>Gilmar P.S.L.</a>

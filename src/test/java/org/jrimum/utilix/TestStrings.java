@@ -35,6 +35,18 @@ import static org.junit.Assert.assertEquals;
 import org.jrimum.utilix.text.Strings;
 import org.junit.Test;
 
+/**
+ * <p>
+ * Teste unitário para a classe utilitária de strings.
+ * </p>
+ * 
+ * @author <a href="http://gilmatryx.googlepages.com/">Gilmar P.S.L.</a>
+ * @author <a href="mailto:romulomail@gmail.com">Rômulo Augusto</a>
+ * 
+ * @since 0.2
+ * 
+ * @version 0.2
+ */
 public class TestStrings {
 
 	@Test

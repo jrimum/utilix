@@ -36,6 +36,17 @@ import java.util.Date;
 
 import org.jrimum.utilix.text.Field;
 
+/**
+ * <p>
+ * Classe para uso em testes com <code>Fields</code>.
+ * </p>
+ * 
+ * @author <a href="http://gilmatryx.googlepages.com/">Gilmar P.S.L.</a>
+ * 
+ * @since 0.2
+ * 
+ * @version 0.2
+ */
 public class TestUtil {
 
 	public static <G> void testEscritaCampo(Field<G> campo, Class<G> tipo,

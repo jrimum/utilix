@@ -37,7 +37,18 @@ import org.jrimum.utilix.text.TextStream;
 import org.jrimum.utilix.text.Filler.SideToFill;
 import org.junit.Test;
 
-
+/**
+ * <p>
+ * Teste unitário para a classe utilitária de coleções.
+ * </p>
+ * 
+ * @author <a href="http://gilmatryx.googlepages.com/">Gilmar P.S.L.</a>
+ * @author <a href="mailto:romulomail@gmail.com">Rômulo Augusto</a>
+ * 
+ * @since 0.2
+ * 
+ * @version 0.2
+ */
 public class TestFiller {
 
 	private static final String CAMPO = "TESTE";

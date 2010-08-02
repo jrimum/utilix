@@ -48,7 +48,7 @@ import org.junit.Test;
  * @version 0.2
  *
  */
-public class TestObjecs {
+public class TestObjects {
 	
 	private static final Object NULL_OBJECT = null;
 	

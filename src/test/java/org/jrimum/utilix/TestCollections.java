@@ -40,7 +40,6 @@ import org.junit.Test;
  * @since 0.2
  * 
  * @version 0.2
- *
  */
 public class TestCollections {
 	

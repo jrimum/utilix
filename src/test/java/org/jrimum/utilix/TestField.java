@@ -49,7 +49,18 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-
+/**
+ * <p>
+ * Teste unitário para a classe utilitária de coleções.
+ * </p>
+ * 
+ * @author <a href="http://gilmatryx.googlepages.com/">Gilmar P.S.L.</a>
+ * @author <a href="mailto:romulomail@gmail.com">Rômulo Augusto</a>
+ * 
+ * @since 0.2
+ * 
+ * @version 0.2
+ */
 public class TestField {
 
 	private static final DateFormat FORMAT_DDMMYY = new SimpleDateFormat("ddMMyy");
@@ -135,15 +146,15 @@ public class TestField {
 		assertTrue(campoLong.getValue() instanceof Long);
 		assertTrue(new Long(1L).compareTo(campoLong.getValue()) == 0);
 
-		campoDecimal.read("00000523676");
+		campoDecimal.read("00000087598");
 		assertNotNull(campoDecimal.getValue());
 		assertTrue(campoDecimal.getValue() instanceof BigDecimal);
-		assertTrue(new BigDecimal("5236.76").compareTo(campoDecimal.getValue()) == 0);
+		assertTrue(new BigDecimal("875.98").compareTo(campoDecimal.getValue()) == 0);
 
-		campoDecimal_v9.read("00000523676");
+		campoDecimal_v9.read("00000087598");
 		assertNotNull(campoDecimal_v9.getValue());
 		assertTrue(campoDecimal_v9.getValue() instanceof BigDecimal);
-		assertTrue(new BigDecimal("52367.6").compareTo(campoDecimal_v9
+		assertTrue(new BigDecimal("875.9").compareTo(campoDecimal_v9
 				.getValue()) == 0);
 	}
 
