@@ -1,5 +1,7 @@
 package org.jrimum.utilix.text;
 
+import org.jrimum.utilix.Objects;
+
 
 abstract class ThreadLocalFormat<T> extends ThreadLocal<T>{
 
@@ -7,12 +9,8 @@ abstract class ThreadLocalFormat<T> extends ThreadLocal<T>{
 	
 	protected ThreadLocalFormat(String format){
 		
-		if(format == null){
-			
-			throw new IllegalArgumentException("INVALID NULL FORMAT!");
-		}
+		Objects.checkNotNull(format, "INVALID NULL FORMAT!");
 		
 		this.format = format;
 	}
-
 }

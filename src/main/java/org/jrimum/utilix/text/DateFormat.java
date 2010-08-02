@@ -42,7 +42,7 @@ public enum DateFormat implements Format<Date, SimpleDateFormat>{
 
 	private DateFormat(String format) {
 	
-		DATE_FORMAT = new ThreadLocalFormat<SimpleDateFormat>(format) {
+		DATE_FORMAT = new ThreadLocalFormat<SimpleDateFormat>(format){
 
 			@Override
 			protected SimpleDateFormat initialValue() {

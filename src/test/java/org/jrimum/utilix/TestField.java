@@ -42,9 +42,9 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 import org.apache.commons.lang.StringUtils;
+import org.jrimum.utilix.text.DecimalFormat;
 import org.jrimum.utilix.text.Field;
 import org.jrimum.utilix.text.Filler;
-import org.jrimum.utilix.text.MonetaryUtil;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -82,11 +82,11 @@ public class TestField {
 		campoLong.setFiller(Filler.ZERO_LEFT);
 
 		campoDecimal = new Field<BigDecimal>(new BigDecimal("875.98"), 11,
-				MonetaryUtil.FORMAT_REAL);
+				DecimalFormat.MONEY_DD_BR.copy());
 		campoDecimal.setFiller(Filler.ZERO_LEFT);
 
 		campoDecimal_v9 = new Field<BigDecimal>(new BigDecimal("875.9"), 11,
-				MonetaryUtil.FORMAT_REAL_UMA_CASA_DECIMAL);
+				DecimalFormat.MONEY_D_BR.copy());
 		campoDecimal_v9.setFiller(Filler.ZERO_LEFT);
 	}
 
