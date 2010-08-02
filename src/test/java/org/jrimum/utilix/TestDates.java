@@ -80,37 +80,37 @@ public class TestDates {
 	@Test(expected = IllegalArgumentException.class)
 	public void testCalculeDiferencaEmDiasDatasNull() {
 
-		DateUtil.calculeDiferencaEmDias(null, null);
+		Dates.calculeDiferencaEmDias(null, null);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testCalculeDiferencaEmDiasDataInicialNull() {
 
-		DateUtil.calculeDiferencaEmDias(null, dataFinal);
+		Dates.calculeDiferencaEmDias(null, dataFinal);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testCalculeDiferencaEmDiasDataFinalNull() {
 
-		DateUtil.calculeDiferencaEmDias(dataInicial, null);
+		Dates.calculeDiferencaEmDias(dataInicial, null);
 	}
 
 	@Test
 	public void testCalculeDiferencaEmDiasGaranteModulo() {
 
-		assertTrue(DateUtil.calculeDiferencaEmDias(dataInicial, dataFinal) > 0);
-		assertTrue(DateUtil.calculeDiferencaEmDias(dataFinal, dataInicial) > 0);
+		assertTrue(Dates.calculeDiferencaEmDias(dataInicial, dataFinal) > 0);
+		assertTrue(Dates.calculeDiferencaEmDias(dataFinal, dataInicial) > 0);
 	}
 
 	@Test
 	public void testCalculeDiferencaEmDias() {
 
-		assertEquals(0, DateUtil.calculeDiferencaEmDias(dataInicial,
+		assertEquals(0, Dates.calculeDiferencaEmDias(dataInicial,
 				dataInicial));
-		assertEquals(0, DateUtil.calculeDiferencaEmDias(dataFinal, dataFinal));
-		assertEquals(31, DateUtil
+		assertEquals(0, Dates.calculeDiferencaEmDias(dataFinal, dataFinal));
+		assertEquals(31, Dates
 				.calculeDiferencaEmDias(dataInicial, dataFinal));
-		assertEquals(31, DateUtil
+		assertEquals(31, Dates
 				.calculeDiferencaEmDias(dataFinal, dataInicial));
 	}
 
@@ -132,30 +132,30 @@ public class TestDates {
 
 	@Test
 	public void testParseStringString() {
-		assertNotNull(DateUtil.parse("2000-01-01", "yyyy-MM-dd"));
+		assertNotNull(Dates.parse("2000-01-01", "yyyy-MM-dd"));
 	}
 
 	@Test(expected = NullPointerException.class)
 	public void testParseStringStringDataNull() {
-		assertNotNull(DateUtil.parse(null, "yyyy-MM-dd"));
+		assertNotNull(Dates.parse(null, "yyyy-MM-dd"));
 	}
 
 	@Test(expected = NullPointerException.class)
 	public void testParseStringStringFormatoNull() {
 		String formato = null;
-		assertNotNull(DateUtil.parse("2000-01-01", formato));
+		assertNotNull(Dates.parse("2000-01-01", formato));
 	}
 
 	@Test(expected = NullPointerException.class)
 	public void testParseStringStringAmbosNull() {
 		String formato = null;
-		assertNotNull(DateUtil.parse(null, formato));
+		assertNotNull(Dates.parse(null, formato));
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testParseStringStringIllegalArgumentException() {
-		assertNotNull(DateUtil.parse("", "yyyy-MM-dd"));
-		assertNotNull(DateUtil.parse("01/01/2000", ""));
-		assertNotNull(DateUtil.parse("01/01/2000", "yyyy-MM-dd"));
+		assertNotNull(Dates.parse("", "yyyy-MM-dd"));
+		assertNotNull(Dates.parse("01/01/2000", ""));
+		assertNotNull(Dates.parse("01/01/2000", "yyyy-MM-dd"));
 	}
 }

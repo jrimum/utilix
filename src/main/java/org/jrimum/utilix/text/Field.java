@@ -41,7 +41,7 @@ import java.text.ParseException;
 import java.util.Date;
 
 import org.apache.commons.lang.StringUtils;
-import org.jrimum.utilix.DateUtil;
+import org.jrimum.utilix.Dates;
 import org.jrimum.utilix.Objects;
 
 /**
@@ -328,7 +328,7 @@ public class Field<G> implements TextStream {
 
 			Date campoDate = (Date) value;
 
-			if (DateUtil.equalsInvalidDate(campoDate)) {
+			if (Dates.equalsInvalidDate(campoDate)) {
 				
 				str = StringUtils.EMPTY;
 

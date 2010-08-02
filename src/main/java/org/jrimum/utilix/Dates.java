@@ -40,7 +40,6 @@ import java.util.Date;
 import org.apache.commons.lang.time.DateUtils;
 
 /**
- * 
  * <p>
  * Serviços utilitários relacionados a manipulação de Objetos
  * <code>Date, Calendar, GregorianCalendar.</code>
@@ -58,7 +57,7 @@ import org.apache.commons.lang.time.DateUtils;
  * 
  * @version 0.2
  */
-public class DateUtil {
+public class Dates {
 
 	/**
 	 * <p>
@@ -167,23 +166,55 @@ public class DateUtil {
 		return date;
 	}
 
-	public static boolean equalsInvalidDate(Date date){
-		
-		if(date == null){
-			
+	/**
+	 * <p>
+	 * Compara uma dada data com a data inválida "01/01/0001", que pode ser
+	 * obitida em <code>invalidDate()</code>.
+	 * </p>
+	 * 
+	 * @see #invalidDate()
+	 * 
+	 * @param date
+	 *            - Data a ser comparada com a data inválida
+	 * @return indicativo - Resultado da igualdade.
+	 * 
+	 * @since 0.2
+	 */
+	public static boolean equalsInvalidDate(Date date) {
+
+		if (date == null) {
+
 			return false;
-			
-		}else{
-			
+
+		} else {
+
 			return (DATE_NULL.compareTo(date) == 0);
 		}
 	}
-	
-	public static Date invalidDate(){
-		
+
+	/**
+	 * <p>
+	 * Retorna uma referência independente da data inválida "01/01/0001"
+	 * utilizada em <code>equalsInvalidDate(Date date)</code> representada por
+	 * <code>[new GregorianCalendar(1, 0, 1).getTime()]</code>
+	 * </p>
+	 * 
+	 * <p>
+	 * Pode ser usada em casos que não se pode usar <code>null</code>.
+	 * </p>
+	 * 
+	 * @see #equalsInvalidDate(Date)
+	 * 
+	 * @return data inválida - Cópia da data
+	 *         <code>new GregorianCalendar(1, 0, 1).getTime()</code>
+	 * 
+	 * @since 0.2
+	 */
+	public static Date invalidDate() {
+
 		return (Date) DATE_NULL.clone();
 	}
-	
+
 	/**
 	 * <p>
 	 * Calcula a diferença de dias entre duas datas. O resultado é modular, ou

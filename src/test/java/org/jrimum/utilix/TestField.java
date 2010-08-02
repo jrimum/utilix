@@ -179,7 +179,7 @@ public class TestField {
 		assertEquals("220707", campoDate.write());
 		assertEquals(6, campoDate.write().length());
 
-		campoDate.setValue(DateUtil.invalidDate());
+		campoDate.setValue(Dates.invalidDate());
 		campoDate.setFiller(Filler.ZERO_LEFT);
 		assertNotNull(campoDate.write());
 		assertEquals("000000", campoDate.write());
