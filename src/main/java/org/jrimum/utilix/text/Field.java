@@ -45,11 +45,10 @@ import org.jrimum.utilix.Dates;
 import org.jrimum.utilix.Objects;
 
 /**
- * 
  * <p>
- * Um campo de texto, número, data ou outro como <code>TextStream</code>.
+ * Um campo de texto, número, data ou outro como <code>TextStream</code>, ou seja,
+ * que se possa ler e escrever.
  * </p>
- * 
  * 
  * @author <a href="http://gilmatryx.googlepages.com/">Gilmar P.S.L</a>
  * @author <a href="mailto:misaelbarreto@gmail.com">Misael Barreto</a>

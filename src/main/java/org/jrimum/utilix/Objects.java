@@ -54,11 +54,11 @@ public final class Objects{
 	/**
 	 * Utility class pattern: classe não instanciável
 	 * 
-	 * @throws AssertionError caso haja alguma tentativa de utilização deste construtor.
+	 * @throws AssertionError Caso haja alguma tentativa de utilização deste construtor.
 	 */
 	private Objects() {
 		
-		throw new AssertionError("NOT SUPORTED OPERATION!");
+		throw new AssertionError("NOT SUPPORTED OPERATION!");
 	}
 	
 	

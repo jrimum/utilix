@@ -32,7 +32,6 @@ package org.jrimum.utilix;
 import java.io.Serializable;
 
 /**
- * 
  * <p>
  * Interface genérica e representativa de coisas que necessitam de operações de
  * fluxo de escrita e leitura.
@@ -54,17 +53,17 @@ public interface ReadWriteStream<G> extends Serializable {
 	 * @return Um valor no mesmo tipo do tipo parametrizado
 	 * @since 0.2
 	 */
-	public abstract G write();
+	G write();
 
 	/**
 	 * <p>
 	 * Lê o tipo informado.
 	 * </p>
 	 * 
-	 * @param g
-	 *            valor a ser lido
+	 * @param g - Valor a ser lido
+	 * 
 	 * @since 0.2
 	 */
-	public abstract void read(G g);
+	void read(G g);
 
 }

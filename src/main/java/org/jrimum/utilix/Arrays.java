@@ -1,3 +1,32 @@
+/*
+ * Copyright 2008 JRimum Project
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at http://www.apache.org/licenses/LICENSE-2.0 Unless required by
+ * applicable law or agreed to in writing, software distributed under the
+ * License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS
+ * OF ANY KIND, either express or implied. See the License for the specific
+ * language governing permissions and limitations under the License.
+ * 
+ * Created at: 01/08/2010 - 14:24:00
+ * 
+ * ================================================================================
+ * 
+ * Direitos autorais 2008 JRimum Project
+ * 
+ * Licenciado sob a Licença Apache, Versão 2.0 ("LICENÇA"); você não pode usar
+ * esse arquivo exceto em conformidade com a esta LICENÇA. Você pode obter uma
+ * cópia desta LICENÇA em http://www.apache.org/licenses/LICENSE-2.0 A menos que
+ * haja exigência legal ou acordo por escrito, a distribuição de software sob
+ * esta LICENÇA se dará “COMO ESTÁ”, SEM GARANTIAS OU CONDIÇÕES DE QUALQUER
+ * TIPO, sejam expressas ou tácitas. Veja a LICENÇA para a redação específica a
+ * reger permissões e limitações sob esta LICENÇA.
+ * 
+ * Criado em: 01/08/2010 - 14:24:00
+ * 
+ */
+
 package org.jrimum.utilix;
 
 /**
@@ -20,11 +49,11 @@ public final class Arrays {
 	/**
 	 * Utility class pattern: classe não instanciável
 	 * 
-	 * @throws AssertionError caso haja alguma tentativa de utilização deste construtor.
+	 * @throws AssertionError Caso haja alguma tentativa de utilização deste construtor.
 	 */
 	private Arrays() {
 		
-		throw new AssertionError("NOT SUPORTED OPERATION!");
+		throw new AssertionError("NOT SUPPORTED OPERATION!");
 	}
 
 	/**
@@ -32,12 +61,11 @@ public final class Arrays {
 	 * Indica se um dado array de chars tem elementos sem gerar NPE.
 	 * </p>
 	 * <p>
-	 * Resposta direata para o seguinte código:
+	 * Resposta direta para o seguinte código:
 	 * <code>(a != null && a > 0)</code>.
 	 * </p>
 	 * 
-	 * @param a
-	 *            - O array a ser testado.
+	 * @param a - O array a ser testado.
 	 * 
 	 * @return (a != null && a > 0)
 	 * 
@@ -53,7 +81,7 @@ public final class Arrays {
 	 * Indica se um dado array de booleans tem elementos sem gerar NPE.
 	 * </p>
 	 * <p>
-	 * Resposta direata para o seguinte código:
+	 * Resposta direta para o seguinte código:
 	 * <code>(a != null && a > 0)</code>.
 	 * </p>
 	 * 
@@ -74,12 +102,11 @@ public final class Arrays {
 	 * Indica se um dado array de bytes tem elementos sem gerar NPE.
 	 * </p>
 	 * <p>
-	 * Resposta direata para o seguinte código:
+	 * Resposta direta para o seguinte código:
 	 * <code>(a != null && a > 0)</code>.
 	 * </p>
 	 * 
-	 * @param a
-	 *            - O array a ser testado.
+	 * @param a - O array a ser testado.
 	 * 
 	 * @return (a != null && a > 0)
 	 * 
@@ -95,12 +122,11 @@ public final class Arrays {
 	 * Indica se um dado array de shorts tem elementos sem gerar NPE.
 	 * </p>
 	 * <p>
-	 * Resposta direata para o seguinte código:
+	 * Resposta direta para o seguinte código:
 	 * <code>(a != null && a > 0)</code>.
 	 * </p>
 	 * 
-	 * @param a
-	 *            - O array a ser testado.
+	 * @param a - O array a ser testado.
 	 * 
 	 * @return (a != null && a > 0)
 	 * 
@@ -116,12 +142,11 @@ public final class Arrays {
 	 * Indica se um dado array de ints tem elementos sem gerar NPE.
 	 * </p>
 	 * <p>
-	 * Resposta direata para o seguinte código:
+	 * Resposta direta para o seguinte código:
 	 * <code>(a != null && a > 0)</code>.
 	 * </p>
 	 * 
-	 * @param a
-	 *            - O array a ser testado.
+	 * @param a - O array a ser testado.
 	 * 
 	 * @return (a != null && a > 0)
 	 * 
@@ -137,12 +162,11 @@ public final class Arrays {
 	 * Indica se um dado array de longs tem elementos sem gerar NPE.
 	 * </p>
 	 * <p>
-	 * Resposta direata para o seguinte código:
+	 * Resposta direta para o seguinte código:
 	 * <code>(a != null && a > 0)</code>.
 	 * </p>
 	 * 
-	 * @param a
-	 *            - O array a ser testado.
+	 * @param a - O array a ser testado.
 	 * 
 	 * @return (a != null && a > 0)
 	 * 
@@ -158,12 +182,11 @@ public final class Arrays {
 	 * Indica se um dado array de floats tem elementos sem gerar NPE.
 	 * </p>
 	 * <p>
-	 * Resposta direata para o seguinte código:
+	 * Resposta direta para o seguinte código:
 	 * <code>(a != null && a > 0)</code>.
 	 * </p>
 	 * 
-	 * @param a
-	 *            - O array a ser testado.
+	 * @param a - O array a ser testado.
 	 * 
 	 * @return (a != null && a > 0)
 	 * 
@@ -179,12 +202,11 @@ public final class Arrays {
 	 * Indica se um dado array de doubles tem elementos sem gerar NPE.
 	 * </p>
 	 * <p>
-	 * Resposta direata para o seguinte código:
+	 * Resposta direta para o seguinte código:
 	 * <code>(a != null && a > 0)</code>.
 	 * </p>
 	 * 
-	 * @param a
-	 *            - O array a ser testado.
+	 * @param a - O array a ser testado.
 	 * 
 	 * @return (a != null && a > 0)
 	 * 
@@ -200,12 +222,11 @@ public final class Arrays {
 	 * Indica se um dado array de objetos tem elementos sem gerar NPE.
 	 * </p>
 	 * <p>
-	 * Resposta direata para o seguinte código:
+	 * Resposta direta para o seguinte código:
 	 * <code>(a != null && a > 0)</code>.
 	 * </p>
 	 * 
-	 * @param a
-	 *            - O array a ser testado.
+	 * @param a - O array a ser testado.
 	 * 
 	 * @return (a != null && a > 0)
 	 * 

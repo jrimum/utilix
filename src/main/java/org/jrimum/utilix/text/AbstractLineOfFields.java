@@ -41,11 +41,9 @@ import org.apache.log4j.Logger;
 import org.jrimum.utilix.Objects;
 
 /**
- * 
  * <p>
  * Uma lista sequencial de campos string.
  * </p>
- * 
  * 
  * @author <a href="http://gilmatryx.googlepages.com/">Gilmar P.S.L</a>
  * @author <a href="mailto:misaelbarreto@gmail.com">Misael Barreto</a>
@@ -151,7 +149,7 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 
 	/**
 	 * <p>
-	 * Ler a string de a cordo com a configuração de campos
+	 * Lê a string de acordo com a configuração de campos
 	 * </p>
 	 * 
 	 * @see TextStream#read(String)
@@ -243,12 +241,12 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 
 	/**
 	 * <p>
-	 * Verifica se a escrever possue o mesmo tamnho que o definido para a
-	 * instância.
+	 * Verifica se String a ser lida possui o mesmo tamanho que o definido para esta instância.
 	 * </p>
 	 * 
-	 * @param lineOfFields
-	 * @return
+	 * @param lineOfFields - String a ser lida de acordo com os campos definidos
+	 * @return <code>true</code> caso o tamanho dessa String seja igual ao tamanho definido para
+	 * esta instância; <code>false</code>, caso contrário.
 	 * 
 	 * @since 0.2
 	 */

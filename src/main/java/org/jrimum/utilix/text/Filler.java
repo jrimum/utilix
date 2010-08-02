@@ -160,12 +160,12 @@ public class Filler<G> implements Serializable {
 	 */
 	public void setFillWith(G fillWith) {
 
-		if (isNotNull(fillWith))
+		if (isNotNull(fillWith)) {
 			this.fillWith = fillWith;
 
-		else
-			throw new IllegalArgumentException("Filler inválido [ " + fillWith
-					+ " ]!");
+		} else {
+			throw new IllegalArgumentException("Filler inválido [ " + fillWith + " ]!");
+		}
 	}
 
 	/**
@@ -182,12 +182,12 @@ public class Filler<G> implements Serializable {
 	 */
 	public void setSideToFill(SideToFill sideToFill) {
 
-		if (isNotNull(sideToFill))
+		if (isNotNull(sideToFill)) {
 			this.sideToFill = sideToFill;
 
-		else
-			throw new IllegalArgumentException("Lado inválido [ " + sideToFill
-					+ " ]!");
+		} else {
+			throw new IllegalArgumentException("Lado inválido [ " + sideToFill + " ]!");
+		}
 	}
 
 	/**
@@ -215,13 +215,13 @@ public class Filler<G> implements Serializable {
 
 		switch (sideToFill) {
 
-		case LEFT:
-			str = fillLeft(toFill, length);
-			break;
-
-		case RIGHT:
-			str = fillRight(toFill, length);
-			break;
+			case LEFT:
+				str = fillLeft(toFill, length);
+				break;
+	
+			case RIGHT:
+				str = fillRight(toFill, length);
+				break;
 		}
 
 		return str;
@@ -431,8 +431,9 @@ public class Filler<G> implements Serializable {
 
 		String toFillTemp = null;
 
-		if (isNotNull(toFill))
+		if (isNotNull(toFill)) {
 			toFillTemp = toFill.write();
+		}
 
 		return fill(toFillTemp, length);
 	}

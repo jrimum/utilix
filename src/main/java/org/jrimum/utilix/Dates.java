@@ -40,13 +40,10 @@ import java.util.Date;
 import org.apache.commons.lang.time.DateUtils;
 
 /**
- * 
  * <p>
  * Serviços utilitários relacionados a manipulação de Objetos
  * <code>Date, Calendar, GregorianCalendar.</code>
  * </p>
- * 
- * 
  * 
  * @author <a href="http://gilmatryx.googlepages.com/">Gilmar P.S.L</a>
  * @author <a href="mailto:misaelbarreto@gmail.com">Misael Barreto</a>
@@ -80,11 +77,11 @@ public final class Dates {
 	/**
 	 * Utility class pattern: classe não instanciável
 	 * 
-	 * @throws AssertionError caso haja alguma tentativa de utilização deste construtor.
+	 * @throws AssertionError Caso haja alguma tentativa de utilização deste construtor.
 	 */
 	private Dates() {
 		
-		throw new AssertionError("NOT SUPORTED OPERATION!");
+		throw new AssertionError("NOT SUPPORTED OPERATION!");
 	}
 
 	/**
@@ -106,8 +103,7 @@ public final class Dates {
 	 * Compara uma dada data qualquer com a data invalida 01/01/0001.
 	 * </p>
 	 * 
-	 * @param date
-	 *            - Data qualquer
+	 * @param date - Data qualquer
 	 * 
 	 * @return igualdade - Se igual a data inválida
 	 */
@@ -140,20 +136,17 @@ public final class Dates {
 	 *             Caso pelo menos uma das duas datas seja <code>null</code>.
 	 * @since 0.2
 	 */
-	public static long calculeDiferencaEmDias(final Date dataInicial,
-			final Date dataFinal) {
+	public static long calculeDiferencaEmDias(final Date dataInicial, final Date dataFinal) {
 
 		long fator = 0;
 		Date dataInicialTruncada, dataFinalTruncada;
 
 		if (isNotNull(dataInicial) && isNotNull(dataFinal)) {
 
-			dataInicialTruncada = DateUtils
-					.truncate(dataInicial, Calendar.DATE);
+			dataInicialTruncada = DateUtils.truncate(dataInicial, Calendar.DATE);
 			dataFinalTruncada = DateUtils.truncate(dataFinal, Calendar.DATE);
 
-			fator = ((dataFinalTruncada.getTime() - dataInicialTruncada
-					.getTime()) / DateUtils.MILLIS_PER_DAY);
+			fator = ((dataFinalTruncada.getTime() - dataInicialTruncada.getTime()) / DateUtils.MILLIS_PER_DAY);
 
 			if (fator < 0) {
 				fator *= -1;
@@ -193,8 +186,7 @@ public final class Dates {
 	public static Date parse(String dateAsString, String dateFormat) {
 
 		if (dateFormat == null) {
-			throw new NullPointerException(
-					"O formato da data não pode ter valor [null].");
+			throw new NullPointerException("O formato da data não pode ter valor [null].");
 		}
 
 		return parse(dateAsString, new SimpleDateFormat(dateFormat));
@@ -224,13 +216,11 @@ public final class Dates {
 		Date date = null;
 
 		if (dateAsString == null) {
-			throw new NullPointerException(
-					"A String a ser convertida não pode ter valor [null].");
+			throw new NullPointerException("A String a ser convertida não pode ter valor [null].");
 		}
 
 		if (dateFormat == null) {
-			throw new NullPointerException(
-					"O formatador não pode ter valor [null].");
+			throw new NullPointerException("O formatador não pode ter valor [null].");
 		}
 
 		try {
