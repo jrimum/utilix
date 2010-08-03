@@ -221,6 +221,7 @@ public final class Objects{
 	 * whenNull(Boolean.TRUE, *) = Boolean.TRUE
 	 * </pre>
 	 * 
+	 * @param <T> tipo do objeto pretendido
 	 * @param object
 	 *            - O <code>Objeto</code> a testar, pode ser <code>null</code>
 	 * @param defaultValue
@@ -230,11 +231,12 @@ public final class Objects{
 	 * 
 	 * @since 0.2
 	 */
-    public static Object whenNull(Object object, Object defaultValue) {
-    	
-        return (object != null ? object : defaultValue);
-    }
-    
+	@SuppressWarnings("unchecked")
+	public static <T> T whenNull(Object object, Object defaultValue) {
+
+		return (T) (object != null ? object : defaultValue);
+	}
+
 	/**
 	 * <p>
 	 * Retorna um dado valor padrão quando o determinado objeto for nulo e outro
@@ -244,9 +246,10 @@ public final class Objects{
 	 * <pre>
 	 * whenNull(null, null, null)       = null
 	 * whenNull(null, "1", "2")         = "1"
-	 * whenNull("ok", "1", "2")        = "2"
+	 * whenNull("ok", "1", "2")         = "2"
 	 * </pre>
 	 * 
+	 * @param <T> tipo do objeto pretendido
 	 * @param object
 	 *            - O <code>Objeto</code> a testar, pode ser <code>null</code>
 	 * @param defaultValue
@@ -259,10 +262,11 @@ public final class Objects{
 	 * 
 	 * @since 0.2
 	 */
-    public static Object whenNull(Object object, Object defaultValue, Object notDefaultValue) {
-        
-    	return (object == null ? defaultValue : notDefaultValue);
-    }
+	@SuppressWarnings("unchecked")
+	public static <T> T whenNull(Object object, Object defaultValue, Object notDefaultValue) {
+
+		return (T) (object == null ? defaultValue : notDefaultValue);
+	}
     
     /**
 	 * Exibe os valores de instância para um objeto JRimum.
