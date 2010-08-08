@@ -27,7 +27,7 @@
  * 
  */
 
-package org.jrimum.utilix;
+package org.jrimum.utilix.text;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -39,7 +39,7 @@ import org.junit.Test;
 
 /**
  * <p>
- * Teste unitário para a classe utilitária de coleções.
+ * Teste unitário para a classe <code>Filler</code>.
  * </p>
  * 
  * @author <a href="http://gilmatryx.googlepages.com/">Gilmar P.S.L.</a>

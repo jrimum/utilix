@@ -29,6 +29,9 @@
 
 package org.jrimum.utilix;
 
+import org.jrimum.utilix.text.TestField;
+import org.jrimum.utilix.text.TestFiller;
+import org.jrimum.utilix.text.TestStrings;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 

@@ -26,7 +26,7 @@
  * Criado em: 30/03/2008 - 18:15:56
  * 
  */
-package org.jrimum.utilix;
+package org.jrimum.utilix.excludes;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;

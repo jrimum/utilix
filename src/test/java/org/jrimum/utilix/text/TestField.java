@@ -27,7 +27,7 @@
  * 
  */
 
-package org.jrimum.utilix;
+package org.jrimum.utilix.text;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -42,6 +42,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 import org.apache.commons.lang.StringUtils;
+import org.jrimum.utilix.Dates;
 import org.jrimum.utilix.text.DecimalFormat;
 import org.jrimum.utilix.text.Field;
 import org.jrimum.utilix.text.Filler;

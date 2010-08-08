@@ -27,7 +27,7 @@
  * 
  */
 
-package org.jrimum.utilix;
+package org.jrimum.utilix.text;
 
 import static org.apache.commons.lang.StringUtils.EMPTY;
 import static org.junit.Assert.assertEquals;
