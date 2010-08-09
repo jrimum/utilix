@@ -34,48 +34,99 @@
 	</properties>
 	
 	<build>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<version>2.3.1</version>
-					<configuration>
-						<source>1.5</source>
-						<target>1.5</target>
-					</configuration>
-				</plugin>
-				<plugin>
-			    	<groupId>org.apache.maven.plugins</groupId>
-			    	<artifactId>maven-surefire-plugin</artifactId>
-			    	<version>2.5</version>
-			    	<configuration>
-						<skipTests>false</skipTests>
-						<includes>
-							<include>org/jrimum/utilix/**/*</include>
-						</includes>
-						<excludes>
-							<exclude>org/jrimum/utilix/excludes/**/*</exclude>
-							<exclude>org/jrimum/utilix/**/*$*</exclude> <!-- Exclui classes internas anônimas para evitar erros -->
-						</excludes>
-			        </configuration>
-			    </plugin>
-			</plugins>
-		</pluginManagement>
-	</build>
-	
-	<reporting>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.1</version>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+		    	<groupId>org.apache.maven.plugins</groupId>
+		    	<artifactId>maven-surefire-plugin</artifactId>
+		    	<version>2.5</version>
+		    	<configuration>
+					<skipTests>false</skipTests>
+					<includes>
+						<include>org/jrimum/utilix/**/*</include>
+					</includes>
+					<excludes>
+						<exclude>org/jrimum/utilix/excludes/**/*</exclude>
+						<exclude>org/jrimum/utilix/**/*$*</exclude> <!-- Exclui classes internas anônimas para evitar erros -->
+					</excludes>
+		        </configuration>
+		    </plugin>
+		    
+		    <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.1.2</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>2.7</version>
+				<executions>
+					<execution>
+						<id>attach-javadoc</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<version>2.5</version>
 				<configuration>
-				  <docencoding>UTF-8</docencoding>
+					<source>1.5</source>
+					<targetJdk>1.5</targetJdk>
 				</configuration>
-		    </plugin>
+				<executions>
+					<execution>
+						<id>attach-pmd</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>pmd</goal>
+							<goal>cpd</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>2.5</version>
+				<executions>
+					<execution>
+						<id>attach-checkstyle</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>checkstyle</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
-	</reporting>
+	</build>
 	
 	<dependencies>
 		<dependency>
@@ -113,5 +164,18 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
+	<distributionManagement>
+		<repository>
+			<id>releases</id>
+			<name>Releases Repository</name>
+			<url>http://localhost:8081/nexus/content/repositories/releases</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<name>Snapshot Repository</name>
+			<url>http://localhost:8081/nexus/content/repositories/snapshots</url>
+		</snapshotRepository>
+	</distributionManagement>
 	
 </project>
