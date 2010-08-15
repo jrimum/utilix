@@ -1,5 +1,5 @@
 /*
- * Copyright 2008 JRimum Project
+ * Copyright 2010 JRimum Project
  * 
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -9,7 +9,7 @@
  * OF ANY KIND, either express or implied. See the License for the specific
  * language governing permissions and limitations under the License.
  * 
- * Created at: 01/08/2010 - 14:24:00
+ * Created at: 01/08/2010 - 21:30:00
  * 
  * ================================================================================
  * 
@@ -23,7 +23,7 @@
  * TIPO, sejam expressas ou tácitas. Veja a LICENÇA para a redação específica a
  * reger permissões e limitações sob esta LICENÇA.
  * 
- * Criado em: 01/08/2010 - 14:24:00
+ * Criado em: 01/08/2010 - 21:30:00
  * 
  */
 
