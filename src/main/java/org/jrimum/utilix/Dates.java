@@ -139,6 +139,7 @@ public final class Dates {
 	public static long calculeDiferencaEmDias(final Date dataInicial, final Date dataFinal) {
 
 		long fator = 0;
+		
 		Date dataInicialTruncada, dataFinalTruncada;
 
 		if (isNotNull(dataInicial) && isNotNull(dataFinal)) {
@@ -151,7 +152,9 @@ public final class Dates {
 			if (fator < 0) {
 				fator *= -1;
 			}
+			
 		} else {
+			
 			throw new IllegalArgumentException("A data inicial [" + dataInicial
 					+ "] e a data final [" + dataFinal + "] "
 					+ "não podem ter valor 'null'.");
