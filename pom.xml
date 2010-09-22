@@ -63,6 +63,7 @@
 				<version>2.5</version>
 				<configuration>
 					<skipTests>false</skipTests>
+					<forkMode>always</forkMode>
 					<includes>
 						<include>org/jrimum/utilix/**/*</include>
 					</includes>
@@ -83,42 +84,6 @@
 						<phase>verify</phase>
 						<goals>
 							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-pmd-plugin</artifactId>
-				<version>2.5</version>
-				<configuration>
-					<source>1.5</source>
-					<targetJdk>1.5</targetJdk>
-					<linkXref>true</linkXref>
-				</configuration>
-				<executions>
-					<execution>
-						<id>attach-pmd</id>
-						<phase>verify</phase>
-						<goals>
-							<goal>pmd</goal>
-							<goal>cpd</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-checkstyle-plugin</artifactId>
-				<version>2.5</version>
-				<executions>
-					<execution>
-						<id>attach-checkstyle</id>
-						<phase>verify</phase>
-						<goals>
-							<goal>checkstyle</goal>
 						</goals>
 					</execution>
 				</executions>
