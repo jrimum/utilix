@@ -67,7 +67,7 @@ public enum DecimalFormat implements Format<Number, java.text.DecimalFormat>{
 	 * monetários em real com o prefixo R$, exemplo: R$ 10,0.
 	 * </p>
 	 */
-	MONEY_D_BR("\u00A4 #,##0.00", DecimalFormatSymbols.BRASIL.copy()),
+	MONEY_D_BR("\u00A4 #,##0.0", DecimalFormatSymbols.BRASIL.copy()),
 	
 	/**
 	 * <p>
