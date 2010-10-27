@@ -13,7 +13,7 @@
  * 
  * ================================================================================
  * 
- * Direitos autorais 2008 JRimum Project
+ * Direitos autorais 2010 JRimum Project
  * 
  * Licenciado sob a Licença Apache, Versão 2.0 ("LICENÇA"); você não pode usar
  * esse arquivo exceto em conformidade com a esta LICENÇA. Você pode obter uma
@@ -347,6 +347,44 @@ public final class Collections {
 	public static boolean hasElement(Map<?, ?> m) {
 
 		return (m != null && !m.isEmpty());
+	}
+	
+	/**
+	 * <p>
+	 * Retorna a quantidade de elementos de uma dada coleção sem gerar NPE.
+	 * </p>
+	 * <p>
+	 * Resposta direata para o seguinte código:
+	 * <code>(c != null ? c.size() : 0)</code>.
+	 * </p>
+	 * 
+	 * @param c
+	 *            - Coleção com ou sem elementos.
+	 * 
+	 * @return (c != null ? c.size() : 0)
+	 */
+	public static int size(Collection<?> c) {
+
+		return (c != null ? c.size() : 0);
+	}
+
+	/**
+	 * <p>
+	 * Retorna a quantidade de elementos de um dado mapa sem gerar NPE.
+	 * </p>
+	 * <p>
+	 * Resposta direata para o seguinte código:
+	 * <code>(m != null ? m.size() : 0)</code>.
+	 * </p>
+	 * 
+	 * @param m
+	 *            - Mapa com ou sem elementos.
+	 * 
+	 * @return (m != null ? m.size() : 0)
+	 */
+	public static int size(Map<?, ?> m) {
+
+		return (m != null ? m.size() : 0);
 	}
 	
 	/**

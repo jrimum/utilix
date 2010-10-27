@@ -13,7 +13,7 @@
  * 
  * ================================================================================
  * 
- * Direitos autorais 2008 JRimum Project
+ * Direitos autorais 2010 JRimum Project
  * 
  * Licenciado sob a Licença Apache, Versão 2.0 ("LICENÇA"); você não pode usar
  * esse arquivo exceto em conformidade com a esta LICENÇA. Você pode obter uma
@@ -236,4 +236,176 @@ public final class Arrays {
 
 		return (a != null && a.length > 0);
 	}
+	
+	/**
+	 * <p>
+	 * Retorna a quantidade de elementos de um dado array sem gerar NPE.
+	 * </p>
+	 * <p>
+	 * Resposta direata para o seguinte código:
+	 * <code>(a != null ? a.length : 0)</code>.
+	 * </p>
+	 * 
+	 * @param a
+	 *            - Array com ou sem elementos.
+	 * 
+	 * @return (a != null ? a.length : 0)
+	 */
+	public static int length(char[] a){
+	
+		return (a != null ? a.length : 0);
+	}
+	
+	/**
+	 * <p>
+	 * Retorna a quantidade de elementos de um dado array sem gerar NPE.
+	 * </p>
+	 * <p>
+	 * Resposta direata para o seguinte código:
+	 * <code>(a != null ? a.length : 0)</code>.
+	 * </p>
+	 * 
+	 * @param a
+	 *            - Array com ou sem elementos.
+	 * 
+	 * @return (a != null ? a.length : 0)
+	 */
+	public static int length(boolean[] a){
+	
+		return (a != null ? a.length : 0);
+	}
+	
+	/**
+	 * <p>
+	 * Retorna a quantidade de elementos de um dado array sem gerar NPE.
+	 * </p>
+	 * <p>
+	 * Resposta direata para o seguinte código:
+	 * <code>(a != null ? a.length : 0)</code>.
+	 * </p>
+	 * 
+	 * @param a
+	 *            - Array com ou sem elementos.
+	 * 
+	 * @return (a != null ? a.length : 0)
+	 */
+	public static int length(byte[] a){
+	
+		return (a != null ? a.length : 0);
+	}
+	
+	/**
+	 * <p>
+	 * Retorna a quantidade de elementos de um dado array sem gerar NPE.
+	 * </p>
+	 * <p>
+	 * Resposta direata para o seguinte código:
+	 * <code>(a != null ? a.length : 0)</code>.
+	 * </p>
+	 * 
+	 * @param a
+	 *            - Array com ou sem elementos.
+	 * 
+	 * @return (a != null ? a.length : 0)
+	 */
+	public static int length(short[] a){
+	
+		return (a != null ? a.length : 0);
+	}
+	
+	/**
+	 * <p>
+	 * Retorna a quantidade de elementos de um dado array sem gerar NPE.
+	 * </p>
+	 * <p>
+	 * Resposta direata para o seguinte código:
+	 * <code>(a != null ? a.length : 0)</code>.
+	 * </p>
+	 * 
+	 * @param a
+	 *            - Array com ou sem elementos.
+	 * 
+	 * @return (a != null ? a.length : 0)
+	 */
+	public static int length(int[] a){
+	
+		return (a != null ? a.length : 0);
+	}
+	
+	/**
+	 * <p>
+	 * Retorna a quantidade de elementos de um dado array sem gerar NPE.
+	 * </p>
+	 * <p>
+	 * Resposta direata para o seguinte código:
+	 * <code>(a != null ? a.length : 0)</code>.
+	 * </p>
+	 * 
+	 * @param a
+	 *            - Array com ou sem elementos.
+	 * 
+	 * @return (a != null ? a.length : 0)
+	 */
+	public static int length(long[] a){
+	
+		return (a != null ? a.length : 0);
+	}
+	
+	/**
+	 * <p>
+	 * Retorna a quantidade de elementos de um dado array sem gerar NPE.
+	 * </p>
+	 * <p>
+	 * Resposta direata para o seguinte código:
+	 * <code>(a != null ? a.length : 0)</code>.
+	 * </p>
+	 * 
+	 * @param a
+	 *            - Array com ou sem elementos.
+	 * 
+	 * @return (a != null ? a.length : 0)
+	 */
+	public static int length(float[] a){
+	
+		return (a != null ? a.length : 0);
+	}
+	
+	/**
+	 * <p>
+	 * Retorna a quantidade de elementos de um dado array sem gerar NPE.
+	 * </p>
+	 * <p>
+	 * Resposta direata para o seguinte código:
+	 * <code>(a != null ? a.length : 0)</code>.
+	 * </p>
+	 * 
+	 * @param a
+	 *            - Array com ou sem elementos.
+	 * 
+	 * @return (a != null ? a.length : 0)
+	 */
+	public static int length(double[] a){
+	
+		return (a != null ? a.length : 0);
+	}
+	
+	/**
+	 * <p>
+	 * Retorna a quantidade de elementos de um dado array sem gerar NPE.
+	 * </p>
+	 * <p>
+	 * Resposta direata para o seguinte código:
+	 * <code>(a != null ? a.length : 0)</code>.
+	 * </p>
+	 * 
+	 * @param a
+	 *            - Array com ou sem elementos.
+	 * 
+	 * @return (a != null ? a.length : 0)
+	 */
+	public static int length(Object[] a){
+	
+		return (a != null ? a.length : 0);
+	}
+
 }
