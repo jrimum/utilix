@@ -113,7 +113,7 @@ public enum DecimalFormat implements Format<Number, java.text.DecimalFormat>{
 			
 		} catch (ParseException e) {
 			
-			throw new IllegalArgumentException("DateFormat Exception!", e);
+			throw new IllegalArgumentException("DecimalFormat Exception!", e);
 		}
 	}
 	
