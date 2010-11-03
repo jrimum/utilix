@@ -399,7 +399,7 @@ public final class Collections {
 	 * </p>
 	 * 
 	 * @param collection - Objeto analisado.
-	 * @param messageNullPointer - Mensagem utiliada na exceção <code>NullPointerException</code>.
+	 * @param messageNullPointer - Mensagem utiliada na exceção <code>IllegalArgumentException</code>.
 	 * @param messageIllegalArgument - Mensagem utiliada na exceção <code>IllegalArgumentException</code>.
 	 * 
 	 * @since 0.2
@@ -408,7 +408,7 @@ public final class Collections {
 		
 		if (collection == null) {
 			
-			throw new NullPointerException(messageNullPointer);
+			throw new IllegalArgumentException(messageNullPointer);
 		}
 		
 		if (collection.isEmpty()) {
@@ -429,7 +429,7 @@ public final class Collections {
 	 * </p>
 	 * 
 	 * @param map - Objeto analisado.
-	 * @param messageNullPointer - Mensagem utiliada na exceção <code>NullPointerException</code>.
+	 * @param messageNullPointer - Mensagem utiliada na exceção <code>IllegalArgumentException</code>.
 	 * @param messageIllegalArgument - Mensagem utiliada na exceção <code>IllegalArgumentException</code>.
 	 * 
 	 * @since 0.2
@@ -438,7 +438,7 @@ public final class Collections {
 		
 		if (map == null) {
 			
-			throw new NullPointerException(messageNullPointer);
+			throw new IllegalArgumentException(messageNullPointer);
 		}
 		
 		if (map.isEmpty()) {

@@ -183,7 +183,7 @@ public final class Objects{
 		
 		if (object == null) {
 			
-			throw new NullPointerException(message);
+			throw new IllegalArgumentException(message);
 		}
 	}
 	
