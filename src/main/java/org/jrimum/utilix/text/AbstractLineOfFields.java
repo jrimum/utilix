@@ -200,7 +200,7 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 				
 			}catch (Exception e) {
 				log.error("ERRO DE LEITURA");
-				throw new IllegalStateException("Erro na leitura do campo de posição [ "+fields.indexOf(field)+" ]",e);
+				throw new IllegalStateException("Erro na escrita do campo de posição [ "+fields.indexOf(field)+" ]",e);
 			}
 		}
 
