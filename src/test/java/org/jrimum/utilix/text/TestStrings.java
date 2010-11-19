@@ -116,7 +116,7 @@ public class TestStrings {
 		assertEquals("U", Strings.eliminateAccent("Ü"));
 	}
 
-	@Test(expected = NullPointerException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void testCheckNotBlankNull() {
 		Strings.checkNotBlank(null);
 	}

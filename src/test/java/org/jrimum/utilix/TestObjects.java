@@ -90,12 +90,12 @@ public class TestObjects {
 		}
 	}
 	
-	@Test(expected = NullPointerException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void testCheckNotNull() {
 		Objects.checkNotNull(NULL_OBJECT);
 	}
 	
-	@Test(expected = NullPointerException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void testCheckNotNullComMensagem() {
 		Objects.checkNotNull(NULL_OBJECT, "Argumento nulo");
 	}
@@ -108,7 +108,7 @@ public class TestObjects {
 			Objects.checkNotNull(null, "Argumento nulo");
 			Assert.fail("Exceção não disparada.");
 			
-		} catch (NullPointerException e) {
+		} catch (IllegalArgumentException e) {
 			assertEquals("Argumento nulo", e.getMessage());
 		}
 	}

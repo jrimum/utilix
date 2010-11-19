@@ -122,7 +122,7 @@ public class TestCollections {
 		}
 	}
 	
-	@Test(expected = NullPointerException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void testCheckNotEmptyMapNullPointer() {
 		Collections.checkNotEmpty(NULL_MAP);
 	}
@@ -132,7 +132,7 @@ public class TestCollections {
 		Collections.checkNotEmpty(EMPTY_MAP);
 	}
 	
-	@Test(expected = NullPointerException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void testCheckNotEmptyMapComMensagemNullPointer() {
 		Collections.checkNotEmpty(NULL_MAP, "Argumento nulo");
 	}
@@ -150,7 +150,7 @@ public class TestCollections {
 			Collections.checkNotEmpty(NULL_MAP, "Argumento nulo");
 			Assert.fail("Exceção não disparada");
 						
-		} catch (NullPointerException e) {
+		} catch (IllegalArgumentException e) {
 			assertEquals("Argumento nulo", e.getMessage());
 		}
 		
@@ -187,7 +187,7 @@ public class TestCollections {
 		}
 	}
 	
-	@Test(expected = NullPointerException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void testCheckNotEmptyCollectionNullPointer() {
 		Collections.checkNotEmpty(NULL_COLLECTION);
 	}
@@ -197,7 +197,7 @@ public class TestCollections {
 		Collections.checkNotEmpty(EMPTY_LIST);
 	}
 	
-	@Test(expected = NullPointerException.class)
+	@Test(expected = IllegalArgumentException.class)
 	public void testCheckNotEmptyCollectionComMensagemNullPointer() {
 		Collections.checkNotEmpty(NULL_COLLECTION, "Argumento nulo");
 	}
@@ -215,7 +215,7 @@ public class TestCollections {
 			Collections.checkNotEmpty(NULL_COLLECTION, "Argumento nulo");
 			Assert.fail("Exceção não disparada");
 						
-		} catch (NullPointerException e) {
+		} catch (IllegalArgumentException e) {
 			assertEquals("Argumento nulo", e.getMessage());
 		}
 		
