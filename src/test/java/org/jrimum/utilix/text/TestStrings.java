@@ -115,9 +115,45 @@ public class TestStrings {
 		assertEquals("U", Strings.eliminateAccent("Û"));
 		assertEquals("U", Strings.eliminateAccent("Ü"));
 	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testCheckNotNumericNull() {
+		Strings.checkNotNumeric(null);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testCheckNotNumericBlank() {
+		Strings.checkNotNumeric(" 192343 ");
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testCheckNotNumericWithAlpha() {
+		Strings.checkNotNumeric("A192343B");
+	}
+	
+	@Test
+	public void testCheckNotNumeric() {
+		//Ok, is numeric
+		Strings.checkNotNumeric("123");
+	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testCheckNotBlankNull() {
 		Strings.checkNotBlank(null);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testCheckNotBlankEmpty() {
+		Strings.checkNotBlank("");
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void testCheckNotBlankWithBlank() {
+		Strings.checkNotBlank("   ");
+	}
+	
+	@Test
+	public void testCheckNotBlank() {
+		Strings.checkNotBlank("Ok, Not Blank!");
 	}
 }
