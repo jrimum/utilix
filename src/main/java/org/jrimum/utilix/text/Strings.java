@@ -29,15 +29,17 @@
 
 package org.jrimum.utilix.text;
 
+import static java.lang.String.format;
 import static org.apache.commons.lang.StringUtils.EMPTY;
+import static org.apache.commons.lang.StringUtils.isBlank;
 import static org.apache.commons.lang.StringUtils.isNotBlank;
+import static org.apache.commons.lang.StringUtils.isNumeric;
 import static org.apache.commons.lang.StringUtils.removeStart;
 import static org.apache.commons.lang.StringUtils.replace;
 import static org.apache.commons.lang.StringUtils.replaceChars;
 import static org.apache.commons.lang.StringUtils.startsWith;
 import static org.jrimum.utilix.Objects.isNotNull;
 
-import org.apache.commons.lang.StringUtils;
 import org.jrimum.utilix.Objects;
 
 /**
@@ -56,56 +58,29 @@ import org.jrimum.utilix.Objects;
  * 
  * @version 0.2
  */
-public final class Strings{
+public final class Strings {
 
 	public static final String WHITE_SPACE = " ";
 
 	/**
 	 * Utility class pattern: classe não instanciável
 	 * 
-	 * @throws AssertionError caso haja alguma tentativa de utilização deste construtor.
+	 * @throws AssertionError
+	 *             caso haja alguma tentativa de utilização deste construtor.
 	 */
 	private Strings() {
-		
+
 		throw new AssertionError("NOT SUPORTED OPERATION!");
 	}
-	
-	/**
-	 * <p>
-	 * Método privado para fins de reutilização de código.
-	 * </p>
-	 * <p>
-	 * Verifica se a <code>String</code> passada por parâmetro não é <code>null</code>, 
-	 * não é vazia (<code>StringUtils.EMPTY</code>) e não possui apenas espaços em branco. 
-	 * </p>
-	 * <p>
-	 * Lança <code>NullPointerException</code>, com a mensagem definida em <code>messageNullPointer</code> 
-	 * (segundo parâmetro String), caso o valor passado seja <code>null</code>
-	 * </p>
-	 * <p>
-	 * Lança <code>IllegalArgumentException</code>, com a mensagem definida em <code>messageIllegalArgument</code> 
-	 * (terceiro parâmetro String), caso o valor passado seja vazio ou contenha apenas espaços em branco.
-	 * </p>
-	 * 
-	 * @param value - String analisada
-	 * 
-	 * @throws NullPointerException - Caso a string seja <code>null</code>.
-	 * @thows IllegalArgumentException - Caso a string seja vazia ou contenha apenas espaços em branco.
-	 * 
-	 * @since 0.2
-	 */
-	private static void checkNotBlank(String value, String messageNullPointer, String messageIllegalArgument) {
-
-		Objects.checkNotNull(value, messageNullPointer);
-		
-		if (StringUtils.isBlank(value)) {
-			throw new IllegalArgumentException(messageIllegalArgument);
-		}
-	}
 
 	/**
 	 * <p>
-	 * Elimina simbolos como: <pre>><,;.:!*&%+-_<>[]\/</pre>
+	 * Elimina simbolos como:
+	 * 
+	 * <pre>>
+	 * <,;.:!*&%+-_<>[]\/
+	 * </pre>
+	 * 
 	 * </p>
 	 * 
 	 * @param str
@@ -292,43 +267,197 @@ public final class Strings{
 
 		return modifiedValue;
 	}
-	
+
 	/**
 	 * <p>
-	 * Verifica se a <code>String</code> passada por parâmetro não é <code>null</code>, 
-	 * não é vazia (<code>EMPTY</code>) e não possui apenas espaços em branco. 
+	 * Verifica se a <code>String</code> passada por parâmetro não é
+	 * <code>null</code> e não é numérica, ou seja, se a string não contém
+	 * somente dígitos unicode.
 	 * </p>
 	 * <p>
-	 * Lança exceção, com a mensagem passada por parâmetro (segundo parâmetro String), 
-	 * caso não preencha estes requisitos.
+	 * Lança exceção, com a mensagem passada por parâmetro (segundo parâmetro
+	 * String), caso não preencha estes requisitos.
 	 * </p>
 	 * 
-	 * @param value - String analisada
+	 * @param value
+	 *            - String analisada
 	 * 
-	 * @throws NullPointerException - Caso a string seja <code>null</code>.
-	 * @thows IllegalArgumentException - Caso a string seja vazia ou contenha apenas espaços em branco.
+	 * @param message
+	 *            - Mensagem utiliada na exceção.
+	 * 
+	 * @thows IllegalArgumentException - Caso a string seja <code>null</code> ou
+	 *        caso a string não seja numérica.
+	 * 
+	 * @since 0.2
+	 */
+	public static void checkNotNumeric(String value, String message) {
+
+		checkNotNumeric(value, message, message);
+	}
+
+	/**
+	 * <p>
+	 * Verifica se a <code>String</code> passada por parâmetro não é
+	 * <code>null</code> e não é numérica, ou seja, se a string não contém
+	 * somente dígitos unicode.
+	 * </p>
+	 * <p>
+	 * Lança exceção, com a mensagem passada por parâmetro (segundo parâmetro
+	 * String), caso não preencha estes requisitos.
+	 * </p>
+	 * 
+	 * @param value
+	 *            - String analisada
+	 * 
+	 * @thows IllegalArgumentException - Caso a string seja <code>null</code> ou
+	 *        caso a string não seja numérica.
+	 * 
+	 * @since 0.2
+	 */
+	public static void checkNotNumeric(String value) {
+
+		checkNotNumeric(value, "String nula!", format(
+				"Valor inválido. String [\"%s\"] não numérica!", value));
+	}
+
+	/**
+	 * <p>
+	 * Verifica se a <code>String</code> passada por parâmetro não é
+	 * <code>null</code>, não é vazia (<code>EMPTY</code>) e não possui apenas
+	 * espaços em branco.
+	 * </p>
+	 * <p>
+	 * Lança exceção, com a mensagem passada por parâmetro (segundo parâmetro
+	 * String), caso não preencha estes requisitos.
+	 * </p>
+	 * 
+	 * @param value
+	 *            - String analisada
+	 * 
+	 * @param message
+	 *            - Mensagem utiliada na exceção.
+	 * 
+	 * @thows IllegalArgumentException - Caso a string seja <code>null</code> ou
+	 *        caso a string seja vazia.
 	 * 
 	 * @since 0.2
 	 */
 	public static void checkNotBlank(String value, String message) {
+
 		checkNotBlank(value, message, message);
 	}
-	
+
 	/**
 	 * <p>
-	 * Verifica se a <code>String</code> passada por parâmetro não é <code>null</code>, 
-	 * não é vazia (<code>EMPTY</code>) e não possui apenas espaços em branco. 
-	 * Lança exceção caso não preencha estes requisitos.
+	 * Verifica se a <code>String</code> passada por parâmetro não é
+	 * <code>null</code>, não é vazia (<code>EMPTY</code>) e não possui apenas
+	 * espaços em branco. Lança exceção caso não preencha estes requisitos.
 	 * </p>
 	 * 
-	 * @param value - String analisada
+	 * @param value
+	 *            - String analisada
 	 * 
-	 * @throws NullPointerException - Caso a string seja <code>null</code>.
-	 * @thows IllegalArgumentException - Caso a string seja vazia ou contenha apenas espaços em branco.
+	 * @thows IllegalArgumentException - Caso a string seja <code>null</code> ou
+	 *        caso a string seja vazia.
 	 * 
 	 * @since 0.2
 	 */
 	public static void checkNotBlank(String value) {
-		checkNotBlank(value, "String nula", "Valor inválido. String vazia ou contendo apenas espaços em brancos");
+
+		checkNotBlank(
+				value,
+				"String nula!",
+				format(
+						"Valor inválido. String [\"%s\"] vazia ou contendo somente espaços em branco!",
+						value));
+	}
+
+	/**
+	 * <p>
+	 * Método privado para fins de reutilização de código.
+	 * </p>
+	 * <p>
+	 * Verifica se a <code>String</code> passada por parâmetro não é
+	 * <code>null</code> e não é numérica, ou seja, se a string não contém
+	 * somente dígitos unicode.
+	 * </p>
+	 * <p>
+	 * Lança <code>IllegalArgumentException</code>, com a mensagem definida em
+	 * <code>messageNullPointer</code> (segundo parâmetro String), caso o valor
+	 * passado seja <code>null</code>
+	 * </p>
+	 * <p>
+	 * Lança <code>IllegalArgumentException</code>, com a mensagem definida em
+	 * <code>messageIllegalArgument</code> (terceiro parâmetro String), caso o
+	 * valor passado não seja numérico.
+	 * </p>
+	 * 
+	 * @param value
+	 *            - String analisada
+	 * 
+	 * @param messageNullPointer
+	 *            - Mensagem utiliada na exceção.
+	 * 
+	 * @param messageIllegalArgument
+	 *            - Mensagem utiliada na exceção.
+	 * 
+	 * 
+	 * @thows IllegalArgumentException - Caso a string seja <code>null</code> ou
+	 *        caso a string não seja numérica.
+	 * 
+	 * @since 0.2
+	 */
+	private static void checkNotNumeric(String value,
+			String messageNullPointer, String messageIllegalArgument) {
+
+		Objects.checkNotNull(value, messageNullPointer);
+
+		if (!isNumeric(value)) {
+			throw new IllegalArgumentException(messageIllegalArgument);
+		}
+	}
+
+	/**
+	 * <p>
+	 * Método privado para fins de reutilização de código.
+	 * </p>
+	 * <p>
+	 * Verifica se a <code>String</code> passada por parâmetro não é
+	 * <code>null</code>, não é vazia (<code>StringUtils.EMPTY</code>) e não
+	 * possui apenas espaços em branco.
+	 * </p>
+	 * <p>
+	 * Lança <code>IllegalArgumentException</code>, com a mensagem definida em
+	 * <code>messageNullPointer</code> (segundo parâmetro String), caso o valor
+	 * passado seja <code>null</code>
+	 * </p>
+	 * <p>
+	 * Lança <code>IllegalArgumentException</code>, com a mensagem definida em
+	 * <code>messageIllegalArgument</code> (terceiro parâmetro String), caso o
+	 * valor passado seja vazio.
+	 * </p>
+	 * 
+	 * @param value
+	 *            - String analisada
+	 * 
+	 * @param messageNullPointer
+	 *            - Mensagem utiliada na exceção.
+	 * 
+	 * @param messageIllegalArgument
+	 *            - Mensagem utiliada na exceção.
+	 * 
+	 * @thows IllegalArgumentException - Caso a string seja <code>null</code> ou
+	 *        caso a string seja vazia.
+	 * 
+	 * @since 0.2
+	 */
+	private static void checkNotBlank(String value, String messageNullPointer,
+			String messageIllegalArgument) {
+
+		Objects.checkNotNull(value, messageNullPointer);
+
+		if (isBlank(value)) {
+			throw new IllegalArgumentException(messageIllegalArgument);
+		}
 	}
 }
