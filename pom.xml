@@ -6,7 +6,7 @@
 	<artifactId>utilix</artifactId>
 	<packaging>jar</packaging>
 	<name>Projeto Utilix</name>
-	<version>0.2.3-SNAPSHOT</version>
+	<version>0.3.1-SNAPSHOT</version>
 	<description>Projeto open source de componentes de software para o domínio de negócios do Brasil.</description>
 	<url>http://www.jrimum.org/utilix</url>
 
