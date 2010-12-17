@@ -49,45 +49,48 @@ import org.apache.commons.lang.builder.ToStringBuilder;
  * 
  * @version 0.2
  */
-public final class Objects{
+public final class Objects {
 
 	/**
 	 * Utility class pattern: classe não instanciável
 	 * 
-	 * @throws AssertionError Caso haja alguma tentativa de utilização deste construtor.
+	 * @throws AssertionError
+	 *             Caso haja alguma tentativa de utilização deste construtor.
 	 */
 	private Objects() {
-		
+
 		throw new AssertionError("NOT SUPPORTED OPERATION!");
 	}
-	
-	
+
 	/**
 	 * <p>
 	 * Verifica se o objeto passado por parâmetro é <code>null</code>.
 	 * </p>
 	 * 
-	 * @param object - Objeto analisado
+	 * @param object
+	 *            - Objeto analisado
 	 * 
 	 * @return (object == null)
 	 * 
 	 * @since 0.2
 	 */
 	public static boolean isNull(Object object) {
-		
+
 		return (object == null);
 	}
 
 	/**
 	 * <p>
-	 * Verifica se o objeto passado por parâmetro <strong>não</strong> é <code>null</code>. 
+	 * Verifica se o objeto passado por parâmetro <strong>não</strong> é
+	 * <code>null</code>.
 	 * </p>
 	 * <p>
-	 * É o mesmo que usar o método <code>isNull</code> da forma <code>!isNull(obj)</code>, porém
-	 * de forma mais legível.
+	 * É o mesmo que usar o método <code>isNull</code> da forma
+	 * <code>!isNull(obj)</code>, porém de forma mais legível.
 	 * </p>
 	 * 
-	 * @param object - Objeto analisado
+	 * @param object
+	 *            - Objeto analisado
 	 * 
 	 * @return (object != null)
 	 * 
@@ -96,7 +99,7 @@ public final class Objects{
 	 * @since 0.2
 	 */
 	public static boolean isNotNull(Object object) {
-		
+
 		return (object != null);
 	}
 
@@ -105,7 +108,8 @@ public final class Objects{
 	 * Verifica se existe uma referência ao objeto dado.
 	 * </p>
 	 * 
-	 * @param object - Objeto analisado
+	 * @param object
+	 *            - Objeto analisado
 	 * 
 	 * @return (object != null);
 	 * 
@@ -114,43 +118,48 @@ public final class Objects{
 	 * @since 0.2
 	 */
 	public static boolean exists(Object object) {
-		
+
 		return (object != null);
 	}
-	
+
 	/**
 	 * <p>
-	 * Verifica se o objeto é nulo e lança <code>IllegalArgumentException</code>, com a mensagem 
-	 * informada, caso <strong>não</strong> seja.
+	 * Verifica se o objeto é nulo e lança <code>IllegalArgumentException</code>
+	 * , com a mensagem informada, caso <strong>não</strong> seja.
 	 * </p>
 	 * 
-	 * @thows IllegalArgumentException - Caso o objeto <strong>não</strong> seja <code>null</code>.
+	 * @thows IllegalArgumentException - Caso o objeto <strong>não</strong> seja
+	 *        <code>null</code>.
 	 * 
 	 * @see #isNull(Object)
 	 * @see #isNotNull(Object)
 	 * 
 	 * @since 0.2
 	 * 
-	 * @param object - Objeto analisado
-	 * @param message - Mensagem utilizada na exceção
+	 * @param object
+	 *            - Objeto analisado
+	 * @param message
+	 *            - Mensagem utilizada na exceção
 	 */
 	public static void checkNull(Object object, String message) {
-		
+
 		if (object != null) {
-			
+
 			throw new IllegalArgumentException(message);
 		}
 	}
-	
+
 	/**
 	 * <p>
-	 * Verifica se o objeto é nulo e lança <code>IllegalArgumentException</code> caso 
-	 * <strong>não</strong> seja.
+	 * Verifica se o objeto é nulo e lança <code>IllegalArgumentException</code>
+	 * caso <strong>não</strong> seja.
 	 * </p>
 	 * 
-	 * @param object - Objeto analisado
+	 * @param object
+	 *            - Objeto analisado
 	 * 
-	 * @thows IllegalArgumentException - Caso o objeto <strong>não</strong> seja <code>null</code>.
+	 * @thows IllegalArgumentException - Caso o objeto <strong>não</strong> seja
+	 *        <code>null</code>.
 	 * 
 	 * @see #checkNull(Object, String)
 	 * @see #isNull(Object)
@@ -159,20 +168,24 @@ public final class Objects{
 	 * @since 0.2
 	 */
 	public static void checkNull(Object object) {
-		
-		checkNull(object, new StringBuilder("Objeto não nulo! Valor [ ").append(object).append(" ].").toString());
+
+		checkNull(object, new StringBuilder("Objeto não nulo! Valor [ ")
+				.append(object).append(" ].").toString());
 	}
-	
+
 	/**
 	 * <p>
-	 * Verifica se o objeto <strong>não</strong> é nulo e lança <code>NullPointerException</code>, com
-	 * a mensagem informada, caso seja.
+	 * Verifica se o objeto <strong>não</strong> é nulo e lança
+	 * <code>IllegalArgumentException</code>, com a mensagem informada, caso
+	 * seja.
 	 * </p>
 	 * 
-	 * @param object - Objeto analisado
-	 * @param message - Mensagem utilizada na exceção
+	 * @param object
+	 *            - Objeto analisado
+	 * @param message
+	 *            - Mensagem utilizada na exceção
 	 * 
-	 * @thows NullPointerException - Caso o objeto seja <code>null</code>.
+	 * @thows IllegalArgumentException - Caso o objeto seja <code>null</code>.
 	 * 
 	 * @see #isNull(Object)
 	 * @see #isNotNull(Object)
@@ -180,22 +193,23 @@ public final class Objects{
 	 * @since 0.2
 	 */
 	public static void checkNotNull(Object object, String message) {
-		
+
 		if (object == null) {
-			
-			throw new NullPointerException(message);
+
+			throw new IllegalArgumentException(message);
 		}
 	}
-	
+
 	/**
 	 * <p>
-	 * Verifica se o objeto <strong>não</strong> é nulo e lança <code>NullPointerException</code> 
-	 * caso seja.
+	 * Verifica se o objeto <strong>não</strong> é nulo e lança
+	 * <code>IllegalArgumentException</code> caso seja.
 	 * </p>
 	 * 
-	 * @param object - Objeto analisado
+	 * @param object
+	 *            - Objeto analisado
 	 * 
-	 * @thows NullPointerException - Caso o objeto seja <code>null</code>.
+	 * @thows IllegalArgumentException - Caso o objeto seja <code>null</code>.
 	 * 
 	 * @see #checkNotNull(Object, String)
 	 * @see #isNull(Object)
@@ -204,10 +218,10 @@ public final class Objects{
 	 * @since 0.2
 	 */
 	public static void checkNotNull(Object object) {
-		
+
 		checkNotNull(object, "Objeto nulo!");
 	}
-	
+
 	/**
 	 * <p>
 	 * Retorna um dado valor padrão quando o determinado objeto for nulo.
@@ -221,7 +235,8 @@ public final class Objects{
 	 * whenNull(Boolean.TRUE, *) = Boolean.TRUE
 	 * </pre>
 	 * 
-	 * @param <T> tipo do objeto pretendido
+	 * @param <T>
+	 *            tipo do objeto pretendido
 	 * @param object
 	 *            - O <code>Objeto</code> a testar, pode ser <code>null</code>
 	 * @param defaultValue
@@ -249,7 +264,8 @@ public final class Objects{
 	 * whenNull("ok", "1", "2")         = "2"
 	 * </pre>
 	 * 
-	 * @param <T> tipo do objeto pretendido
+	 * @param <T>
+	 *            tipo do objeto pretendido
 	 * @param object
 	 *            - O <code>Objeto</code> a testar, pode ser <code>null</code>
 	 * @param defaultValue
@@ -263,12 +279,13 @@ public final class Objects{
 	 * @since 0.2
 	 */
 	@SuppressWarnings("unchecked")
-	public static <T> T whenNull(Object object, Object defaultValue, Object notDefaultValue) {
+	public static <T> T whenNull(Object object, Object defaultValue,
+			Object notDefaultValue) {
 
 		return (T) (object == null ? defaultValue : notDefaultValue);
 	}
-    
-    /**
+
+	/**
 	 * Exibe os valores de instância para um objeto JRimum.
 	 * 
 	 * @see org.apache.commons.lang.builder.ToStringBuilder#reflectionToString
@@ -278,7 +295,7 @@ public final class Objects{
 	 * @see java.lang.Object#toString()
 	 */
 	public static String toString(Object obj) {
-		
+
 		return "JRimumObject: " + ToStringBuilder.reflectionToString(obj);
 	}
 }
