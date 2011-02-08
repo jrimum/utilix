@@ -73,6 +73,10 @@ public final class ClassLoaders {
 	 * Carrega um recurso existente no classpath com ou sem uma classe
 	 * informada.
 	 * </p>
+	 * <p>
+	 * Informando a classe há necessidade de informar o caminho do pacote, caso
+	 * o recurso esteja nele.
+	 * </p>
 	 * 
 	 * @param resourceName
 	 *            - O nome do resource a ser carregado
