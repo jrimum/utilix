@@ -121,6 +121,86 @@ public final class Objects {
 
 		return (object != null);
 	}
+	
+	/**
+	 * Verifica a verdade de uma expressão e lança uma
+	 * <code>IllegalArgumentException</code>, caso a expressão seja
+	 * <strong>false</strong>.
+	 * 
+	 * @param expression
+	 *            - Qualquer expressão booleana
+	 * @throws IllegalArgumentException
+	 *             se {@code expression == false}
+	 * 
+	 * @since 0.2
+	 */
+	public static void checkArgument(boolean expression) {
+		
+		if (!expression) {
+			throw new IllegalArgumentException();
+		}
+	}
+
+	/**
+	 * Verifica a verdade de uma expressão e lança uma
+	 * <code>IllegalArgumentException</code>, com a mensagem iformada, caso a
+	 * expressão seja <strong>false</strong>.
+	 * 
+	 * @param expression
+	 *            - Qualquer expressão booleana
+	 * @param message
+	 *            - Mensagem utilizada na exceção
+	 * @throws IllegalArgumentException
+	 *             se {@code expression == false}
+	 * 
+	 * @since 0.2
+	 */
+	public static void checkArgument(boolean expression, String message) {
+		
+		if (!expression) {
+			throw new IllegalArgumentException(message);
+		}
+	}
+
+	/**
+	 * Verifica a verdade de uma expressão e lança uma
+	 * <code>IllegalStateException</code>, caso a expressão seja
+	 * <strong>false</strong>.
+	 * 
+	 * @param expression
+	 *            - Qualquer expressão booleana
+	 * @throws IllegalStateException
+	 *             se {@code expression == false}
+	 * 
+	 * @since 0.2
+	 */
+	public static void checkState(boolean expression) {
+		
+		if (!expression) {
+			throw new IllegalStateException();
+		}
+	}
+
+	/**
+	 * Verifica a verdade de uma expressão e lança uma
+	 * <code>IllegalStateException</code>, com a mensagem iformada, caso a
+	 * expressão seja <strong>false</strong>.
+	 * 
+	 * @param expression
+	 *            - Qualquer expressão booleana
+	 * @param message
+	 *            - Mensagem utilizada na exceção
+	 * @throws IllegalStateException
+	 *             se {@code expression == false}
+	 * 
+	 * @since 0.2
+	 */
+	public static void checkState(boolean expression, String message) {
+		
+		if (!expression) {
+			throw new IllegalStateException(message);
+		}
+	}
 
 	/**
 	 * <p>
