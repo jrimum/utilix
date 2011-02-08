@@ -29,6 +29,8 @@
 
 package org.jrimum.utilix;
 
+import static java.lang.String.format;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -91,6 +93,18 @@ public final class ClassLoaders {
 				url = callingClass.getClassLoader().getResource(resourceName);
 				
 			}else{
+				
+				return url;
+			}
+
+			if (url == null) {
+
+				String inPagckage = format("%s/%s", callingClass.getPackage().getName().replaceAll("\\.", "/"), resourceName);
+
+				url = Thread.currentThread().getContextClassLoader().getResource(inPagckage);
+				
+			} else {
+
 				return url;
 			}
 		}
@@ -98,14 +112,18 @@ public final class ClassLoaders {
 		if (url == null) {
 
 			url = ClassLoaders.class.getResource(resourceName);
+			
 		}else{
+			
 			return url;
 		}
 
 		if (url == null) {
 
 			url = ClassLoaders.class.getClassLoader().getResource(resourceName);
+			
 		}else{
+			
 			return url;
 		}
 
