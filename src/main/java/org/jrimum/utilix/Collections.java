@@ -340,6 +340,56 @@ public final class Collections {
 
 		return hasElement(map);
 	}
+	
+	/**
+	 * <p>
+	 * Indica se pelo menos uma coleção tem algum elemento sem gerar NPE.
+	 * </p>
+	 * <p>
+	 * 
+	 * @param cols
+	 *            - Coleções para teste.
+	 * 
+	 * @return indicativo
+	 */
+	public static boolean hasElement(Collection<?> ... cols) {
+
+		if(Arrays.hasElement(cols)){
+			
+			for(Collection<?> c : cols){
+				if(hasElement(c)){
+					return true;
+				}
+			}
+		}
+		
+		return false;
+	}
+
+	/**
+	 * <p>
+	 * Indica se pelo menos um mapa tem algum elemento sem gerar NPE.
+	 * </p>
+	 * <p>
+	 * 
+	 * @param maps
+	 *            - Mapas para teste.
+	 * 
+	 * @return indicativo
+	 */
+	public static boolean hasElement(Map<?, ?> ... maps) {
+
+		if(Arrays.hasElement(maps)){
+			
+			for(Map<?, ?> m : maps){
+				if(hasElement(m)){
+					return true;
+				}
+			}
+		}
+		
+		return false;
+	}
 
 	/**
 	 * <p>
