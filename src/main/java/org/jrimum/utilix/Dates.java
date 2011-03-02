@@ -170,14 +170,14 @@ public final class Dates {
 	 * </p>
 	 * <p>
 	 * Utiliza a sobrecarca
-	 * <code>parse(String dateAsString, DateFormat dateFormat)</code> para
+	 * <code>parse(String dateAsString, String dateFormat)</code> para
 	 * realizar a conversão.
 	 * </p>
 	 * 
 	 * @param dateAsString
 	 *            - um valor de data em forma de <code>String</code>.
 	 * @param dateFormat
-	 *            - formato de data
+	 *            - formato de data em forma de <code>String</code>.
 	 * @return Objeto <code>java.util.Date</code> convertido a partir do objeto
 	 *         <code>String</code>
 	 * 
