@@ -49,11 +49,12 @@ public final class Arrays {
 	/**
 	 * Utility class pattern: classe não instanciável
 	 * 
-	 * @throws AssertionError Caso haja alguma tentativa de utilização deste construtor.
+	 * @throws IllegalStateException
+	 *             Caso haja alguma tentativa de utilização deste construtor.
 	 */
 	private Arrays() {
 		
-		throw new AssertionError("NOT SUPPORTED OPERATION!");
+		Objects.checkState(false, "Instanciação não permitida!");
 	}
 
 	/**

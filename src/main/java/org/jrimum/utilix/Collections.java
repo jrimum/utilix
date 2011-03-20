@@ -54,12 +54,12 @@ public final class Collections {
 	/**
 	 * Utility class pattern: classe não instanciável
 	 * 
-	 * @throws AssertionError
+	 * @throws IllegalStateException
 	 *             Caso haja alguma tentativa de utilização deste construtor.
 	 */
 	private Collections() {
 
-		throw new AssertionError("NOT SUPPORTED OPERATION!");
+		Objects.checkState(false, "Instanciação não permitida!");
 	}
 
 	/**

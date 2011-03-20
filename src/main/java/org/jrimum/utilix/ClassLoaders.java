@@ -48,12 +48,12 @@ public final class ClassLoaders {
 	/**
 	 * Utility class pattern: classe não instanciável
 	 * 
-	 * @throws AssertionError
+	 * @throws IllegalStateException
 	 *             Caso haja alguma tentativa de utilização deste construtor.
 	 */
 	private ClassLoaders() {
 
-		throw new AssertionError("NOT SUPPORTED OPERATION!");
+		Objects.checkState(false, "Instanciação não permitida!");
 	}
 
 	/**
