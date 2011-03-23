@@ -32,8 +32,6 @@ package org.jrimum.utilix.text;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import org.jrimum.utilix.text.Filler;
-import org.jrimum.utilix.text.TextStream;
 import org.jrimum.utilix.text.Filler.SideToFill;
 import org.junit.Test;
 
