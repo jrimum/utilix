@@ -31,6 +31,7 @@ package org.jrimum.utilix;
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 
+
 /**
  * <p>
  * Classe utilitária para validações de objetos em geral, como verificações de
@@ -59,7 +60,7 @@ public final class Objects {
 	 */
 	private Objects() {
 
-		checkState(false, "Instanciação não permitida!");
+		Exceptions.throwIllegalStateException("Instanciação não permitida!");
 	}
 
 	/**
@@ -137,7 +138,7 @@ public final class Objects {
 	public static void checkArgument(boolean expression) {
 		
 		if (!expression) {
-			throw new IllegalArgumentException();
+			Exceptions.throwIllegalArgumentException();
 		}
 	}
 
@@ -158,7 +159,7 @@ public final class Objects {
 	public static void checkArgument(boolean expression, String message) {
 		
 		if (!expression) {
-			throw new IllegalArgumentException(message);
+			Exceptions.throwIllegalArgumentException(message);
 		}
 	}
 
@@ -177,7 +178,7 @@ public final class Objects {
 	public static void checkState(boolean expression) {
 		
 		if (!expression) {
-			throw new IllegalStateException();
+			Exceptions.throwIllegalStateException();
 		}
 	}
 
@@ -198,7 +199,7 @@ public final class Objects {
 	public static void checkState(boolean expression, String message) {
 		
 		if (!expression) {
-			throw new IllegalStateException(message);
+			Exceptions.throwIllegalStateException(message);
 		}
 	}
 
@@ -225,7 +226,7 @@ public final class Objects {
 
 		if (object != null) {
 
-			throw new IllegalArgumentException(message);
+			Exceptions.throwIllegalArgumentException(message);
 		}
 	}
 
@@ -276,7 +277,7 @@ public final class Objects {
 
 		if (object == null) {
 
-			throw new IllegalArgumentException(message);
+			Exceptions.throwIllegalArgumentException(message);
 		}
 	}
 

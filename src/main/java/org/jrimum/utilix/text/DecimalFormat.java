@@ -31,6 +31,8 @@ package org.jrimum.utilix.text;
 
 import java.text.ParseException;
 
+import org.jrimum.utilix.Exceptions;
+
 /**
  * <p>
  * Formatadores thread-safe relacionados a moeda e números decimais.
@@ -113,7 +115,7 @@ public enum DecimalFormat implements Format<Number, java.text.DecimalFormat>{
 			
 		} catch (ParseException e) {
 			
-			throw new IllegalArgumentException("DecimalFormat Exception!", e);
+			return Exceptions.throwIllegalArgumentException("DecimalFormat Exception!", e);
 		}
 	}
 	

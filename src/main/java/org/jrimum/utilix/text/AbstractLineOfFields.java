@@ -38,6 +38,7 @@ import java.util.List;
 import java.util.ListIterator;
 
 import org.apache.log4j.Logger;
+import org.jrimum.utilix.Exceptions;
 import org.jrimum.utilix.Objects;
 
 /**
@@ -172,7 +173,7 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 				
 			}catch (Exception e) {
 				log.error("ERRO DE LEITURA");
-				throw new IllegalStateException("Erro na leitura do campo de posição [ "+fields.indexOf(field)+" ]",e);
+				Exceptions.throwIllegalStateException("Erro na leitura do campo de posição [ "+fields.indexOf(field)+" ]",e);
 			}
 			
 			builder.delete(0, field.getLength());
@@ -200,7 +201,7 @@ public abstract class AbstractLineOfFields implements TextStream, List<Field<?>>
 				
 			}catch (Exception e) {
 				log.error("ERRO DE LEITURA");
-				throw new IllegalStateException("Erro na escrita do campo de posição [ "+fields.indexOf(field)+" ]",e);
+				Exceptions.throwIllegalStateException("Erro na escrita do campo de posição [ "+fields.indexOf(field)+" ]",e);
 			}
 		}
 

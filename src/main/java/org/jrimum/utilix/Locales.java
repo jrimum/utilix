@@ -59,6 +59,6 @@ public final class Locales {
 	 */
 	private Locales() {
 
-		Objects.checkState(false, "Instanciação não permitida!");
+		Exceptions.throwIllegalStateException("Instanciação não permitida!");
 	}
 }

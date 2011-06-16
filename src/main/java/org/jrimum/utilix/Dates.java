@@ -82,7 +82,7 @@ public final class Dates {
 	 */
 	private Dates() {
 
-		Objects.checkState(false, "Instanciação não permitida!");
+		Exceptions.throwIllegalStateException("Instanciação não permitida!");
 	}
 
 	/**
@@ -156,7 +156,7 @@ public final class Dates {
 			
 		} else {
 			
-			throw new IllegalArgumentException("A data inicial [" + dataInicial
+			Exceptions.throwIllegalArgumentException("A data inicial [" + dataInicial
 					+ "] e a data final [" + dataFinal + "] "
 					+ "não podem ter valor 'null'.");
 		}

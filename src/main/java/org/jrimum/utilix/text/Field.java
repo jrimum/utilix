@@ -42,6 +42,7 @@ import java.util.Date;
 
 import org.apache.commons.lang.StringUtils;
 import org.jrimum.utilix.Dates;
+import org.jrimum.utilix.Exceptions;
 import org.jrimum.utilix.Objects;
 
 /**
@@ -201,12 +202,12 @@ public class Field<G> implements TextStream {
 	public void read(String valueAsString) {
 
 		if (isNull(valueAsString)) {
-			throw new IllegalArgumentException("String inválida [ "
+			Exceptions.throwIllegalArgumentException("String inválida [ "
 					+ valueAsString + " ]!");
 		}
 
 		if (valueAsString.length() != length) {
-			throw new IllegalArgumentException("O tamanho da String [ "
+			Exceptions.throwIllegalArgumentException("O tamanho da String [ "
 					+ valueAsString + " ] é incompatível com o especificado [ "
 					+ length + " ]!");
 		}
@@ -346,7 +347,7 @@ public class Field<G> implements TextStream {
 		str = fill(str);
 
 		if (str.length() != length) {
-			throw new IllegalArgumentException("O tamaho do campo [ " + str
+			Exceptions.throwIllegalArgumentException("O tamaho do campo [ " + str
 					+ " ] é incompatível com o especificado [" + length + "]!");
 		}
 
@@ -395,7 +396,7 @@ public class Field<G> implements TextStream {
 			this.value = field;
 
 		} else {
-			throw new IllegalArgumentException("Campo inválido [" + field
+			Exceptions.throwIllegalArgumentException("Campo inválido [" + field
 					+ "]!");
 		}
 	}
@@ -428,7 +429,7 @@ public class Field<G> implements TextStream {
 			this.length = length;
 
 		} else {
-			throw new IllegalArgumentException("Tamanho inválido [ " + length
+			Exceptions.throwIllegalArgumentException("Tamanho inválido [ " + length
 					+ " ]!");
 		}
 	}
@@ -469,7 +470,7 @@ public class Field<G> implements TextStream {
 			this.format = format;
 
 		} else {
-			throw new IllegalArgumentException("Formato inválido [ " + format
+			Exceptions.throwIllegalArgumentException("Formato inválido [ " + format
 					+ " ]!");
 		}
 	}
@@ -502,7 +503,7 @@ public class Field<G> implements TextStream {
 			this.filler = filler;
 
 		} else {
-			throw new IllegalArgumentException("Filler inválido [ " + filler
+			Exceptions.throwIllegalArgumentException("Filler inválido [ " + filler
 					+ " ]!");
 		}
 	}

@@ -53,7 +53,7 @@ public final class ClassLoaders {
 	 */
 	private ClassLoaders() {
 
-		Objects.checkState(false, "Instanciação não permitida!");
+		Exceptions.throwIllegalStateException("Instanciação não permitida!");
 	}
 
 	/**
@@ -177,7 +177,7 @@ public final class ClassLoaders {
 
 		} catch (IOException e) {
 
-			throw new IllegalStateException(e);
+			return Exceptions.throwIllegalStateException(e);
 		}
 	}
 

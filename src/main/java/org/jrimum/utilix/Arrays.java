@@ -54,7 +54,7 @@ public final class Arrays {
 	 */
 	private Arrays() {
 		
-		Objects.checkState(false, "Instanciação não permitida!");
+		Exceptions.throwIllegalStateException("Instanciação não permitida!");
 	}
 
 	/**

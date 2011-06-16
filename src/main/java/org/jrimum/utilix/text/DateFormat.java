@@ -33,6 +33,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.jrimum.utilix.Exceptions;
+
 /**
  * <p>
  * Formatadores de data thread-safe. Para uma mesma categoria, os formatadores
@@ -231,7 +233,7 @@ public enum DateFormat implements Format<Date, SimpleDateFormat>{
 			
 		} catch (ParseException e) {
 			
-			throw new IllegalArgumentException("DateFormat Exception!", e);
+			return Exceptions.throwIllegalArgumentException("DateFormat Exception!", e);
 		}
 	}
 	

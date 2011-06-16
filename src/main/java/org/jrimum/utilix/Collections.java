@@ -59,7 +59,7 @@ public final class Collections {
 	 */
 	private Collections() {
 
-		Objects.checkState(false, "Instanciação não permitida!");
+		Exceptions.throwIllegalStateException("Instanciação não permitida!");
 	}
 
 	/**
@@ -111,7 +111,7 @@ public final class Collections {
 
 		if (hasElement(collection)) {
 
-			throw new IllegalArgumentException(message);
+			Exceptions.throwIllegalArgumentException(message);
 		}
 	}
 
@@ -214,7 +214,7 @@ public final class Collections {
 
 		if (hasElement(map)) {
 
-			throw new IllegalArgumentException(message);
+			Exceptions.throwIllegalArgumentException(message);
 		}
 	}
 
@@ -503,12 +503,12 @@ public final class Collections {
 
 		if (collection == null) {
 
-			throw new IllegalArgumentException(messageNullPointer);
+			Exceptions.throwIllegalArgumentException(messageNullPointer);
 		}
 
 		if (collection.isEmpty()) {
 
-			throw new IllegalArgumentException(messageIllegalArgument);
+			Exceptions.throwIllegalArgumentException(messageIllegalArgument);
 		}
 	}
 
@@ -544,12 +544,12 @@ public final class Collections {
 
 		if (map == null) {
 
-			throw new IllegalArgumentException(messageNullPointer);
+			Exceptions.throwIllegalArgumentException(messageNullPointer);
 		}
 
 		if (map.isEmpty()) {
 
-			throw new IllegalArgumentException(messageIllegalArgument);
+			Exceptions.throwIllegalArgumentException(messageIllegalArgument);
 		}
 	}
 

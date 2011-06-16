@@ -34,6 +34,7 @@ import static org.jrimum.utilix.Objects.isNotNull;
 import java.io.Serializable;
 
 import org.apache.commons.lang.StringUtils;
+import org.jrimum.utilix.Exceptions;
 import org.jrimum.utilix.Objects;
 
 /**
@@ -164,7 +165,7 @@ public class Filler<G> implements Serializable {
 			this.fillWith = fillWith;
 
 		} else {
-			throw new IllegalArgumentException("Filler inválido [ " + fillWith + " ]!");
+			Exceptions.throwIllegalArgumentException("Filler inválido [ " + fillWith + " ]!");
 		}
 	}
 
@@ -186,7 +187,7 @@ public class Filler<G> implements Serializable {
 			this.sideToFill = sideToFill;
 
 		} else {
-			throw new IllegalArgumentException("Lado inválido [ " + sideToFill + " ]!");
+			Exceptions.throwIllegalArgumentException("Lado inválido [ " + sideToFill + " ]!");
 		}
 	}
 

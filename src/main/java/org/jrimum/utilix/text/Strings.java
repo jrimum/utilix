@@ -40,6 +40,7 @@ import static org.apache.commons.lang.StringUtils.replaceChars;
 import static org.apache.commons.lang.StringUtils.startsWith;
 import static org.jrimum.utilix.Objects.isNotNull;
 
+import org.jrimum.utilix.Exceptions;
 import org.jrimum.utilix.Objects;
 
 /**
@@ -70,7 +71,7 @@ public final class Strings {
 	 */
 	private Strings() {
 
-		throw new AssertionError("NOT SUPORTED OPERATION!");
+		Exceptions.throwIllegalStateException("Instanciação não permitida!");
 	}
 
 	/**
@@ -413,7 +414,7 @@ public final class Strings {
 		Objects.checkNotNull(value, messageNullPointer);
 
 		if (!isNumeric(value)) {
-			throw new IllegalArgumentException(messageIllegalArgument);
+			Exceptions.throwIllegalArgumentException(messageIllegalArgument);
 		}
 	}
 
@@ -457,7 +458,7 @@ public final class Strings {
 		Objects.checkNotNull(value, messageNullPointer);
 
 		if (isBlank(value)) {
-			throw new IllegalArgumentException(messageIllegalArgument);
+			Exceptions.throwIllegalArgumentException(messageIllegalArgument);
 		}
 	}
 }
