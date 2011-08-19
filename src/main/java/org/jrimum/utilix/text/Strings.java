@@ -372,6 +372,37 @@ public final class Strings {
 						"Valor inválido. String [\"%s\"] vazia ou contendo somente espaços em branco!",
 						value));
 	}
+	
+	/**
+	 * <p>
+	 * Retorna uma dado valor padrão quando a string informada for considerada
+	 * como blank por {@linkplain StringUtils#isBlank(String)}.
+	 * </p>
+	 * 
+	 * <pre>
+	 * whenBlank(null, null)  = null
+	 * whenBlank(null, "")    = ""
+	 * whenBlank("", "")      = ""
+	 * whenBlank("", "a")     = "a"
+	 * whenBlank(" ", "ex")   = "ex"
+	 * whenBlank("abc", *)    = "abc"
+	 * </pre>
+	 * 
+	 * @param str
+	 *            String a testar e ser usada como valor de retorno se não for
+	 *            blank, pode ser <code>null</code>
+	 * @param defaultValue
+	 *            - O valor padrão retornado caso a string testada seja blank,
+	 *            pode ser <code>null</code>
+	 * @return <code>String</code> - Se não for blank, caso contrário
+	 *         <code>defaultValue</code>
+	 * 
+	 * @since 0.2
+	 */
+	public static String whenBlank(String str, String defaultValue) {
+
+		return (isNotBlank(str) ? str : defaultValue);
+	}
 
 	/**
 	 * <p>
@@ -461,4 +492,5 @@ public final class Strings {
 			Exceptions.throwIllegalArgumentException(messageIllegalArgument);
 		}
 	}
+	
 }
