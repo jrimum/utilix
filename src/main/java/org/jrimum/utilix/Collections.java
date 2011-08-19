@@ -345,7 +345,6 @@ public final class Collections {
 	 * <p>
 	 * Indica se pelo menos uma coleção tem algum elemento sem gerar NPE.
 	 * </p>
-	 * <p>
 	 * 
 	 * @param cols
 	 *            - Coleções para teste.
@@ -370,7 +369,6 @@ public final class Collections {
 	 * <p>
 	 * Indica se pelo menos um mapa tem algum elemento sem gerar NPE.
 	 * </p>
-	 * <p>
 	 * 
 	 * @param maps
 	 *            - Mapas para teste.
