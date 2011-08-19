@@ -123,6 +123,11 @@ public class Filler<G> implements Serializable {
 	 * </p>
 	 */
 	private SideToFill sideToFill;
+	
+	@SuppressWarnings("unused")
+	private Filler(){
+		Exceptions.throwIllegalStateException("Instanciação não permitida!");
+	}
 
 	/**
 	 * <p>
