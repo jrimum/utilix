@@ -29,11 +29,11 @@
 
 package org.jrimum.utilix.text;
 
+import static java.lang.String.format;
 import static org.jrimum.utilix.Objects.isNotNull;
 import static org.jrimum.utilix.Objects.isNull;
 
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.Format;
@@ -98,6 +98,11 @@ public class Field<G> implements TextStream {
 	 * </p>
 	 */
 	private Filler<?> filler;
+	
+	@SuppressWarnings("unused")
+	private Field(){
+		Exceptions.throwIllegalStateException("Instanciação não permitida!");
+	}
 
 	/**
 	 * <p>
@@ -239,24 +244,30 @@ public class Field<G> implements TextStream {
 	@SuppressWarnings("unchecked")
 	private void readStringOrNumericField(String valueAsString) {
 
-		Class<?> c = value.getClass();
+		Class<?> clazz = value.getClass();
+		
+		if(clazz.equals(String.class)){
+			value = (G) valueAsString;
+		}else{
+			readNumeric(clazz,valueAsString);
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	private void readNumeric(Class<?> clazz, String str) {
+		
+		for (Constructor<?> cons : clazz.getConstructors()) {
 
-		for (Constructor<?> cons : c.getConstructors()) {
-
-			if (cons.getParameterTypes().length == 1) {
-				if (cons.getParameterTypes()[0].equals(String.class)) {
+			if (cons.getParameterTypes().length == 1){
+				
+				if (cons.getParameterTypes()[0].equals(String.class)){
 					try {
+						
+						value = (G) cons.newInstance(str);
 
-						value = (G) cons.newInstance(valueAsString);
-
-					} catch (IllegalArgumentException e) {
-						getGenericReadError(e, valueAsString).printStackTrace();
-					} catch (InstantiationException e) {
-						getGenericReadError(e, valueAsString).printStackTrace();
-					} catch (IllegalAccessException e) {
-						getGenericReadError(e, valueAsString).printStackTrace();
-					} catch (InvocationTargetException e) {
-						getGenericReadError(e, valueAsString).printStackTrace();
+					} catch (Exception e) {
+						
+						throwReadError(e, str);
 					}
 				}
 			}
@@ -512,7 +523,9 @@ public class Field<G> implements TextStream {
 	 * Formata a exceção caso ela ocorra na leitura do campo.
 	 * @param e
 	 * @param value
-	 * @return
+	 * @return Runtime Exception
+	 * 
+	 * @since 0.2
 	 */
 	private static Exception getGenericReadError(Exception e, String value) {
 
@@ -522,6 +535,20 @@ public class Field<G> implements TextStream {
 		e.setStackTrace(stackTrace);
 
 		return e;
+	}
+	
+	/**
+	 * Lança uma {@linkplain IllegalArgumentException} mostrando a string
+	 * causadora do erro.
+	 * 
+	 * @param e
+	 * @param value
+	 * 
+	 * @since 0.2
+	 */
+	private void throwReadError(Exception e, String value){		
+		
+		throw new IllegalArgumentException(format("Falha na leitura da string: [\"%s\"]! %s",value,toString()), e);
 	}
 
 	/**
