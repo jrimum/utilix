@@ -17,12 +17,12 @@
 			<distribution>repo</distribution>
 		</license>
 	</licenses>
-	
+
 	<organization>
 		<name>Grupo JRimum</name>
 		<url>http://www.jrimum.org/</url>
 	</organization>
-	
+
 	<issueManagement>
 		<system>TRAC</system>
 		<url>http://www.jrimum.org/utilix</url>
@@ -32,14 +32,14 @@
 		<system>hudson</system>
 		<url>http://localhost:8080/hudson</url>
 	</ciManagement>
-	
+
 	<scm>
 		<connection>scm:svn:http://www.jrimum.org/svn/utilix</connection>
 		<developerConnection>scm:svn:http://www.jrimum.org/svn/utilix</developerConnection>
 		<tag>HEAD</tag>
 		<url>http://www.jrimum.org/svn/utilix</url>
 	</scm>
-	
+
 	<developers>
 		<developer>
 			<name>Gilmar P. S. L.</name>
@@ -75,7 +75,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.5</version>
+				<version>2.6</version>
 				<configuration>
 					<skipTests>false</skipTests>
 					<forkMode>always</forkMode>
@@ -120,14 +120,35 @@
 			</plugin>
 		</plugins>
 	</build>
-	
+
 	<reporting>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>2.7</version>
-			</plugin>		
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jxr-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<linkJavadoc>true</linkJavadoc>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-report-plugin</artifactId>
+				<version>2.6</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+				<version>2.4</version>
+			</plugin>
 		</plugins>
 	</reporting>
 
@@ -136,6 +157,7 @@
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
 			<version>2.4</version>
+			<scope></scope>
 		</dependency>
 		<dependency>
 			<groupId>log4j</groupId>
@@ -168,4 +190,10 @@
 		</dependency>
 	</dependencies>
 
+	<distributionManagement>
+		<snapshotRepository>
+			<id>org.jrimum.snapshots</id>
+			<url>http://jrimum.org/maven/content/repositories/org.jrimum.snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
 </project>
