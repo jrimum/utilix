@@ -19,20 +19,17 @@
 	</licenses>
 
 	<organization>
-		<name>Grupo JRimum</name>
-		<url>http://www.jrimum.org/</url>
+		<name>Projeto JRimum</name>
+		<url>http://www.jrimum.org</url>
 	</organization>
 
 	<issueManagement>
-		<system>TRAC</system>
-		<url>http://www.jrimum.org/utilix</url>
+		<system>GitHub</system>
+		<url>https://github.com/jrimum/utilix/issues</url>
 	</issueManagement>
 
 	<scm>
-		<connection>scm:svn:http://www.jrimum.org/svn/utilix</connection>
-		<developerConnection>scm:svn:http://www.jrimum.org/svn/utilix</developerConnection>
-		<tag>HEAD</tag>
-		<url>http://www.jrimum.org/svn/utilix</url>
+		<url>http://github.com/jrimum/utilix</url>
 	</scm>
 
 	<developers>
