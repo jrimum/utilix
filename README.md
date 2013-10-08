@@ -1,4 +1,4 @@
 Utilix
 ======
 
-Utilitários usados no projeto. [Lançado embutido, incubado]
+Utilitários usados no projeto [Lançado embutido, incubado]
