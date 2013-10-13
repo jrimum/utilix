@@ -34,12 +34,14 @@ import static org.apache.commons.lang.StringUtils.EMPTY;
 import static org.apache.commons.lang.StringUtils.isBlank;
 import static org.apache.commons.lang.StringUtils.isNotBlank;
 import static org.apache.commons.lang.StringUtils.isNumeric;
+import static org.apache.commons.lang.StringUtils.leftPad;
 import static org.apache.commons.lang.StringUtils.removeStart;
 import static org.apache.commons.lang.StringUtils.replace;
 import static org.apache.commons.lang.StringUtils.replaceChars;
 import static org.apache.commons.lang.StringUtils.startsWith;
 import static org.jrimum.utilix.Objects.isNotNull;
 
+import org.apache.commons.lang.StringUtils;
 import org.jrimum.utilix.Exceptions;
 import org.jrimum.utilix.Objects;
 
@@ -493,4 +495,15 @@ public final class Strings {
 		}
 	}
 	
+	public static String fillWithZeroLeft(int numberToFill, int size){
+		return fillWithZeroLeft(String.valueOf(numberToFill), size);
+	}
+	
+	public static String fillWithZeroLeft(long numberToFill, int size){
+		return fillWithZeroLeft(String.valueOf(numberToFill), size);
+	}
+
+	public static String fillWithZeroLeft(String stringToFill, int size){
+		return leftPad(stringToFill, size, "0");
+	}
 }

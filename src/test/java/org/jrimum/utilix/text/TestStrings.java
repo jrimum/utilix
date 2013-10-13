@@ -132,7 +132,6 @@ public class TestStrings {
 	
 	@Test
 	public void testCheckNotNumeric() {
-		//Ok, is numeric
 		Strings.checkNotNumeric("123");
 	}
 
@@ -154,5 +153,20 @@ public class TestStrings {
 	@Test
 	public void testCheckNotBlank() {
 		Strings.checkNotBlank("Ok, Not Blank!");
+	}
+	
+	@Test
+	public void testFillWithZeroLeftString(){
+		assertEquals("012",Strings.fillWithZeroLeft("12", 3));
+	}
+	
+	@Test
+	public void testFillWithZeroLeftInt(){
+		assertEquals("012345678",Strings.fillWithZeroLeft(12345678, 9));
+	}
+	
+	@Test
+	public void testFillWithZeroLeftLong(){
+		assertEquals("012345678901",Strings.fillWithZeroLeft(12345678901L, 12));
 	}
 }
