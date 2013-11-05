@@ -33,10 +33,8 @@ import org.apache.commons.lang.builder.ToStringBuilder;
 
 
 /**
- * <p>
  * Classe utilitária para validações de objetos em geral, como verificações de
  * objetos nulos, com e sem exceções.
- * </p>
  * 
  * <p>
  * Fornece métodos booleanos e métodos que verificam se o valor do objeto está
@@ -64,9 +62,7 @@ public final class Objects {
 	}
 
 	/**
-	 * <p>
 	 * Verifica se o objeto passado por parâmetro é {@code null}.
-	 * </p>
 	 * 
 	 * @param object
 	 *            - Objeto analisado
@@ -81,10 +77,8 @@ public final class Objects {
 	}
 
 	/**
-	 * <p>
 	 * Verifica se o objeto passado por parâmetro <strong>não</strong> é
 	 * {@code null}.
-	 * </p>
 	 * <p>
 	 * É o mesmo que usar o método {@code isNull} da forma
 	 * {@code !isNull(obj)}, porém de forma mais legível.
@@ -105,9 +99,7 @@ public final class Objects {
 	}
 
 	/**
-	 * <p>
 	 * Verifica se existe uma referência ao objeto dado.
-	 * </p>
 	 * 
 	 * @param object
 	 *            - Objeto analisado
@@ -204,12 +196,10 @@ public final class Objects {
 	}
 
 	/**
-	 * <p>
 	 * Verifica se o objeto é nulo e lança {@code IllegalArgumentException}
 	 * , com a mensagem informada, caso <strong>não</strong> seja.
-	 * </p>
 	 * 
-	 * @thows IllegalArgumentException - Caso o objeto <strong>não</strong> seja
+	 * @throws IllegalArgumentException - Caso o objeto <strong>não</strong> seja
 	 *        {@code null}.
 	 * 
 	 * @see #isNull(Object)
@@ -231,15 +221,13 @@ public final class Objects {
 	}
 
 	/**
-	 * <p>
 	 * Verifica se o objeto é nulo e lança {@code IllegalArgumentException}
 	 * caso <strong>não</strong> seja.
-	 * </p>
 	 * 
 	 * @param object
 	 *            - Objeto analisado
 	 * 
-	 * @thows IllegalArgumentException - Caso o objeto <strong>não</strong> seja
+	 * @throws IllegalArgumentException - Caso o objeto <strong>não</strong> seja
 	 *        {@code null}.
 	 * 
 	 * @see #checkNull(Object, String)
@@ -255,18 +243,16 @@ public final class Objects {
 	}
 
 	/**
-	 * <p>
 	 * Verifica se o objeto <strong>não</strong> é nulo e lança
 	 * {@code IllegalArgumentException}, com a mensagem informada, caso
 	 * seja.
-	 * </p>
 	 * 
 	 * @param object
 	 *            - Objeto analisado
 	 * @param message
 	 *            - Mensagem utilizada na exceção
 	 * 
-	 * @thows IllegalArgumentException - Caso o objeto seja {@code null}.
+	 * @throws IllegalArgumentException - Caso o objeto seja {@code null}.
 	 * 
 	 * @see #isNull(Object)
 	 * @see #isNotNull(Object)
@@ -282,15 +268,13 @@ public final class Objects {
 	}
 
 	/**
-	 * <p>
 	 * Verifica se o objeto <strong>não</strong> é nulo e lança
 	 * {@code IllegalArgumentException} caso seja.
-	 * </p>
 	 * 
 	 * @param object
 	 *            - Objeto analisado
 	 * 
-	 * @thows IllegalArgumentException - Caso o objeto seja {@code null}.
+	 * @throws IllegalArgumentException - Caso o objeto seja {@code null}.
 	 * 
 	 * @see #checkNotNull(Object, String)
 	 * @see #isNull(Object)
@@ -304,9 +288,7 @@ public final class Objects {
 	}
 
 	/**
-	 * <p>
 	 * Retorna um dado valor padrão quando o determinado objeto for nulo.
-	 * </p>
 	 * 
 	 * <pre>
 	 * whenNull(null, null)      = null
@@ -334,10 +316,8 @@ public final class Objects {
 	}
 
 	/**
-	 * <p>
 	 * Retorna um dado valor padrão quando o determinado objeto for nulo e outro
 	 * valor quando contrário.
-	 * </p>
 	 * 
 	 * <pre>
 	 * whenNull(null, null, null)       = null
