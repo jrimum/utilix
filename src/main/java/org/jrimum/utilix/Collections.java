@@ -33,9 +33,7 @@ import java.util.Collection;
 import java.util.Map;
 
 /**
- * <p>
  * Classe utilitária para validações de coleções em geral, com e sem exceções.
- * </p>
  * 
  * <p>
  * Fornece métodos booleanos e métodos que verificam se uma coleção está de
