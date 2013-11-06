@@ -472,15 +472,45 @@ public final class Strings {
 		}
 	}
 	
-	public static String fillWithZeroLeft(int numberToFill, int size){
-		return fillWithZeroLeft(String.valueOf(numberToFill), size);
+	/**
+	 * Retorna uma string de tamanho informado {@code length} com o
+	 * preenchimento de zeros à esquerda para o número informado.
+	 * 
+	 * @param numberToFill
+	 *            Número a ser transformado em string com zeros à esquerda
+	 * @param length
+	 *            Tamanho final da string com zeros à esquerda
+	 * @return string com zeros a esquerda
+	 */
+	public static String fillWithZeroLeft(int numberToFill, int length){
+		return fillWithZeroLeft(String.valueOf(numberToFill), length);
 	}
 	
-	public static String fillWithZeroLeft(long numberToFill, int size){
-		return fillWithZeroLeft(String.valueOf(numberToFill), size);
+	/**
+	 * Retorna uma string de tamanho informado {@code length} com o
+	 * preenchimento de zeros à esquerda para o número informado.
+	 * 
+	 * @param numberToFill
+	 *            Número a ser transformado em string com zeros à esquerda
+	 * @param length
+	 *            Tamanho final da string com zeros à esquerda
+	 * @return string com zeros a esquerda
+	 */
+	public static String fillWithZeroLeft(long numberToFill, int length){
+		return fillWithZeroLeft(String.valueOf(numberToFill), length);
 	}
 
-	public static String fillWithZeroLeft(String stringToFill, int size){
-		return leftPad(stringToFill, size, "0");
+	/**
+	 * Retorna uma string de tamanho informado {@code length} com o
+	 * preenchimento de zeros à esquerda para a string informada.
+	 * 
+	 * @param stringToFill
+	 *            String a ser preenchida com zeros à esquerda
+	 * @param length
+	 *            Tamanho final da string com zeros à esquerda
+	 * @return string com zeros a esquerda
+	 */
+	public static String fillWithZeroLeft(String stringToFill, int length){
+		return leftPad(stringToFill, length, "0");
 	}
 }
