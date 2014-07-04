@@ -34,20 +34,20 @@ import static org.apache.commons.lang.StringUtils.EMPTY;
 import static org.apache.commons.lang.StringUtils.isBlank;
 import static org.apache.commons.lang.StringUtils.isNotBlank;
 import static org.apache.commons.lang.StringUtils.isNumeric;
+import static org.apache.commons.lang.StringUtils.leftPad;
 import static org.apache.commons.lang.StringUtils.removeStart;
 import static org.apache.commons.lang.StringUtils.replace;
 import static org.apache.commons.lang.StringUtils.replaceChars;
 import static org.apache.commons.lang.StringUtils.startsWith;
 import static org.jrimum.utilix.Objects.isNotNull;
 
+import org.apache.commons.lang.StringUtils;
 import org.jrimum.utilix.Exceptions;
 import org.jrimum.utilix.Objects;
 
 /**
- * <p>
  * Esta classe tem a responsabilidade de prover serviços utilitários
  * relacionados a manipulação de <code>Strings</code>
- * </p>
  * 
  * @author <a href="http://gilmatryx.googlepages.com/">Gilmar P.S.L</a>
  * @author <a href="mailto:misaelbarreto@gmail.com">Misael Barreto</a>
@@ -75,14 +75,11 @@ public final class Strings {
 	}
 
 	/**
-	 * <p>
 	 * Elimina simbolos como:
 	 * 
 	 * <pre>>
 	 * <,;.:!*&%+-_<>[]\/
 	 * </pre>
-	 * 
-	 * </p>
 	 * 
 	 * @param str
 	 *            String com os símbolos a serem removidos.
@@ -129,10 +126,8 @@ public final class Strings {
 	}
 
 	/**
-	 * <p>
 	 * Remove os zeros iniciais de uma <code>String</code>, seja ela numérica ou
 	 * não.
-	 * </p>
 	 * <p>
 	 * <code>removeStartWithZeros("00000") => 0</code><br />
 	 * <code>removeStartWithZeros("00023") => 23</code><br />
@@ -173,7 +168,6 @@ public final class Strings {
 	}
 
 	/**
-	 * <p>
 	 * Remove a acentuação do texto, que inclui os acentos:
 	 * <ul>
 	 * <li>Agudo. ex.: á</li>
@@ -183,7 +177,6 @@ public final class Strings {
 	 * <li>Circunflexo. ex.: â</li>
 	 * </ul>
 	 * e o Cedilha (ç).
-	 * </p>
 	 * <p>
 	 * Os acentos são removidos tanto para letras minúsculas como para letras
 	 * maiúsculas.
@@ -270,11 +263,9 @@ public final class Strings {
 	}
 
 	/**
-	 * <p>
 	 * Verifica se a <code>String</code> passada por parâmetro não é
 	 * <code>null</code> e não é numérica, ou seja, se a string não contém
 	 * somente dígitos unicode.
-	 * </p>
 	 * <p>
 	 * Lança exceção, com a mensagem passada por parâmetro (segundo parâmetro
 	 * String), caso não preencha estes requisitos.
@@ -286,7 +277,7 @@ public final class Strings {
 	 * @param message
 	 *            - Mensagem utiliada na exceção.
 	 * 
-	 * @thows IllegalArgumentException - Caso a string seja <code>null</code> ou
+	 * @throws IllegalArgumentException - Caso a string seja <code>null</code> ou
 	 *        caso a string não seja numérica.
 	 * 
 	 * @since 0.2
@@ -297,11 +288,9 @@ public final class Strings {
 	}
 
 	/**
-	 * <p>
 	 * Verifica se a <code>String</code> passada por parâmetro não é
 	 * <code>null</code> e não é numérica, ou seja, se a string não contém
 	 * somente dígitos unicode.
-	 * </p>
 	 * <p>
 	 * Lança exceção, com a mensagem passada por parâmetro (segundo parâmetro
 	 * String), caso não preencha estes requisitos.
@@ -310,7 +299,7 @@ public final class Strings {
 	 * @param value
 	 *            - String analisada
 	 * 
-	 * @thows IllegalArgumentException - Caso a string seja <code>null</code> ou
+	 * @throws IllegalArgumentException - Caso a string seja <code>null</code> ou
 	 *        caso a string não seja numérica.
 	 * 
 	 * @since 0.2
@@ -322,11 +311,9 @@ public final class Strings {
 	}
 
 	/**
-	 * <p>
 	 * Verifica se a <code>String</code> passada por parâmetro não é
 	 * <code>null</code>, não é vazia (<code>EMPTY</code>) e não possui apenas
 	 * espaços em branco.
-	 * </p>
 	 * <p>
 	 * Lança exceção, com a mensagem passada por parâmetro (segundo parâmetro
 	 * String), caso não preencha estes requisitos.
@@ -338,7 +325,7 @@ public final class Strings {
 	 * @param message
 	 *            - Mensagem utiliada na exceção.
 	 * 
-	 * @thows IllegalArgumentException - Caso a string seja <code>null</code> ou
+	 * @throws IllegalArgumentException - Caso a string seja <code>null</code> ou
 	 *        caso a string seja vazia.
 	 * 
 	 * @since 0.2
@@ -349,16 +336,14 @@ public final class Strings {
 	}
 
 	/**
-	 * <p>
 	 * Verifica se a <code>String</code> passada por parâmetro não é
 	 * <code>null</code>, não é vazia (<code>EMPTY</code>) e não possui apenas
 	 * espaços em branco. Lança exceção caso não preencha estes requisitos.
-	 * </p>
 	 * 
 	 * @param value
 	 *            - String analisada
 	 * 
-	 * @thows IllegalArgumentException - Caso a string seja <code>null</code> ou
+	 * @throws IllegalArgumentException - Caso a string seja <code>null</code> ou
 	 *        caso a string seja vazia.
 	 * 
 	 * @since 0.2
@@ -374,10 +359,8 @@ public final class Strings {
 	}
 	
 	/**
-	 * <p>
 	 * Retorna uma dado valor padrão quando a string informada for considerada
 	 * como blank por {@linkplain StringUtils#isBlank(String)}.
-	 * </p>
 	 * 
 	 * <pre>
 	 * whenBlank(null, null)  = null
@@ -405,9 +388,7 @@ public final class Strings {
 	}
 
 	/**
-	 * <p>
 	 * Método privado para fins de reutilização de código.
-	 * </p>
 	 * <p>
 	 * Verifica se a <code>String</code> passada por parâmetro não é
 	 * <code>null</code> e não é numérica, ou seja, se a string não contém
@@ -434,7 +415,7 @@ public final class Strings {
 	 *            - Mensagem utiliada na exceção.
 	 * 
 	 * 
-	 * @thows IllegalArgumentException - Caso a string seja <code>null</code> ou
+	 * @throws IllegalArgumentException - Caso a string seja <code>null</code> ou
 	 *        caso a string não seja numérica.
 	 * 
 	 * @since 0.2
@@ -450,9 +431,7 @@ public final class Strings {
 	}
 
 	/**
-	 * <p>
 	 * Método privado para fins de reutilização de código.
-	 * </p>
 	 * <p>
 	 * Verifica se a <code>String</code> passada por parâmetro não é
 	 * <code>null</code>, não é vazia (<code>StringUtils.EMPTY</code>) e não
@@ -478,7 +457,7 @@ public final class Strings {
 	 * @param messageIllegalArgument
 	 *            - Mensagem utiliada na exceção.
 	 * 
-	 * @thows IllegalArgumentException - Caso a string seja <code>null</code> ou
+	 * @throws IllegalArgumentException - Caso a string seja <code>null</code> ou
 	 *        caso a string seja vazia.
 	 * 
 	 * @since 0.2
@@ -493,4 +472,45 @@ public final class Strings {
 		}
 	}
 	
+	/**
+	 * Retorna uma string de tamanho informado {@code length} com o
+	 * preenchimento de zeros à esquerda para o número informado.
+	 * 
+	 * @param numberToFill
+	 *            Número a ser transformado em string com zeros à esquerda
+	 * @param length
+	 *            Tamanho final da string com zeros à esquerda
+	 * @return string com zeros a esquerda
+	 */
+	public static String fillWithZeroLeft(int numberToFill, int length){
+		return fillWithZeroLeft(String.valueOf(numberToFill), length);
+	}
+	
+	/**
+	 * Retorna uma string de tamanho informado {@code length} com o
+	 * preenchimento de zeros à esquerda para o número informado.
+	 * 
+	 * @param numberToFill
+	 *            Número a ser transformado em string com zeros à esquerda
+	 * @param length
+	 *            Tamanho final da string com zeros à esquerda
+	 * @return string com zeros a esquerda
+	 */
+	public static String fillWithZeroLeft(long numberToFill, int length){
+		return fillWithZeroLeft(String.valueOf(numberToFill), length);
+	}
+
+	/**
+	 * Retorna uma string de tamanho informado {@code length} com o
+	 * preenchimento de zeros à esquerda para a string informada.
+	 * 
+	 * @param stringToFill
+	 *            String a ser preenchida com zeros à esquerda
+	 * @param length
+	 *            Tamanho final da string com zeros à esquerda
+	 * @return string com zeros a esquerda
+	 */
+	public static String fillWithZeroLeft(String stringToFill, int length){
+		return leftPad(stringToFill, length, "0");
+	}
 }

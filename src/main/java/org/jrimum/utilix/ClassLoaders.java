@@ -36,9 +36,7 @@ import java.io.InputStream;
 import java.net.URL;
 
 /**
- * <p>
  * Utilitário para carregamento de recursos da apliacação por meio do classpath.
- * </p>
  * 
  * 
  * @author <a href="http://gilmatryx.googlepages.com/">Gilmar P.S.L.</a>
@@ -57,7 +55,7 @@ public final class ClassLoaders {
 	}
 
 	/**
-	 * p>Carrega um recurso existente no classpath.</p>
+	 * Carrega um recurso existente no classpath.
 	 * 
 	 * @param resourceName
 	 *            - O nome do resource a ser carregado
@@ -69,10 +67,9 @@ public final class ClassLoaders {
 	}
 
 	/**
-	 * <p>
 	 * Carrega um recurso existente no classpath com ou sem uma classe
 	 * informada.
-	 * </p>
+     *
 	 * <p>
 	 * Informando a classe há necessidade de informar o caminho do pacote, caso
 	 * o recurso esteja nele.
@@ -141,14 +138,10 @@ public final class ClassLoaders {
 	}
 
 	/**
-	 * <p>
 	 * Carrega um recurso existente no classpath sob a forma de stream.
-	 * </p>
 	 * 
 	 * @param resourceName
 	 *            - O nome do resource a ser carregado
-	 * @param callingClass
-	 *            - A classe do objeto chamador ou outro.
 	 * @return Stream aberto para o recurso (resource).
 	 */
 	public static InputStream getResourceAsStream(String resourceName) {
@@ -157,10 +150,8 @@ public final class ClassLoaders {
 	}
 
 	/**
-	 * <p>
 	 * Carrega um recurso existente no classpath sob a forma de stream com ou
 	 * sem uma classe informada.
-	 * </p>
 	 * 
 	 * @param resourceName
 	 *            - O nome do resource a ser carregado
