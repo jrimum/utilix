@@ -14,4 +14,4 @@ jobs:
       with:
         java-version: 1.8
     - name: Build with Maven
-      run: mvn -V javadoc:javadoc -Ddoclint=none package --file pom.xml
+      run: mvn -V javadoc:javadoc -DadditionalJOption=-Xdoclint:none package --file pom.xml
