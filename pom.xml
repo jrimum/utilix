@@ -185,20 +185,24 @@
 	</dependencies>
 	
 	<repositories>
-		<repository>
+		<!--repository>
 			<id>jrimum.org</id>
 			<url>http://jrimum.org/maven/content/groups/public/</url>
 			<snapshots>
 				<enabled>true</enabled>
 			</snapshots>
-		</repository>
+		</repository-->
 	</repositories>
 
 	<distributionManagement>
-		<snapshotRepository>
+		<!--snapshotRepository>
 			<id>org.jrimum.snapshots</id>
 			<url>http://jrimum.org/maven/content/repositories/org.jrimum.snapshots/</url>
-		</snapshotRepository>
+		</snapshotRepository-->
+	   <repository>
+	     <id>github</id>
+	     <name>GitHub gilbertoca Apache Maven Packages</name>
+	     <url>https://maven.pkg.github.com/gilbertoca/utilix</url>
+	   </repository>
 	</distributionManagement>
-
 </project>
