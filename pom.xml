@@ -202,7 +202,7 @@
 	   <repository>
 	     <id>github</id>
 	     <name>GitHub gilbertoca Apache Maven Packages</name>
-	     <url>https://maven.pkg.github.com/gilbertoca/utilix</url>
+	     <url>https://maven.pkg.github.com/gilbertoca/jrimum</url>
 	   </repository>
 	</distributionManagement>
 </project>
